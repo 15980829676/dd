@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "摇一摇",
+  "usingComponents": {
+    "shadow": "/component/shadow/index"
+  }
+}

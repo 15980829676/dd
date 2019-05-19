@@ -1,0 +1,3 @@
+<!--pages/totalNumber/index.wxml-->
+<official-account></official-account>
+ <button class="btn-save" bindtap='focusPublic'>返回</button>

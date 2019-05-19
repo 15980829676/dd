@@ -1,0 +1,60 @@
+/* component/searchTitle/index.wxss */
+
+.OrderHead {
+  width: 100%;
+  background: #fff;
+  position:fixed;
+  top: 0;
+  left: 0;
+  z-index: 2000;
+  box-sizing: border-box;
+ box-shadow: 0 1rpx 4rpx 2rpx rgba(0, 0, 0, 0.1) !important;
+}
+.OrderAbText {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: black;
+  font-size:38rpx;
+  font-weight: bold
+
+}
+.search {
+  width: 160rpx;
+  height: 45rpx;
+  border-radius:30px;
+  background: #f2f2f2;
+  position: absolute;
+  bottom: 10px;
+  left: 25rpx; 
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+
+}
+.i-about {
+  width: 220rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: absolute;
+  bottom: 10px;
+  left: 7px;
+}
+.back {
+  width: 40rpx;
+  height: 40rpx;
+}
+.search.action {
+  position: relative;
+  bottom: 0;
+  left: 0;
+}
+.searchImag {
+ width: 45rpx;
+ height: 45rpx;
+}
+.searchText {
+  color: #8a8a8a
+}

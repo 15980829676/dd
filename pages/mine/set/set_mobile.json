@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "tabBar": "/component/tabBar/tabBar",
+    "i-toast": "/dist/toast/index",
+    "i-message": "/dist/message/index"
+  }
+}

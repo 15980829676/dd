@@ -1,0 +1,13 @@
+{
+  "backgroundColor": "#eee",
+  "navigationBarTitleText": "团队管理",
+  "usingComponents": {
+    "i-tabs": "../../dist/tabs/index",
+    "i-tab": "../../dist/tab/index",
+    "topLoadingProgress": "/component/topLoadingProgress/topLoadingProgress",
+    "topNav": "/component/topNav/topNav",
+    "shadow": "/component/shadow/index",
+    "tabBar": "/component/tabBar/tabBar",
+    "i-toast": "/dist/toast/index"
+  }
+}

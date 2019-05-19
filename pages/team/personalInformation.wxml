@@ -1,0 +1,114 @@
+<!--pages/personal information/personal information.wxml-->
+<!-- <topLoadingProgress 
+ wx:if="{{!isLoadCompelte}}" 
+percent="{{progress.percent}}" 
+bind:activeend="progressActiveEnd"></topLoadingProgress> -->
+<shadow status="top"></shadow>
+<i-toast id="toast" />
+<block wx:if="{{isLoadCompelte}}">
+  <view class="admin">
+
+    <view class="mac-marbot">
+
+      <view class="pi-head fixed">
+        <view class="head-t">
+          <view class="head-t-left">
+            <view class="via">
+              <image src="{{userInfo.shop_avatar}}"></image>
+            </view>
+          </view>
+          <view class="right-side">
+            <view class="head-t-middle">
+              <view class="name">{{userInfo.sr_realname}}</view>
+              <view class="rank">{{userInfo.levelname}}</view>
+            </view>
+            <view class="head-t-right">
+              <view class="hhh">
+                <view class="icon">
+                  <image src="/images/team-1.svg"></image>
+                </view>
+                <text class='hhh-text'>{{userInfo.pro_name}} {{userInfo.city_name}} {{userInfo.dis_name}}</text>
+              </view>
+              <view class="hhh">
+                <block wx:if="{{userInfo.wechat}}">
+                  <view class="icon icon1">
+                    <image src="/images/team-2.svg"></image>
+                  </view>
+                  <text>{{userInfo.wechat}}</text>
+                </block>
+                <view class="icon icon2">
+                  <image src="/images/team-3.svg"></image>
+                </view>
+                <text class='font-DIN'>{{userInfo.u_mobi}}</text>
+              </view>
+            </view>
+          </view>
+        </view>
+        <view class="head-b">
+          <view class="head-b-left">
+           <!-- wx:if="{{userInfo.rule}}" -->
+            <block>
+              <view class="hint">本月任务已完成
+                <text>{{userInfo.currData.ratio||0}}%</text>预计返利金额
+                <text>{{userInfo.re_money || '0.00'}}</text>
+              </view>
+              <view class="progress-item" style="margin:10rpx 0;">
+                <i-progress percent="{{(userInfo.total/10000) >= userInfo.rule[1].money ? 100 : userInfo.currData.ratio}}" hide-info></i-progress>
+                <!-- <view class='hint'>{{userInfo.re_type == 0?'[按月]':userInfo.re_type == 1?'[按季度]':''}}</view> -->
+              </view>
+              <view class="hint">
+                <text wx:if="{{0}}">本月返利金额 24958.00</text>
+                <text>返利比例 {{userInfo.currData.cashBackRatio||0}}%</text>
+              </view>
+            </block>
+            <!-- <view style='color: #fff;display:flex;align-items:center;'>预计返利：<view class='font-DIN' style='padding-top:7rpx;'>{{userInfo.re_money}}</view> </view> -->
+            <view style='height: 28rpx;'></view>
+          </view>
+          <view class="head-b-right">
+            <view class="money font-DIN">￥{{money || '0'}}</view>
+            <!-- <w-count-up class="money font-DIN"></w-count-up> -->
+            <view class="sum">累计进货额</view>
+          </view>
+        </view>
+      </view>
+
+      <view class="module-content" style="padding-top: 440rpx;padding-bottom:{{tabBarh}}px;">
+        <!--begin-->
+
+        <block wx:if="{{orderList.length>0}}">
+          <block wx:for="{{orderList}}" wx:key="userName">
+            <view 
+            class="module-list" 
+            bindtap='jumpOrderDetail' 
+            data-orderId="{{item.id}}" 
+            data-userId="{{item.op_id}}" 
+            data-index="{{index}}">
+              <view class="module-list-info">
+                <view class="no font-DIN">NO:
+                  <text>{{item.sn}}</text>
+                </view>
+                <view class="name">{{item.brief.gInfos[0].barcode}}</view>
+              </view>
+              <view class="module-list-amount">
+                <view class="purch">订单金额</view>
+                <view class="money font-DIN">￥{{item.paied}}</view>
+                <view class="purch">{{item.create_time}}</view>
+              </view>
+            </view>
+          </block>
+          <loadMore loadmore="{{load_params.loadmore}}" loadend="{{load_params.loadend}}" empty="{{load_params.empty}}"></loadMore>
+        </block>
+
+        <block wx:else>
+          <!-- <loadMore empty="{{true}}" definedContent="{{true}}" content="{{'暂无订单'}}"></loadMore> -->
+          <view class='empty' style='height: {{windowHeight - 540}}rpx;line-height: {{windowHeight - 540}}rpx;'>暂无订单</view>
+        </block>
+
+        <!--end-->
+      </view>
+
+      <tabBar current="team"></tabBar>
+    </view>
+
+  </view>
+</block>

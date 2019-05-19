@@ -1,0 +1,33 @@
+<!--pages/mine/wallet/recharge/rechargeResult.wxml-->
+<view class="admin">
+  <shadow status="top"></shadow>
+  <view class="mac-marbot">
+
+    <dynamicAds list="{{adsList}}"></dynamicAds>
+
+    <!--充值成功-->
+    <view class="recharge-tier" wx:if="{{options.result == 'success'}}">
+      <view class="icon">
+        <image src="/images/balance-2.svg"></image>
+      </view>
+      <view class="txt">充值成功</view>
+      <view class="txt1">您已充值（元）</view>
+      <view class="money">{{options.money}}</view>
+      <button class="btn" bindtap="btnCompelte" data-type='confirm'>完成</button>
+    </view>
+    <!--充值成功end-->
+
+    <!--充值失败-->
+    <view class="recharge-tier"  wx:if="{{options.result == 'fail'}}">
+      <view class="icon">
+        <image src="/images/balance-3.svg"></image>
+      </view>
+      <view class="txt2">充值失败</view>
+      <!-- <view class="txt3">失败原因</view> -->
+      <button class="btn" bindtap="btnCompelte" data-type='back'>返回</button>
+    </view>
+    <!--充值失败end-->
+
+  </view>
+  <tabBar current="mine"></tabBar>
+</view>

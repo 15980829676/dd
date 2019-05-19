@@ -1,0 +1,10 @@
+/* component/watermark/index.wxss */
+.FAE {
+  width: 100%;
+  font-size: 20rpx;
+  color: #A8A8A8;
+  text-align: center;
+  position: fixed;
+  left: 0;
+  bottom: 136rpx;
+}

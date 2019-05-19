@@ -1,0 +1,12 @@
+{
+  "component": true,
+  "navigationBarTitleText": "选择店铺等级",
+  "usingComponents": {
+    "i-steps": "/dist/steps/index",
+    "i-step": "/dist/step/index",
+    "i-input": "/dist/input/index",
+    "i-toast": "/dist/toast/index",
+    "shadow": "/component/shadow/index",
+    "selectAddress": "/component/order/selectAddress/index"
+  }
+}

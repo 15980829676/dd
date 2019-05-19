@@ -1,0 +1,251 @@
+<!--pages/mine/mine.wxml-->
+<shadow status="all"></shadow>
+<block wx:if="{{isLoadCompelte}}">
+  <view class="admin">
+
+    <view class="mac-marbot ">
+      
+      <view class="head-top">
+      <view class='leftCont'>
+        <view class="photo">
+          <image src="{{userInfo.shop_avatar}}"></image>
+        </view>
+        <view class="message">
+          <view class="m1">{{userInfo.sr_realname}}</view>
+          <!-- <view class="m2">{{userInfo.levelname}}</view> -->
+           <i-tag 
+                          class="i-tags " 
+                          i-class="m2"
+                          name="{{userInfo.levelname}}"
+                          color="red">
+                          {{userInfo.levelname}}
+                      </i-tag>
+        </view>
+        </view>
+        <view  wx:if="{{userInfo.s_mobi}}" class='phone  font-DIN'>
+            <text style="margin-top:7rpx">{{userInfo.s_mobi}}</text>
+            <navigator url='/pages/mine/set/mobile_check?phone={{userInfo.s_mobi}}&type=setMobile' class='xiugai' style='color:#4DA1FF;font-size:28rpx;'>修改</navigator>
+        </view>
+        <view wx:else>
+         <navigator url='/pages/mine/set/set_mobile'>未绑定手机号码</navigator>  
+        </view>
+      </view>
+
+      <view class="menu-con">
+        <!--钱包-->
+        <navigator class="menu-a borderBottomf8" url="./wallet/index" hover-class='none'>
+          <view class="menu-a-left">
+            <view class="icon">
+              <image src="/images/mine-1.svg"></image>
+            </view>
+            <view class="text">我的资产</view>
+          </view>
+          <view class="menu-a-right">
+            <view class="text font-DIN">{{total_sum}}元</view>
+            <!-- <view class="arrows">
+              <image src="/images/mine-10.svg"></image>
+            </view> -->
+            <view class='right-arrow'></view>
+          </view>
+        </navigator>
+        <!--钱包end-->
+         <!--我的库存-->
+        
+        <!-- <navigator class="menu-a borderBottomf8 " url='/pages/inventory/inventory'>
+          <view class="menu-a-left">
+            <view class="icon icon-size1">
+              <image src="/images/kucun.svg"></image>
+            </view>
+            <view class="text">我的库存</view>
+          </view>
+          <view class="menu-a-right">
+            <view class='right-arrow'></view>
+          </view>
+        </navigator> -->
+        <!--我的库存end-->
+        <!--所属团队-->
+        <view class="menu-a borderBottomf8  " bindtap='team'>
+          <view class="menu-a-left">
+            <view class="icon icon-size1">
+              <image src="/images/mine-2.svg"></image>
+            </view>
+            <view class="text">所属团队</view>
+          </view>
+          <view class="menu-a-right">
+            <!-- 测试 -->
+            <view class="text change">{{globalData.userInfo.seltype == 1?'诚享东方':(parentInfo.sr_realname || userInfo.sr_realname)}}</view>
+            <!-- 线上 -->
+            <!-- <view class="text change">{{globalData.userInfo.parentId<=0?userInfo.sr_realname:parentInfo.sr_realname}}</view> -->
+            <view class='right-arrow'></view>
+          </view>
+        </view>
+        <!--所属团队end-->
+        <!--数据报表-->
+        <view class="menu-a  borb" style='display: none;'>
+          <view class="menu-a-left">
+            <view class="icon icon-size2">
+              <image src="/images/mine-3.svg"></image>
+            </view>
+            <view class="text">数据报表</view>
+          </view>
+          <view class="menu-a-right">
+            <view class='right-arrow'></view>
+          </view>
+        </view>
+        <!--财务报表end-->
+        <!--营销工具-->
+        <!-- <navigator url='/pages/mine/marketingtool/marketingtool' class="menu-a mart borderBottomf8" >
+          <view class="menu-a-left">
+            <view class="icon icon-size3">
+              <image src="/images/mine-4.svg"></image>
+            </view>
+            <view class="text">营销工具</view>
+          </view>
+          <view class="menu-a-right">
+            <view class='right-arrow'></view>
+          </view>
+        </navigator> -->
+        <!--营销工具end-->
+        <!-- <navigator url='/discovery/pages/friend/friend' class="menu-a mart borderBottomf8" >
+          <view class="menu-a-left">
+            <view class="icon icon-size3">
+              <image src="/images/discovery.svg"></image>
+            </view>
+            <view class="text">素材库</view>
+          </view>
+          <view class="menu-a-right">
+            <view class='right-arrow'></view>
+          </view>
+        </navigator> -->
+        <!---我的客服-->
+        <button class="menu-a " bindcontact='contact' open-type="contact">
+          <view class="menu-a-left">
+            <view class="icon icon-size3">
+              <image style='display: block; ' src="/images/kefu.svg"></image>
+            </view>
+            <view class="text">我的客服</view>
+          </view>
+          <view class="menu-a-right">
+            <view class='right-arrow'></view>
+          </view>
+        </button>
+        <!---我的客服end-->
+        <!--积分商城-->
+        <!-- <view class="menu-a borderBottomf8 mart" catchtap='marketing'>
+          <view class="menu-a-left">
+            <view class="icon icon-size3">
+              <image src="/images/min-shopping.svg"></image>
+            </view>
+            <view class="text">积分商城</view>
+          </view>
+          <view class="menu-a-right">
+            <view class='right-arrow'></view>
+          </view>
+        </view> -->
+        <!--积分商城 end-->
+           <!--认证图片下载-->
+         <navigator url='/expandPage/storeProve/index' class="menu-a borderBottomf8 mart" >
+          <view class="menu-a-left">
+            <view class="icon icon-size3">
+              <image src="/images/pre_mine.svg"></image>
+            </view>
+            <view class="text">开具开店证明</view>
+          </view>
+          <view class="menu-a-right">
+            <view class='right-arrow'></view>
+          </view>
+        </navigator>
+        <!----认证图片下载-- end-->
+        <!--设置-->
+        <navigator class="menu-a borderBottomf8" hover-class='none' url="./set/show_personalInfo">
+          <view class="menu-a-left">
+            <view class="icon icon-size4">
+              <image src="/images/mine-5.svg"></image>
+            </view>
+            <view class="text">设置</view>
+          </view>
+          <view class="menu-a-right">
+            <view class='right-arrow'></view>
+          </view>
+        </navigator>
+        <!--设置end-->
+        <!--地址-->
+        <!--option_my  非结算页--->
+        <navigator class="menu-a  " url="/pages/editAddress/index?page=mine" hover-class='none'>
+          <view class="menu-a-left">
+            <view class="icon icon-size4" >
+              <image src="/images/pre_dizhi.svg" style='width:48rpx;height:48rpx;position:relative;left:-2rpx;'></image>
+            </view>
+            <view class="text">地址</view>
+          </view>
+          <view class="menu-a-right">
+            <view class='right-arrow'></view>
+          </view>
+        </navigator>
+        <!--地址end-->
+        <!--数据报表-->
+        <navigator class="menu-a borderBottomf8 mart" url="/expandPage/dataStatistics/index" hover-class='none' wx:if="{{dataStatistics}}">
+          <view class="menu-a-left">
+            <view class="icon icon-size4" >
+              <image src="/images/dataStatistics.svg" style="width:45rpx;height:45rpx;"></image>
+            </view>
+            <view class="text">数据报表</view>
+          </view>
+          <view class="menu-a-right">
+            <view class='right-arrow'></view>
+          </view>
+        </navigator> 
+        <!--数据报表end-->
+        <!--稽查投诉 /expandPage/acceptanceResult/inspect complaint/inspect complaint-->
+        <navigator class="menu-a borderBottomf8 {{!dataStatistics?'mart':''}} " url="/expandPage/acceptanceResult/inspectComplain/inspectComplain" hover-class='none'>
+          <view class="menu-a-left">
+            <view class="icon icon-size4" >
+              <image src="/images/inspect.svg"></image>
+            </view>
+            <view class="text">稽查投诉</view>
+          </view>
+          <view class="menu-a-right">
+            <view class='right-arrow'></view>
+          </view>
+        </navigator> 
+        <!--稽查投诉end-->
+         <!--我的投诉-->
+       
+       <navigator class="menu-a" url="/expandPage/acceptanceResult/my complaint/my complaint" hover-class='none'>
+          <view class="menu-a-left">
+            <view class="icon icon-size4" >
+              <image src="/images/acceptance.svg"></image>
+            </view>
+            <view class="text">我的投诉</view>
+          </view>
+          <view class="menu-a-right">
+            <view class='right-arrow'></view>
+          </view>
+        </navigator>
+        <!--我的投诉end-->
+        <!-- 关于style="display: none;" -->
+        <navigator class="menu-a mart" url="/expandPage/about/index" hover-class='none' >
+          <view class="menu-a-left">
+            <view class="icon icon-size4" style='display:flex;justify-content:center;'>
+              <image src="/images/icon-about.svg" style='position:relative;left:4rpx;'></image>
+            </view>
+            <view class="text">关于</view>
+          </view>
+          <view class="menu-a-right">
+            <view class='version' style='color:#BBBBBB;margin-right: 10rpx;'>版本{{userInfo.version}}</view>
+            <view class='right-arrow'></view>
+          </view>
+        </navigator>
+        <!-- 关于end -->
+       
+      </view>
+    <view class="FAE">技术支持诚享科技</view>
+    </view>
+
+    
+
+  </view>
+</block>
+<!-- <view class='bot_shadow'></view> -->
+
+<i-toast id="toast" dd="{{false}}"/>

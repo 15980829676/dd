@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "水果机",
+  "usingComponents": {
+    "shadow": "/component/shadow/index"
+  }
+}

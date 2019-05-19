@@ -1,0 +1,9 @@
+<!--component/order/returnOrderType/index.wxml-->
+<!-- 零售订单 -->
+<block wx:if="{{orderType && orderType === 2}}">
+  <view class='order-class'>{{lingsOrderStatus[type]}}</view>
+</block>
+<block wx:else>
+  <view class='order-class' wx:if="{{shopid>0 && (opid == uid)}}">{{sytype>0?"("+syncStatus[sytype]+")":""}}{{orderStatus[type]}}</view>
+  <view class='order-class' wx:if="{{shopid==0 ||(opid != uid)}}">{{orderStatus[type]}}</view>
+</block>

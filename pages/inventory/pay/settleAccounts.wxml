@@ -1,0 +1,476 @@
+<!--pages/inventory/pay/settleAccounts.wxml-->
+<shadow status="top"></shadow>
+<view class="admin">
+
+  <view class="mac-marbot">
+
+    <view class="logistic">
+      <view class="logistic-tier fixed">
+        <i-cell-group>
+          <i-cell title="">
+            <i-switch value="{{switch1}}" size="large" bind:change="onChange" slot="footer" disabled="{{disabledSwitch1}}">
+              <view slot="open">物流配送</view>
+              <view slot="close">自提</view>
+            </i-switch>
+          </i-cell>
+        </i-cell-group>
+
+        <!-- <view class="tier-odd">
+          <view class="odd font-DIN">{{addressInfo.sn}}</view>
+          <view class="copy" bindtap='copy' data-sn="{{addressInfo.sn}}">
+            <view class="icon">
+              <image src="/images/order-7.svg"></image>
+            </view>
+            <text>复制</text>
+          </view>
+        </view> -->
+
+      </view>
+      <!-- 如果是订单详情页面 -->
+      <!-- <block wx:if="{{switchWay === 'logistics'&& pageType == 'orderDetail'}}">
+        <view class="log-com" style="margin-top: {{pageType === 'orderDetail'? '100rpx':'0'}};">
+          <view class="com-tier">
+            <view class="com-left">物流公司</view>
+            <view class="com-right">
+              <view class="express">安能</view>
+              <view class="icon" wx:if="{{!orderData.order_id}}">
+                <image src="/images/order-8.svg"></image>
+              </view>
+            </view>
+          </view>
+        </view>
+      </block> -->
+
+      <block wx:if="{{switchWay === 'selfExtract'}}">
+        <view class="map-wrap fixed {{userInfo.seltype == 0?'hide':''}}" style='margin-top: 50px;' catchtouchmove='move'>
+          <view class="address-wrap">
+            <view class='text'>自提地址</view>
+            <view class='address'>
+              <view class='elp' wx:if="{{userInfo.seltype==0}}">{{addressInfo.province}} {{addressInfo.city}} {{addressInfo.area}} {{addressInfo.address}}</view>
+              <view class='elp' wx:if="{{userInfo.seltype==1}}">{{cbase}}</view>
+              <image class='icon-address' src='/images/order-9.svg'></image>
+            </view>
+          </view>
+          <view class='map' catchtouchmove='move'>
+            <map scale="16" markers="{{markers}}" longitude="{{markers[0].longitude}}" latitude="{{markers[0].latitude}}" class="{{popUp[0].isShow || popUp[2].isShow?'hide':''}} ma"></map>
+          </view>
+        </view>
+      </block>
+
+    </view>
+    <!-- {{windowHeight - (switchWay === 'logistics'?300:userInfo.seltype == 0?300:702)}}rpx -->
+    <scroll-view catchtouchmove='move' class='content-wrap zf_paddinglr' scroll-y style="height: calc({{windowHeight*0.5}}px - 100px - {{tabBarH}}px - {{switchWay === 'selfExtract'&&userInfo.seltype == 1?(screenWidth <= 320?'171px':'200px'):'0px'}});margin-top: {{switchWay === 'logistics'?50:userInfo.seltype == 0?50:251}}px;">
+      <!-- 如果是订单页面显示 -->
+      <!-- <block wx:if="{{pageType == 'orderDetail'}}">
+        <view class="log-com hg160">
+          <view class="com-tier marb">
+            <view class="com-left">支付方式</view>
+            <view class="com-right">
+              <view class="express">线下付款</view>
+            </view>
+          </view>
+          <view class="com-tier">
+            <view class="com-left">下单时间</view>
+            <view class="com-right">
+              <view class="express">2018-12-26 20:18:14</view>
+            </view>
+          </view>
+        </view>
+      </block> -->
+      <!-- 物流配送 -->
+      <block wx:if="{{switchWay === 'logistics'}}">
+        <!-- 购物车商品重量要大于0 wx:if="{{cartBilling.weight > 0}}" -->
+        <block wx:if="{{mailMethod.exItem}}">
+          <view class="log-com">
+            <view class="com-tier">
+              <view class="com-left">邮寄方式</view>
+              <view wx:if="{{userInfo.seltype > 0}}" class="com-right" bindtap='selectMailMethod'>
+                <view class="express">{{mailMethod.exItem.name}} {{mailMethod.ruleItem.name}}({{mailMethod.ruleItem.type == 1?'运费¥':'预计运费¥'}}{{mailMethod.ruleItem.fee}})</view>
+                <view class="icon" wx:if="{{!orderData.order_id&&orderData.order_id!=''}}">
+                  <image src="/images/order-8.svg"></image>
+                </view>
+              </view>
+              <view wx:else class="com-right">
+                <view class="express">{{mailMethod.exItem.name}}</view>
+              </view>
+            </view>
+          </view>
+        </block>
+
+        <view class="log-com hg160">
+          <block>
+            <view class="com-tier marb">
+              <view class="com-left">收件地址</view>
+              <view class="com-right" bindtap='editInfo' data-type="address">
+                <view class="express">{{addressInfo.province}} {{addressInfo.city}} {{addressInfo.area}} {{addressInfo.address}}</view>
+                <view class="icon" wx:if="{{!orderData.order_id}}">
+                  <image src="/images/order-8.svg"></image>
+                </view>
+              </view>
+            </view>
+            <view class="com-tier">
+              <view class="com-left">收件人</view>
+              <view class="com-right">
+                <view class="express row-center">{{addressInfo.name}}
+                  <view class='font-DIN phoneNum'>{{addressInfo.tel}}</view>
+                </view>
+              </view>
+            </view>
+          </block>
+        </view>
+      </block>
+      <!-- 自提 -->
+      <block wx:if="{{switchWay === 'selfExtract'}}">
+        <view class="log-com hg160">
+          <view class="com-tier marb" bindtap='showTimePopup'>
+            <view class="com-left">自取时间</view>
+            <view class="com-right">
+              <view class="express">
+                {{allTimeList[0][allTimeIndex[0]].time}}({{allTimeList[0][allTimeIndex[0]].week}}) {{allTimeList[1][allTimeIndex[1]]}}
+              </view>
+              <view class='right-arrow' style="margin-left: 40rpx;" wx:if="{{!orderData.order_id}}"></view>
+            </view>
+          </view>
+          <view class="com-tier">
+            <view class="com-left">预留信息</view>
+            <view class="com-right" bindtap='editInfo' data-type="name">
+              <view class="express">{{addressInfo.name}} {{addressInfo.tel}}</view>
+              <view class="icon" wx:if="{{!orderData.order_id}}">
+                <image src="/images/order-8.svg"></image>
+              </view>
+            </view>
+          </view>
+          <!-- <view class="com-tier marb">
+            <view class="com-left">预留姓名</view>
+            <view class="com-right" bindtap='editInfo' data-type="name">
+              <view class="express">{{addressInfo.name}}</view>
+              <view class="icon" wx:if="{{!orderData.order_id}}">
+                <image src="/images/order-8.svg"></image>
+              </view>
+            </view>
+          </view> -->
+          <!-- <view class="com-tier">
+            <view class="com-left">手机号</view>
+            <view class="com-right" bindtap='editInfo' data-type="phone">
+              <view class="express row-center"><view class='font-DIN phoneNum'>{{addressInfo.tel}}</view></view>
+              <view class="icon" wx:if="{{!orderData.order_id}}">
+                <image src="/images/order-8.svg"></image>
+              </view>
+            </view>
+          </view> -->
+        </view>
+      </block>
+
+      <view class="product-list">
+
+        <view class="product-list-a">
+          <view class="a-left">商品</view>
+          <view class="a-right">
+            <view class="quantity number">数量</view>
+            <view class="quantity">价格</view>
+          </view>
+        </view>
+
+        <view class="product-list-b" wx:if="{{cartList.length > 0}}">
+          <!--begin-->
+          <view class="b-all" wx:for="{{cartList}}" wx:key="{{index}}">
+            <view class="b-left">
+              <view class="img">
+                <image src="{{item.pic}}"></image>
+              </view>
+              <view class="name">
+                <view class="n1">{{item.title}}</view>
+                <!----<view class="n2">120ml</view>---->
+              </view>
+            </view>
+            <view class="b-right">
+              <view class="number">
+                <!-- <view class="n2"></view> -->
+                <view class="n1 font-DIN">{{item.nums}}</view>
+                <!-- <view class="n3"></view> -->
+              </view>
+              <view class="price font-DIN">{{item.price}}</view>
+            </view>
+          </view>
+          <!--end-->
+          <!--单品买赠init-->
+
+          <block wx:for="{{gifts}}" wx:if="{{gifts && gifts.length>0}}" wx:for-index="id" wx:key="id" wx:for-item="item">
+            <block wx:for="{{item}}" wx:for-index="gk" wx:key="gk" wx:for-item="gg">
+              <view class="Gifts-a" wx:if="{{gg.gifts.length>0}}">{{gg.name}}</view>
+              <view class="Gifts" wx:if="{{gg.gifts.length>0}}">
+                <view class="Gifts-b" wx:for="{{gg.gifts}}" wx:key="yy" wx:for-item="gift" wx:for-index="yy" data-choice="{{gg.choice}}" data-specis="{{gg.specis}}" data-type="{{gift.type}}" data-index="{{yy}}" data-key="{{id+'_'+gk+'_'+yy}}">
+                  <!--商品-->
+                  <view class="b-wrap">
+                    <view class="wrap-info">
+                      <view class="img">
+                        <image src="{{gift.pic}}"></image>
+                        <view class="ku-cun" wx:if="{{gift.status==-1 ||(gift.formerNum && gift.formerNum>0)}}">
+                          <view class="ku-text" wx:if="{{gift.status==-1}}">赠品不足</view>
+                          <view class="ku-text2" wx:if="{{gift.formerNum && gift.formerNum>0}}">只剩{{gift.formerNum}}</view>
+                        </view>
+                      </view>
+                      <view class="bag">
+                        <view class="name">{{gift.title}}</view>
+                        <view class="hot">
+                          <!-- <view class="icon">
+								  <image src="/images/hot.svg"></image>
+								</view>
+								<text>248人换购</text> -->
+                        </view>
+                        <view class="money" wx:if="{{gift.type==2}}">￥{{gift.act_price}}
+                          <text>￥{{gift.price}}</text>
+                        </view>
+                        <view class="money" wx:else>￥{{gift.price}}
+                        </view>
+                      </view>
+                    </view>
+                    <view class="wrap-r" wx:if="{{gift.type==1}}">
+                      <view class="numbers" wx:if="{{gift.status!=-1 && gift.selected==1 }}">
+                        <view class="n1 font-DIN">{{gift.num}}</view>
+                      </view>
+                    </view>
+                    <view class="wrap-r" wx:if="{{gift.type==2}}">
+                      <!--加减数量按钮-->
+                      <view class="number" data-type="stop" wx:if="{{gift.status!=-1 && gift.selected==1 }}">
+                        <view class='btn-wrap' catchtap="onSelect" data-choice="{{gg.choice}}" data-specis="{{gg.specis}}" data-type="{{gift.type}}" data-index="{{yy}}" data-key="{{id+'_'+gk+'_'+yy}}">
+                          <view class="n2"></view>
+                        </view>
+                        <view class="n1 font-DIN">{{gift.num}}</view>
+                        <view class='btn-wrap'>
+                          <view class="n-dt"></view>
+                        </view>
+                      </view>
+                      <view class="btn" wx:if="{{gift.type==2 && gift.isfalse && gift.status!=-1}}" data-choice="{{gg.choice}}" data-specis="{{gg.specis}}" data-type="{{gift.type}}" data-index="{{yy}}" data-key="{{id+'_'+gk+'_'+yy}}" catchtap="onSelect">换购</view>
+                    </view>
+                  </view>
+                  <!--商品-->
+                </view>
+                <view class="Gifts-c">
+                  <view class="sum">
+                    <text>赠品小计</text>
+                    <text class="tb">￥</text>{{gifttal}}</view>
+                </view>
+              </view>
+            </block>
+          </block>
+          <!--单品买赠end-->
+
+
+
+
+
+        </view>
+
+        <!--超值换购-->
+        <view class='product-list-c' style='border-bottom:0;' wx:if="{{false}}">
+
+        </view>
+        <!--超值换购-->
+        <view class="product-list-c">
+          <view class=' wrap' style="flex:1">
+            <view class='side-1 paddingR20'>商品金额</view>
+            <view class='side-1 paddingR20' wx:if="{{cartBilling.freight && cartBilling.freight!=='0.00'&& cartBilling.freight!=0}}">运 费</view>
+            <view class='side-1 paddingR20' wx:if="{{cartBilling.serfee}}">代发服务费</view>
+            <view class='side-1 paddingR20' wx:if="{{cartBilling.off && cartBilling.off!='0.00' && cartBilling.off!=0}}">活动优惠</view>
+            <view class='side-1 paddingR20' wx:if="{{cartBilling.max_cashback && cartBilling.max_cashback > 0}}" style="border-top:2rpx dashed #e2e2e2 ">使用返利金额</view>
+            <view class='side-1 paddingR20' wx:if="{{hidden}}">
+              <view class="icon">
+                <image src="/images/order-3.svg"></image>
+              </view>佣金
+            </view>
+          </view>
+          <view class=' wrap'>
+            <!-- 商品金额 -->
+            <view class='side-1 font-DIN'>{{cartBilling.price}}</view>
+            <!-- 运 费 -->
+            <view class='side-1 font-DIN' wx:if="{{cartBilling.freight && cartBilling.freight!=='0.00'&& cartBilling.freight!=0}}">
+              {{cartBilling.freight}}
+            </view>
+            <!-- 代发服务费 -->
+            <view class='side-1 font-DIN' wx:if="{{cartBilling.serfee}}">{{cartBilling.serfee}}</view>
+            <!-- 活动优惠 -->
+            <view class='side-1 font-DIN' wx:if="{{cartBilling.off && cartBilling.off!='0.00' && cartBilling.off!=0}}">{{cartBilling.off}}</view>
+            <!-- 使用返利金额 -->
+            <view wx:if="{{cartBilling.max_cashback && cartBilling.max_cashback > 0}}" class="side-1 font-DIN back_money" style="color: {{cartBilling.change_max_cashback > 0 ?'rgb(235,0,0)':'#000'}};{{orderData.order_id?'padding-right:0;':''}};border-top:2rpx dashed #e2e2e2;"
+              bindtap='useBackMoney'>
+              {{cartBilling.change_max_cashback > 0 ? '-' : ''}}{{cartBilling.change_max_cashback}}
+              <view class='right-arrow' wx:if="{{!orderData.order_id}}"></view>
+            </view>
+            <!-- 佣金 -->
+            <view class="side-1 font-DIN" wx:if="{{hidden}}">10000.00</view>
+          </view>
+          <!-- <view class="right-side">
+            <view class="side-1">商品金额</view>
+            <view class="side-1 font-DIN">{{cartBilling.price}}</view>
+          </view>
+          <view class="right-side" wx:if="{{cartBilling.freight && cartBilling.freight!=='0.00'&& cartBilling.freight!=0}}">
+            <view class="side-1 side-2">运 费</view>
+            <view class="side-1 font-DIN">{{cartBilling.freight}}</view>
+          </view>
+          <view class="right-side" wx:if="{{cartBilling.serfee}}">
+            <view class="side-1">代发服务费</view>
+            <view class="side-1 font-DIN">{{cartBilling.serfee}}</view>
+          </view>
+          <view class="right-side" wx:if="{{cartBilling.off && cartBilling.off!='0.00' && cartBilling.off!=0}}">
+            <view class="side-1">活动优惠</view>
+            <view class="side-1 font-DIN">{{cartBilling.off}}</view>
+          </view>
+          <view class="right-side back_money" wx:if="{{cartBilling.max_cashback && cartBilling.max_cashback > 0}}" bindtap='useBackMoney'>
+            <view class="side-1">使用返利金额</view>
+            <view class="side-1 font-DIN" style="color: {{cartBilling.change_max_cashback > 0 ?'rgb(235,0,0)':'#000'}};">{{cartBilling.change_max_cashback > 0 ? '-' : ''}}{{cartBilling.change_max_cashback}}
+              <view class='right-arrow' wx:if="{{!orderData.order_id}}"></view>
+            </view>
+          </view>
+          <view class="right-side" wx:if="{{hidden}}">
+            <view class="side-1">
+              <view class="icon">
+                <image src="/images/order-3.svg"></image>
+              </view>佣金</view>
+            <view class="side-1 font-DIN">10000.00</view>
+          </view> -->
+        </view>
+
+        <view class="product-list-d">
+          <view class="net-side">
+            <view class="net-1">实付</view>
+            <view class="net-2 font-DIN">￥{{totalMoney}}</view>
+          </view>
+        </view>
+
+      </view>
+      <!--备注-->
+      <view class='remark' catchtap='remarkClik'>
+        <text class="orde_remark">订单备注</text>
+        <view class="orde_text">
+          <text class="peizu" style='margin-right:10rpx;'>{{mark}}</text>
+          <view class="right-arrow" wx:if="{{!orderData.order_id}}"></view>
+        </view>
+      </view>
+      <!--备注end-->
+    </scroll-view>
+
+  </view>
+
+  <!-- <view class="desk" catchtouchmove='move'>
+    <view class="balance">
+      <view class="rmb font-DIN">￥ {{cartBilling.total}}</view>
+      <button class="btn" bindtap='openPopUp'>确认支付</button>
+    </view>
+  </view> -->
+
+</view>
+
+
+<!--选择支付-->
+<!-- select: 选中 select1： 禁用 -->
+<!-- <view class="Mask" wx:if="{{popUp[0].isShow}}" catchtouchmove='move'>
+    <view class="method">
+      <view class="title">选择支付方式</view>
+      <view class="close" bindtap='closePopUp' data-type="outer">
+        <image src="/images/method-1.svg"></image>
+      </view>
+      <view class="m-wrap">
+        <view class="wrap-a" bindtap='selectPayMethod' data-money="{{payMethod.balance.money}}" data-type="balance">
+          <view class="left">
+            <view class="icon">
+              <image src="/images/method-2.svg"></image>
+            </view>
+            <view class="text">余额</view>
+          </view>
+          <view class="right">
+            <view class="text">可用余额</view>
+            <view class="money">{{payMethod.balance.money}}</view>
+            <view class="icon {{payMethod.balance.select?'select':payMethod.balance.select1?'select1':''}}"></view>
+          </view>
+        </view>
+        <view class="wrap-a" bindtap='selectPayMethod' data-money="{{payMethod.dealer.money}}" data-type="dealer">
+          <view class="left">
+            <view class="icon">
+              <image src="/images/method-3.svg"></image>
+            </view>
+            <view class="text">可提现金额</view>
+          </view>
+          <view class="right">
+            <view class="text">可用余额</view>
+            <view class="money">{{payMethod.dealer.money}}</view>
+            <view class="icon {{payMethod.dealer.select?'select':payMethod.dealer.select1?'select1':''}}"></view>
+          </view>
+        </view>
+        <view class="wrap-a" bindtap='selectPayMethod' data-type="wechat">
+          <view class="left">
+            <view class="icon">
+              <image src="/images/method-4.svg"></image>
+            </view>
+            <view class="text">微信支付</view>
+          </view>
+          <view class="right">
+            <view class="icon  {{payMethod.wechat.select?'select':payMethod.wechat.select1?'select1':''}}"></view>
+          </view>
+        </view>
+      </view>
+    </view>
+    
+  </view> -->
+<btnPay id="btnPay" total="{{totalMoney}}" bind:_closePopUp="_closePopUp" bind:_openPopUp="_openPopUp" bind:_creatOrder="_creatOrder" orderInfo="{{orderData}}" currType="{{switchWay}}"></btnPay>
+
+<!--自取时间-->
+<view class="Mask" catchtouchmove='move' style="z-index: 1003;" wx:if="{{popUp[2].isShow}}">
+  <view class='bkg-mask' catchtap='hideTimePopup'></view>
+  <view class="McGrady">
+    <view class="Takestime">
+      <scroll-view scroll-y class="T-left">
+        <block wx:for="{{allTimeList[0]}}" wx:key="{{index}}">
+          <view class="day  {{allTimeIndex[0] == index?'check':''}}" bindtap='setTakesTime' data-index="{{index}}" data-type="left">
+            {{item.time}}({{item.week}})
+          </view>
+        </block>
+      </scroll-view>
+      <scroll-view scroll-y class="T-right">
+        <block wx:for="{{allTimeList[1]}}" wx:key="{{index}}">
+          <view class="time {{allTimeIndex[1] == index?'select':''}}" bindtap='setTakesTime' data-index="{{index}}" data-type="right">
+            {{item}}
+            <view class="icon" wx:if="{{allTimeIndex[1] == index}}">
+              <image src="/images/withdraw-7.svg"></image>
+            </view>
+          </view>
+        </block>
+      </scroll-view>
+    </view>
+    <view class="cancel-btn" catchtap='hideTimePopup'>取消</view>
+  </view>
+</view>
+<!--自取时间end-->
+<i-message id="message" />
+
+<!-- 选择邮寄方式弹框 -->
+<selectMailMethod visiable="{{visiable}}" bind:_confirmMail="_confirmMail" exList="{{addressInfo.shiplist}}" rulelist="{{addressInfo.rulelist}}" ></selectMailMethod>
+<i-toast id="toast" dd="{{true}}" />
+<!-- 返利金额弹框 -->
+<btnCashBack visiable="{{cashBackPopUp}}" isNotUse="{{isNotUseCashBack}}" cartInfo="{{cartBilling}}" bind:confirmUseCashBack="_confirmUseCashBack"></btnCashBack>
+
+<tabBar current="inventory" id="tabBar"></tabBar>
+
+<!-- 未添加地址或者为设置默认地址 -->
+<i-modal i-class-mask="i-class-mask" visible="{{ visibleModal }}" actions="{{modalData}}" bind:click="handleModal">
+  <view class='modalContent' style="padding: 42rpx 44rpx;font-size: 24rpx;color: #333333;">{{modalDataHint}}</view>
+</i-modal>
+
+<view class="order-comment" wx:if="{{orderStart}}">
+  <view class='block' catchtap='orderCommentOut'></view>
+  <view class='roew'>
+    <view class='positionR'>
+      <text class="titleTop">备注</text>
+      <view class='outAbou' catchtap='orderCommentOut'></view>
+    </view>
+    <view class="comment">
+      <textarea placeholder="请写额外对商家备注的信息" maxlength="60" value='{{oderComment}}' bindinput='remarkText'>
+        <text>{{oderComment.length}}/60个字</text>
+      </textarea>
+    </view>
+    <view class='btnRemark'>
+      <view class="makered" catchtap='orderCommentOut'>取消</view>
+      <view class="make" catchtap='orderComment'>确定</view>
+    </view>
+  </view>
+</view>

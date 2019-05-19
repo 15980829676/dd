@@ -1,0 +1,6 @@
+<!--component/formData/index.wxml-->
+<form class="messForm" bindsubmit="messFormSubmit" report-submit="true">
+  <button class="btnBlock" formType="submit" hover-class="none">
+		<slot></slot>
+  </button>
+</form>

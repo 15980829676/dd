@@ -1,0 +1,13 @@
+/* component/search/searchIndex/index.wxss */
+.search {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 20rpx 30rpx;
+}
+.searchRow {
+  width:100%;
+  height: 86rpx;
+  background: #f2f2f2;
+  border-radius:30px;
+    
+}

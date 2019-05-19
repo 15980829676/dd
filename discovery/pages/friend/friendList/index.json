@@ -1,0 +1,13 @@
+{
+  "backgroundColor": "#e9e9e9",
+  "navigationBarTitleText": "",
+  "enablePullDownRefresh": false,
+  "usingComponents": {
+    "shadow": "/component/shadow/index",
+    "loadMore": "/component/loadMore/loadMore",
+    "tabBar": "/component/tabBar/tabBar",
+    "i-message": "/dist/message/index",
+    "i-toast": "/dist/toast/index",
+    "i-spin": "/dist/spin/index"
+  }
+}

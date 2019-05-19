@@ -1,0 +1,134 @@
+<!--component/order/logisticsInfo/index.wxml-->
+<!-- 物流 -->
+<block wx:if="{{visiable}}">
+  <view class="layer {{parse.setClass('layer',status)}}" style='height: calc(100% - {{tabBarH*2}}rpx);'>
+    <!-- 固定定位（弹框） -->
+    <view wx:if="{{status == 'fixed'}}" class='bkg logistics-info-layer' catchtap='closePopUp' catchtouchmove='move'></view>
+    <view wx:if="{{status == 'fixed'}}" class="wrap {{parse.setClass('wrap',status)}} logistics-info-wrap" style='{{parse.setWrapheight(status,innerHeight)}}' catchtouchmove='move'>
+      <view class='btn-close' catchtap='closePopUp'>
+        <image class='icon-close' src="/images/method-1.svg"></image>
+      </view>
+      <scroll-view catchtouchmove='move' scroll-y style='height: 100%;width: 100%;'>
+        <!-- <view class='step-end'>
+          <view class='s-l'>
+            <view class='s-icon'>
+              <image class='img' src='/images/icon-take-goods.svg'></image>
+            </view>
+            <view class='s-line'></view>
+          </view>
+          <view class='s-r'>
+            <view class='s-title'></view>
+            <view class='s-content'>[收货地址]{{address}}</view>
+          </view>
+        </view> -->
+        <i-steps direction="vertical" current="{{list.length-1}}">
+          <i-step isContrary="{{isContrary}}" wx:for="{{list}}" wx:key="{{index}}" i-step-circle="{{index==0?'i-step-circle':''}}" i-class="{{index==list.length-1?'i-step':''}}">
+            <view slot="title" class="font-DIN" style='color:#333;font-size:28rpx;font-weight:400;'>
+              {{item.time}}
+            </view>
+            <view slot="content" style='color:#999;font-size:24rpx;font-weight:500;'>
+              {{item.context}}
+            </view>
+          </i-step>
+        </i-steps>
+        <!-- <view class='step'>
+            <view class='step-l'>
+              
+            </view>
+            <view class='step-r border-left-active'>
+              <view class="icon icon-outbound"></view>
+              <view class='step-content' style='padding-top: 10rpx;'>
+                [收货地址]{{address}}
+              </view>
+            </view>
+          </view>
+        <block wx:for="{{list}}" wx:key="{{index}}">
+          <view class='step'>
+            <view class='step-l'>
+              <view class='time'>
+                <view class='time-t'>{{item.timeT}}</view>
+                <view class='time-b'>{{item.timeB}}</view>
+              </view>
+            </view>
+            <view class='step-r'>
+              <view class="icon icon-outbound"></view>
+              <view class='step-state'>已签收{{parse.setWLState(item.state)}}</view>
+              <view class='step-content'>
+                {{item.context}}
+              </view>
+            </view>
+          </view>
+        </block> -->
+      </scroll-view>
+    </view>
+    <!-- 默认 -->
+    <view wx:else class="wrap {{parse.setClass('wrap',status)}} logistics-info-wrap" style='{{parse.setWrapheight(status,innerHeight)}}'>
+      <scroll-view scroll-y style='height: 100%;width: 100%;'>
+        
+        <i-steps direction="vertical" current="{{list.length-1}}">
+          <i-step isContrary="{{isContrary}}" wx:for="{{list}}" wx:key="{{index}}" i-step-circle="{{index==0?'i-step-circle':''}}" i-class="{{index==list.length-1?'i-step':''}}">
+            <view slot="title" class="font-DIN">
+              {{item.time}}
+            </view>
+            <view slot="content">
+              {{item.context}}
+            </view>
+          </i-step>
+        </i-steps>
+
+      </scroll-view>
+    </view>
+  </view>
+</block>
+
+<wxs module="parse">
+  module.exports = {
+    // 设置固定定位或默认
+    setClass: function(class, status) {
+      var curClass = class + '-'
+      curClass = curClass + status
+      return curClass;
+    },
+    // 设置容器高度
+    setWrapheight: function(status, windowHeight) {
+      var style = ''
+      if (status == 'fixed') {
+        style += 'height:' + (windowHeight - 200) * 0.9 + 'rpx;'
+        //style += 'margin-top:' + (-((windowHeight-200)*1)/2) + 'rpx;'
+      } else if (status == 'default') {
+        style = 'height:' + 'auto;'
+      }
+      return style;
+    },
+    // 设置物流状态
+    setWLState: function(state) {
+      switch (state) {
+        case 0:
+          return '已下单'
+          break;
+        case 1:
+          return '已发货'
+          break;
+        case 2:
+          return '已出库'
+          break;
+        case 3:
+          return '已揽件'
+          break;
+        case 4:
+          return '运输中'
+          break;
+        case 5:
+          return '派送中'
+          break;
+        case 6:
+          return '待取件'
+          break;
+        case 7:
+          return '已签收'
+          break;
+      }
+    }
+
+  }
+</wxs>

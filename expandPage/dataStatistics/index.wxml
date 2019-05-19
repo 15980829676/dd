@@ -1,0 +1,306 @@
+<!--expandPage/dataStatistics/index.wxml-->
+<shadow status="all"></shadow>
+<view style="padding-bottom:{{tabBarH}}px;">
+  
+<view class="incomeexpenses margin-bot">
+   <view class="stupid">
+        <view class="text">今日统计</view>
+        <view class='rightOrder'>
+           <view class='orderIndex'>订单总数：<view class='colorAction'>{{today.orderList}}单</view></view>  
+           <view class='orderIndex action'>订单总金额：<view class='colorAction'>￥{{today.money}}</view></view>
+        </view>
+   </view>
+
+  <view class="ie-wrap">
+      <view class="wrap-a">
+          <view class="a-left">
+            <view class="text">直属经销商订单数</view>
+            <view class="money font-DIN">
+              <view class="scroll-wrap {{backlog.animation}}" >
+                <view class='scroll-wrap-item' >
+                  <!-- {{item<0?item * -1:item == 0?'0.00':item}} -->
+                  {{list.zsSellerTotal || '0'}}单
+                </view>
+              </view>
+            </view>
+           
+          </view>
+          <view class="a-left">
+            <view class="text">订单金额</view>
+            <view class="money font-DIN">
+              <view class="scroll-wrap {{backlog.animation}}" >
+                <view class='scroll-wrap-item' >
+                  <!-- {{item<0?-item:item == 0?'0.00':item}} -->
+                  ￥{{list.zsSellerSalesTotal || '0.00'}}
+                </view>
+              </view>
+            </view>
+           
+          </view>
+        </view>
+      
+        
+         <view class="wrap-a">
+          <view class="a-left">
+            <view class="text">非直属经销商订单数</view>
+            <view class="money font-DIN">
+              <view class="scroll-wrap {{backlog.animation}}" >
+                <view class='scroll-wrap-item' >
+                  <!-- {{item<0?-item:item == 0?'0.00':item}}   {{parse.dealWithNum(item)}}-->
+                  {{list.ptSellerTotal || '0'}}单
+                </view>
+              </view>
+            </view>
+          
+          </view>
+          <view class="a-left">
+            <view class="text">订单金额</view>
+            <view class="money font-DIN">
+              <view class="scroll-wrap {{backlog.animation}}" >
+                <view class='scroll-wrap-item' >
+                  <!-- {{item<0?-item:item == 0?'0.00':item}} -->
+               ￥{{list.ptSellerSalesTotal || '0.00'}}
+                </view>
+              </view>
+            </view>
+          
+          </view>
+        </view>
+          <view class="wrap-a">
+          <view class="a-left">
+            <view class="text">零售订单数</view>
+            <view class="money font-DIN">
+              <view class="scroll-wrap {{backlog.animation}}" >
+                <view class='scroll-wrap-item' >
+                  <!-- {{item<0?-item:item == 0?'0.00':item}}   {{parse.dealWithNum(item)}}-->
+                  {{list.orderTotal || '0'}}单
+                </view>
+              </view>
+            </view>
+          
+          </view>
+          <view class="a-left">
+            <view class="text">订单金额</view>
+            <view class="money font-DIN">
+              <view class="scroll-wrap {{backlog.animation}}" >
+                <view class='scroll-wrap-item' >
+                  <!-- {{item<0?-item:item == 0?'0.00':item}} -->
+                  ￥{{list.orderSalesTotal || '0.00'}}
+                </view>
+              </view>
+            </view>
+        
+          </view>
+        </view>
+         <view class="wrap-a">
+         
+          <view class="a-left">
+            <view class="text">新增代理</view>
+            <view class="money font-DIN">
+              <view class="scroll-wrap {{backlog.animation}}" >
+                <view class='scroll-wrap-item' >
+                  <!-- {{item<0?-item:item == 0?'0.00':item}} -->
+                  {{list.newShopsCount || '0'}}
+                </view>
+              </view>
+            </view>
+            
+          </view>
+          <view class="a-left">
+            <view class="text">新增会员</view>
+            <view class="money font-DIN">
+              <view class="scroll-wrap {{backlog.animation}}" >
+                <view class='scroll-wrap-item' >
+                  <!-- {{item<0?item * -1:item == 0?'0.00':item}} -->
+                  {{list.newUsersCount || '0'}}
+                </view>
+              </view>
+            </view>
+           
+          </view>
+         
+        </view>
+      </view>
+    </view> 
+    <view class="incomeexpenses margin-bot">
+   <view class="stupid">
+        <view class="text">昨日统计</view>
+        <view class='rightOrder'>
+           <view class='orderIndex'>订单总数：<view class='colorAction'>{{yestarday.orderList}}单</view></view>  
+           <view class='orderIndex action'>订单总金额：<view class='colorAction'>￥{{yestarday.money}}</view></view>
+        </view>
+   </view>
+
+  <view class="ie-wrap">
+      <view class="wrap-a">
+          <view class="a-left">
+            <view class="text">直属经销商订单数</view>
+            <view class="money font-DIN">
+              <view class="scroll-wrap {{backlog.animation}}" >
+                <view class='scroll-wrap-item' >
+                  <!-- {{item<0?item * -1:item == 0?'0.00':item}} -->
+                  {{list.yestarday.zsSellerTotal || '0'}}单
+                </view>
+              </view>
+            </view>
+           
+          </view>
+          <view class="a-left">
+            <view class="text">订单金额</view>
+            <view class="money font-DIN">
+              <view class="scroll-wrap {{backlog.animation}}" >
+                <view class='scroll-wrap-item' >
+                  <!-- {{item<0?-item:item == 0?'0.00':item}} -->
+                  ￥{{list.yestarday.zsSellerSalesTotal || '0.00'}}
+                </view>
+              </view>
+            </view>
+           
+          </view>
+        </view>
+      
+        
+         <view class="wrap-a">
+          <view class="a-left">
+            <view class="text">非直属经销商订单数</view>
+            <view class="money font-DIN">
+              <view class="scroll-wrap {{backlog.animation}}" >
+                <view class='scroll-wrap-item' >
+                  <!-- {{item<0?-item:item == 0?'0.00':item}}   {{parse.dealWithNum(item)}}-->
+                  {{list.yestarday.ptSellerTotal || '0'}}单
+                </view>
+              </view>
+            </view>
+          
+          </view>
+          <view class="a-left">
+            <view class="text">订单金额</view>
+            <view class="money font-DIN">
+              <view class="scroll-wrap {{backlog.animation}}" >
+                <view class='scroll-wrap-item' >
+                  <!-- {{item<0?-item:item == 0?'0.00':item}} -->
+               ￥{{list.yestarday.ptSellerSalesTotal || '0.00'}}
+                </view>
+              </view>
+            </view>
+          
+          </view>
+        </view>
+          <view class="wrap-a">
+          <view class="a-left">
+            <view class="text">零售订单数</view>
+            <view class="money font-DIN">
+              <view class="scroll-wrap {{backlog.animation}}" >
+                <view class='scroll-wrap-item' >
+                  <!-- {{item<0?-item:item == 0?'0.00':item}}   {{parse.dealWithNum(item)}}-->
+                  {{list.yestarday.orderTotal || '0'}}单
+                </view>
+              </view>
+            </view>
+          
+          </view>
+          <view class="a-left">
+            <view class="text">订单金额</view>
+            <view class="money font-DIN">
+              <view class="scroll-wrap {{backlog.animation}}" >
+                <view class='scroll-wrap-item' >
+                  <!-- {{item<0?-item:item == 0?'0.00':item}} -->
+                  ￥{{list.yestarday.orderSalesTotal || '0.00'}}
+                </view>
+              </view>
+            </view>
+        
+          </view>
+        </view>
+         <view class="wrap-a">
+          <view class="a-left">
+            <view class="text">新增代理</view>
+            <view class="money font-DIN">
+              <view class="scroll-wrap {{backlog.animation}}" >
+                <view class='scroll-wrap-item' >
+                  <!-- {{item<0?-item:item == 0?'0.00':item}} -->
+                  {{list.yestarday.newShopsCount || '0'}}
+                </view>
+              </view>
+            </view>
+            
+          </view>
+          <view class="a-left">
+            <view class="text">新增会员</view>
+            <view class="money font-DIN">
+              <view class="scroll-wrap {{backlog.animation}}" >
+                <view class='scroll-wrap-item' >
+                  <!-- {{item<0?item * -1:item == 0?'0.00':item}} -->
+                  {{list.yestarday.newUsersCount || '0'}}
+                </view>
+              </view>
+            </view>
+           
+          </view>
+         
+        </view>
+      </view>
+    </view>
+
+ <view class="incomeexpenses margin-bot">
+   <view class="stupid">
+        <view class="text">代理总数</view>
+        <view class='rightOrder'>
+           <view class='orderIndex'>代理总数：<view class='colorAction'>{{list.shopTotal}}</view></view>  
+        </view>
+   </view>
+   <view class="ie-wrap">
+    <view class="wrap-a" >
+     <view class="a-left" >
+            <view class="text" >皇冠店铺</view>
+            <view class="money font-DIN">
+              <view class="scroll-wrap {{backlog.animation}}" >
+                <view class='scroll-wrap-item' >
+                  <!-- {{item<0?-item:item == 0?'0.00':item}} -->
+                  {{list.shop[0].nums || '0'}}
+                </view>
+              </view>
+            </view>
+      </view>
+       <view class="a-left" >
+            <view class="text" >金冠店铺</view>
+            <view class="money font-DIN">
+              <view class="scroll-wrap {{backlog.animation}}" >
+                <view class='scroll-wrap-item' >
+                  <!-- {{item<0?-item:item == 0?'0.00':item}} -->
+                  {{list.shop[1].nums || '0'}}
+                </view>
+              </view>
+            </view>
+      </view>
+   </view>
+   <view class="wrap-a" >
+     <view class="a-left" >
+            <view class="text">钻级店铺</view>
+            <view class="money font-DIN">
+              <view class="scroll-wrap {{backlog.animation}}" >
+                <view class='scroll-wrap-item' >
+                  <!-- {{item<0?-item:item == 0?'0.00':item}} -->
+                  {{list.shop[2].nums || '0'}}
+                </view>
+              </view>
+            </view>
+      </view>
+       <view class="a-left" >
+            <view class="text" >心级店铺</view>
+            <view class="money font-DIN">
+              <view class="scroll-wrap {{backlog.animation}}" >
+                <view class='scroll-wrap-item' >
+                  <!-- {{item<0?-item:item == 0?'0.00':item}} -->
+                  {{list.shop[3].nums || '0'}}
+                </view>
+              </view>
+            </view>
+      </view>
+   </view>
+  </view>
+ </view>
+</view>
+<tabBar current="mine"></tabBar>
+<i-toast id="toast" />
+<i-message id="message" />

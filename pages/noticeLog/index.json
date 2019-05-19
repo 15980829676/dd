@@ -1,0 +1,9 @@
+{
+  "enablePullDownRefresh": false,
+  "navigationBarTitleText": "系统日志",
+  "usingComponents": {
+    "shadow": "/component/shadow/index",
+    "loadMore": "/component/loadMore/loadMore",
+    "tabBar": "/component/tabBar/tabBar"
+  }
+}

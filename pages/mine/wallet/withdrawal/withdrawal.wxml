@@ -1,0 +1,171 @@
+<!--pages/mine/wallet/withdrawal.wxml-->
+<view class="admin">
+  <shadow status="top"></shadow>
+  <view class="mac-marbot">
+
+    <dynamicAds list="{{adsList}}"></dynamicAds>
+
+    <form class="widthdraw" bindsubmit="btnWithdraw">
+      <!-- 银行 -->
+      <!-- <view class="draw-one" wx:if="{{bankCard.length > 0}}" bindtap='switchBankCard' data-type="show">
+        <view class="one-top">
+          <view class="top-left">
+            <text>转账到银行卡</text>
+            <text class="pad16">{{cardInfo.bank_name}}</text>
+            <text class="pad105">尾号</text>
+            <text>{{cardInfo.account_no}}</text>
+          </view>
+          <view class="top-right">
+            <view class='right-arrow'></view>
+          </view>
+        </view>
+        <view class="one-bot">预计明天到账</view>
+      </view>
+      <view class="draw-one" wx:else bindtap='switchBankCard' data-type="add">
+        <view class="one-top">
+          <view class="top-left">
+            <text>转账到银行卡</text>
+            <text class='pad16' style="color: #8B8B8B;">添加银行卡</text>
+          </view>
+          <view class="top-right">
+            <view class='right-arrow'></view>
+          </view>
+        </view>
+      </view> -->
+      
+      <!-- 支付宝 -->
+      <block>
+        <view class='wrap'>
+          <view class='wrap-item' bindtap='switchPayType' data-type="show">
+            <text class='name'>支付类型</text>
+            <view class='input'>
+              <input class='input' placeholder='请选择支付类型' name="name" disabled name="payType" value='{{currentPayType.name}}'></input>
+            </view>
+            <!-- <view class='input payType' style='color: #8B8B8B;'>请选择支付类型</view> -->
+            <view class='right-arrow'></view>
+          </view>
+
+          <block wx:if="{{currentPayType.type&&currentPayType.type == 1}}">
+            <view class='wrap-item' bindtap='switchBankCard' data-type="show">
+              <text class='name'>选择银行卡</text>
+              <input class='input' placeholder='请选择银行卡' name="bankCard" value="{{cardInfo.bank_name?(cardInfo.bank_name+'('+cardInfo.account_no+')'):''}}"></input>
+              <view class='right-arrow'></view>
+            </view>
+            <view class='wrap-item'>
+              <text class='name'>姓名</text>
+              <input class='input' disabled placeholder='请输入姓名' name="name" value="{{cardInfo.name?cardInfo.name:''}}"></input>
+            </view>
+          </block>
+          
+          <block wx:if="{{currentPayType.type&&currentPayType.type == 3}}">
+            <view class='wrap-item'>
+              <text class='name'>姓名</text>
+              <input class='input' placeholder='请输入姓名' name="name"></input>
+            </view>
+            <view class='wrap-item'>
+              <text class='name'>支付宝账号</text>
+              <input class='input' placeholder='请输入支付宝账号' name="alipay"></input>
+            </view>
+          </block>
+
+        </view>
+      </block>
+      <view class="draw-two">
+        <view class="two-text">提现金额 <view style='font-size: 24rpx;color: #8B8B8B;'>(最低￥50起)</view></view>
+        <input class="two-input font-DIN" type="digit" value='{{money}}' bindfocus='focus' bindblur='blur' name="money" data-type="money"/>
+      </view>
+      <!-- margin-top: 34rpx; -->
+      <view class='draw-three' style='font-size: 24rpx;color: #8B8B8B;'>可提现金额 {{wallet.df_money||'0.00'}}元</view>
+      <!-- <view class="draw-three">扣除个人所得税￥150 （税率15%）</view> -->
+      <view class='c-log' bindtap='cLog'>
+        <view class=''>查看历史记录</view>
+        <view class='right-arrow'></view>
+      </view>
+      <button class="draw-btn" form-type="submit">提现</button>
+      <view class='hint-work'>1-3个工作日到账</view>
+    </form>
+
+    <!-- 支付类型 -->
+    <view class='mask' wx:if="{{isShowPayType}}">
+      <view class="mask-layer" catchtap='switchPayType' data-type="hidden"></view>
+      <view class="sbc {{animat}}">
+        <view class="sbc-t">
+          <view class="headline">选择支付类型</view>
+          <view class="return" bindtap='switchPayType' data-type="hidden">
+            <image src="/images/withdraw-6.svg"></image>
+          </view>
+        </view>
+        <!-- 选中状态 select -->
+        <view class="bankCard-wrap">
+          <block wx:for="{{payType}}" wx:key="{{index}}">
+            <view class="sbc-c {{currentPayTypeIndex == index?'select':''}}" catchtap="changePayType" data-item="{{item}}" data-index="{{index}}">
+              <view class="icon">
+                <image src="{{item.icon}}"></image>
+              </view>
+              <view class="txt">{{item.name}}</view>
+              <view class="check" wx:if="{{currentPayTypeIndex == index}}">
+                <image src="/images/withdraw-7.svg"></image>
+              </view>
+            </view>
+          </block>
+        </view>
+        <view class="sbc-b"></view>
+      </view>
+    </view>
+
+    <!--选择银行卡style="display:none"-->
+    <view class="mask" wx:if="{{isSwitchBankCard}}">
+      <view class="mask-layer" catchtap='switchBankCard' data-type="hidden"></view>
+      <view class="sbc {{animat}}">
+        <view class="sbc-t">
+          <view class="headline">选择银行卡</view>
+          <view class="return" bindtap='switchBankCard' data-type="hidden">
+            <image src="/images/withdraw-6.svg"></image>
+          </view>
+        </view>
+        <!-- 选中状态 select -->
+        <view class="bankCard-wrap">
+          <block wx:for="{{bankCard}}" wx:key="{{index}}">
+            <view class="sbc-c {{currentBankCard == index?'select':''}}" catchtap="changeBankCard" data-item="{{item}}" data-index="{{index}}" data-type='select'>
+              <view class="icon">
+                <image src="{{imgSource}}{{item.bank_icon}}"></image>
+              </view>
+              <view class="txt">
+                <text>{{item.bank_name}}</text>
+                <text class="pad">尾号</text>
+                <text>{{item.account_no}}</text>
+              </view>
+              <view class="check" wx:if="{{currentBankCard == index}}">
+                <image src="/images/withdraw-7.svg"></image>
+              </view>
+            </view>
+          </block>
+          <view class="sbc-c " catchtap="changeBankCard" data-type='add'>
+              <view class="icon" style='display: flex;align-items:center;justify-content:center;'>
+                <image style='width: 75%;height: 75%;' src="/images/method-9.svg"></image>
+              </view>
+              <view class="txt">
+                <text>添加银行卡付款</text>
+                <text style="color: #8B8B8B;">（仅支持储蓄卡）</text>
+              </view>
+              <view class='right-arrow'></view>
+              <!-- <view class="check">
+                <image src="/images/withdraw-7.svg"></image>
+              </view> -->
+            </view>
+        </view>
+        <view class="sbc-b"></view>
+      </view>
+
+    </view>
+
+  </view>
+
+  <tabBar current="mine"></tabBar>
+
+</view>
+<i-toast id="toast" dd="{{true}}"/>
+<i-message id="message" />
+<i-modal visible="{{ visibleModal }}" actions="{{modalData}}" bind:click="handleModal">
+    <view class='modalContent' style="padding: 42rpx 44rpx;font-size: 24rpx;color: #333333;">请核对填写的信息是否正确</view>
+</i-modal>

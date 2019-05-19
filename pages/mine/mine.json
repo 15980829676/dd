@@ -1,0 +1,10 @@
+{
+  "backgroundColor": "#EFEFEF",
+  "navigationBarTitleText": "个人中心",
+  "usingComponents": {
+    "tabBar": "/component/tabBar/tabBar",
+    "shadow": "/component/shadow/index",
+    "i-toast": "/dist/toast/index",
+    "i-tag": "/dist/tag/index"
+  }
+}

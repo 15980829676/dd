@@ -1,0 +1,397 @@
+/* pages/offline payment/offline payment.wxss */
+
+page {
+  background: #efefef;
+}
+.font-top{
+  /* padding-top: 7rpx; */
+}
+.FAEClass{
+  position: static !important;
+  margin-top: 60rpx;
+  /* z-index: -1;
+  bottom: 80rpx !important; */
+}
+.op-wrap {
+  width: 100%;
+  margin-top: 20rpx;
+  display: flex;
+  flex-direction: column;
+}
+
+.op-wrap .b-c {
+  width: 100%;
+  height: 98rpx;
+  background: #fff;
+  border-bottom: 2rpx solid #E2E2E2;
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.op-wrap .b-c .b-c-1 {
+  width: 20%;
+  line-height: 98rpx;
+  text-align: right;
+  font-size: 24rpx;
+  color: #333333;
+  margin-right: 6%;
+}
+
+.op-wrap .b-c .b-c-2 {
+  width: 74%;
+  padding-right: 30rpx;
+  box-sizing: border-box;
+  height: 98rpx;
+  line-height: 100rpx;
+  font-size: 24rpx;
+  color: #333333;
+}
+
+.op-wrap .b-c .b-c-4 {
+  width: 12rpx;
+  height: 24rpx;
+  position: absolute;
+  top: 38rpx;
+  right: 30rpx;
+}
+
+.op-wrap .b-c .b-c-4 image {
+  width: 100%;
+  height: 100%;
+}
+
+.op-btn {
+  width: 94%;
+  height: 90rpx;
+  line-height: 90rpx;
+  background: #4DA1FF;
+  border-radius: 10rpx;
+  text-align: center;
+  font-size: 28rpx;
+  color: #fff;
+  letter-spacing: 6rpx;
+  margin: 40rpx 3% 0 3%;
+}
+
+.op-wrap .upload {
+  width: 100%;
+  padding-left: 56rpx;
+  padding-bottom: 48rpx;
+  box-sizing: border-box;
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+}
+
+.op-wrap .upload .text {
+  width: 100%;
+  padding: 32rpx 0;
+  font-size: 24rpx;
+  color: #333333;
+}
+
+.op-wrap .upload .hit {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.op-wrap .upload .hit .pic{
+  width: 206rpx;
+  height: 206rpx;
+  border: 2rpx solid #E5E5E5;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-right: 20rpx;
+  margin-bottom: 20rpx;
+}
+
+.op-wrap .upload .hit .pic .icon {
+  width: 35.84rpx;
+  height: 35.84rpx;
+  margin-top: 76rpx;
+  margin-bottom: 12rpx;
+}
+
+.op-wrap .upload .hit .pic .icon image {
+  width: 100%;
+  height: 100%;
+}
+
+.op-wrap .upload .hit .pic .explain {
+  font-size: 20rpx;
+  color: #999999;
+}
+
+/* .mask {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 222;
+  background: rgba(0, 0, 0, 0.5);
+}
+.mask-bkg{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+.sb-c {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  z-index: 333;
+  background: #fff;
+}
+
+.sb-c .title {
+  width: 100%;
+  height: 98rpx;
+  line-height: 98rpx;
+  text-align: center;
+  font-size: 32rpx;
+  color: #1A1311;
+  border-bottom: 2rpx solid #E2E2E2;
+}
+
+.sb-c .return {
+  width: 14rpx;
+  height: 28rpx;
+  position: absolute;
+  top: 37rpx;
+  left: 24rpx;
+}
+
+.sb-c .return image {
+  width: 100%;
+  height: 100%;
+}
+
+.sb-c .tier {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 30rpx;
+}
+
+.sb-c .tier .t-1{
+  width: 100%;
+  height: 98rpx;
+  position: relative;
+  display: flex;
+  align-items: center;
+  border-bottom: 2rpx solid #E2E2E2;
+}
+
+.sb-c .tier .t-1.select {
+  background: #F8F8F9;
+}
+
+.sb-c .tier .t-1 .icon {
+  width: 30rpx;
+  height: 30rpx;
+  margin-left: 30rpx;
+  margin-right: 20rpx;
+}
+
+.sb-c .tier .t-1 .icon image {
+  width: 100%;
+  height: 100%;
+}
+
+.sb-c .tier .t-1 .text {
+  font-size: 24rpx;
+  color: #333333;
+  line-height: 32rpx;
+}
+
+.sb-c .tier .t-1 .check {
+  width: 30rpx;
+  height: 18.56rpx;
+  position: absolute;
+  top: 40rpx;
+  right: 20rpx;
+}
+
+.sb-c .tier .t-1 .check image {
+  width: 100%;
+  height: 100%;
+} */
+/* // */
+.hide{
+  display: none !important;
+}
+.fixed{
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  z-index: 100 !important;
+}
+.animat_top{
+  bottom: -100%;
+  animation: animat_top 0.5s forwards;
+}
+@keyframes animat_top{
+  0%{
+    bottom: -100%;
+  }
+  100%{
+    bottom: 50px;
+  }
+}
+.animat_bot{
+  bottom: 50%;
+  animation: animat_bot 0.5s forwards;
+}
+@keyframes animat_bot{
+  0%{
+    bottom: -100%;
+  }
+  100%{
+    bottom: 50px;
+  }
+}
+
+/* 选择支付方式弹框 */
+.Mask {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1000;
+  background: rgba(0, 0, 0, 0.5);
+}
+.Mask-wrap{
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.method {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  min-height: 300rpx;
+  z-index: 333;
+  background: #fff;
+}
+
+.method .title {
+  width: 100%;
+  font-size: 24rpx;
+  color: #000;
+  text-align: center;
+  padding: 34rpx 0;
+  border-top: 2rpx solid #E2E2E2; 
+  border-bottom: 2rpx solid #E2E2E2; 
+}
+
+.method .close {
+  width: 102rpx;
+  height: 102rpx;
+  position: absolute;
+  /* top: 38rpx; */
+  /* right: 38rpx; */
+  top: 0;
+  right: 0;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.method .close image {
+  width: 24rpx;
+  height: 24rpx;
+}
+
+.method .m-wrap {
+  width: 100%;
+  padding: 0 20rpx;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+}
+
+.method .m-wrap .wrap-a {
+  width: 100%;
+  height: 98rpx;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 2rpx dashed #E2E2E2;
+}
+
+.method .m-wrap .wrap-a:last-child {
+  border-bottom: none;
+}
+
+.method .m-wrap .wrap-a .left {
+  width: 40%;
+  display: flex;
+}
+
+.method .m-wrap .wrap-a .left .icon {
+  width: 36rpx;
+  height: 36rpx;
+  margin-left: 12rpx;
+  margin-right: 32rpx;
+}
+
+.method .m-wrap .wrap-a .left .icon image {
+  width: 100%;
+  height: 100%;
+}
+
+.method .m-wrap .wrap-a .left .text {
+  font-size: 24rpx;
+  color: #333;
+}
+
+.method .m-wrap .wrap-a .right {
+  width: 60%;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.method .m-wrap .wrap-a .right .text {
+  font-size: 20rpx;
+  color: #999999;
+  /*line-height: 28rpx;*/
+}
+
+.method .m-wrap .wrap-a .right .money {
+  font-size: 24rpx;
+  color: #000;
+  padding-left: 8rpx;
+  line-height: 32rpx;
+}
+
+.method .m-wrap .wrap-a .right .icon{
+  width: 24rpx;
+  height: 24rpx;
+  border: 2rpx solid #E2E2E2;
+  border-radius: 100%;
+  background: #fff;
+  margin-left: 32rpx;
+  margin-right: 16rpx;
+}
+
+.method .m-wrap .wrap-a .right .icon.select {
+  border: 2rpx solid #4DA1FF;
+  background: #4DA1FF;
+}
+
+.method .m-wrap .wrap-a .right .icon.select1 {
+  background: #E2E2E2;
+}

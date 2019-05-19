@@ -1,0 +1,38 @@
+<!--pages/notice/notice.wxml-->
+<shadow status="all"></shadow>
+<i-toast id="toast"/>
+<view style='height:100vh;background:#EFEFEF;box-sizing: border-box;padding:0 12px;display:flex;flex-direction:column;'>
+  <view class='incomeexpenses margin-bot'>
+    <navigator class="stupid" url="/expandPage/notice/stock" hover-class='none'>
+    <view class='leftTop'>
+      <image src='/images/dindan.svg' class='leftImage'></image>
+      <view class='topText'>
+      <view class="text">订单通知</view>
+      <view class="text action">点击可查看您订单的相关信息</view>
+      </view>
+    </view>  
+      <view class="advance">
+    
+        <view class='right-arrow'></view>
+      </view>
+      <view class='isread' wx:if="{{oder > 0}}">{{oder}}</view>
+      
+    </navigator>
+  </view>
+  <view class='incomeexpenses margin-bot'>
+    <navigator class="stupid" url="/expandPage/notice/noticeList/index" hover-class='none'>
+       <view class='leftTop'>
+      <image src='/images/tuandui.svg' class='leftImage'></image>
+      <view class='topText'>
+      <view class="text">团队通知</view>
+      <view class="text action">点击可查看您团队的相关信息</view>
+      </view>
+    </view>  
+      <view class="advance">
+        <!-- <image src="/images/home-5.svg"></image> -->
+        <view class='right-arrow'></view>
+      </view>
+      <view class='isread' wx:if="{{seytem > 0}}">{{seytem}}</view>
+    </navigator>
+  </view>
+</view>

@@ -1,0 +1,2 @@
+<!--component/watermark/index.wxml-->
+<view class="FAE fae-class" style="bottom: {{36+ tabBarH}}rpx;">技术支持诚享科技</view>

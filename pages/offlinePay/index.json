@@ -1,0 +1,11 @@
+{
+  "backgroundColor": "#efefef",
+  "usingComponents": {
+    "watermark": "/component/watermark/index",
+    "shadow": "/component/shadow/index",
+    "addPicture": "/component/addPicture/index",
+    "i-message": "../../../dist/message/index",
+    "i-modal": "/dist/modal/index",
+    "i-toast": "/dist/toast/index"
+  }
+}

@@ -1,0 +1,222 @@
+/* pages/inspect complaint/inspect complaint.wxss */
+
+.yj-box {
+  width: 100%;
+  height: auto;
+  box-sizing: border-box;
+  padding: 0 2%;
+  display: flex;
+  flex-direction: column;
+}
+
+.yj-biao {
+  width: 100%;
+  height: auto;
+  line-height: 80rpx;
+  font-size: 32rpx;
+  font-weight: 700;
+  color: #333;
+  margin-top: 20rpx;
+}
+
+.y-xian {
+  position: relative;
+  top: 4rpx;
+  width: 6rpx;
+  height: 32rpx;
+  background: #333;
+  margin-right: 6rpx;
+  display: inline-block;
+}
+
+.y-tian {
+  font-size: 28rpx;
+  color: #999;
+  font-weight: 100;
+  margin-left: 10rpx;
+}
+
+.y-lx {
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.y-wt1 {
+  width: 32%;
+  height: 60rpx;
+  box-sizing: border-box;
+  text-align: center;
+  line-height: 60rpx;
+  color: #333;
+  font-size: 24rpx;
+  margin-right: 2%;
+  margin-bottom: 2%;
+  border: 2rpx solid #EFEFEF;
+  border-radius: 10rpx;
+}
+
+.y-wt1.cur {
+  border: 2rpx solid #4DA1FF;
+  color: #4DA1FF;
+}
+
+.y-wt1:nth-child(3n){
+ margin-right: 0;
+}
+
+
+.y-wt2 {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.y-wt2 .dealer {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  margin-top: 20rpx;
+}
+
+.y-wt2 .dealer .d-text {
+  width: 100%;
+  height: 60rpx;
+  line-height: 60rpx;
+  font-size: 26rpx;
+  color: #333;
+}
+
+.y-wt2 .dealer input {
+  width: 100%;
+  height: 60rpx;
+  line-height: 60rpx;
+  background: #EFEFEF;
+  padding: 0 2%;
+  box-sizing: border-box;
+  font-size: 26rpx;
+  color: #333;
+  border-radius: 10rpx;
+}
+
+.y-wt3 {
+  width: 100%;
+  height: 280rpx;
+  box-sizing: border-box;
+  line-height: 40rpx;
+  color: #333;
+  font-size: 28rpx;
+  border-radius: 10rpx;
+  padding: 20rpx;
+  background: #EFEFEF;
+}
+
+.y-wt4 {
+  width: 100%;
+  height: 60rpx;
+  line-height: 60rpx;
+  background: #EFEFEF;
+  padding: 0 2%;
+  box-sizing: border-box;
+  font-size: 26rpx;
+  color: #333;
+  border-radius: 10rpx;
+  /* display: none; */
+}
+
+.hit {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.pic {
+  width: 206rpx;
+  height: 206rpx;
+  border: 2rpx solid #EFEFEF;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-right: 20rpx;
+  position: relative;
+}
+.out {
+  width: 40rpx;
+  height: 40rpx;
+  position: absolute;
+  right: 0;
+  top: 0;
+  transform: translate(50%,-50%);
+  background: red;
+  border-radius:100%; 
+}
+.out::before {
+  width: 2rpx;
+  height: 80%;
+  display: block;
+  content: '';
+  position: absolute;
+  top: 50%;
+  left:50%;
+  transform: translate(-50%,-50%) rotate(45deg);
+  background: white;
+  transform-origin: center;
+}
+.out::after {
+  width: 2rpx;
+  height: 80%;
+  display: block;
+  content: '';
+  position: absolute;
+  top: 50%;
+  left:50%;
+  transform: translate(-50%,-50%) rotate(-45deg);
+  background: white;
+  transform-origin: center;
+}
+.pic .icon {
+  width: 35.84rpx;
+  height: 35.84rpx;
+  margin-top: 76rpx;
+  margin-bottom: 12rpx;
+}
+
+.pic .icon image {
+  width: 100%;
+  height: 100%;
+}
+
+.pic .explain {
+  font-size: 20rpx;
+  color: #999;
+}
+
+.y-telephone {
+  width: 100%;
+  height: 80rpx;
+  box-sizing: border-box;
+  line-height: 80rpx;
+  padding: 0 2%;
+  background: #EFEFEF;
+  color: #333;
+  font-size: 26rpx;
+  border-radius: 10rpx;
+}
+
+.submit {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100rpx;
+  z-index: 22;
+  text-align: center;
+  line-height: 100rpx;
+  background: #4DA1FF;
+  color: #fff;
+  margin: 0;
+  border: none;
+  border-radius: 0;
+  font-size: 30rpx;
+}

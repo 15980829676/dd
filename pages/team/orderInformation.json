@@ -1,0 +1,20 @@
+{
+  "backgroundColor": "#EFEFEF",
+  "component": true,
+  "usingComponents": {
+    "tabBar": "/component/tabBar/tabBar",
+    "topLoadingProgress": "/component/topLoadingProgress/topLoadingProgress",
+    "btnPay": "/component/btnPay/index",
+    "orderType": "/component/order/returnOrderType/index",
+    "logisticsInfo": "/component/order/logisticsInfo/index",
+    "againOrder": "/component/order/againOrder/index",
+    "i-message": "/dist/message/index",
+    "i-modal": "/dist/modal/index",
+    "shadow": "/component/shadow/index",
+    "btnCashBack": "/component/order/cashBack/index",
+    "wux-keyboard": "/dist/wuxUi/keyboard/index",
+    "i-toast": "/dist/toast/index",
+    "i-rate": "/dist/rate/index",
+    "goods": "/component/order/goods/index"
+  }
+}

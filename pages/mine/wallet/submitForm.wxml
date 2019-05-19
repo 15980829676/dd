@@ -1,0 +1,39 @@
+<!--pages/mine/wallet/submitForm.wxml-->
+<block>
+  <view class="admin">
+    <shadow status="top"></shadow>
+    <view class="mac-marbot">
+
+      <dynamicAds list="{{adsList}}"></dynamicAds>
+
+      <view class="balance-tier">
+        <view class="icon">
+          <image src="/images/balance-1.svg"></image>
+        </view>
+        <view class="money font-DIN">{{options.type=='balance'?wallet.a_money:options.type=='withdrawal'?wallet.df_money:''}}</view>
+        <view class="detail font-DIN" bindtap='balanceDetail'>{{options.type=='balance'?'余额明细':options.type=='withdrawal'?'提现明细':''}}</view>
+        <block wx:if="{{options.type == 'balance'}}">
+          <button class="btn" bindtap='replenishStock'>进货</button>
+          <button class="btn" bindtap='recharge'>充值</button>
+        </block>
+        <block wx:if="{{options.type == 'withdrawal'}}">
+          <button class="btn" bindtap='withdrawal'>提现</button>
+          <button class="btn" bindtap='replenishStock'>进货</button>
+        </block>
+        <!-- <block wx:if="{{options.type == 'rebate'}}">
+          <button class="btn">进货</button>
+          <button class="btn">充值</button>
+        </block> -->
+      </view>
+
+      <!-- <view class="FAE">技术支持诚享科技</view> -->
+      <watermark></watermark>
+
+    </view>
+
+  </view>
+  <tabBar current='mine'></tabBar>
+  
+</block>
+<i-message id="message" />
+<i-toast id="toast" dd="{{true}}"  />

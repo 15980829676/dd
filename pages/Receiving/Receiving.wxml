@@ -1,0 +1,54 @@
+<!--pages/Receiving log/Receiving log.wxml-->
+<view class="admin">
+  <shadow status="top"></shadow>
+  <view class="mac-marbot">
+
+    <view class="R-log-1" wx:for="{{order}}" wx:for-item="item" wx:key="index">
+
+      <view class="R-left">
+        <view class="text">出货单号：
+          <text class="odd font-DIN">{{item.sn}}</text>
+        </view>
+        <view class="time font-DIN">{{item.addtime}}</view>
+      </view>
+
+      <view class="R-right" wx:if="{{item.type==1}}">
+			<view class="R-rig" wx:if="{{item.status==1}}">
+				<view class="R-btn">已发货</view>
+				<view class="R-btn" data-id="{{item.id}}" data-type="{{item.type}}"  catchtap="xingInfo">详情</view>
+			</view>
+			<view class="R-rig" wx:else>
+				<view class="R-btn">已收货</view>
+				<view class="R-btn" data-id="{{item.id}}" data-type="{{item.type}}"  catchtap="xingInfo">详情</view>
+			</view>
+      </view>
+	  <view  wx:else class="R-right"  >
+			<view class="R-rig" wx:if="{{item.status==1}}">
+				<view class="R-btn" style="display:none;">已收货</view>
+				<view class="R-btn" data-id="{{item.id}}" data-type="{{item.type}}"  catchtap="xingInfo">详情</view>
+			</view>
+			<view class="R-rig" wx:else>
+				<view class="R-btn" style="display:none;" data-id="{{item.id}}" data-index="{{index}}" catchtap="toShowtap">确认收货</view>
+				<view class="R-btn" data-id="{{item.id}}" data-type="{{item.type}}"  catchtap="xingInfo">详情</view>
+			</view>
+      </view>
+    </view>
+	<view class="kong" wx:if="{{!order}}">暂无物流信息</view>
+
+    <!--确认收货弹窗-->
+    <view class="R-log-2" wx:if="{{isShow}}">
+      <view class="mask-layer"></view>
+      <view class="rl-wrap">
+        <view class="text">确认收货，即对发货商品质量或数量无异议，该次交易即完成！</view>
+        <view class="fu2k">
+          <view class="btn" catchtap="toCanceltap">取消</view>
+          <view class="btn" catchtap="toSuretap">确认</view>
+        </view>
+      </view>
+    </view>
+    <!--确认收货弹窗end-->
+
+  </view>
+
+</view>
+<tabBar current="inventory"></tabBar>

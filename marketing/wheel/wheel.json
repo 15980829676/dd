@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "大转盘",
+  "usingComponents": {
+    "i-ranking": "./../ranking/index",
+    "shadow": "/component/shadow/index"
+  }
+}

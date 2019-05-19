@@ -1,0 +1,21 @@
+<!--component/order/selectAddress/index.wxml-->
+<view class='box' catchtouchmove='move' wx:if="{{visiable}}">
+  <view class='box-bkg' catchtouchmove='move' bindtap='clickBtn' data-type="cancel"></view>
+  <view class='wrap' animation="{{animation}}">
+    <view class="wrap-title">
+      <view class="wrap-title-btn cancel" bindtap='clickBtn' data-type="cancel">取消</view>
+      <view class="wrap-title-btn confirm" bindtap='clickBtn' data-type="confirm">确定</view>
+    </view>
+    <picker-view class="picker-view" bindchange="cityChange" value="{{value}}">
+      <picker-view-column>
+        <view wx:for="{{citys.provinces}}" class="picker-item" wx:key="{{item.id}}">{{item.name}}</view>
+      </picker-view-column>
+      <picker-view-column>
+        <view wx:for="{{citys.citys}}" class="picker-item" wx:key="{{item.id}}">{{item.name}}</view>
+      </picker-view-column>
+      <picker-view-column>
+        <view wx:for="{{citys.areas}}" class="picker-item" wx:key="{{item.id}}">{{item.name}}</view>
+      </picker-view-column>
+    </picker-view>
+  </view>
+</view>

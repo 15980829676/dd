@@ -1,0 +1,12 @@
+{
+  "usingComponents": {
+    "tabBar": "/component/tabBar/tabBar",
+    "selectAddress": "/component/order/selectAddress/index",
+    "i-input": "../../dist/input/index",
+    "i-message": "../../dist/message/index",
+    "i-radio-group": "../../dist/radio-group/index",
+    "i-radio": "../../dist/radio/index",
+    "i-toast": "/dist/toast/index",
+    "shadow": "/component/shadow/index"
+  }
+}

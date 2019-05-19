@@ -1,0 +1,110 @@
+<!--expandPage/notice/team.wxml-->
+<shadow status="top"></shadow>
+<tabBar current="notice"></tabBar>
+<view class="admin">
+  <view class="mac-marbot " style="padding-bottom: {{tabBarH}}px">
+    <!-- <i-tabs current="{{ currentNavId }}" bindchange="handleChange" fixed>
+      <i-tab key="0" title="全部通知"></i-tab>
+      <i-tab key="1" title="进货订单"></i-tab>
+      <i-tab key="2" title="出货订单"></i-tab>
+      <i-tab key="3" title="零售订单"></i-tab>
+    </i-tabs> -->
+    <topNav navTitleArr="{{navTitleArr}}" isFixed="{{true}}" bindclickNavItem="clickNavItem" currentNavId="{{currentNavId}}"></topNav>
+    <topNav2 navTitleArr="{{navTitlejin}}" bindclickNavItem="JinhItem" isHas="{{currentNavId==1?true:false}}" subNavId="{{subNavId}}"></topNav2>
+    <topNav2 navTitleArr="{{navTitlechu}}" bindclickNavItem="clickSendItem" isHas="{{currentNavId==2?true:false}}" subNavId="{{subNavId}}"></topNav2>
+    <topNav2 navTitleArr="{{navTitleling}}" bindclickNavItem="lingsItem" isHas="{{currentNavId==3?true:false}}" subNavId="{{subNavId}}"></topNav2>
+    <block wx:if="{{currentNavId == 4}}">
+    <view class="module-content {{currentNavId==0 || currentNavId==4 ?'':'padts'}}" wx:if="{{noticeList.length>0}}" >
+      <!--begin-->
+      <block wx:for="{{noticeList}}" wx:key="{{index}}">
+        <view class="module-list" bindtap='jumpOrderDetail' data-otype='{{item.otype}}' data-shopId='{{item.shop_id}}' data-orderId='{{item.id}}' data-index="{{index}}" data-userId='{{item.op_id}}'>
+          <view class="m-icon" wx:if='{{item.otype==1}}'>{{(item.order_flag && item.order_flag == 1) ? '零' : (item.shop_id>0 && (item.op_id != userInfo.u_id) ? '出' : item.shop_id == 0 || (item.op_id == userInfo.u_id) ? '进' : '')}}</view>
+          <view class="m-icon" wx:else>{{(item.seller_id>0 && item.op_id != userInfo.u_id) ? '发' : (item.seller_id == 0 || item.op_id == userInfo.u_id) ? '收' : ''}}</view>
+          <view class="module-list-info">
+            <view class="info-name">
+              <!-- <view class='text'>{{((item.order_flag && item.order_flag == 1) ? '零' : (item.shop_id>0 && (item.op_id != userInfo.u_id) ? '出' : item.shop_id == 0 || (item.op_id == userInfo.u_id) ? '进' : '') +'订单'}}</view> -->
+              <view class='text' wx:if='{{item.otype==1}}'>{{parse.setTitle(item,userInfo)}}</view>
+              <view class='text' wx:else>{{parse.setFaTitle(item,userInfo)}}</view>
+              <view wx:if="{{item.op_id == userInfo.u_id?(item.dot_flag == 1?true:false):(item.p_dot_flag == 1?true:false)}}" class="badge"></view>
+            </view>
+            <view class="time" wx:if='{{item.otype==1}}'>订单时间
+              <text>{{item.create_time}}</text>
+            </view>
+            <view class="time" wx:else> {{(item.seller_id>0 && item.op_id != userInfo.u_id)? '出货时间' : (item.seller_id==0 || item.op_id == userInfo.u_id) ? '发货时间':''}}
+              <text>{{item.create_time}}</text>
+            </view>
+          </view>
+          <view wx:if='{{item.otype==1}}' class="module-list-amount">
+            <orderType type="{{item.type}}" opid="{{item.op_id}}" sytype="{{item.sync_type}}" uid="{{userInfo.u_id}}" shopid="{{item.shop_id}}" order-class="purch"></orderType>
+            <!-- <view class="purch">订单金额</view> -->
+            <view class="money font-DIN">￥{{item.paied}}</view>
+          </view>
+        </view>
+      </block>
+      <!--end-->
+    </view>
+    <loadMore loadmore="{{load_params.loadmore}}" loadend="{{load_params.loadend}}" empty="{{load_params.empty}}" definedContent="{{true}}" content="{{'暂无通知'}}"></loadMore>
+
+    <!--<bkgLoading isLoading="{{isLoading}}"></bkgLoading>-->
+  </block>
+  <block wx:else>
+      <view class="module-content" >
+        <view class='module' wx:for="{{noticeListXIT}}" wx:key="index" data-id="{{item.id}}" catchtap='noticeListClick'>
+          <view>
+           <view class='title'>{{item.title}}</view>
+           <view class='time'>{{item.time}}</view>
+           </view>
+          <view class='advance'>
+            <view class='right-arrow'></view>
+          </view>
+          <view class='isread' wx:if="{{item.isread == 0}}"></view>
+        </view>
+          <view class='loadmore' wx:if="{{noticeListXIT.length == 0}}">暂无通知</view>
+      </view>
+     
+  </block>
+  </view>
+
+</view>
+
+
+<!-- <view class='bot_shadow'></view> -->
+<i-toast id="toast" />
+<wxs module="parse">
+  module.exports = {
+    setTitle: function(item, userInfo) {
+      var name = ''
+      var orderType = ''
+      var stri = ''
+      // 出货订单 上级查看，是下级的出货订单
+      if (item.shop_id > 0 && (item.op_id != userInfo.u_id)) {
+        name = item.nick
+      } else if (item.shop_id == 0 || (item.op_id == userInfo.u_id)) { // 进货订单 下级查看，是上级的进货订单
+        name = item.nick
+      } else if (item.order_flag && item.order_flag == 1) { // 零售订单
+        name = item.nick
+      }
+      orderType = (item.order_flag && item.order_flag == 1) ? '零售' : (item.shop_id > 0 && (item.op_id != userInfo.u_id)) ? '出货' : item.shop_id == 0 || (item.op_id == userInfo.u_id) ? '进货' : ''
+
+      stri += name
+      stri += '的'
+      stri += orderType
+      stri += '订单'
+      return stri
+    },
+    setFaTitle: function(item, userInfo) {
+      var name = ''
+      var orderType = ''
+      var stri = ''
+      name = item.nick
+
+      orderType = (item.seller_id > 0 && item.op_id != userInfo.u_id) ? '已出货' : (item.seller_id == 0 || item.op_id == userInfo.u_id) ? '已发货' : ''
+
+      stri += name
+      stri += '的'
+      stri += '进货订单'
+      stri += orderType
+      return stri
+    }
+  }
+</wxs>

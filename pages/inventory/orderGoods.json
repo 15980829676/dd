@@ -1,0 +1,21 @@
+{
+  "component": true,
+  "navigationBarTitleText": "订货",
+  "usingComponents": {
+    "i-tabs": "/dist/tabs/index",
+    "i-tab": "/dist/tab/index",
+    "i-row": "../../dist/row/index",
+    "i-col": "../../dist/col/index",
+    "tabBar": "/component/tabBar/tabBar",
+    "dynamicAds": "/component/dynamicAds/dynamicAds",
+    "loadMore": "/component/loadMore/loadMore",
+    "wux-keyboard": "../../dist/wuxUi/keyboard/index",
+    "i-message": "../../dist/message/index",
+    "i-toast": "../../dist/toast/index",
+    "i-button": "../../dist/button/index",
+    "shadow": "/component/shadow/index",
+    "i-modal": "../../dist/modal/index",
+    "searchTitle":"/component/searchTitle/index",
+    "i-tag": "/dist/tag/index"
+  }
+}

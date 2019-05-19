@@ -1,0 +1,121 @@
+<!--pages/logistics information/logistics information.wxml-->
+<view class="admin">
+  <shadow status="top"></shadow>
+  <view class="mac-marbot">
+    <view class="oi-agent">
+      <view class="oi-agent-left">
+        <view class="via">
+          <image src="{{orderMsg.uInfo.avater}}"></image>
+        </view>
+        <view class="name">{{orderMsg.uInfo.name}}</view>
+        
+      </view>
+      <view class="oi-agent-right" data-phone="{{orderMsg.uInfo.mobile}}" bindtap='phoneCall'>
+        <view class="icon">
+          <image src="/images/order-1.svg"></image>
+        </view>
+        <text>{{orderMsg.roltype==1?'联系用户':orderMsg.roltype==2&&orderMsg.shop_id==0?'联系总部':'联系经销商'}}</text>
+      </view>
+    </view>
+    <view class="product-list mar-t">
+      <view class="li-wrap">
+        <view class="t-left">已发货商品</view>
+        <view class="t-right">出货单号：
+          <text class="odd font-DIN">{{orderMsg.s_sn}}</text>
+        </view>
+      </view>
+      <view class="product-list-b">
+        <!--begin-->
+        
+        <view class="b-all pad40" wx:for="{{orderDetail}}" wx:for-item="item" wx:key="index"  wx:if="{{item.nums>0}}">
+       
+          <view class="b-left" >
+            <view class="img">
+              <image src="{{item.img}}"></image>
+            </view>
+            <view class="name">
+              <view class="n1">{{item.title}}</view>
+            </view>
+          </view>
+          <view class="b-right jus-c"  >
+            <view class="quantity font-DIN">x
+              <text>{{item.nums}}</text>
+            </view>
+          </view>
+        </view>
+      
+        <!--end-->
+      </view>
+      
+    </view><view class="product-list mar-t">
+      <view class="li-wrap">
+        <view class="t-left">剩余商品</view>
+         <view class="t-right" bindtap='lookOrder' data-otype='1'  data-orderId='{{orderMsg.ordid}}'    >
+          <text class="odd font-DIN">查看原订单</text>
+        </view>
+      </view>
+      <view class="product-list-b">
+        <!--begin-->
+        <view class="b-all-box" wx:if="{{surplurs.length>0}}">
+        <view class="b-all pad40" wx:for="{{surplurs}}" wx:for-item="item" wx:key="index"  wx:if="{{item.nums>0}}">
+          <view class="b-left">
+            <view class="img">
+              <image src="{{item.img}}"></image>
+            </view>
+            <view class="name">
+              <view class="n1">{{item.title}}</view>
+            </view>
+          </view>
+          <view class="b-right jus-c">
+            <view class="quantity font-DIN">x
+              <text>{{item.nums}}</text>
+            </view>
+          </view>
+        </view>
+        </view>
+        <view wx:else  class="b-all pad40">
+           <view class='text-center'>
+           <text>当前订单货物已全部发完！</text>
+           </view>
+        </view>
+        <!--end-->
+      </view>
+    </view>
+
+    <view class="hollow">
+	  <view class="li-wrap" wx:if="{{orderMsg.ship_type==3}}">
+        <view class="t-left">无须快递</view>
+         <view class='b-5' catchtap='contacts' wx:if="{{kefuList != ''}}">联系工作人员</view>
+
+      </view>
+      <view class="li-wrap" wx:else>
+        <view class="t-left">{{orderMsg.ship_name}}</view>
+        <view class="t-right1 font-DIN">{{orderMsg.ship_sn}}</view>
+      </view>
+	  
+      <view class="remix">
+        <view class="" wx:if="{{(orderMsg.ship_info && orderMsg.ship_type==1)}}">
+          <logisticsInfo visiable="{{true}}" list="{{orderMsg.ship_info}}" isContrary="{{true}}"></logisticsInfo>
+        </view>
+        <view class="text" wx:else>暂无物流信息</view>
+      </view>
+    </view>
+
+
+  </view>
+
+</view>
+<tabBar current="notice"></tabBar>
+<i-toast id="toast"   />
+<view class='contacts_porp' wx:if="{{contacts_start}}" style="height:{{kefuHeight}}rpx;" >
+    <view class="block" catchtap='contactsOut'></view>
+    <view class='contacts_porp_row'>
+       <text class='contacts_title'>{{kefuList.name}}</text>
+       <!-- <image src='{{kefuList.erwema}}' mode='widthFix' class='image_coder' ></image> -->
+       <view class='coder_phone'>
+            <view class='b-5' catchtap='makePhone' data-mobile="{{kefuList.mobile}}">拨打电话</view>
+             <button bindcontact='contact' open-type="contact" class='b-5 btnB-5' >联系客服</button>
+       </view>
+      
+    </view>
+</view>

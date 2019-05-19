@@ -1,0 +1,68 @@
+<!--pages/mine/wallet/addBankCard/bankCardInfo.wxml-->
+<view class="admin">
+  <shadow status="top"></shadow>
+  <view class="mac-marbot">
+
+    <view class="bank-card vbc-mt">
+      <view class="bc-z">
+        <view class="icon vbc-icon">
+          <image src="{{imgSource}}{{bankcardinfo.bank_icon}}"></image>
+        </view>
+        <view class="infor">
+          <view class="yh">{{bankcardinfo.bank_name}}
+            <text>储蓄卡</text>
+          </view>
+          <view class="wh vbc-no font-DIN">
+            {{bankcardinfo.account_no}}
+          </view>
+        </view>
+      </view>
+    </view>
+    <!-- 不显示 -->
+    <view class="vbc-tier" style='display: none'>
+      <view class="tier-t">
+        <view class="quota">单笔支付限额</view>
+        <view class="money font-DIN">￥10,000.00</view>
+      </view>
+      <view class="tier-t">
+        <view class="quota">单日支付限额</view>
+        <view class="money font-DIN">￥200,000.00</view>
+      </view>
+    </view>
+
+    <view class="vbc-btn" bindtap='btnUnbound' data-type="click">解除绑定</view>
+
+  </view>
+
+  <!--解除绑定弹窗-->
+  <view class="mask" wx:if="{{isShowUnboundHint}}" bindtap='btnUnbound'  data-type="cancel">
+    <view class="vbc-dialog">
+      <view class="txt">解除后银行服务将不可用</view>
+      <view class="btn" catchtap='btnUnbound' data-type="confirm">确定解绑</view>
+    </view>
+  </view>
+  <!--解除绑定弹窗end-->
+
+  <!--解绑成功提示-->
+  <view wx:if="{{isShowUnboundSuccess}}" class='vbc-wrap'>
+    <view class="vbc-hint">
+      <view class="icon">
+        <image src="/images/vbc-hint.svg"></image>
+      </view>
+      <view class="txt">解绑成功</view>
+    </view>
+  </view>
+  <!--解绑成功提示end-->
+
+  <tabBar current="mine"></tabBar>
+  <view class="FAE">技术支持诚享科技</view>
+</view>
+
+<i-message id="message" />
+
+<view class='layer' wx:if="{{spinShow}}">
+  <view class='layer-wrap'>
+    <view class='loading'></view>
+    <view class='text'>加载中...</view>
+  </view>
+</view>

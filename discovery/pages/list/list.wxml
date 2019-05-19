@@ -1,0 +1,80 @@
+<shadow status="top"></shadow>
+<i-toast id="toast" dd="{{true}}" />
+<view style='font-family:微软雅黑;margin-top:2vh;padding-bottom:200rpx;background-color:#fff;'>
+  <!-- <view style='font-size:17px;width:92vw;margin-left:4vw;' wx:for="{{list_data}}" wx:key="list"> -->
+  <view style='font-size:17px;width:92vw;margin-left:4vw;'>
+    <view style='color:#6076F1;padding-top:2vh;'>{{item.title}}</view>
+    <view style='color:#6E6E6E;margin:2vh 0;'>{{item.content}}</view>
+    <!-- 朋友圈分享 -->
+    <view class='img_all'>
+       <view wx:if="{{!item.list}}" style='width:100%;height:100%;position:absolute;top:0;left:0;display:flex;justify-content: center;align-items: center;font-size:28rpx;color:#333;background: #eee'>
+                   <i-spin size="large" fix wx:if="{{!item.ImagetextStart}}"></i-spin>
+                   <view wx:else>{{item.Imagetext}}</view>
+              </view>
+      <block wx:if="{{view_type == 2}}">
+        <view style='width:100%;'>
+          <block wx:if="{{item.src.length == 9}}">
+              <image wx:for="{{item.yuan_src}}" wx:key='list_imgs' wx:for-item="src_item" src="{{https}}{{src_item}}" mode="widthFix" bindtap="previewImage" data-src="{{https}}{{src_item}}" data-array="{{item.yuan_src}}"  style='width:100%' bindload='imgOnLoad' binderror="imgloaderr"></image>
+          </block>
+          <block wx:if="{{item.src.length == 4}}">
+            <image wx:for="{{item.yuan_src}}" wx:key='list_imgs' wx:for-item="src_item" src="{{https}}{{src_item}}" mode="widthFix" bindtap="previewImage" data-src="{{https}}{{src_item}}" style='width:45vw;' data-array="{{item.yuan_src}}"  style='width:100%' bindload='imgOnLoad' binderror="imgloaderr"></image>
+          </block>
+          <block wx:if="{{item.src.length == 1}}">
+            <image wx:for="{{item.yuan_src}}" wx:key='list_imgs' wx:for-item="src_item" src="{{https}}{{src_item}}" mode="widthFix" bindtap="previewImage" data-src="{{https}}{{src_item}}" style='width:90vw;' data-array="{{item.src}}"  style='width:100%' bindload='imgOnLoad' binderror="imgloaderr"></image>
+          </block>
+          <block wx:else>
+              <image wx:for="{{item.yuan_src}}" wx:key='list_imgs' wx:for-item="src_item" src="{{https}}{{src_item}}" mode="widthFix" bindtap="previewImage" data-src="{{https}}{{src_item}}" data-array="{{item.yuan_src}}"  style='width:100%' bindload='imgOnLoad' binderror="imgloaderr"></image>
+          </block>
+        </view>
+      </block>
+    </view>
+    <!-- 视频分享 -->
+    <block wx:if="{{view_type == 1}}">
+      <view>
+        <video class='video' src='{{item.url}}'  data-array="{{https}}{{item.url}}"></video>
+      </view>
+    </block>
+    <!-- 文章分享 -->
+    <block wx:if="{{view_type == 3}}">
+      <view class='image'>
+        <image src='{{https}}{{item.url}}' mode='widthFix' bindtap='previewImage' data-index='{{index}}' data-array="{{https}}{{item.url}}"></image>
+      </view>
+    </block>
+    <view class='notice' style='line-height:6vh;margin:2vw 0;'>
+      <view style='' class='notice-top'>
+        <image src='{{list_data.shop_avatar}}' style='width:9vw;height:9vw;border-radius:50%;'></image>
+        <view style='color:#8291B0;margin-left:3vw;max-width: calc(100% - 9vw);' class='tit'>{{list_data.shop_name}}</view>
+      </view>
+      <view style='color:#999;' class='notice-bot'>{{item.add_time}}</view>
+    </view>
+  </view>
+</view>
+<view style='' class="bottoms">
+  <!-- <view style='float:left;width:33vw;text-align:center;margin:2vh 0;line-height:4.5vh;' > -->
+  <view class='btn-item' wx:if="{{options && options.shareId}}">
+    <button class='btn-i-b' bindtap='clickBack'>
+      <image src='./../images/icon-back.svg' class='icon'></image>
+      <view>返回</view>
+    </button>
+  </view>
+  <view class='btn-item'>
+    <button class='btn-i-b' open-type="{{opentype_getphoto}}" bindtap='getphoto' data-array="{{item.src}}">
+      <image src='./../images/down.svg' class='icon'></image>
+      <view>下载</view>
+    </button>
+  </view>
+  <!-- <view style='float:left;width:33vw;text-align:center;margin:2vh 0;line-height:4.5vh;' bindtap='copyTBL' data-text='{{item.content}}'> -->
+  <view class='btn-item' bindtap='copyTBL' data-text='{{item.content || item.title}}' >
+    <button class='btn-i-b'>
+      <image src='./../images/copy.svg' class='icon'></image>
+      <view>复制</view>
+    </button>
+  </view>
+  <!-- <view style='text-align:center;margin:2vh 0;line-height:4.5vh;width:33vw;' > -->
+  <!-- <view class='btn-item' >
+    <button class='btn-i-b' open-type="share" data-id="{{item.Id}}" data-title="#{{item.title}}#" data-type="{{item.type}}" data-sharepic='{{item.src[0]}}'>
+      <image src='./../images/weixin.svg' class='icon'></image>
+      <view>转发</view>
+    </button>
+  </view> -->
+</view>

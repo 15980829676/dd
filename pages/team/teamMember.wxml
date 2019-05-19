@@ -1,0 +1,150 @@
+<!--pages/team/teamMember.wxml-->
+<!-- <topLoadingProgress 
+ wx:if="{{!isLoadCompelte}}" 
+percent="{{progress.percent}}" 
+bind:activeend="progressActiveEnd"></topLoadingProgress> -->
+<shadow status="all"></shadow>
+<i-toast id="toast" dd="{{true}}"/>
+
+<!-- <button class="share" open-type='share' plain hover-class="none" style='bottom: {{tabBarh*2+30}}rpx;'><view class='wrap'><view class='icon-share'></view></view></button> -->
+
+<block wx:if="{{isLoadCompelte}}">
+
+  <view wx:if="{{!isHasData && currentTab == 0 && isFirstRefresh == 0}}" class="mac-marbot">
+    <view class="member-null">
+      <view class="hint">暂无数据</view>
+    </view>
+  </view>
+
+  <view wx:else class="orderList-box " style="margin-bottom:{{tabBarh}}px">
+    <view class="orderList-wrap">
+      <!-- <i-tabs current="{{ currentTab }}" scroll="{{scroll}}" bindchange="handleChange">
+        <block wx:for="{{shopLevel}}" wx:key="shopLevel">
+          <i-tab key="{{index}}" title="{{item}}"></i-tab>
+        </block>
+      </i-tabs> -->
+      <topNav navTitleArr="{{shopLevel}}" isFixed="{{true}}" bindclickNavItem="handleChange"></topNav>
+    </view>
+
+    <block wx:if="{{isHasData}}">
+      <!-- <view class='i-index-demo'> -->
+        <!-- <i-index height="{{windowHeight}}rpx" bind:scrolltoupper="scrolltoupper">
+          <i-index-item 
+          wx:for="{{ myTeamList }}" 
+          wx:for-index="index" 
+          wx:key="{{index}}" 
+          wx:for-item="item" 
+          name="{{index}}" 
+          data-key="*this">
+
+            <block 
+            wx:for="{{item}}" 
+            wx:key="teamItem" 
+            wx:for-item="teamItem">
+              <view 
+              class="team-list" 
+              bindtap='todetail' 
+              data-currUserName="{{teamItem.sr_realname}}" 
+              data-currentUserId="{{teamItem.u_id}}">
+                <view class="team-list-head">
+                  <image src="{{ teamItem.shop_avatar }}"></image>
+                </view>
+                <view class="team-list-all">
+                  <view class="team-list-info">
+                    <view class="name">{{ teamItem.sr_realname }}</view>
+                    <view class="time">加入时间{{teamItem.beg_date}}</view>
+                  </view>
+                  <view class="team-list-amount" catchtap='jumpPersonalCenter' data-currentUserId="{{teamItem.u_id}}" data-shopId="{{teamItem.shop_id}}">
+                    <view class="purch">近30天进货额</view>
+                    <view class="money">￥{{teamItem.sumbal}}</view>
+                  </view>
+                </view>
+              </view>
+            </block>
+
+          </i-index-item>
+        </i-index> -->
+        
+      <!-- </view> -->
+      <scroll-view 
+      scroll-y 
+      scroll-into-view="{{scrollId == '#'?'none':scrollId}}"
+      class='scroll' 
+      style="width: 100%;height: {{windowHeight-tabBarh-50}}px;background-color: #eee;" 
+      bind:scroll="pageScroll">
+
+          <view 
+          class='scroll-item' 
+          id="{{index == '#'?'none':index}}" 
+          wx:for="{{ myTeamList }}" 
+          wx:for-index="index" 
+          wx:key="{{index}}" 
+          wx:for-item="item"  
+          data-key="*this" 
+          data-name="{{index}}">
+            <!-- title -->
+            <view class='scroll-title'>
+              <view class='scroll-title-text font-DIN {{nodesData[index].isFixed?"title-fixed border-bot":""}}'>{{index}}</view>
+            </view>
+            <!-- content -->
+            <block 
+            wx:for="{{item}}" 
+            wx:key="teamItem" 
+            wx:for-item="teamItem">
+              <view 
+              class="team-list" 
+              bindtap='todetail' 
+              data-currUserName="{{teamItem.sr_realname}}" 
+              data-currentUserId="{{teamItem.u_id}}">
+                <view class="team-list-head">
+                  <image mode='widthFix' src="{{ teamItem.shop_avatar }}"></image>
+                </view>
+                <view class="team-list-all">
+                  <view class="team-list-info">
+                    <view class="name">{{ teamItem.sr_realname }}</view>
+                    <view class="time">加入时间{{teamItem.beg_date}}</view>
+                  </view>
+                  <view class="team-list-amount" catchtap='jumpPersonalCenter' data-currentUserId="{{teamItem.u_id}}" data-shopId="{{teamItem.shop_id}}">
+                    <view class="purch">近30天进货额</view>
+                    <view class="money font-DIN">￥{{teamItem.sumbal}}</view>
+                  </view>
+                </view>
+              </view>
+            </block>
+
+          </view>
+          <!-- 右侧索引 -->
+          <view class='scroll-index'>
+            <view 
+            class='scroll-index-item' 
+            catchtouchstart="handlerTouchMove" 
+            catchtouchmove="handlerTouchMove" 
+            catchtouchend="handlerTouchEnd" 
+            wx:for="{{nodesData}}" 
+            wx:key="{{index}}" 
+            data-name="{{index}}">{{index}}</view>
+          </view>
+          <view wx:if="{{isShowScrollIndex}}" class='currentKey'>{{currentKey}}</view>
+      </scroll-view>
+      <!-- scroll -->
+    </block>
+
+    <!-- 空 -->
+    <block wx:elif="{{!isHasData}}">
+      <view class='member-null' style="height: calc(100vh - {{tabBarh}}px - 50px);">
+        暂无成员
+      </view>
+    </block>
+
+    <view class="addempbtn" hidden='{{true}}'>
+      <button class="commit-button btn-color" open-type="share">
+        <image class="addmemberpic" src="/images/btn-4.svg"></image>
+        <view class="btn-text">邀请新成员</view>
+      </button>
+    </view>
+
+  </view>
+
+  <tabBar current="team"></tabBar>
+  
+</block>

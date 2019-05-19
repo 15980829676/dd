@@ -1,0 +1,227 @@
+<!--库存 pages/inventory/inventory.wxml-->
+<tabBar current="home" id="tabBar"></tabBar>
+<searchTitle title="{{searchTitle}}" tabBarH="{{tabBarH}}" start="{{true}}" url="/pages/home/home" bind:btnClick="btnClick"></searchTitle>
+<view class="admin">
+  <shadow status="all"></shadow>
+  <view class="mac-marbot" style="margin-top:{{tabBarH == 50?65:89}}px">
+       <view class='orderSearch' animation="{{animationSeach}}">
+          <view class='searchInput'>
+              <image src='/images/searchimag.svg' class='searchImage'></image>
+              <input class='searchText' type='text' placeholder='请输入商品关键词' value='{{text}}' bindinput='searchText' bindconfirm="searchClick"></input>
+              <view class='out' catchtap='out' wx:if="{{text.length > 0}}"></view>
+          </view>
+          <view class='btnText' catchtap='searchClick' wx:if="{{text.length > 0}}">搜索</view>
+          <view class='btnText' catchtap='orderIndex' wx:else>返回</view>
+        </view> <!--搜索--> 
+    <!-- <i-tabs current="{{ currentNavId }}" bindchange="handleChange" fixed>
+      <i-tab key="0" title="全部"></i-tab>
+      <i-tab key="1" title="有库存"></i-tab>
+      <i-tab key="2" title="无库存"></i-tab>
+    </i-tabs> -->
+    <!-- <view class='nav'>
+      <view class='nav-item' bindtap="handleChange" data-key="0">
+        <view class="nav-item-title {{currentNavId==0?'currentNav':''}}">全部</view>
+      </view>
+      <view class='nav-item' bindtap="handleChange" data-key="1">
+        <view class="nav-item-title {{currentNavId==1?'currentNav':''}}">有库存</view>
+      </view>
+      <view class='nav-item' bindtap="handleChange" data-key="2">
+        <view class="nav-item-title {{currentNavId==2?'currentNav':''}}">无库存</view>
+      </view>
+    </view> -->
+    <!-- <topNav nav-class='top_shadow' navTitleArr="{{navTitleArr}}" isFixed="{{true}}" bindclickNavItem="handleChange"></topNav> -->
+    <i-row i-class="i-row">
+      <!-- <i-col span="8" i-class="col-class">
+        <view class='nav-item' bindtap="handleChange" data-key="0">
+          <view class="nav-item-title {{currentNavId==0?'currentNav':''}}">全部</view>
+        </view>
+      </i-col> -->
+      <i-col span="12" i-class="col-class">
+        <view class='nav-item' bindtap="handleChange" data-key="1">
+          <view class="nav-item-title {{currentNavId==1?'currentNav':''}}">有库存</view>
+        </view>
+      </i-col>
+      <i-col span="12" i-class="col-class">
+        <view class='nav-item' bindtap="handleChange" data-key="2">
+          <view class="nav-item-title {{currentNavId==2?'currentNav':''}}">无库存</view>
+        </view>
+      </i-col>
+    </i-row>
+    <!-- <view class="goods-content" wx:if="{{inventoryList.length>0}}"> -->
+    <!--宫格 商品3个一组-->
+    <!-- <block wx:for="{{inventoryList}}" wx:key="index" wx:for-item="group">
+        <view class="goods-list">
+
+          <view 
+          class="goods-a" 
+          wx:for="{{group}}" 
+          wx:key="group" 
+          wx:for-item="item" 
+          bindtap='chooseGoods' 
+          data-group="{{item.self_group}}" 
+          data-index="{{item.self_index}}">
+            <view class="goods-a-img">
+              <image src="{{item.img}}"></image>
+            </view>
+            <view class="goods-a-number">
+            <view 
+            class="g2" 
+            wx:if="{{item.self_showBtn}}" 
+            catchtap='editGoodsNum' 
+            data-type="minus" 
+            data-group="{{item.self_group}}" 
+            data-index="{{item.self_index}}"></view>
+            <view class="ib">
+              <view class="inventory">库存</view>
+              <view class="quantity">{{item.num}}</view>
+            </view>
+            <view 
+            class="g1" 
+            wx:if="{{item.self_showBtn}}" 
+            catchtap='editGoodsNum' 
+            data-type="add" 
+            data-group="{{item.self_group}}" 
+            data-index="{{item.self_index}}"></view>
+            </view>
+            <view class="goods-a-no">{{item.desc}}</view>
+          </view>
+          
+        </view>
+      </block> -->
+    <!--商品3个一组end-->
+    <!-- </view> -->
+    <!-- 列表 -->
+    <view class="product-list" wx:if="{{switchArr.length>0}}">
+
+      <view class="product-list-a">
+        <view class="a-left" >商品</view>
+        <view class="a-right">
+          <view class="quantity num">数量</view>
+          <view class="quantity">金额</view>
+        </view>
+      </view>
+<!-- {{load_params.type == 1?'padding-bottom:90rpx':''}} -->
+      <scroll-view class="product-list-b" style="height: {{windowHeight - 100 - tabBarH-(tabBarH == 50?65:89)}}px;padding-bottom: {{isEdit?100:0}}rpx;box-sizing: border-box;{{load_params.type == 1?'padding-bottom:90rpx':''}};" scroll-y bindscroll="pageScroll" bindscrolltolower="scrolltolower" lower-threshold="40">
+        <!-- <view class="b-all" style="height: 140rpx;"></view> -->
+        <!--begin choose-->
+        <view class="b-all {{item.self_showBtn?'choose':''}}" wx:for="{{switchArr}}" wx:key="index" bindtap='chooseGoods' data-index="{{index}}">
+          <view class="b-left">
+            <view class="img">
+              <image src="{{item.img}}"></image>
+            </view>
+            <view class="name">
+              <view class="n1">{{item.barcode}}</view>
+              <view class="price  " style='font-size:24rpx;' style="{{load_params.type == 1?'':'margin-top:10rpx'}}">原价：<view class='font-DIN'>{{item.price}}</view></view>
+              <view class="price  " style='font-size:24rpx;' wx:if="{{load_params.type == 1}}">平均价：<view class='font-DIN'>{{!item.avg && typeof(item.avg)!="undefined"?'0.00':item.avg}}</view></view>
+              <!-- <view class="price font-DIN " style='font-size:24rpx;margin-top:10rpx'>{{item.price}}{{!item.avg && typeof(item.avg)!="undefined"?'0.00':item.avg}}</view> -->
+              
+            <view class="price ovhi" style="{{load_params.type == 1?'':'margin-top:10rpx'}}">{{item.props}}</view>
+              <!---- <view class="n2">{{item.img}}</view> ---->
+            </view>
+          </view>
+          <view class="b-right">
+            <view class="number" bindtap="chooseGoods" data-type="stop">
+              <view class='btn-wrap' catchtap='editGoodsNum' data-type="minus" wx:if="{{item.self_showBtn}}" data-index="{{index}}">
+                <view class="n2"></view>
+              </view>
+              <!-- <input id="{{'goods'+index}}" class="n1 font-DIN {{item.self_showBtn?'':'disnone'}}" value="{{item.self_num}}" bindinput='input' bindblur="blur" data-index="{{index}}" type="number"  bindfocus="focus"/> -->
+              <!-- <view class="n1 font-DIN {{item.self_showBtn?'disnone':''}}">{{item.self_num}}</view> -->
+              <view class="n1 font-DIN" bindtap="focus" data-index="{{index}}" >{{item.self_num}}</view>
+              <view class='btn-wrap' catchtap='editGoodsNum' data-type="add" wx:if="{{item.self_showBtn}}" data-index="{{index}}">
+                <view class="n3"></view>
+              </view>
+            </view>
+            <view class="price font-DIN" style='font-size:24rpx;'>{{item.self_total}}</view>
+          </view>
+        </view>
+        <!--end-->
+        <!-- <view class="total" style="width:100%;border-top:1px solid #ccc;font-size:32rpx;color:#333;text-align:right;height:45rpx;">{{total}}</view>总计 -->
+        <loadMore loadmore="{{load_params.loadmore}}" loadend="{{load_params.loadend}}" empty="{{load_params.empty}}" definedContent="{{true}}" content="{{'暂无库存'}}"></loadMore>
+
+      </scroll-view>
+      <view class='totalBottom' wx:if="{{load_params.type == 1}}" style="bottom: {{tabBarH}}px">
+        当前库存总金额￥{{total}}
+      </view>
+       <!-- wx:if="{{isEdit}}" -->
+      <view class="prompt" animation="{{animation1}}">
+        <view class='layer' wx:if="{{btnActions[0].loading||btnActions[1].loading}}"></view>
+        <button class="prompt-btn" bindtap='btnCancel'>  <view wx:if="{{btnActions[0].loading}}" class='btn-loading-inner border-color'></view> 取消</button>
+        <button class="prompt-btn alter" bindtap='btnConfirm'><view wx:if="{{btnActions[1].loading}}" class='btn-loading-inner'></view>保存</button>
+      </view>
+
+    </view>
+    <!-- 列表end -->
+
+    <block wx:else>
+      <loadMore empty="{{true}}" definedContent="{{true}}" content="{{'-这里什么都没有-'}}"></loadMore>
+    </block>
+
+  </view>
+  <!-- 侧边栏按钮 -->
+  <view class="btn-all" style='display:none'>
+    
+    <view style="display:{{isUnfold?'block':'none'}};">
+      <view class="btn-layer">
+        <view class="btn-inner">
+          <view class="btn-all-scan">
+            <image src="/images/btn-1.svg"></image>
+          </view>
+        </view>
+      </view>
+      <view class="btn-layer" bindtap='asideBtnJump' data-type="shop">
+        <view class="btn-inner">
+          <view class="btn-all-scan">
+            <image src="/images/btn-2.svg"></image>
+          </view>
+        </view>
+      </view>
+      <view class="btn-layer" bindtap='asideBtnJump' data-type="log">
+        <view class="btn-inner">
+          <view class="btn-all-scan">
+            <image src="/images/icon-log.svg"></image>
+          </view>
+        </view>
+      </view>
+      <view class="btn-layer" bindtap='switchAsideBtn' data-type="narrow">
+        <view class="btn-inner">
+          <view class="btn-all-scan">
+            <image src="/images/btn-3.svg"></image>
+          </view>
+        </view>
+      </view>
+      
+    </view>
+
+    <view class="btn-menu" bindtap='switchAsideBtn' data-type="unfold" style="display:{{isUnfold?'none':'block'}};">
+      <view class="btn-layer">
+        <view class="btn-inner">
+          <view class="btn-all-scan">
+            <image src="/images/btn-5.svg"></image>
+          </view>
+        </view>
+      </view>
+    </view>
+
+  </view>
+
+</view>
+
+
+  <!-- <bkgLoading isLoading="{{isLoading}}"></bkgLoading> {{tabBarH == 50?65:89}}-->
+<i-message id="message" i-class="{{tabBarH == 50?'actionTon':'actionTonX'}}" />
+<i-toast id="toast" dd="{{false}}"/>
+<view style="bottom: {{tabBarH + 40 + 25}}px;position: fixed;right: 30rpx;width: auto;height: auto;">
+  <wux-fab-button 
+  wux-fab-button="wux-fab-button" 
+  wux-class="wux-class {{isEdit?'asideAnimation':''}}"
+  position="bottomRight" 
+  theme="thin" 
+  buttons="{{ buttons }}" 
+  bind:click="asideBtnJump" />
+</view>
+
+
+<!-- <view style='padding-bottom: {{tabBarH}}px;' class='poi'> -->
+  <wux-keyboard id="wux-keyboard" wux-class="{{tabBarH>50?'wx-class-x':'wx-class'}}"/>
+<!-- </view> -->
+<!-- <view class='bot_shadow'></view> -->

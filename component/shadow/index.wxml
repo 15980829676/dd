@@ -1,0 +1,7 @@
+<!--component/shadow/index.wxml-->
+<view wx:if="{{status == 'top'}}" class='top_shadow'></view>
+<view wx:if="{{status == 'bot'}}" class='bot_shadow'></view>
+<block wx:if="{{status == 'all'}}">
+  <view class='top_shadow'></view>
+  <view class='bot_shadow'></view>
+</block>

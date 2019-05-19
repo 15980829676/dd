@@ -1,0 +1,118 @@
+<!--pages/inventory/inventoryLog.wxml-->
+<!-- `change_num` int(11) DEFAULT NULL COMMENT '出货量/进货量',
+`surplus_num` int(11) DEFAULT NULL COMMENT '库存量',
+`type` tinyint(3) NOT NULL DEFAULT '0' COMMENT '1: 进货 3:出货  5:手工增加  7:手工减少', -->
+<!-- <view class='top_shadow'></view> -->
+
+<shadow status="top"></shadow>
+<view class='box ' style="padding-bottom:{{tabBarH*2}}rpx;">
+  <!-- <block wx:if="{{logList.length > 0}}">
+    <block wx:for="{{logList}}" wx:key="{{index}}">
+      <view class='log-item'>   
+        <view class='log-item-top' wx:if="{{index == 0}}">
+          <text class='text'>{{item.day}}</text>
+        </view>
+        <view class='log-item-top' wx:elif="{{index > 0 && logList[index].day != logList[index-1].day}}">
+          <text class='text'>{{item.month + '-' + item.date}}</text>
+        </view>
+        <view class='log-item-top' wx:else style="padding: 5rpx 0;height: 0;"></view>
+        <view class='log-item-bot'>
+          <view class='log-item-circle'></view>
+          <view class='log-item-content'>
+            <view class='log-item-content-tit'>
+              <view class='kk change_type'>{{item.type == 1?'进货':item.type == 3?'出货':item.type == 5?'手工增加':item.type == 7?'手工减少':''}}</view>
+              <view class='kk time font-DIN'>{{item.hours}}:{{item.min}}</view>
+            </view>
+            <view class='content'>
+              <view class='title'>{{item.i_title}}</view>
+              <view class='font-DIN'>{{(item.type==1||item.type==5)?'+':'-'}}{{item.change_num}}</view>
+            </view>
+          </view>
+        </view>
+      </view>
+
+    </block>
+    <loadMore loadmore="{{load_params.loadmore}}" loadend="{{load_params.loadend}}" empty="{{load_params.empty}}" definedContent="{{true}}" content="{{'暂无日志'}}"></loadMore>
+  </block> -->
+  <!-- <block wx:if="{{logs}}">
+    <block wx:for="{{logs}}" wx:key="{{index}}">
+    
+      <view class='log-item'>   
+        <view class='log-item-top'>
+          <text class='text'>{{index}}</text>
+        </view>
+        <view class='log-item-bot'>
+          <view class='log-item-circle'></view>
+          <view class='log-item-content-wrap'>
+            <view class='log-item-content' wx:for="{{item}}" wx:for-item="logitem">
+              <view class='log-item-content-tit'>
+                <view class='tit-state'>
+                  <view class='kk change_type'>{{logitem.type == 1?'进货':logitem.type == 3?'出货':logitem.type == 5?'手工修改':logitem.type == 7?'手工修改':''}}</view>
+                  <view class='kk time font-DIN'>{{logitem.hours}}:{{logitem.min}}</view>
+                </view>
+              </view>
+              <view class='content'>
+                <view class='title'>{{logitem.i_title}}</view>
+                <view class='font-DIN'>{{(logitem.type==1||logitem.type==5)?'+':'-'}}{{logitem.change_num}}</view>
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+
+    </block>
+    <loadMore loadmore="{{load_params.loadmore}}" loadend="{{load_params.loadend}}" empty="{{load_params.empty}}" definedContent="{{true}}" content="{{'暂无日志'}}"></loadMore>
+  </block> -->
+  <block wx:if="{{logList}}">
+    <block wx:for="{{logList}}" wx:key="{{index}}" wx:for-item="group">
+    
+      <view class='log-item-wrap'>
+        <!-- 顶部时间 -->
+        <view class="log-item-top">
+          <view class='day'>{{group.day_flag == 1 ? '今天' : group.logdatestr}}</view>
+        </view>
+        
+        <view class='log-item-bot'>
+          <view class='circle-wrap'><view class='circle'></view></view>
+          <view class='right-wrap column'>
+            <view 
+            class='log-item-content column' 
+            wx:for="{{group.operList}}" 
+            wx:key="{{operIndex}}" 
+            wx:for-index="operIndex" 
+            wx:for-item="operItem" 
+            data-orderid="{{operItem.order_id}}" 
+            data-userid="{{operItem.op_id}}" 
+            data-parentid="{{operItem.parent_id}}" 
+            data-type="{{operItem.type}}" 
+            bindtap='jumpOrderDetail'>
+              <view class='type-time-wrap row'>
+                <view class='type tt'>{{operItem.type == 1?'进货':operItem.type == 3?'出货':operItem.type == 5 || operItem.type == 7?'手工修改':''}}</view>
+                <view class='time tt'>{{operItem.hours+':'+operItem.min}}</view>
+              </view>
+              <view 
+              class='content row' 
+              wx:for="{{operItem.child}}" 
+              wx:key="{{childIndex}}" 
+              wx:for-index="childIndex" 
+              wx:for-item="childItem" >
+                <view class='title'>{{childItem.i_title}}</view>
+                <view class='font-DIN num'>{{(childItem.type==1||childItem.type==5)?'+':'-'}}{{childItem.change_num}}</view>
+              </view>
+            </view>
+          </view>
+        </view>
+
+      </view>
+
+    </block>
+    <loadMore loadmore="{{load_params.loadmore}}" loadend="{{load_params.loadend}}" empty="{{load_params.empty}}" definedContent="{{true}}" content="{{'暂无日志'}}"></loadMore>
+  </block>
+  <block wx:else>
+    <loadMore empty="{{true}}" definedContent="{{true}}" content="{{'-这里什么都没有-'}}"></loadMore>
+  </block>
+</view>
+<i-toast id="toast" dd="{{startT}}" />
+<i-message id="message" />
+<tabBar current="inventory"></tabBar>
+

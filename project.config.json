@@ -1,0 +1,304 @@
+{
+	"description": "项目配置文件",
+	"packOptions": {
+		"ignore": []
+	},
+	"setting": {
+		"urlCheck": false,
+		"es6": true,
+		"postcss": true,
+		"minified": true,
+		"newFeature": true,
+		"autoAudits": false
+	},
+	"compileType": "miniprogram",
+	"libVersion": "2.6.5",
+	"appid": "wxc5d4057bad1b6214",
+	"projectname": "efos",
+	"debugOptions": {
+		"hidedInDevtools": []
+	},
+	"isGameTourist": false,
+	"simulatorType": "wechat",
+	"simulatorPluginLibVersion": {},
+	"condition": {
+		"search": {
+			"current": -1,
+			"list": []
+		},
+		"conversation": {
+			"current": -1,
+			"list": []
+		},
+		"plugin": {
+			"current": -1,
+			"list": []
+		},
+		"game": {
+			"currentL": -1,
+			"list": []
+		},
+		"miniprogram": {
+			"current": 37,
+			"list": [
+				{
+					"id": -1,
+					"name": "团队",
+					"pathName": "pages/team/team",
+					"query": ""
+				},
+				{
+					"id": 1,
+					"name": "团队-个人信息",
+					"pathName": "pages/team/personalInformation",
+					"query": "userId=793471",
+					"scene": null
+				},
+				{
+					"id": 2,
+					"name": "团队-订单信息",
+					"pathName": "pages/team/orderInformation",
+					"query": "userId=793479&shopId=20818&orderId=2815&orderType=stock&opid=793479",
+					"scene": null
+				},
+				{
+					"id": 3,
+					"name": "加载页",
+					"pathName": "pages/index/index",
+					"query": "jumpUrl=pages/team/team&shareId=1&uId=12&shopId=8"
+				},
+				{
+					"id": -1,
+					"name": "我的",
+					"pathName": "pages/mine/mine",
+					"query": ""
+				},
+				{
+					"id": 5,
+					"name": "钱包-余额或提现",
+					"pathName": "pages/mine/wallet/submitForm",
+					"query": "type=withdrawal"
+				},
+				{
+					"id": -1,
+					"name": "团队-成员",
+					"pathName": "pages/team/teamMember",
+					"query": "userId=758"
+				},
+				{
+					"id": -1,
+					"name": "通知",
+					"pathName": "pages/notice/notice",
+					"query": ""
+				},
+				{
+					"id": 8,
+					"name": "库存",
+					"pathName": "pages/inventory/inventory",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "订货",
+					"pathName": "pages/inventory/orderGoods",
+					"query": ""
+				},
+				{
+					"id": 10,
+					"name": "个人信息",
+					"pathName": "pages/mine/set/show_personalInfo",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "钱包明细",
+					"pathName": "pages/mine/wallet/walletDetail",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "钱包-充值",
+					"pathName": "pages/mine/wallet/recharge/recharge",
+					"query": ""
+				},
+				{
+					"id": 13,
+					"name": "钱包-充值结果",
+					"pathName": "pages/mine/wallet/recharge/rechargeResult",
+					"query": "money=1.00&result=fail",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "钱包-提现",
+					"pathName": "pages/mine/wallet/withdrawal/withdrawal",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "库存日志",
+					"pathName": "pages/inventory/inventoryLog",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "添加银行卡",
+					"pathName": "pages/mine/wallet/addBankCard/index",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "招商1",
+					"pathName": "pages/shopMerchants/index",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "招商2",
+					"pathName": "pages/shopMerchants/info",
+					"query": ""
+				},
+				{
+					"id": 19,
+					"name": "订货结算",
+					"pathName": "pages/inventory/pay/settleAccounts",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "地址列表",
+					"pathName": "pages/editAddress/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 21,
+					"name": "新增地址",
+					"pathName": "pages/editAddress/edit",
+					"query": "type=add",
+					"scene": null
+				},
+				{
+					"id": 22,
+					"name": "钱包-提现0",
+					"pathName": "pages/mine/wallet/submitForm",
+					"query": "type=withdrawal",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "钱包-提现记录",
+					"pathName": "pages/mine/wallet/withdrawal/withdrawalRecord",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 24,
+					"name": "营销工具",
+					"pathName": "pages/mine/marketingtool/marketingtool",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "发现小程序",
+					"pathName": "discovery/pages/friend/friend",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "营销工具",
+					"pathName": "pages/totalNumber/index",
+					"query": "",
+					"scene": 1011
+				},
+				{
+					"id": -1,
+					"name": "营销工具",
+					"pathName": "pages/totalNumber/index",
+					"query": "",
+					"scene": 1011
+				},
+				{
+					"id": -1,
+					"name": "营销工具",
+					"pathName": "discovery/pages/friend/friend",
+					"query": "发现小程序",
+					"scene": null
+				},
+				{
+					"id": 29,
+					"name": "线下支付",
+					"pathName": "pages/offlinePay/index",
+					"query": "payType=linePay&order_sn=1904091745353316&money=38.5&baltype=1&order_id=111",
+					"scene": null
+				},
+				{
+					"id": 30,
+					"name": "index页",
+					"pathName": "pages/index/index",
+					"query": "jumpUrl=pages/shopMerchants/index&shareId=1&uId=77446&shopId=20816&pageType=reLaunch",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "关于",
+					"pathName": "expandPage/about/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "订单通知",
+					"pathName": "expandPage/notice/stock",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 33,
+					"name": "搜索",
+					"pathName": "component/searchTitle/orderSearch/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "稽查",
+					"pathName": "expandPage/acceptanceResult/inspectComplain/inspectComplain",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 35,
+					"name": "零售订单详情",
+					"pathName": "pages/team/orderInformation",
+					"query": "userId=793479&shopId=20818&orderId=2900&orderType=stock&opid=793479",
+					"scene": null
+				},
+				{
+					"id": 36,
+					"name": "零售订单发货",
+					"pathName": "expandPage/order/delivery",
+					"query": "id=115602",
+					"scene": null
+				},
+				{
+					"id": 37,
+					"name": "零售订单退款",
+					"pathName": "expandPage/order/refund",
+					"query": "id=116456",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "数据报表",
+					"pathName": "expandPage/dataStatistics/index",
+					"query": "",
+					"scene": null
+				}
+			]
+		}
+	}
+}

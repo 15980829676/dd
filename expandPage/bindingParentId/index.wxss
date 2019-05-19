@@ -1,0 +1,220 @@
+/* expandPage/bindingParentId/index.wxss */
+.parentld_contain {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-sizing:border-box;
+  flex-direction: column;
+ 
+}
+.parentld_row{
+  width: 100%;
+  display: flex;
+  height: 100%;
+  background: white;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  box-sizing: border-box;
+  padding: 0 50rpx;
+  overflow: hidden;
+  justify-content: center;
+}
+.parentld_row_list {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transform: translateY(-86rpx) 
+}
+.parentld_title {
+  font-size: 32rpx;
+  color: #000;
+  height:80rpx;
+  line-height:80rpx;
+
+}
+.parentld_tel {
+  width:100%;
+  height: 86rpx;
+  border: 1px solid #e2e1e2;
+ text-align: center;
+ line-height: 86rpx;
+  font-size: 28rpx;
+  color: #000;
+  margin-top:30rpx; 
+  border-radius:10rpx;
+}
+input::-moz-placeholder {
+  color: #e2e1e2;
+}
+.parentld_btn_succ {
+  width: 100%;
+  height: 86rpx;
+  background: #4da1ff;
+  font-size: 28rpx;
+  outline: none;
+  border-radius: 0;
+  border: 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  color: white;
+}
+.parentld_row_bottom {
+  width:100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top:50rpx; 
+}
+.parentld_row_recommend {
+  width: 100%;
+  position: relative;
+  font-size: 28rpx;
+  color: #000;
+  text-align: center;
+}
+.parentld_row_recommend::after {
+  height: 1px;
+  background: #e2e1e2;
+  display: block;
+  width: 30%;
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%)
+}
+.parentld_row_recommend::before {
+  height: 1px;
+  background: #e2e1e2;
+  display: block;
+  width: 30%;
+  content: '';
+  position: absolute;
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%)
+}
+.parentld_recommend_text {
+  margin: 30rpx 0;
+  color: #999999;
+}
+.parentld_recommend_btn {
+  width: 350rpx;
+  height: 80rpx;
+  background: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-size: 28rpx;
+  border-radius:15rpx;
+  margin-top: 20rpx; 
+}
+/*选择系统*/
+.recommend_row {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 3;
+  background: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transform: translateX(100%)
+}
+.recommend_top {
+  width: 100%;
+  height: 80rpx;
+  display: flex;
+
+  border-bottom:1px solid #e2e1e2;
+  box-shadow: 0 1rpx 3rpx 0rpx rgba(0, 0, 0, 0.1);
+}
+.recommend_top_btn {
+  width: 50%;
+  height: 100%;
+  text-align: center;
+  font-size: 28rpx;
+  color: #bababa;
+  line-height: 80rpx;
+  position: relative;
+}
+.recommend_top_btn.action {color: #000;}
+.recommend_top_btn.xian::before {
+  display: block;
+  width: 1px;
+  height: 100%;
+  content: '';
+  background: #e2e1e2;
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+.recommend_list {
+  width: 100%;
+  display: flex;
+  flex: 1;
+  box-sizing: border-box;
+  padding: 0 20rpx;
+}
+.qxiao {
+  width: 100%;
+  height:86rpx;
+  background: #4DA1FF;
+  line-height: 86rpx;
+  text-align: center;
+  font-size: 28rpx;
+  color: white;
+}
+.recommend_list_item {
+  width: 100%;
+  display: flex;
+  height: 90rpx;
+  border-bottom: 1px solid #e2e1e2;
+  box-sizing: border-box;
+  padding: 0 30rpx;
+  align-items: center;
+  justify-content: space-between;
+}
+.recommend_logo {
+  width: 75rpx;
+  height: 75rpx;
+  border-radius:100%;
+  overflow: hidden; 
+  border: 1px solid #ccc;
+}
+.recommend_text {
+  display: flex;
+  flex: .7;
+  text-align: left;
+  font-size: 28rpx;
+  color: #000;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+.recommend_dengji_text {
+  font-size: 28rpx;
+  color: #8f8f8f;
+}
+.width100 {
+  width: 100%;
+  
+}
+.onInt {
+  width:100%;
+  height:86rpx;
+  line-height:86rpx;
+  text-align:center;
+}

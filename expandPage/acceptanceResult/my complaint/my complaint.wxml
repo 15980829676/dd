@@ -1,0 +1,31 @@
+<!--pages/my complaint/my complaint.wxml-->
+<shadow status="all"></shadow>
+<view class="admin">
+ 
+  <view class="mac-marbot">
+
+    <view class="mc-wrap" wx:for="{{list}}" wx:key="index">
+
+      <view class="content">
+        <view class="mdzz">
+          <view class="kl">
+            <view class="apply">申请时间：</view>
+            <view class="time">{{item.time}}</view>
+          </view>
+          <view class="state {{item.status == 0 ? '':'clr'}}">{{item.status == 0?"受理中":"已受理"}}</view> 
+        </view>
+        <view class="cause">
+          <view class="c-l">投诉内容：</view>
+          <view class="c-r">{{item.title}}</view>
+        </view>
+      </view>
+      <navigator url='../acceptance result/acceptance result?id={{item.id}}' class="check" wx:if="{{item.status == 1}}">查看受理</navigator>
+      <navigator url='../suggest complaint/suggest complaint' class="check" wx:else>查看受理</navigator>
+    </view>
+
+    
+
+  </view>
+
+</view>
+<i-toast id="toast"/>

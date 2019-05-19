@@ -1,0 +1,36 @@
+<!--component/searchTitle/index.wxml-->
+<block wx:if="{{!start}}">
+<view class='OrderHead' style='{{tabBarH == 50?"height:65px;":"height:89px;padding-top:24px"}}'>
+  <view class='i-about' wx:if="{{back}}">
+      <navigator url="{{url}}"  open-type="switchTab" hover-class="none" class='back'>
+          <image src='/images/back.svg' style='width:100%;height:100%;'></image>
+      </navigator>
+      <navigator url='{{url2}}' class='search action'>
+          <image src='/images/searchimag.svg' class='searchImag' mode=""></image>
+          <view class='searchText'>搜索</view>
+      </navigator>
+  </view>
+  <block wx:else>
+  <navigator url='/component/searchTitle/orderSearch/index' class='search' >
+      <image src='/images/searchimag.svg' class='searchImag' mode=""></image>
+      <view class='searchText'>搜索</view>
+  </navigator>
+  </block>
+  <view class='OrderAbText'>{{title}}</view>
+</view>
+</block>
+<block wx:else>
+  <view class='OrderHead' style='{{tabBarH == 50?"height:65px;":"height:89px;padding-top:24px"}}'>
+    <view class='i-about' wx:if="{{home}}">
+        <navigator url="{{url}}"  open-type="switchTab" hover-class="none" class='back' >
+            <image src='/images/back.svg' style='width:100%;height:100%;'></image>
+        </navigator>
+        <view class='search action'>
+            <image src='/images/searchimag.svg' class='searchImag' mode=""></image>
+            <view class='searchText' catchtap='btnClick'>搜索</view>
+        </view>
+    </view>
+
+    <view class='OrderAbText'>{{title}}</view>
+  </view>
+</block>

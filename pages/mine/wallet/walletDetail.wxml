@@ -1,0 +1,40 @@
+<!--pages/mine/wallet/balanceDetail.wxml-->
+<view class="admin">
+  <shadow status="top"></shadow>
+  <view class="mac-marbot " style='padding-bottom: {{tabBarH}}px;'>
+    <topNav navTitleArr="{{navTitleArr}}" isFixed="{{true}}" bindclickNavItem="clickNavItem" currentNavId="{{currentNavId}}"></topNav>
+    <view class="module-content">
+      <!--begin-->
+      <block wx:for="{{walDetList}}" wx:key="{{index}}">
+        <!-- <view class="module-list" bindtap='jumpPage' data-item="{{item}}">
+          <view class="module-list-info">
+            <view class="name">{{item.memo}}</view>
+            <view class="name sn font-DIN" wx:if="{{item.sn}}">订单号：{{item.sn}}</view>
+            <view class="time">{{item.addtime}}</view>
+          </view>
+          <view class="module-list-amount">
+            <view class="money font-DIN">{{item.money}}</view>
+          </view>
+        </view> -->
+        <view class="module-item" bindtap='jumpPage' data-item="{{item}}">
+          <view class="wrap top">
+            <view class="name le">{{item.memo}}</view>
+            <view class="sn ri font-DIN" wx:if="{{item.sn}}">订单号：{{item.sn}}</view>
+          </view>
+          <view class="wrap bot">
+            <view class="time le">{{item.addtime}}</view>
+            <!-- 冻结金额item.type == 4&&item.ltype == 1没有订单号 样式定位，颜色变灰-->
+            <view class="money ri font-DIN {{item.sn?'':'pos_money'}}" style="{{(item.type == 4&&item.ltype == 1)?'color: #8b8b8b;':(item.moneyState == 1?'color:#fe6857;':'color:#09bb07;')}}">{{item.money}} <view wx:if="{{item.type == 4&&item.ltype == 1}}" style='font-size: 20rpx;'>（冻结）</view></view>
+          </view>
+        </view>
+      </block>
+      <!--end-->
+    </view>
+    <view wx:if="{{walDetList.length > 0 && walDetList.length < 20}}" style='font-size:24rpx;color:#bbbbbb;padding:1.5em 0;text-align:center;display:flex;flex-direction:row;align-items:center;justify-content:center;'>全部加载完成</view>
+    <loadMore wx:elif="{{walDetList.length == 0}}" empty='{{load_params.empty}}' definedContent="{{true}}" content="{{'暂无明细'}}"></loadMore>
+    <loadMore wx:else loadmore="{{load_params.loadmore}}" loadend="{{load_params.loadend}}" empty="{{load_params.empty}}" definedContent="{{true}}" content="{{'暂无明细'}}"></loadMore>
+  </view>
+
+</view>
+<tabBar current="mine"></tabBar>
+<i-toast id="toast" dd="{{true}}"/>

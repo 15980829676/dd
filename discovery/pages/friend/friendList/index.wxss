@@ -1,0 +1,2 @@
+/* discovery/pages/friend/friendList/index.wxss */
+@import '/discovery/pages/friend/friend.wxss'

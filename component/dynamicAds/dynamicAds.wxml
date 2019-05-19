@@ -1,0 +1,11 @@
+<!--component/dynamicAds/dynamicAds.wxml-->
+<block wx:if="{{list.length > 0}}">
+  <swiper autoplay interval="2000" circular vertical class="set-top top-class {{fixed?'fixed':''}}"  >
+    <swiper-item class="marquee" wx:for="{{list}}" wx:key="{{index}}">
+      <view class="icon" wx:if="{{item.icon}}">
+        <image src="{{item.icon}}"></image>
+      </view>
+      <view class="text-hint">{{item.title}}</view>
+    </swiper-item>
+  </swiper>
+</block>

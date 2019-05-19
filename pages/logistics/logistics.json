@@ -1,0 +1,12 @@
+{
+  "backgroundColor": "#EFEFEF",
+  "navigationBarTitleText": "物流详情",
+  "usingComponents": {
+    "shadow": "/component/shadow/index",
+    "i-steps": "/dist/steps/index",
+    "tabBar": "/component/tabBar/tabBar",
+	  "i-toast": "/dist/toast/index",
+    "logisticsInfo": "/component/order/logisticsInfo/index",
+    "i-step": "/dist/step/index"
+  }
+}

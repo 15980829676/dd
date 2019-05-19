@@ -1,0 +1,12 @@
+{
+  "navigationBarTitleText": "提现",
+  "component": true,
+  "usingComponents": {
+    "tabBar": "/component/tabBar/tabBar",
+    "shadow": "/component/shadow/index",
+    "i-toast": "/dist/toast/index",
+    "i-message": "/dist/message/index",
+    "i-modal": "/dist/modal/index",
+    "dynamicAds": "/component/dynamicAds/dynamicAds"
+  }
+}

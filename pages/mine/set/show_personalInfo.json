@@ -1,0 +1,11 @@
+{
+  "disableScroll": true,
+  "navigationBarTitleText": "个人设置",
+  "usingComponents": {
+    "tabBar": "/component/tabBar/tabBar",
+    "i-message": "/dist/message/index",
+    "watermark": "/component/watermark/index",
+    "shadow": "/component/shadow/index",
+    "i-toast": "/dist/toast/index"
+  }
+}

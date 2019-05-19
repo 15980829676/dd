@@ -1,0 +1,52 @@
+<!--expandPage/bindingParentId/index.wxml-->
+<shadow status="all"></shadow>
+<view class='parentld_contain'>
+  <view class='parentld_row'>
+        <view class='parentld_row_list'>
+            <text class='parentld_title'>设置我的供货商</text>
+            <input type='number' value='{{tel}}' class='parentld_tel' placeholder='输入供货商手机号码' bindinput='telOne'></input>
+            <input type='number' value='{{tel2}}' class='parentld_tel' placeholder='请再次输入供货商手机号码' bindinput='telTwo'></input>
+            <view class='parentld_row_bottom'>
+                <view class='parentld_row_recommend'>推荐供货商</view>
+                <text class='parentld_recommend_text' style="{{recommendText.name?'color:#000;font-weight: bold':''}}">{{recommendText.name || recommend_text}}</text>
+                <button class='parentld_recommend_btn' catchtap='recommend'>选择系统推荐</button>
+            </view>
+        </view> 
+          <button class='parentld_btn_succ' catchtap='btnParentld'>提交</button>
+         
+          <view class='recommend_row' animation="{{animation1}}">
+                <!-- <text class='parentld_title' >系统推荐供货商</text> -->
+                <view class='recommend_top'>
+                    <view class='recommend_top_btn xian {{actionIndex == 0?"action":""}}' data-id="0" catchtap='systemTab'>离我最近</view>
+                    <view class='recommend_top_btn {{actionIndex == 1?"action":""}}' data-id="1" catchtap='systemTab'>综合排序</view>
+                </view>
+               <scroll-view class='recommend_list' scroll-y bindscrolltolower="scrollHander" lower-threshold="100" wx:if="{{actionIndex == 0}}">
+                  <view class="recommend_list_item" wx:for="{{list}}" wx:key="index" catchtap='recommendTab' 
+                  data-parentId="{{item.uid}}" data-name="{{item.name}}">
+                      <view class='recommend_logo'>
+                        <image class='width100' src='{{item.pic}}' mode="widthFix"></image>
+                      </view>
+                      <text class='recommend_text'>{{item.name}}</text>
+                      <text class='recommend_dengji_text'>{{item.leave}}</text>
+                  </view>
+                  <view class='onInt' wx:if="{{listStart}}">数据已加载完</view>
+               </scroll-view>
+                <scroll-view class='recommend_list' scroll-y bindscrolltolower="scrollHander" lower-threshold="100" wx:else>
+                  <view class="recommend_list_item" wx:for="{{list2}}" wx:key="index" catchtap='recommendTab' 
+                  data-parentId="{{item.uid}}" data-name="{{item.name}}">
+                      <view class='recommend_logo'>
+                        <image class='width100' src='{{item.pic}}' mode="widthFix"></image>
+                      </view>
+                      <text class='recommend_text'>{{item.name}}</text>
+                      <text class='recommend_dengji_text'>{{item.leave}}</text>
+                  </view>
+                   <view class='onInt' wx:if="{{listStart2}}">数据已加载完</view>
+               </scroll-view>
+               <view class="qxiao" catchtap='outQx'>取消</view>
+          </view>
+        
+  </view>
+<i-toast id="toast" />
+<i-message id="message" />
+</view>
+

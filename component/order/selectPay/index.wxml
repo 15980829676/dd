@@ -1,0 +1,43 @@
+<!--component/order/selectPay/index.wxml-->
+<i-message id="message" />
+<!-- 收银台 -->
+<view class="Mask" wx:if="{{visiable}}" catchtouchmove='move'>
+  <view class='Mask-wrap' bindtap='closePopUp' catchtouchmove='move'></view>
+  <view class="method" animation="{{animation}}" style="bottom:{{tabBarH}}px;">
+    <view class="title">收银台</view>
+    <view class="close" bindtap='closePopUp'>
+      <image src="/images/method-1.svg"></image>
+    </view>
+    <view class="m-wrap">
+      <block wx:for="{{payMethod}}" wx:key="{{index}}">
+        <view class="wrap-a" bindtap='selectPayMethod' data-type="{{index}}" data-index="{{item.index}}">
+          <view class="left">
+            <view class="icon">
+              <image src="{{item.icon}}"></image>
+            </view>
+            <view class="text">{{item.name}}{{index == 'dealer'?'（￥'+ wallet.df_money +'）':''}}</view>
+          </view>
+          <view class="right">
+            <view class="icon {{item.select?'select':''}} {{index == 'dealer'&&wallet.df_money<=0?'disable':''}}"></view>
+          </view>
+        </view>
+      </block>
+    </view>
+    <view class='bot-wrap'>
+      <view class='wr show-money font-DIN'>充值金额：￥{{parse.setMoney(money)}}</view>
+      <view class='wr btn-con' bindtap='submit'>确定</view>
+    </view>
+  </view>
+</view>
+<i-modal visible="{{ visibleModal }}" actions="{{modalData}}" bind:click="handleModal" i-class-mask="modal-mask" i-class="modal-main">
+  <view class='modalContent' style="padding: 42rpx 44rpx;font-size: 24rpx;color: #333333;">您还未绑定手机号，请前往绑定</view>
+</i-modal>
+<wxs module="parse"> 
+
+module.exports = {
+    setMoney : function( money ){
+      var money = parseFloat(money).toFixed(2)
+      return money;
+    }
+}
+</wxs>

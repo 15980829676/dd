@@ -1,0 +1,10 @@
+{
+  "disableScroll": true,
+  "navigationBarTitleText": "所属团队",
+  "component": true,
+  "usingComponents": {
+    "tabBar": "/component/tabBar/tabBar",
+    "shadow": "/component/shadow/index",
+    "i-toast": "/dist/toast/index"
+  }
+}

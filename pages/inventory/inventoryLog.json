@@ -1,0 +1,10 @@
+{
+  "navigationBarTitleText": "库存日志",
+  "usingComponents": {
+    "loadMore": "/component/loadMore/loadMore",
+    "shadow": "/component/shadow/index",
+    "tabBar": "/component/tabBar/tabBar",
+    "i-message": "../../dist/message/index",
+    "i-toast": "../../dist/toast/index"
+  }
+}

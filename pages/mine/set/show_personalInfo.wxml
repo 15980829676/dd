@@ -1,0 +1,68 @@
+<!--pages/mine/set/show_personalInfo.wxml-->
+<i-message id="message" />
+<view class="admin">
+  <shadow status="top"></shadow>
+  <form class="wrap" bindsubmit="saveInfo">
+
+    <view class="wrap-item">
+      <view class='wrap-l'>名字</view>
+      <!-- <view catchtap='clickShowInput' data-type="name" class='wrap-r'> -->
+        <!-- <input class="wrap-r font-DIN" value='{{info.c_name}}' bindinput='input' bindblur='blur' name="name" data-type="name" bindfocus="focus" /> --> 
+        <view class="r">{{info.c_name}}</view>
+        <!-- <view class="r font-DIN {{info.s_name?'hide':''}}">{{info.c_name}}</view> -->
+      <!-- </view> -->
+    </view>
+    <view class="wrap-item" wx:if="{{info.c_wechat}}">
+      <view class='wrap-l'>微信</view>
+      <!-- <view bindtap='clickShowInput' data-type="wechat" class='wrap-r'> -->
+        <!-- <input class="wrap-r font-DIN " value='{{info.c_wechat}}' bindinput='input' bindblur='blur' name="wechat" data-type="wechat" /> -->
+        <view class="r font-DIN">{{info.c_wechat}}</view>
+        <!-- <view class="wrap-r font-DIN {{info.s_wechat?'hide':''}}">{{info.c_wechat}}</view> -->
+      <!-- </view> -->
+    </view>
+    <!-- bindtap='checkSelfPhone' -->
+    <view class="wrap-item" data-type="phone" data-phone="{{info.c_phone}}">
+      <view class='wrap-l'>手机</view>
+      <!-- <view catchtap='clickShowInput' data-type="phone" class='wrap-r'> -->
+        <!-- <input class='wrap-r font-DIN' disabled='true' value='{{info.c_phone}}' bindinput='input' bindblur='blur' name="phone" data-type="phone" /> -->
+        <view class="r font-DIN">{{info.c_phone}}</view>
+        <!-- <view class='wrap-r font-DIN' disabled='true' value='' bindinput='input' name="phone" data-type="phone">{{info.c_phone}}</view> -->
+      <!-- </view> -->
+      <!-- <view class='right-arrow'></view> -->
+    </view>
+    <view class="wrap-item border0">
+      <view class='wrap-l'>身份证</view>
+      <view class="r font-DIN">{{info.c_idcard}}</view>
+      <!-- <view catchtap='clickShowInput' data-type="idcard" class='wrap-r'> -->
+        <!-- <input class='wrap-r font-DIN' type="idcard" type='number' value='{{info.c_idcard}}' bindinput='input' bindblur='blur' name="idcard" data-type="idcard" /> -->
+      <!-- </view> -->
+    </view>
+    <view class="wrap-item address border0">
+      <view class='wrap-l'>备案地址</view>
+      <view class='wrap-r'>
+        <view class="picker">{{info.c_city}}</view>
+        <view class='region textarea'>{{info.c_address}}</view>
+        <!-- <picker mode="region" name="city" data-type="city" bindchange="bindRegionChange" value="{{region}}">
+          <view class="picker">{{info.c_city}}</view>
+        </picker>
+        <textarea class='region textarea' value='{{info.c_address}}' auto-height='auto' bindinput='input' name="address" data-type="address"></textarea> -->
+      </view>
+    </view>
+
+    <view class="prompt {{isEdit?'animatUp':'animatDown'}}">
+      <view class='layer' wx:if="{{btnActions[0].loading||btnActions[1].loading}}"></view>
+      <button class="prompt-btn" bindtap='btnCancel'>
+        <view wx:if="{{btnActions[0].loading}}" class='btn-loading-inner border-color'></view> 取消</button>
+      <button class="prompt-btn alter" form-type='submit' bindtap='btnConfirm'>
+        <view wx:if="{{btnActions[1].loading}}" class='btn-loading-inner'></view>保存</button>
+    </view>
+
+  </form>
+
+  <!-- <view class="FAE">技术支持诚享科技</view> -->
+  <watermark></watermark>
+
+  <tabBar current="mine"></tabBar>
+</view>
+
+<i-toast id="toast"  dd="{{true}}" />

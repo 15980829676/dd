@@ -1,0 +1,13 @@
+{
+  "navigationBarTitleText": "出货",
+  "backgroundColor": "#efefef",
+  "usingComponents": {
+    "i-message": "/dist/message/index",
+    "i-toast": "/dist/toast/index",
+    "i-modal": "/dist/modal/index",
+    "i-radio-group": "/dist/radio-group/index",
+    "i-radio": "/dist/radio/index",
+    "i-panel": "/dist/panel/index",
+    "shadow": "/component/shadow/index"
+  }
+}

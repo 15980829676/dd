@@ -1,0 +1,10 @@
+{
+  "disableScroll": true,
+  "navigationBarTitleText": "钱包",
+  "usingComponents": {
+    "tabBar": "/component/tabBar/tabBar",
+    "watermark": "/component/watermark/index",
+    "shadow": "/component/shadow/index",
+    "i-toast": "/dist/toast/index"
+  }
+}

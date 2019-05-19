@@ -1,0 +1,15 @@
+/* component/formData/index.wxss */
+
+.messForm button.btnBlock {
+  background-color: transparent;
+  text-align: left;
+  line-height: 1.4;
+  margin: 0;
+  padding: 0;
+  position: relative;
+  border-radius: 0;
+}
+
+.messForm button.btnBlock:after {
+  content: none;
+}

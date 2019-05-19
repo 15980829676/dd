@@ -1,0 +1,28 @@
+<!--pages/mine/set/set_mobile.wxml-->
+<i-toast id="toast"   />
+<form class='box' bindsubmit='btnConfirm'>
+  <view wx:if="{{options.type=='oldUser'}}" class='wrap-item w-i-f' style='font-size: 24rpx;'>
+    <view class="tit">请输入注册店铺时的手机号</view>
+    <view class='text'>如有疑问，请拨打客服电话<view data-phone='4006225215' bindtap='makePhoneCall' class='makePhone'>400-6225-215</view></view>
+  </view>
+  <!-- <view class='wrap-item'>
+    <view class='wrap-l'>身份证</view>
+    <input class='wrap-r' value='{{info.idcard}}' data-type='idcard' bindinput='input' name="idcard" type='number' placeholder='请输入身份证' placeholder-class='placeholder'/>
+    <view class='right-clear' bindtap='clearNumber' data-clear="idcard"></view>
+  </view> -->
+  <view class='wrap-item'>
+    <view class='wrap-l'>手机</view>
+    <input class='wrap-r' value='{{info.phone}}' data-type='phone' bindinput='input' name="phone" type='number' placeholder='请输入手机号' placeholder-class='placeholder'/>
+    <view class='right-clear' bindtap='clearNumber' data-clear="phone"></view>
+  </view>
+  <view class='wrap-item'>
+    <view class='wrap-l'>验证码</view>
+    <input class='wrap-r' value='{{info.code}}' data-type='code' bindinput='input' name="code" type='number' placeholder='请输入验证码' placeholder-class='placeholder'/>
+    <view class='send' bindtap='sendCode' wx:if="{{!countdownData.MIN}}">发送验证码</view>
+    <view class='send' wx:else style='text-align: center;'>{{countdownData.MIN+'s'}}</view>
+  </view>
+  <button form-type='submit' class='btn-save'>保存</button>
+</form>
+<i-message id="message" />
+<view class="FAE">技术支持诚享科技</view>
+<!--<tabBar current="mine"></tabBar>-->

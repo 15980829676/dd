@@ -1,0 +1,12 @@
+
+.i-grid-item {
+  position: relative;
+  float: left;
+  width: 33.33333333%;
+  padding: 20px 10px;
+  box-sizing: border-box;
+  border-right: 1rpx solid #e9eaec;
+  border-bottom: 1rpx solid #e9eaec;
+  background: #fff;
+
+}

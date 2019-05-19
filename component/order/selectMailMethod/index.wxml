@@ -1,0 +1,45 @@
+<!--component/selectMailMethod/index.wxml-->
+<block wx:if="{{visiable}}">
+  <view class='Mask' catchtouchmove='move'>
+    <view class='Mask-layer Mask-class' bindtap='closePopUp' data-type="bkg" catchtouchmove='move'></view>
+    <view class='wrap' style="bottom:{{tabBarH}}px;">
+      <view class='w-top'>
+        <view class='title'>{{title}}</view>
+      </view>
+      <view class='btn-close' bindtap='closePopUp' data-type="express">
+        <image class='icon-close' src='/images/method-1.svg'></image>
+      </view>
+      <scroll-view class='list list-class' style="height: 500rpx;" scroll-y>
+        <block wx:for="{{exList}}" wx:key="{{index}}">
+          <!-- '自提'不渲染 -->
+          <view wx:if="{{item.key!=4}}" class="list-item {{item.disable?'disable':''}}" catchtap='selectMail' data-type="express" data-index="{{index}}">{{item.name}}
+            <image wx:if="{{index==tempSelectIndex[0]}}" class='icon-select' src="/images/icon-select-ddd.svg"></image>
+          </view>
+        </block>
+      </scroll-view>
+    </view>
+
+    <block wx:if="{{mailList.length > 0}}">
+      <view class="wrap mail-wrap {{visiable2?'':''}}"  animation="{{animation1}}" style='bottom:{{tabBarH}}px;left:{{mailWrapLeft}}'>
+        <view class='w-top'>
+          <view class='title'>{{title2}}</view>
+        </view>
+        <view class='btn-back' bindtap='btnBack'>
+          <image class='icon-back' src='/images/withdraw-6.svg'></image>
+        </view>
+        <view class='btn-close' bindtap='closePopUp' data-type="mail">
+          <image class='icon-close' src='/images/method-1.svg'></image>
+        </view>
+        <scroll-view class='list list-class' style="height: 500rpx;" scroll-y>
+          <block wx:for="{{mailList}}" wx:key="{{index}}">
+            <view class='list-item' catchtap='selectMail' data-type="mail" data-index="{{index}}">{{item.name}}({{item.type==1?'运费':'预计运费'}} {{'¥'+item.fee}})
+              <image wx:if="{{index==tempSelectIndex[1]}}" class='icon-select' src="/images/icon-select-ddd.svg"></image>
+            </view>
+          </block>
+          <view class='list-item' catchtap='btnConfirm' data-index="{{index}}">确定</view>
+        </scroll-view>
+      </view>
+    </block>
+
+  </view>
+</block>

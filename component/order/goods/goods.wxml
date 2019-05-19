@@ -1,0 +1,34 @@
+<!--expandPage/component/order/goods.wxml-->
+<view class='item-wrap' style="{{index == (length-1)?'border-bottom: 2rpx solid #d9d9d9;':''}}">
+  <view class="item {{index == (length-1)?'yhs':''}}">
+    <view class="main-item flex">
+      <!-- <view class="top33 check1 check-on1"></view> -->
+      <!-- <view class='i-radio'><image src="/images/icon-select-rect.svg"></image></view> -->
+      <view wx:if="{{isShowRadio}}" class="radio-wrap"><i-radio i-class='i-radio' i-radio-radio="i-radio-radio-circle" i-radio-cell="radio-cell" color="#4DA1FF" checked></i-radio></view>
+      <view class="pic">
+        <image src="{{item.img}}"></image>
+      </view>
+      <view class="info flex-item">
+        <view class="tit flex">
+          <text class="spxq name flex-item">{{item.title}}</text>
+          <view class='props'>{{item.props_name?item.props_name:item.props}}</view>
+        </view>
+        <!-- <view class="guige">规格:{{item.props_name?item.props_name:item.props}}</view> -->
+        <view class="tit flex">
+          <view class="dow">
+            <text class="font-DIN">×{{item.num||item.nums}}</text>
+            <view class="dow-r">
+              <view class='tag' wx:if="{{item.type==13}}">抢购商品</view>
+              <block wx:if="{{item.type==17}}">
+                <view wx:if="{{item.tuantype==1}}" class='tag'>单独购价</view>
+                <view  wx:if="{{item.tuantype==2}}" class='tag'>拼团价</view>
+              </block>
+              <text class="price font-DIN">￥{{item.price}}</text>
+            </view>
+          </view>
+        </view>
+        
+      </view>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,202 @@
+/* pages/acceptance result/acceptance result.wxss */
+.wd-acc {
+  width: 100%;
+  padding: 0 20rpx;
+  box-sizing: border-box;
+}
+
+.wd-acc .acc-top {
+  width: 100%;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  padding: 120rpx 0 80rpx;
+  border-bottom: 2rpx solid #E2E2E2;
+}
+
+.wd-acc .acc-top .icon {
+  width: 110rpx;
+  height: 110rpx;
+}
+
+.wd-acc .acc-top .icon image {
+  width: 100%;
+  height: 100%;
+}
+
+.wd-acc .acc-top .text {
+  width: 100%;
+  font-size: 24rpx;
+  color: #000;
+  text-align: center;
+  padding: 20rpx 0 60rpx;
+}
+
+.wd-acc .acc-top .rmb {
+  width: 100%;
+  text-align: center;
+  font-size: 48rpx;
+  color: #000;
+}
+
+.wd-acc .acc-bot {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  margin-top: 60rpx;
+  /*padding-left: 70rpx;
+  box-sizing: border-box;*/
+}
+
+.wd-acc .acc-bot .boom{
+  width: 100%;
+  line-height: 32rpx;
+  display: flex;
+  align-items: center;
+  margin-bottom: 20rpx;
+}
+
+.wd-acc .acc-bot .boom .bot-left {
+  /*width:100rpx;*/
+  width: 170rpx;
+  display: flex;
+  justify-content: flex-end;
+  font-size: 24rpx;
+  color: #999999;
+}
+
+.wd-acc .acc-bot .boom .bot-right {
+  display: flex;
+  justify-content: flex-start;
+  font-size: 24rpx;
+  color: #000;
+  margin-left: 70rpx;
+}
+.fail .bot-left{
+  align-self: flex-start;
+}
+.fail .bot-right{
+  flex: 1;
+}
+
+.wd-acc .acc-step {
+  width: 100%;
+  display:flex;
+  flex-direction: column;
+  padding: 64rpx 20rpx;
+  box-sizing: border-box;
+  border-bottom: 2rpx solid #E2E2E2;
+}
+
+.wd-acc .acc-step .step-all {
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.wd-acc .acc-step .step-all .bor-rad {
+  width: 22rpx;
+  height: 22rpx;
+  background: #4DA1FF;
+  border-radius: 100%;
+  margin: 0 20rpx;
+}
+
+.wd-acc .acc-step .step-all .bor-rad.bg-two {
+  background: #E2E2E2;
+}
+
+.wd-acc .acc-step .step-all .txt {
+  font-size: 24rpx;
+  color: #8B8B8B;
+  padding-left: 35rpx;
+}
+
+.wd-acc .acc-step .step-all .all-img {
+  width: 62rpx;
+  height: 62rpx;
+}
+
+.wd-acc .acc-step .step-all .all-img image {
+  width: 100%;
+  height: 100%;
+}
+
+.wd-acc .acc-step .step-all .txt-ra {
+  padding-left: 35rpx;
+}
+
+.wd-acc .acc-step .step-all .txt-ra .ra-t{
+  font-size: 28rpx;
+  color: #000;
+  padding-bottom: 6rpx;
+}
+
+.wd-acc .acc-step .step-all .txt-ra .ra-b{
+  font-size: 20rpx;
+  color: #8B8B8B;
+  line-height: 28rpx;
+}
+
+.wd-acc .acc-step .step-all .txt-ra .ra-b text{
+  font-size: 20rpx;
+  color: #000;
+  padding: 0 9rpx 0 8rpx;
+}
+
+.wd-acc .acc-step .step-line {
+  width: 2rpx;
+  height: 100rpx;
+  margin: 10rpx 30rpx 5rpx 30rpx;
+}
+
+.wd-acc .acc-step .step-line image {
+  width: 100%;
+  height: 100%;
+}
+/*ben*/
+.acc-okc {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 180rpx 0;
+  border-bottom: 2rpx solid #e2e2e2;
+}
+
+.acc-okc .GG{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.acc-okc .GG .icon {
+  width: 160rpx;
+  height: 160rpx;
+}
+
+.acc-okc .GG .icon image {
+  width: 100%;
+  height: 100%;
+}
+
+.acc-okc .GG .suc {
+  padding-top: 32rpx;
+  font-size: 36rpx;
+  color: #4da1ff;
+}
+
+.acc-okc .GG .lose {
+  padding-top: 32rpx;
+  font-size: 36rpx;
+  color: #333333;
+}
+
+.boom {
+  align-items: stretch !important;
+  flex-wrap: wrap;
+}
+
+.bot-right {
+  width: 66%;
+}

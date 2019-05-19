@@ -1,0 +1,58 @@
+<!--pages/mine/wallet/addBankCard/index.wxml-->
+<i-toast id="toast" dd="{{true}}" />
+
+<view class="admin">
+  <shadow status="top"></shadow>
+  <view class="mac-marbot">
+
+    <!--银行卡有-->
+    <block wx:if="{{bankCardList.length > 0}}">
+      <view class="bank-card" wx:for="{{bankCardList}}" wx:key="{{index}}" bindtap='jumpPage' data-type='info' data-cardid="{{item.id}}" data-bankcardInfo="{{item}}">
+        <view class="bc-z">
+          <view class="icon">
+            <image src="{{imgSource}}{{item.bank_icon}}"></image>
+          </view>
+          <view class="infor">
+            <view class="yh">{{item.bank_name}}
+              <text>储蓄卡</text>
+            </view>
+            <view class="wh">尾号
+              <text class="font-DIN">{{item.account_no}}</text>
+            </view>
+          </view>
+        </view>
+        <view class="bc-y">
+          <!-- <image src="/images/mine-10.svg"></image> -->
+          <view class='right-arrow'></view>
+        </view>
+      </view>
+    </block>
+    <!--银行卡有end-->
+
+    <view class="add-card" bindtap='jumpPage' data-type='add'>
+      <view class="card-z">
+        <view class="icon">
+          <image src="/images/card-1.svg"></image>
+        </view>
+        <view class="txt">添加银行卡</view>
+      </view>
+      <view class="card-y">
+        <!-- <image src="/images/mine-10.svg"></image> -->
+        <view class='right-arrow'></view>
+      </view>
+    </view>
+    
+    <view class="apply-for" style='display: none' bindtap='jumpPage' data-type='apply'>
+      <view class="apply">
+        <view class="icon">
+          <image src="/images/card-2.svg"></image>
+        </view>
+        <view class="txt">申请信用卡</view>
+      </view>
+    </view>
+
+    <view class="FAE">技术支持诚享科技</view>
+
+  </view>
+  <tabBar current="mine"></tabBar>
+</view>

@@ -1,0 +1,8 @@
+{
+  "navigationBarTitleText": "详情页",
+  "usingComponents":{
+    "shadow": "/component/shadow/index",
+    "i-toast": "/dist/toast/index",
+    "i-spin": "/dist/spin/index"
+  }
+}

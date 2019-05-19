@@ -1,0 +1,56 @@
+<!--pages/mine/wallet/recharge/recharge.wxml-->
+<import src="../../../../wxParse/wxParse.wxml"/>
+<view class="admin" wx:if="{{!showAgreement}}">
+  <shadow status="top"></shadow>
+  <view class="mac-marbot" style="{{(!rechargeAction || rechargeAction.state == 0)?'margin-top: 0':''}}">
+
+    <dynamicAds wx:if="{{rechargeAction && rechargeAction.state == 1}}" list="{{adsList}}"></dynamicAds>
+
+    <view class="widthdraw">
+      <view class="draw-two">
+        <view class="two-text">输入充值金额（元）</view>
+        <input class="two-input " type="digit" value="{{balance}}" placeholder="请输入充值金额" placeholder-class='placeholder' bindinput="input" bindblur="blur" bindfocus='focus' />
+        <view class="draw-four">当前账户余额
+          <text>{{wallet.a_money||'0.00'}}</text>
+        </view>
+      </view>
+      
+      <view class='action-time' wx:if="{{rechargeAction && rechargeAction.state == 1}}">
+        <view class='text' >充值返利活动时间{{rechargeAction.start}}至{{rechargeAction.end}}</view>
+      </view>
+      <button class="draw-btn" bindtap='recharge'>立即充值</button>
+      <view class='agreement'>
+        <view class="radio" bindtap='selcetAgreeAgr'>
+          <image wx:if="{{agreeAgreemant}}" src="/images/icon-select-rect.svg"></image>
+        </view>
+        <view class='agr-r'>
+          <view class='text' bindtap='selcetAgreeAgr'>我已阅读并同意</view>
+          <view class='text agr' bindtap='viewAgreement'>《充值协议》</view>
+        </view>
+      </view>
+    </view>
+
+  </view>
+  <tabBar current="mine"></tabBar>
+</view>
+<i-toast id="toast" dd="{{true}}" />
+<i-message id="message" />
+<i-modal i-class-mask="i-class-mask" i-class="i-modal" visible="{{ visibleModal }}" actions="{{modalData}}" bind:click="handleClick">
+  <view class='modalContent'>请确认充值金额
+    <view class='font-DIN'>￥{{balance}}</view>
+  </view>
+</i-modal>
+
+<!-- 收银台 -->
+<selectPay visiable="{{isShowCheckstand}}" money="{{balance}}" bindsubmit="_submit" wallet="{{wallet}}"></selectPay>
+<!-- 协议 -->
+<view id="agreement" class="" wx:if="{{showAgreement}}">
+  <view class="top-bar top-bar-on">
+    <text class="tit">充值协议</text>
+    <view class="close-agreement" bindtap='closeAgreement'></view>
+  </view>
+
+  <view class="agreement-text">
+    <template is="wxParse" data="{{wxParseData:article.nodes}}" />
+  </view>
+</view>

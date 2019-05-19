@@ -1,0 +1,337 @@
+/* pages/mine/wallet/withdrawal.wxss */
+.placeholder{
+  font-size: 34rpx;
+  /* color: #000; */
+}
+.mac-marbot{
+  margin-top: 70rpx;
+}
+.widthdraw {
+  width: 100%;
+  padding: 0 80rpx;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+}
+.widthdraw .wrap{
+  width: 100%;
+  overflow: hidden;
+  font-size: 24rpx;
+}
+.widthdraw .wrap .wrap-item{
+  width: 100%;
+  /* height: 100rpx; */
+  padding: 32rpx 0;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  border-bottom:2rpx dashed #E2E2E2;
+  box-sizing: border-box;
+}
+.widthdraw .wrap .wrap-item .input{
+  flex: 1;
+}
+.widthdraw .wrap .name{
+  width: 130rpx;
+  padding-right: 34rpx;
+  font-size: 24rpx;
+  color: #333;
+}
+
+.draw-one {
+  width: 100%;
+  padding: 40rpx 0;
+  border-bottom:2rpx dashed #E2E2E2;
+}
+
+.draw-one .one-top {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.draw-one .one-top .top-left {
+  font-size: 24rpx;
+  color: #000;
+  line-height: 24rpx;
+}
+
+.draw-one .one-top .top-left .pad16{
+  padding-left: 32rpx;
+}
+
+.draw-one .one-top .top-left .pad105{
+  padding-left: 20rpx;
+  padding-right: 10rpx;
+}
+
+.draw-one .one-top .top-right {
+  width: 12rpx;
+  height: 24rpx;
+}
+
+.draw-one .one-top .top-right image {
+  width: 100%;
+  height: 100%;
+}
+
+.draw-one .one-bot {
+  width: 100%;
+  padding-top: 10rpx;
+  padding-left: 180rpx;
+  box-sizing: border-box;
+  font-size: 20rpx;
+  color: #8B8B8B;
+}
+
+.draw-two {
+  width: 100%;
+  padding: 40rpx 0;
+  border-bottom:2rpx solid #E2E2E2;
+}
+
+.draw-two .two-text {
+  width: 100%;
+  font-size: 24rpx;
+  color: #000;
+  margin-bottom: 20rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.draw-two .two-input {
+  width: 100%;
+  font-size: 56rpx;
+  color: #000;
+  border: 0;
+  outline: none;
+  height: 52.5rpx;
+  line-height:52.5rpx;
+  padding-bottom: 5rpx;
+}
+
+.draw-three {
+  width: 100%;
+  font-size: 24rpx;
+  color: #8B8B8B;
+  padding: 34rpx 0;
+}
+.c-log{
+  width: 100%;
+  font-size: 24rpx;
+  color: #4DA1FF;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+  margin-bottom:60rpx;
+  padding-top: 12rpx;
+}
+.draw-four {
+  width: 100%;
+  font-size: 24rpx;
+  color: #999999;
+  padding: 34rpx 16rpx;
+  box-sizing: border-box;
+  text-align: right;
+}
+
+.draw-four text {
+  color: #4DA1FF;
+}
+
+.draw-btn {
+  width: 100%;
+  height: 90rpx;
+  line-height: 90rpx;
+  background: #4DA1FF;
+  border: none;
+  border-radius: 10rpx; 
+  font-size: 28rpx;
+  color: #fff;
+  text-align: center;
+  letter-spacing: 6rpx;
+  padding: 0;
+
+}
+.hint-work{
+  width: 100%;
+  text-align: center;
+  font-size: 20rpx;
+  margin-top: 30rpx;
+  color: #999999;
+}
+
+/*选择银行卡*/
+.mask {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 222;
+  background: rgba(0, 0, 0, 0);
+}
+.mask-layer{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+}
+/* 向上动画 */
+.animatUp{
+  bottom: 100rpx ;
+  animation:up 0.3s linear;
+}
+@keyframes up{
+  0%{ bottom: -470rpx ;}
+  100%{ bottom: 100rpx ;}
+}
+/* 向下动画 */
+.animatDown{
+  bottom: -470rpx ;
+  animation:down 0.3s linear;
+}
+@keyframes down{
+  0%{ bottom: 100rpx ;}
+  100%{ bottom: -470rpx ;}
+}
+
+.animatUp-x{
+  bottom: 164rpx ;
+  animation:up-x 0.3s linear;
+}
+@keyframes up-x{
+  0%{ bottom: -470rpx ;}
+  100%{ bottom: 164rpx ;}
+}
+/* 向下动画 */
+.animatDown-x{
+  bottom: -470rpx ;
+  animation:down-x 0.3s linear;
+}
+@keyframes down-x{
+  0%{ bottom: 164rpx ;}
+  100%{ bottom: -470rpx ;}
+}
+
+.sbc {
+  width: 100%;
+  height: 470rpx;
+  background: #fff;
+  position: absolute;
+  left: 0;
+}
+.sbc .bankCard-wrap{
+  width: 100%;
+  height: 340rpx;
+  overflow: scroll;
+}
+.sbc .sbc-t {
+  width: 100%;
+  height: 100rpx;
+  position: relative;
+  border-bottom: 2rpx solid #E2E2E2;
+}
+
+.sbc .sbc-t .headline {
+  width: 100%;
+  height: 100rpx;
+  line-height: 100rpx;
+  text-align: center;
+  font-size: 32rpx;
+  color: #1A1311;
+}
+
+.sbc .sbc-t .return {
+  /* width: 14rpx;
+  height: 28rpx; */
+  width: 100rpx;
+  height: 100rpx;
+  position: absolute;
+  /* top: 37rpx;
+  left: 24rpx; */
+  top: 0;
+  left: 0;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.sbc .sbc-t .return image {
+  width: 14rpx;
+  height: 28rpx;
+  margin-left: 24rpx;
+}
+
+.sbc .sbc-c {
+  width: 100%;
+  height: 100rpx;
+  padding: 0 20rpx;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  position: relative;
+  border-bottom: 2rpx solid #E2E2E2;
+}
+
+.sbc .sbc-c.select {
+  background: #F8F8F9;
+}
+
+.sbc .sbc-c .icon{
+  width: 40rpx;
+  height: 40rpx;
+  border-radius: 100%;
+  overflow: hidden;
+  margin-right: 20rpx;
+}
+
+.sbc .sbc-c .icon image {
+  width: 100%;
+  height: 100%;
+}
+
+.sbc .sbc-c .txt {
+  font-size: 24rpx;
+  color: #333333;
+  line-height: 100rpx;
+}
+
+ .sbc .sbc-c .txt .pad {
+   padding-left: 28rpx;
+   padding-right: 12rpx;
+ }
+
+.sbc .sbc-c .check {
+  width: 30rpx;
+  height: 18.56rpx;
+  position: absolute;
+  top: 50%;
+  margin-top: -9.28rpx;
+  right: 20rpx;
+}
+.sbc .sbc-c .right-arrow {
+  /* width: 30rpx;
+  height: 18.56rpx; */
+  position: absolute;
+  top: 50%;
+  margin-top: -9.28rpx;
+  right: 20rpx;
+}
+
+.sbc .sbc-c .check image {
+  width: 100%;
+  height: 100%;
+}
+
+.sbc .sbc-b {
+  width: 100%;
+  height: 30rpx;
+  display: flex;
+}

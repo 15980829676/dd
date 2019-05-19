@@ -1,0 +1,24 @@
+<!--component/order/goods/index.wxml-->
+<!-- ord_goods_type=3：赠品 -->
+<view class="submit-buypro-list mart5">
+  <view class="title">
+    <view class="icon disn">
+      <!-- <image src="../images/obs.png"></image> -->
+    </view>
+    <text> 商品明细</text>
+  </view>
+  <block wx:if="{{list1.length > 0}}" wx:for="{{list1}}" wx:key="{{index}}">
+    <!-- 组合购 -->
+    <block wx:if="{{item.type == 9 && item.ord_goods_type!=3}}">
+      <g_group item="{{item}}" isShowRadio="{{isShowRadio}}" index="{{index}}" length="{{list1.length}}"></g_group>
+    </block>
+
+    <!-- 普通或抢购或拼团 -->
+    <block wx:else>
+      <block wx:if="{{item.ord_goods_type!=3}}">
+        <goods item="{{item}}" isShowRadio="{{isShowRadio}}" index="{{index}}" length="{{list1.length}}"></goods>
+      </block>
+    </block>
+
+  </block>
+</view>

@@ -1,0 +1,134 @@
+<!--pages/offline payment/offline payment.wxml-->
+<shadow status="top"></shadow>
+
+<i-message id="message" />
+<i-toast id="toast" dd="{{true}}" />
+
+<view class="admin">
+
+  <view class="mac-marbot">
+    <!-- 线下支付 -->
+    <view class='op-wrap' wx:if="{{payInfo.payType == 'linePay'}}">
+      
+      <view class="b-c" bindtap="openPayMent">
+        <view class="b-c-1">支付方式</view>
+        <input class="b-c-2" type="text" disabled value="{{payInfo.bank}}" placeholder="选择线下支付方式" placeholder-style='text-align: right;' style='padding-right:60rpx;text-align: right;' />
+        <view class="b-c-4">
+          <view class='right-arrow'></view>
+        </view>
+      </view>
+
+      <view class="b-c" wx:if="{{payInfo.account_sn}}">
+        <view class="b-c-1">账户</view>
+        <view class='b-c-2 font-DIN font-top'>{{payInfo.account_sn}}</view>
+      </view>
+    </view>
+    <!-- 支付宝线下转账 -->
+    <view class='op-wrap' wx:if="{{payInfo.payType == 'Alipay'}}">
+      <view class="b-c">
+        <view class="b-c-1">转账账户</view>
+        <!-- <input class="b-c-2" type="text" disabled value="{{'774336699@qq.com'}}" placeholder-style='text-align: right;'/> -->
+        <view class="b-c-2" style='text-align: right;'>{{'774336699@qq.com'}}</view>
+      </view>
+      <view class="b-c">
+        <view class="b-c-1">支付方式</view>
+        <!-- <input class="b-c-2" type="text" disabled value="{{22}}" placeholder-style='text-align: right;'/> -->
+        <view class="b-c-2" style='text-align: right;'>支付宝线下转账</view>
+      </view>
+    </view>
+
+    <view class="op-wrap">
+
+      <view class="b-c">
+        <view class="b-c-1">订单编号</view>
+        <!-- <input class="b-c-2" type="text" disabled value="19021116015486486" placeholder="" /> -->
+        <view class='b-c-2 font-DIN font-top'>{{payInfo.orderSn}}</view>
+      </view>
+      <view class="b-c">
+        <view class="b-c-1">订单金额</view>
+        <!-- <input class="b-c-2" type="text" disabled value="￥{{payInfo.orderMoney || '0.00'}}" placeholder="" /> -->
+        <view class='b-c-2 font-DIN font-top'>￥{{payInfo.orderMoney || '0.00'}}</view>
+      </view>
+      <view class="b-c">
+        <!-- 如果是pos刷卡文字要变动 -->
+        <view class="b-c-1">{{payInfo.bankid && payInfo.bankid==7?'参考号':'转账单号'}}</view>
+        <input class="b-c-2 font-DIN font-top" type="number" value="" placeholder="{{payInfo.payType == 'linePay'?(payInfo.bankid && payInfo.bankid==7?'请输入参考单号(选填)':'请输入转账单号(选填)'):'请输入转账单号'}}" bindinput='input' data-name="transferOrderSn"/>
+      </view>
+      <view class="b-c">
+        <view class="b-c-1">{{payInfo.bankid && payInfo.bankid==7?'刷卡金额':'转账金额'}}</view>
+        <input class="b-c-2 font-DIN font-top" type="digit" value="{{payInfo.transferMoney}}" placeholder="{{payInfo.bankid && payInfo.bankid==7?'请输入刷卡金额':'请输入转账金额'}}" bindinput='input' data-name="transferMoney" bindblur='blur'/>
+      </view>
+      <view class="upload">
+        <view class="text">{{payInfo.bankid && payInfo.bankid==7?'上传刷卡支付凭据':'上传支付凭据'}}</view>
+        <addPicture bindhandlePicture="_handlePicture" id="addPicture"></addPicture>
+      </view>
+
+    </view>
+    <view wx:if="{{payInfo.payType == 'linePay'}}" style='color: #333333;font-size:24rpx;padding: 40rpx 3% 0 3%;'>请在20分钟内将货款转至公司账户</view>
+    <view wx:if="{{payInfo.payType == 'Alipay'}}" style='color: #333333;font-size:24rpx;padding: 40rpx 3% 0 3%;'>请在20分钟内将货款转至公司账户：774336699@qq.com，转账成功后，请在此填写32位支付宝转账单号</view>
+    <view class="op-btn" bindtap='submitPayInfo'>提交</view>
+    <watermark fae-class="FAEClass"></watermark>
+    <!-- <view class="mask" wx:if="{{visiable1}}">
+      <view class='mask-bkg' bindtap="closePayMent"></view>
+      <view class="sb-c" animation="{{animation1}}">
+        <view class="title">选择线下支付方式</view>
+        <view class="return">
+          <image src="/images/method-8.svg"></image>
+        </view>
+        <view class="tier">
+          <view class="t-1 select">
+            <view class="icon">
+              <image src="/images/method-2.svg"></image>
+            </view>
+            <view class="text">余额</view>
+            <view class="check">
+              <image src="/images/method-10.svg"></image>
+            </view>
+          </view>
+          <view class="t-1">
+            <view class="icon">
+              <image src="/images/method-4.svg"></image>
+            </view>
+            <view class="text">微信</view>
+          </view>
+          <view class="t-1">
+            <view class="icon">
+              <image src="/images/method-5.svg"></image>
+            </view>
+            <view class="text">支付宝</view>
+          </view>
+        </view>
+      </view>
+    </view> -->
+    <view class="Mask" wx:if="{{visiable1}}" catchtouchmove='move'>
+      <view class='Mask-wrap' bindtap='closePayMent' catchtouchmove='move'></view>
+      <view class="method" animation="{{animation1}}">
+        <view class="title">选择线下支付方式</view>
+        <view class="close" bindtap='closePayMent'>
+          <image src="/images/method-1.svg"></image>
+        </view>
+        <view class="m-wrap">
+          <block wx:for="{{payMethod}}" wx:key="{{index}}">
+            <view class="wrap-a" wx:if="{{item.status == 1}}" bindtap='selectPayMethod' data-id="{{item.Id}}" data-index="{{item.index}}">
+              <view class="left">
+                <view class="icon">
+                  <!-- <image src="{{item.icon}}" mode='widthFix'></image> -->
+                  <view style='width: 100%;height: 100%;background-image:url({{item.icon}});background-repeat:no-repeat;background-size:cover;background-position:center center;'></view>
+                </view>
+                <view class="text">{{item.payname}}</view>
+              </view>
+              <view class="right">
+                <view class="icon {{item.select?'select':''}}"></view>
+              </view>
+            </view>
+          </block>
+        </view>
+      </view>
+    </view>
+
+  </view>
+
+</view>
+<i-modal visible="{{ visibleModal1 }}" actions="{{modalData1}}" bind:click="handleModal1" i-class-mask="modal-mask1" i-class="modal-main">
+  <view class='modalContent' style="padding: 42rpx 44rpx;font-size: 24rpx;color: #333333;">您输入的金额和订单金额不符合，是否继续提交？</view>
+</i-modal>

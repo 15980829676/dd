@@ -1,0 +1,61 @@
+/* expandPage/version/content.wxss */
+.contain {
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-sizing: border-box;
+  padding: 0 30rpx;
+}
+.row {
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  border-bottom:1px solid #d5d5d5;
+  padding-bottom:26rpx;  
+}
+.rowTop {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row;
+  padding-top:43rpx; 
+  margin-bottom: 10rpx;
+}
+.title {
+  font-size: 28rpx;
+  font-weight: bold;
+  color: #000;
+}
+.rowData {
+  font-size: 28rpx;
+  color: #ccc;
+}
+.displayFloat {
+  display: flex;
+  flex-direction: column;
+}
+.displayFloat.action {
+  flex-direction: column-reverse;
+}
+.rowListOne {
+  display: flex;
+  flex-direction: column;
+}
+.rowListOneText {
+  color: #000;
+  font-size: 26rpx;
+  /* margin-bottom:10rpx;  */
+  line-height: 45rpx;
+}
+
+.font_W {
+  font-weight: bold;
+}
+.marginR10 {
+  margin-right: 10rpx;
+  margin-left: 20rpx;
+}

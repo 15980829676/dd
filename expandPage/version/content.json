@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "shadow": "/component/shadow/index",
+    "i-toast": "/dist/toast/index"
+  },  
+  "navigationBarTitleText": "版本更新日记"
+}

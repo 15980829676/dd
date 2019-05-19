@@ -1,0 +1,152 @@
+<!--pages/shopMerchants/info.wxml-->
+<import src="../../wxParse/wxParse.wxml"/>
+<!-- <view class="top-bar" wx:if="{{step==0}}">
+  <view class="bk" catchtap="onBacktap">
+    <image src="/images/img-6.png"></image>
+  </view>
+  <text class="tit">选择店铺等级</text>
+</view> -->
+<!-- <view class=' top_shadow' style="position: fixed;top:0;left: 0;width: 100%;height: 10rpx;"></view> -->
+<shadow status="top"></shadow>
+<form class="{{step==0?'shop-merchants':'shop-merchants padt'}}" bindsubmit="onPaytap">
+
+  <view class="shop-steps">
+    <i-steps>
+      <i-step status="{{step==0?'process':'finish'}}">
+        <view slot="title" class="{{step==0?'steps-text-a':'steps-text-b'}}">
+          支付保证金
+        </view>
+      </i-step>
+      <i-step status="{{step==1?'process':'finish'}}">
+        <view slot="title" class="{{step==1?'steps-text-a':'steps-text-b'}}">
+          提交审核
+        </view>
+      </i-step>
+      <i-step status="{{step==2?'process':'finish'}}">
+        <view slot="title" class="{{step==2?'steps-text-a':'steps-text-b'}}">
+          {{!shopAgree && step==2?'审核失败':shoppText}}
+        </view>
+      </i-step>
+    </i-steps>
+  </view>
+
+  <view class="shop-wrap" wx:if="{{step==0}}">
+    <view class="shop-store">
+	 <view wx:if="{{isOn==flase}}" class="incl">
+        <view class="{{currentIndex==index?'grade gais font-DIN':'grade font-DIN'}}" wx:for="{{shopType}}" data-index='{{item.id}}' wx:key="index">
+          <view class="v1">{{item.name}}</view>
+          <view class="v2">RMB {{item.money}}</view>
+        </view>
+      </view>
+      <view wx:else class="incl">
+        <view class="{{currentIndex==index?'grade select font-DIN':'grade font-DIN'}}" wx:for="{{shopType}}" data-index='{{item.id}}' wx:key="index" bindtap="onSelect">
+          <view class="v1">{{item.name}}</view>
+          <view class="v2">RMB {{item.money}}</view>
+        </view>
+      </view>
+    </view>
+
+
+    <view class="shop-center">
+      <view class="fill-title">填写申请资料</view>
+      <view class="user">
+        <text class="wan">姓名</text>
+        <input type="text" name="name" placeholder="请输入真实姓名" bindinput="getName" />
+      </view>
+      <view class="user">
+        <text class="wan">身份证号码</text>
+        <input type="text" name="idcard" placeholder="请输入身份证号码" bindinput="getId" />
+      </view>
+      <view class="user">
+        <text class="wan">手机号码</text>
+        <input type="number" name="phone" placeholder="请输入手机号码" maxlength="11" bindinput="getPhone" />
+      </view>
+      <view class="user position_rel">
+        <text class="wan">短信验证</text>
+        <input type="number" name="code" placeholder="请输入验证码" style="width:35%;" bindinput="getCode"/>
+        <view class="checkCode" wx:if="{{countdownData.MIN}}">{{countdownData.MIN}}s</view>
+        <view class="checkCode" wx:else disabled='{{disabled}}' data-id="2" bindtap="getVerificationCode"> 获取验证码</view>
+      </view>
+      <view class="hint">申请和缴费请使用本人有效微信账号，该账号与后于店铺总收益直接关联</view>
+    </view>
+
+
+    <view class="shop-center">
+      <view class="fill-title">填写店铺地址</view>
+      <view class="user position_rel">
+         <text class="wan">地区信息</text>
+		 <view class='i-input-input i-cell-bd' wx:if="{{region.length>0}}" bindtap='clickVisiableAddress'>
+            {{region[0]}} {{region[1]}} {{region[2]}}
+          </view>
+          <view class='i-input-input i-cell-bd' wx:else style="color: #808080;" bindtap='clickVisiableAddress'>请选择地址</view>
+        <view class="down-icon"></view>
+      </view>
+      <view class="user">
+        <text class="wan">详细地址</text>
+        <input name="address" class="hgt26" placeholder="街道门牌信息(不包括省份和城市)" bindinput="getAddress"/>
+      </view>
+      <view class="agreement">
+        <view class="{{isShow?'fds check check-on':'fds check'}}" catchtap="oncurrentType"></view>
+        <view class="rig">
+          <text>阅读并同意</text>
+          <view class="olm" bindtap='agreement' data-agreement="seller" data-name="信购商城平台服务协议">《信购商城平台服务协议》</view>
+          <text>、</text>
+          <view class="olm" bindtap='agreement' data-agreement="customer" data-name="消费者保障服务协议">《消费者保障服务协议》</view>
+          <text>、</text>
+          <view class="olm" bindtap='agreement' data-agreement="marketing" data-name="信购商城营销服务协议">《信购商城营销服务协议》</view>
+        </view>
+      </view>
+    </view>
+
+    <view class="payment">缴交保证金后，我们将审核你的资质，并为您匹配一名创业导师</view>
+    <!-- catchtap="onPaytap"  -->
+    <button class="pay-btn" form-type='submit'
+    type="ghost" >{{isOn?'支付保证金':'提交审核'}}</button>
+
+  </view>
+
+  <view class="shop-wraps" wx:else>
+    <view class="shop-audit">
+      <view class="audit-icon" wx:if="{{stype==5}}">
+        <image src="/images/img-11.svg"></image>
+      </view>
+	  <view class="audit-icon" wx:else>
+        <image src="/images/img-5.svg"></image>
+      </view>
+      <view class="audit-being">{{stype==5?'申请审核失败':stype==3?'您的申请正在审核':'您的申请正在审核'}}</view>
+      <view class="audit-character">{{stype==5 && sr_info.r_type==1?'未通过原因：'+sr_info.reason:stype==5 && sr_info.r_type==3?'未通过原因：'+sr_info.reason:stype==5 && sr_info.r_type==2?'未通过原因：'+sr_info.reason:'请耐心等待'}}</view>
+       <view class='loadinBtn' bindtap='onbtn' 
+          wx:if="{{stype == 1}}"
+          style="width:80px;height:40px;border-radius:10rpx;background:#4DA1FF;color:#fff;font-size:14px; line-height:40px;margin-top:60rpx;">查询进度</view>
+      <view class="audit-tel" style="{{stype == 1?'padding-top:60rpx':''}};">客服电话：400-4548-666</view>
+	  <view class="audit-btn" wx:if="{{stype!=1}}">
+		<view class="btn-box" wx:if="{{stype==5 && sr_info.statue==0}}">
+			<view class="btn-left" catchtap="repayTap">支付保证金</view>
+			<view class="btn-right" catchtap="resetTap">重新申请</view>
+		</view>
+		<view wx:if="{{stype==5 && sr_info.statue!=0 && isShowPl}}" class="btn-nei" catchtap="resetTap">重新申请</view>
+	  </view>
+      <!-- <view wx:else class="audit-btns" catchtap="onResetTap">返回首页</view> -->
+    </view>
+  </view>
+
+<view id="agreement" class="" style="-webkit-overflow-scrolling: touch; padding-bottom:30rpx; " wx:if="{{agreementName}}">
+  <view class="top-bar top-bar-on">
+    <text class="tit">{{agreementName}}</text>
+    <view class="close-agreement" bindtap='closeAgreement'></view>
+  </view>
+
+  <view id="agreement-text" class="agreement-text" style="height: 100%;overflow-y: scroll;">
+      <template is="wxParse" data="{{wxParseData:article.nodes}}"/>
+  </view>
+  </view>
+
+
+</form>
+
+<!-- 地址选择 -->
+<selectAddress 
+visiable="{{visiableAddress}}" 
+bindcityChangeConfirm="_cityChangeConfirm"></selectAddress>
+
+<i-toast id="toast" />

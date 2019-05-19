@@ -1,0 +1,40 @@
+<!--pages/suggest complaint/suggest complaint.wxml-->
+<shadow status="all"></shadow>
+<view class="admin">
+
+  <view class="mac-marbot">
+
+    <view class="wd-acc">
+
+      <view class="acc-step">
+
+        <view class="step-all">
+          <view class="bor-rad"></view>
+          <view class="txt">发起投诉申请</view>
+        </view>
+        <view class="step-line">
+          <image src="/images/withdraw-5.png"></image>
+        </view>
+        <view class="step-all">
+          <view class="all-img">
+            <image src="/images/withdraw-4.svg"></image>
+          </view>
+          <view class="txt-ra">
+            <view class="ra-t">已提交至公司受理</view>
+            <view class="ra-b">正在受理中</view>
+          </view>
+        </view>
+        <view class="step-line">
+          <image src="/images/withdraw-5.png"></image>
+        </view>
+        <view class="step-all">
+          <view class="bor-rad bg-two"></view>
+          <view class="txt">受理成功</view>
+        </view>
+      </view>
+
+    </view>
+
+  </view>
+    <navigator class="submit" url="../my complaint/my complaint">我的投诉</navigator>
+</view>

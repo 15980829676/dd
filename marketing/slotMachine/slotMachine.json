@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "老虎机",
+  "usingComponents": {
+    "i-ranking": "./../ranking/index",
+    "shadow": "/component/shadow/index"
+  }
+}

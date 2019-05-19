@@ -1,0 +1,14 @@
+{
+  "navigationBarTitleText": "团队管理",
+  "component": true,
+  "usingComponents": {
+    "i-progress": "../../dist/progress/index",
+    "i-tab-bar": "/dist/tab-bar/index",
+    "i-tab-bar-item": "/dist/tab-bar-item/index",
+    "tabBar": "/component/tabBar/tabBar",
+    "loadMore": "/component/loadMore/loadMore",
+    "shadow": "/component/shadow/index",
+    "topLoadingProgress": "/component/topLoadingProgress/topLoadingProgress",
+    "i-toast": "/dist/toast/index"
+  }
+}

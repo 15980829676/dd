@@ -1,0 +1,8 @@
+{
+  "component": true,
+  "usingComponents": {
+    "i-modal": "/dist/modal/index",
+    "i-toast": "/dist/toast/index",
+    "i-message": "/dist/message/index"
+  }
+}

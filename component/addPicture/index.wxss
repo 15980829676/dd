@@ -1,0 +1,55 @@
+/* component/addPicture/index.wxss */
+.deletePic{
+  width: 38rpx;
+  height: 38rpx;
+  position: absolute;
+  right: -19rpx;
+  top: -19rpx;
+  border-radius: 50%;
+  /* font-size: 30rpx;
+  text-align: center;
+  line-height: 38rpx; */
+  background: #fff;
+  overflow: hidden;
+  z-index: 5;
+  color: #fff;
+}
+.icon-close{
+  width: 100%;
+  height: 100%;
+}
+.addPicture-wrap {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.addPicture-wrap .pic{
+  width: 206rpx;
+  height: 206rpx;
+  border: 2rpx solid #E5E5E5;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-right: 20rpx;
+  margin-bottom: 20rpx;
+  position: relative;
+}
+
+.addPicture-wrap .pic .icon {
+  width: 35.84rpx;
+  height: 35.84rpx;
+  margin-top: 76rpx;
+  margin-bottom: 12rpx;
+}
+
+.addPicture-wrap .pic .icon image {
+  width: 100%;
+  height: 100%;
+}
+
+.addPicture-wrap .pic .explain {
+  font-size: 20rpx;
+  color: #999999;
+}

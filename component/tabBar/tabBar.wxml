@@ -1,0 +1,26 @@
+<!--component/tabBar/tabBar.wxml-->
+<!-- <i-tab-bar current="{{ current }}" bindchange="handleChange" fixed="true" i-class="i-class">
+  <i-tab-bar-item key="home" img="/images/home.svg" current-img="/images/home-action.svg" title="首页"></i-tab-bar-item>
+  <i-tab-bar-item key="inventory" img="/images/inventory.svg" current-img="/images/inventory-action.svg" title="库存"></i-tab-bar-item>
+  <i-tab-bar-item key="team" img="/images/team.svg" current-img="/images/team-action.svg" title="团队"></i-tab-bar-item>
+  <i-tab-bar-item key="notice" img="/images/notice.svg" current-img="/images/notice-action.svg" title="通知"></i-tab-bar-item>
+  <i-tab-bar-item key="mine" img="/images/mine.svg" current-img="/images/mine-action.svg" title="我的"></i-tab-bar-item>
+</i-tab-bar> -->
+<view class='tabbar fixed' catchtouchmove="move" style="height: {{tabBarHeight}}px;padding-bottom: {{tabBarHeight == 82?'66':0}}rpx;box-sizing:border-box;">
+  <block wx:for="{{tabbarList}}" wx:key="{{index}}">
+    <view class='tabbar-item' data-key="{{item.key}}" bindtap="handleChange1" data-index='{{index}}'>
+      <view class='item'>
+        <block wx:if="{{current == item.key}}">
+          <image class='tabbar-icon' src='{{item.selectedIconPath}}'></image>
+          <view class='tabbar-text selectedColor'>{{item.text}}</view>
+        </block>
+        <block wx:else>
+          <image class='tabbar-icon' src='{{item.iconPath}}'></image>
+          <view class='tabbar-text '>{{item.text}}</view>
+        </block>
+        <view wx:if="{{pointIndex == index && pointCount > 0}}" class='point' style="">{{pointCount>99?'99+':pointCount}}</view>
+      </view>
+    </view>
+  </block>
+</view>
+<view class='bot_shadow' style='bottom: {{tabBarHeight}}px;'></view>

@@ -1,0 +1,86 @@
+.modal-mask{
+  z-index: 1004;
+}
+.modal-main{
+  z-index: 1005;
+}
+.modal-mask2 {
+  background: transparent !important;
+}
+.login {
+  width: 100%;
+  max-height: 450rpx;
+  height: auto;
+  position: fixed;
+  top: -225rpx;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+}
+
+.login-hou {
+  width: 610rpx;
+  height: auto;
+  margin: 0 auto;
+}
+
+.login-hou .title {
+  width: 100%;
+  height: auto;
+  text-align: center;
+  font-size: 30rpx;
+  color: #050505;
+  font-weight: bold;
+}
+
+.login-hou .line {
+  width: 100%;
+  height: 2rpx;
+  background: #ccc;
+  margin: 70rpx 0 60rpx;
+}
+
+.login-hou .text {
+  width: 100%;
+  height: auto;
+  font-size: 24rpx;
+  color: #050505;
+  font-weight: bold;
+}
+
+.login-hou .fox {
+  width: 100%;
+  height: auto;
+  margin: 40rpx 0 80rpx;
+  float: left;
+}
+
+.login-hou .fox .rad {
+  width: 10rpx;
+  height: 10rpx;
+  border-radius: 100%;
+  background: #878787;
+  margin: 11rpx 30rpx 0 10rpx;
+  float: left;
+}
+
+.login-hou .fox .mot {
+  width: auto;
+  height: auto;
+  font-size: 22rpx;
+  color: #878787;
+  float: left;
+}
+
+.login-hou .but {
+  width: 100%;
+  height: 97rpx;
+  line-height: 97rpx;
+  background: #333;
+  border: none;
+  border-radius: 10rpx;
+  font-size: 28rpx;
+  color: #fff;
+  text-align: center;
+}

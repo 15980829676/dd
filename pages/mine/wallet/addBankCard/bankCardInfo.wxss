@@ -1,0 +1,198 @@
+/* pages/mine/wallet/addBankCard/bankCardInfo.wxss */
+@import "./index.wxss";
+.vbc-mt {
+  height: 236rpx!important;
+  margin-top: 0!important;
+}
+.FAE{
+  bottom: 136rpx;
+}
+.layer{
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: rgba(0,0,0,0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 101;
+}
+.layer .layer-wrap{
+  width: 540rpx;
+  height: auto;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center; 
+}
+.layer .layer-wrap .loading{
+  display: inline-block;
+  vertical-align: middle;
+  width: 14px;
+  height: 14px;
+  background: 0 0;
+  border-radius: 50%;
+  border: 2px solid #fff;
+  border-color:  #4da1ff #4da1ff #4da1ff transparent;
+  animation: btn-spin 0.6s linear;
+  animation-iteration-count: infinite;
+}
+@keyframes btn-spin{0%{transform:rotate(0)}100%{transform:rotate(360deg)}}
+.layer .layer-wrap .text{
+  margin-top: 25rpx;
+  font-size: 24rpx;
+  color: #fff;
+}
+
+.vbc-icon {
+  width: 80rpx!important;
+  height: 80rpx!important;
+  margin-right: 38rpx!important;
+}
+
+.vbc-no {
+  font-size: 34rpx!important;
+}
+
+.vbc-tier {
+  width: 100%;
+  margin-top: 28rpx;
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+}
+
+.vbc-tier .tier-t {
+  width: 100%;
+  height: 100rpx;
+  line-height: 100rpx;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 40rpx;
+  box-sizing: border-box;
+  border-bottom: 2rpx solid #E2E2E2;
+}
+
+.vbc-tier .tier-t:last-child {
+  border-bottom: none;
+}
+
+.vbc-tier .tier-t .quota {
+  font-size: 24rpx;
+  color: #999999;
+}
+
+.vbc-tier .tier-t .money {
+  font-size: 28rpx;
+  color: #333333;
+}
+
+.vbc-btn {
+  /* width: 94%; */
+  width: 705rpx;
+  height: 90rpx;
+  line-height: 90rpx;
+  background: #4DA1FF;
+  border-radius: 10rpx;
+  text-align: center;
+  font-size: 28rpx;
+  color: #fff;
+  letter-spacing: 6rpx;
+  /* margin: 180rpx 3% 0 3%; */
+  position: fixed;
+  bottom: 200rpx;
+  left: 50%;
+  margin-left: -352.5rpx;
+  /* bottom: 136rpx;
+  left: 50%;
+  margin-left: -47%; */
+}
+
+.mask {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 222;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.vbc-dialog {
+  width: 496rpx;
+  height: 236rpx;
+  background: #fff;
+  border: 2rpx solid #707070;
+  border-radius: 10rpx;
+  position: fixed;
+  top:384rpx;
+  left: 50%;
+  margin-left: -250rpx;
+}
+
+.vbc-dialog .txt {
+  width: 100%;
+  font-size: 24rpx;
+  color: #333333;
+  text-align: center;
+  padding: 64rpx 0;
+  border-bottom: 2rpx solid #E2E2E2;
+}
+
+.vbc-dialog .btn {
+  width: 100%;
+  font-size: 24rpx;
+  color: #4DA1FF;
+  /* color: #707070; */
+  text-align: center;
+  padding: 22rpx 0;
+  letter-spacing: 6rpx;
+}
+.vbc-wrap{
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+.vbc-hint {
+  width: 240rpx;
+  height: 240rpx;
+  background: #666666;
+  opacity: 0.6;
+  border-radius: 100%;
+  position: absolute;
+  top:344rpx;
+  left: 50%;
+  margin-left: -120rpx;
+  text-align: center;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.vbc-hint .icon {
+  width: 86.84rpx;
+  height: 51.12rpx;
+  /* margin-top: 78rpx; */
+  margin-bottom: 17rpx;
+  display: inline-block;
+}
+
+.vbc-hint .icon image {
+  width: 100%;
+  height: 100%;
+}
+
+.vbc-hint .txt {
+  width: 100%;
+  text-align: center;
+  font-size: 28rpx;
+  color: #fff;
+}

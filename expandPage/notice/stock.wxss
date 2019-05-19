@@ -1,0 +1,231 @@
+/* expandPage/notice/stock.wxss */
+page {
+  background: #efefef;
+}
+.wx-class-x{
+  padding-bottom: 82px;
+}
+.wx-class{
+  padding-bottom: 50px;
+}
+
+.module-content {
+  padding-top: 100rpx;
+}
+.module-content.padts{padding-top: 180rpx;}
+.module-list .module-list-info  {
+  width: auto;
+}
+.mac-marbot {
+  margin-bottom: 0;
+}
+.module-list{
+  height: auto;
+  flex-direction:column;
+  align-items: flex-start;
+  border-bottom: 0;
+  /* margin-bottom: 20rpx; */
+  padding-right:0; 
+  background: white;
+}
+.module-list:last-child{
+  margin-bottom: 0;
+}
+.module-list .top {
+  width: 100%;
+  height: 120rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.purch{
+  font-size: 16px !important;
+  height: 44rpx;
+  line-height: 44rpx;
+}
+.m-icon {
+  width: 60rpx;
+  height: 60rpx;
+  line-height: 60rpx;
+  border-radius: 3px;
+  color: #fff;
+  font-size: 24rpx;
+  text-align: center;
+  margin-right: 20rpx;
+  overflow: hidden;
+}
+.m-icon .img{
+  width: 100%;
+  height: 100%;
+}
+.m-icon-right{
+  flex: 1;
+  height: 100%;
+  border-bottom: 2rpx solid #f7f7f7;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+
+  padding-right:30rpx; 
+}
+
+.module-list .module-list-amount {
+  /* width: calc(100% - 80rpx - 45%); */
+  text-align: right;
+}
+/* .module-list .module-list-info .m-wrap-t{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+} */
+
+.i-tag{
+  width: auto;
+  overflow: hidden;
+  font-size: 20rpx !important;
+  border: 0 !important;
+  height: auto !important;
+  line-height: inherit !important;
+  white-space: nowrap;
+  margin-left: 5rpx;
+}
+.module-list .module-list-info .info-name {
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding-right: 15rpx;
+}
+
+.module-list .module-list-info .info-name .text {
+  max-width: 300rpx;
+  font-size: 32rpx;
+  color: #000;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+
+}
+.module-list .module-list-info .time text{
+  padding-left: 0;
+}
+
+.module-list .module-list-info .info-name .badge {
+  width: 12rpx;
+  height: 12rpx;
+  background: #eb0000;
+  border-radius: 100%;
+  position: absolute;
+  top: 0;
+  /* right: -12rpx; */
+  right: 0;
+}
+
+.module-list .bot{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  /* padding-bottom: 40rpx; */
+}
+.module-list .bot .m-icon{
+  background: transparent;
+}
+.module-list .bot .info{
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+.module-list .bot .info .g-info{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 30rpx 30rpx 30rpx 80rpx;
+  box-sizing: border-box;
+  height: 100rpx;
+}
+.module-list .bot .info .g-info .name {
+  max-width:200rpx;
+  overflow:hidden;
+  white-space:nowrap;
+}
+.module-list .bot .info .g-info .num{
+  margin-left: 20rpx;
+}
+.module-list .bot .info .g-info .money{
+  font-size: 27rpx;
+  color: #2e2e2e;
+}
+.module-list .bot .info .g-info .g-i-l{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  color: #6a6a6a;
+  font-size: 27rpx;
+}
+.module-list .btn-wrap {
+  width: 100%;
+  padding: 20rpx 0;
+  padding-right:30rpx;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  border-top: 2rpx solid #EFEFEF;
+  box-sizing: border-box;
+}
+.module-list .btn-wrap .btn{
+  /* padding: 16rpx 32rpx; */
+  border-radius: 10rpx;
+  border: 1px solid rgba(77,161,255,1) !important;
+  margin: 0;
+  font-size: 24rpx;
+  margin-left: 20rpx;
+  box-sizing: border-box;
+  height: 55rpx;
+  min-width: 142rpx;
+  text-align: center;
+  line-height: 55rpx;
+  background: none !important;
+  color: #4DA1FF !important;
+  box-shadow:none;
+  padding: 0 20rpx;
+}
+.module-list .btn-wrap .btn.jies{
+
+   color: #fc9770 !important;
+   border: 1px solid #fc9770 !important;
+}
+.module-list .btn-wrap .btn.qxiao{
+  color: #000 !important;
+   border: 1px solid #EFEFEF !important;
+}
+.module-list .btn-wrap .btn.out {
+  background: #fff;
+  color: #4DA1FF;
+}
+.module-list .btn-wrap .btn.entity {
+  background: #4DA1FF;
+  color: #fff;
+}
+.module-list .btn-wrap .btn.refund {
+  border: 1px solid rgb(236, 54, 54) !important;
+  color: rgb(236, 54, 54) !important;
+}
+.time {
+ color:#ababab !important;
+ /* margin-top: 10rpx; */
+
+}
+.purch {
+  color: #000 !important;
+  font-size: 26rpx!important;
+   display: flex;
+   justify-content: flex-end;
+   line-height: 46rpx;
+}
+.right-arrow {
+  margin-left: 10rpx;
+  width:10rpx;
+  height:20rpx;
+}

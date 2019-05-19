@@ -1,0 +1,65 @@
+/* component/topNav/topNav.wxss */
+.fixed{
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+}
+.nav-wrap {
+  width: 100%;
+  height: 100rpx;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background-color: #efefef;
+  display: inline-block;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.nav-wrap .nav-item {
+  height: 100%;
+  color: #999;
+  font-size: 24rpx;
+  display: inline-block;
+}
+
+.nav-wrap .nav-item .nav-item-title {
+  width: auto;
+  height: 100rpx;
+  text-align: center;
+  line-height: 100rpx;
+  position: relative;
+}
+
+.nav-wrap .nav-item .action {
+  
+  color: #4da1ff;
+}
+
+.nav-wrap .nav-item .action::before {
+  content: "";
+  width: 50%;
+  height: 4rpx;
+  background: #4da1ff;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  margin-left: -25%;
+}
+
+.nav-wrap.top2{top:100rpx;height:80rpx; background:#fff; z-index:2; border-bottom:2rpx solid #efefef;}
+.nav-wrap.top2 .nav-item .nav-item-title {height:80rpx; line-height:80rpx;}
+.nav-wrap.top2 .nav-item .action::before {
+  content: "";
+  width: 50%; display:none;
+  height: 4rpx;
+  background: #4da1ff;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  margin-left: -25%;
+}
+

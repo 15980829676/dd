@@ -1,0 +1,10 @@
+{
+  "navigationBarTitleText": "地址",
+  "usingComponents": {
+    "loadMore": "/component/loadMore/loadMore",
+    "i-message": "../../dist/message/index",
+    "tabBar": "/component/tabBar/tabBar",
+    "i-toast": "/dist/toast/index",
+    "shadow": "/component/shadow/index"
+  }
+}

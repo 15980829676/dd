@@ -1,0 +1,25 @@
+{
+  "component": true,
+  "navigationBarTitleText": "订单通知",
+  "usingComponents": {
+    "i-tabs": "/dist/tabs/index",
+    "i-tab": "/dist/tab/index",
+    "i-tag": "/dist/tag/index",
+    "i-tab-bar": "/dist/tab-bar/index",
+    "i-tab-bar-item": "/dist/tab-bar-item/index",
+    "loadMore": "/component/loadMore/loadMore",
+    "orderType": "/component/order/returnOrderType/index",
+    "bkgLoading": "/component/bkgLoading/index",
+    "topNav": "/component/topNav/topNav",
+    "topNav2": "/component/topNav2/topNav2",
+    "tabBar": "/component/tabBar/tabBar",
+    "shadow": "/component/shadow/index",
+    "btnPay": "/component/btnPay/index",
+    "i-message": "/dist/message/index",
+    "i-modal": "/dist/modal/index",
+    "againOrder": "/component/order/againOrder/index",
+    "wux-keyboard": "/dist/wuxUi/keyboard/index",
+    "i-toast": "/dist/toast/index",
+    "i-button": "/dist/button/index"
+  }
+}

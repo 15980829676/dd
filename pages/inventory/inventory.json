@@ -1,0 +1,22 @@
+{
+  "component": true,
+  "navigationBarTitleText": "库存",
+  "navigationStyle": "custom",
+  "usingComponents": {
+    "i-tabs": "/dist/tabs/index",
+    "i-tab": "/dist/tab/index",
+    "loadMore": "/component/loadMore/loadMore",
+    "i-action-sheet": "../../dist/action-sheet/index",
+    "i-message": "../../dist/message/index",
+    "topNav": "/component/topNav/topNav",
+    "wux-fab-button": "../../dist/floating-button/index",
+    "i-row": "../../dist/row/index",
+    "i-col": "../../dist/col/index",
+    "wux-keyboard": "../../dist/wuxUi/keyboard/index",
+	  "i-toast": "../../dist/toast/index",
+	  "bkgLoading": "/component/bkgLoading/index",
+    "tabBar": "/component/tabBar/tabBar",
+    "shadow": "/component/shadow/index",
+    "searchTitle": "/component/searchTitle/index"
+  }
+}

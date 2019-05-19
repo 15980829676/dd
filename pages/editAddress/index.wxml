@@ -1,0 +1,46 @@
+<!--pages/editAddress/index.wxml-->
+<!-- <view class=' top_shadow' style='width: 100%;padding-top: 8rpx;position:fixed;top:0;left:0;z-index: 100;background-color: #fff;'></view> -->
+<shadow status="top"></shadow>
+<view class='list-wrap' wx:if="{{addressList.length > 0}}" style="padding-bottom: {{tabBarH*2 + 100}}rpx;">
+  <block wx:for="{{addressList}}" wx:key="{{index}}">
+    <view class='list-item' bindtap='selectAddress' data-item='{{item}}'>
+      <view class='item-top'>
+        <view class='name'>{{item.name}}</view>
+        <view class='tel font-DIN'>{{item.mobi}}</view>
+        <view class='default' wx:if="{{item.default==3}}">默认</view>
+        <!-- type=1是默认地址(金蝶上的，也是备案地址)type=2备案地址 -->
+        <view class='default' wx:if="{{item.type!=3}}">备案</view>
+      </view>
+      <view class='icon-edit-wrap' wx:if="{{item.type==3}}" catchtap='editAddress' data-item='{{item}}' data-type='modify'>
+        <image class='icon-edit' src="/images/icon-pen.svg"></image>
+      </view>
+      <view class='address-wrap'>
+        <text class='address'>{{item.province}} {{item.city}} {{item.dis}} {{item.address}}</text>
+      </view>
+    </view>
+  </block>
+
+  <block wx:if="{{addressList.length > 0 && addressList.length < 10}}">
+    <view style="color:#bbbbbb;font-size: 24rpx;padding: 1.5em 0;text-align: center;width: 100%;">全部加载完成！</view>
+  </block>
+  <block wx:else>
+    <loadMore loadmore="{{load_params.loadmore}}" loadend="{{load_params.loadend}}" empty="{{load_params.empty}}"></loadMore>
+  </block>
+</view>
+
+<block wx:if="{{addressList.length == 0}}">
+  <loadMore loadmore="{{load_params.loadmore}}" loadend="{{load_params.loadend}}" empty="{{load_params.empty}}" definedContent="{{true}}" content="{{'您还没有地址，可以点击底部按钮新建地址'}}"></loadMore>
+</block>
+
+<view class='btn-add-wrap' style='bottom: {{tabBarH*2}}rpx'>
+  <view class='btn-add' bindtap='editAddress' data-type='add'>
+    <!-- <view class='icon-add'></view> -->
+    <image class='icon-add' src='/images/icon-add-white.svg'></image>
+    <view class='text-add'>新增地址</view>
+  </view>
+</view>
+
+<tabBar current="inventory"></tabBar>
+<i-message id="message" />
+<i-toast id="toast" dd="{{true}}"   />
+

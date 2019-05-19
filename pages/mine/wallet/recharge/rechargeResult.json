@@ -1,0 +1,8 @@
+{
+  "navigationBarTitleText": "充值结果",
+  "usingComponents": {
+    "tabBar": "/component/tabBar/tabBar",
+    "shadow": "/component/shadow/index",
+    "dynamicAds": "/component/dynamicAds/dynamicAds"
+  }
+}

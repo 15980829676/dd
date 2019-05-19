@@ -1,0 +1,205 @@
+/* pages/shipment/shipment.wxss */
+@import "/pages/logistics/logistics.wxss";
+page {
+  background: #EFEFEF;
+}
+
+.mar-b{
+  margin-bottom: 0 !important;
+}
+
+.st-wrap {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.st-wrap .b-a {
+  width: 100%;
+  height: 100rpx;
+  padding-left: 40rpx;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  font-size: 24rpx;
+  color: #999999;
+}
+
+.st-wrap .b-c {
+  width: 100%;
+  height: 98rpx;
+  background: #fff;
+  border-bottom: 2rpx solid #E2E2E2;
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.st-wrap .b-c .b-c-1 {
+  width: 20%;
+  /*line-height: 98rpx;*/
+  text-align: right;
+  font-size: 24rpx;
+  color: #333333;
+  margin-right: 6%;
+}
+
+.st-wrap .b-c .b-c-2 {
+  width: 74%;
+  height: 98rpx;
+  line-height: 100rpx;
+  font-size: 24rpx;
+  color: #333333;
+}
+
+.st-wrap .b-c .b-c-4 {
+  width: 12rpx;
+  height: 24rpx;
+  position: absolute;
+  top: 40rpx;
+  right: 40rpx;
+}
+
+.st-wrap .b-c .b-c-4 image {
+  width: 100%;
+  height: 100%;
+}
+
+
+.b-d {
+  width: 100%;
+  padding: 0 20rpx;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+  margin-top: 20rpx;
+}
+.b-ds{
+	width:100%;
+	max-height:502rpx;
+	overflow-y: scroll;
+}
+
+.b-d-1{
+  width: 100%;
+  height: 98rpx;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 2rpx dashed #E2E2E2;
+}
+
+.b-d-1 .text {
+  width: 18%;
+  text-align: right;
+  font-size: 24rpx;
+  color: #333333;
+}
+
+.b-d-1 .icon{
+  width: 24rpx;
+  height: 24rpx;
+  border: 2rpx solid #E2E2E2;
+  border-radius: 100%;
+  background: #E2E2E2;
+  margin-left: 32rpx;
+  margin-right: 16rpx;
+}
+
+.b-d-1 .icon.select {
+  border: 2rpx solid #4DA1FF;
+  background: #4DA1FF;
+}
+
+.b-d-1:last-child {
+  border-bottom: 0;
+}
+
+.st-btn {
+  width: 94%;
+  height: 90rpx;
+  line-height: 90rpx;
+  background: #4DA1FF;
+  border-radius: 10rpx;
+  text-align: center;
+  font-size: 28rpx;
+  color: #fff;
+  letter-spacing: 6rpx;
+  margin: 150rpx 3% 0 3%;
+}
+
+.tan-c{
+	position:fixed;
+	top:0;
+	left:0;
+	width:100%;
+	height:100%;
+	z-index:22;
+}
+.zhe-zao{
+	position:absolute;
+	top:0;
+	left:0;
+	width:100%;
+	height:100%;
+	background:rgba(0,0,0,0.8);
+}
+.tan-n{
+	position:absolute;
+	bottom:0;
+	left:0;
+	width:100%;
+	height:auto;
+	max-height:600rpx;
+	background:#fff;
+	z-index:2;
+	transform:translateY(100%);
+}
+
+.b-th{
+  width: 100%;
+  height: 98rpx;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 2rpx dashed #E2E2E2;
+  position:relative;
+}
+.b-close{
+  width: 40rpx;
+  height: 40rpx;
+  position:absolute;
+  top:29rpx;
+  right:24rpx;
+}
+.b-th .text {
+  width: 100%;
+  text-align: center;
+  font-size: 24rpx;
+  color: #333333;
+  line-height:98rpx;
+}
+
+.invite-btn {
+  width: 100rpx;
+  /* height: 86rpx; */
+  height: 100rpx;
+  position: absolute;
+  top: 0;
+  right: 0;
+  /* bottom: 0; */
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  z-index: 5;
+}
+
+.invite-btn .icon-sys {
+  width: 32rpx;
+  height: 32rpx;
+  /* background: #4da1ff; */
+  padding: 10rpx;
+  border-radius: 8rpx;
+}

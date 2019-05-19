@@ -1,0 +1,10 @@
+{
+  "component": true,
+  "navigationBarTitleText": "店铺申请",
+  "usingComponents": {
+    "i-tabs": "/dist/tabs/index",
+    "i-tab": "/dist/tab/index",
+    "shadow": "/component/shadow/index",
+    "i-toast": "/dist/toast/index"
+  }
+}

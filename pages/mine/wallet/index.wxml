@@ -1,0 +1,90 @@
+<!--pages/mine/wallet/index.wxml-->
+<view class="admin">
+  <shadow status="top"></shadow>
+  <view class="mac-marbot">
+
+    <view class="menu-con">
+      <!--余额-->
+      <navigator class="menu-a borb " url="{{'./submitForm?type=balance&money='+wallet.a_money}}" hover-class='none'>
+        <view class="menu-a-left">
+          <view class="icon icon-size1">
+            <image src="/images/mine-6.svg"></image>
+          </view>
+          <view class="text">账户余额</view>
+        </view>
+        <view class="menu-a-right">
+          <view class="text font-DIN">{{wallet.a_money || "0.00"}}</view>
+          <!-- <view class="menu-a-right"> -->
+            <view class='right-arrow'></view>
+          <!-- </view> -->
+        </view>
+      </navigator>
+      <!--余额end-->
+      <!--可提现-->
+      <navigator class="menu-a borb" url="./submitForm?type=withdrawal"  hover-class='none'>
+        <view class="menu-a-left">
+          <view class="icon icon-size1">
+            <image src="/images/mine-7.svg"></image>
+          </view>
+          <view class="text">现金账户</view>
+        </view>
+        <view class="menu-a-right">
+          <view class="text font-DIN">{{wallet.df_money || "0.00"}}</view>
+          <!-- <view class="menu-a-right"> -->
+            <view class='right-arrow'></view>
+          <!-- </view> -->
+        </view>
+      </navigator>
+      <!--可提现end-->
+      <!--返利 rebate-->
+      <navigator class="menu-a borb" url="/pages/mine/wallet/walletDetail?navId=3"  hover-class='none'>
+        <view class="menu-a-left">
+          <view class="icon icon-size1">
+            <image src="/images/mine-8.svg"></image>
+          </view>
+          <view class="text">返利</view>
+        </view>
+        <view class="menu-a-right">
+          <view class="text font-DIN">{{wallet.re_money || "0.00"}}</view>
+          <!-- <view class="menu-a-right"> -->
+            <view class='right-arrow'></view>
+          <!-- </view> -->
+        </view>
+      </navigator>
+      <!--返利end-->
+      <!--收款账户-->
+      <navigator class="menu-a mart" url="./addBankCard/index" hover-class='none'>
+        <view class="menu-a-left">
+          <view class="icon icon-size4">
+            <image src="/images/mine-9.svg"></image>
+          </view>
+          <view class="text">收款账户</view>
+        </view>
+        <view class="menu-a-right">
+          <view class='right-arrow'></view>
+        </view>
+      </navigator>
+      <!--收款账户nd-->
+
+      <navigator class="menu-a mart" url="/pages/mine/wallet/walletDetail" hover-class='none'>
+        <view class="menu-a-left">
+          <view class="icon icon-size4">
+            <image src="/images/mine-11.svg"></image>
+          </view>
+          <view class="text">资产日志</view>
+        </view>
+        <view class="menu-a-right">
+          <view class='right-arrow'></view>
+        </view>
+      </navigator>
+
+    </view>
+
+    <!-- <view class="FAE" style="bottom: {{36+ tabBarH}}rpx;">技术支持诚享科技</view> -->
+    <watermark></watermark>
+
+  </view>
+  <tabBar current="mine"></tabBar>
+</view>
+
+<i-toast id="toast" dd="{{true}}"  />

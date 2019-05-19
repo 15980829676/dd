@@ -1,0 +1,80 @@
+<!--pages/marketing tool/marketing tool.wxml-->
+<shadow status="top"></shadow>
+<tabBar current="mine"></tabBar>
+<view class="admin">
+  <swiper class="carousel"  autoplay circular>
+    <block wx:for="{{carouselList}}" wx:key="{{index}}">
+      <swiper-item class="viewpager">
+        <image src="{{item.img}}"></image>
+      </swiper-item>
+    </block>
+  </swiper>
+  <view class="mac-marbot mark-t">
+    <view class='headText'>我的工具</view>
+    <i-grid>
+      <i-grid-item>
+        <navigator url='/discovery/pages/friend/friend'>
+          <i-grid-icon>
+            <image src="/images/discovery.svg" style='width:28px;height:28px;margin:0 auto;'/>
+          </i-grid-icon>
+          <i-grid-label>发现小程序</i-grid-label>
+        </navigator>
+      </i-grid-item>
+      <!-- <i-grid-item>
+        <navigator url='/marketing/wheel/wheel'>
+          <i-grid-icon>
+            <image src="/images/tools-2.png" style='width:28px;height:28px;margin:0 auto;'/>
+          </i-grid-icon>
+          <i-grid-label>大转盘</i-grid-label>
+        </navigator>
+      </i-grid-item>
+      <i-grid-item >
+      <navigator url='/marketing/scratch/scratch'>
+          <i-grid-icon>
+            <image src="/images/scratch.png" style='width:28px;height:28px;margin:0 auto;'/>
+          </i-grid-icon>
+          <i-grid-label>刮刮乐</i-grid-label>
+      </navigator>
+      </i-grid-item>
+    </i-grid>
+    <i-grid>
+      <i-grid-item>
+        <navigator url='/marketing/slotMachine/slotMachine'>
+          <i-grid-icon>
+            <image src="/images/slotMachine.png" style='width:28px;height:28px;margin:0 auto;'/>
+          </i-grid-icon>
+          <i-grid-label>老虎机</i-grid-label>
+        </navigator>
+      </i-grid-item>
+      <i-grid-item>
+        <navigator url='/marketing/fruitMachine/fruitMachine'>
+          <i-grid-icon>
+            <image src="/images/fruitMachine.png" style='width:28px;height:28px;margin:0 auto;'/>
+          </i-grid-icon>
+          <i-grid-label>水果机</i-grid-label>
+        </navigator>
+      </i-grid-item>
+      <i-grid-item>
+        <navigator url='/marketing/gridcard/gridcard'>
+          <i-grid-icon>
+            <image src="/images/gridcard.png" style='width:28px;height:28px;margin:0 auto;'/>
+          </i-grid-icon>
+          <i-grid-label>九宫格翻纸牌</i-grid-label>
+        </navigator>
+      </i-grid-item>
+    </i-grid>
+    <i-grid>
+      <i-grid-item class="width33">
+        <navigator url='/marketing/shake/shake'>
+          <i-grid-icon>
+            <image src="/images/shake.png" style='width:28px;height:28px;margin:0 auto;'/>
+          </i-grid-icon>
+          <i-grid-label>摇一摇</i-grid-label>
+        </navigator>
+      </i-grid-item></i-grid> -->
+    </i-grid>
+
+  </view>
+
+
+</view>

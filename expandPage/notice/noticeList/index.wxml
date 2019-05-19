@@ -1,0 +1,25 @@
+<!--expandPage/notice/team.wxml-->
+<shadow status="top"></shadow>
+<tabBar current="notice"></tabBar>
+<view class="admin">
+  <view class="mac-marbot " style="padding-bottom: {{tabBarH}}px">
+      <view class="module-content" style='{{noticeListXIT.length == 0?"background:#fff;height:100vh;":""}}'>
+        <view class='module' wx:for="{{noticeListXIT}}" wx:key="index" data-id="{{item.id}}" catchtap='noticeListClick'>
+          <image src='/images/mine-5.svg' class='left'></image>
+          <view class='right'>
+              <view class='rightLtop'>
+                <view class='title'>系统通知</view>
+                <view class='time'>{{item.time}}</view>
+              </view>
+              <view class='title ovhi' style='margin-top:10px;color:#999999;font-size:12px;'>{{item.title}}</view>
+          </view>
+          <view class='isread' wx:if="{{item.isread == 0}}"></view>
+        </view>
+          <view class='loadmore' wx:if="{{noticeListXIT.length == 0}}">暂无通知</view>
+      </view>
+  </view>
+</view>
+
+
+<!-- <view class='bot_shadow'></view> -->
+<i-toast id="toast" />

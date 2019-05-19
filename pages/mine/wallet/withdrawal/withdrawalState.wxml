@@ -1,0 +1,104 @@
+<!--pages/mine/wallet/withdrawalState.wxml-->
+<view class="admin" wx:if="{{grecord.wo_status == 1}}">
+  
+  <view class="mac-marbot">
+
+    <view class="wd-acc">
+
+      <view class="acc-step">
+
+        <view class="step-all">
+          <view class="bor-rad"></view>
+          <view class="txt">发起提现申请</view>
+        </view>
+        <view class="step-line">
+          <image src="/images/withdraw-5.png"></image>
+        </view>
+        <view class="step-all">
+          <view class="all-img">
+            <image src="/images/withdraw-4.svg"></image>
+          </view>
+          <view class="txt-ra">
+            <view class="ra-t">已提交至公司财务部审核</view>
+            <view class="ra-b">预计1~3个工作日到账
+              <!-- <text>{{grecord.expect_time}}</text>前到账 -->
+            </view>
+          </view>
+        </view>
+        <view class="step-line">
+          <image src="/images/withdraw-5.png"></image>
+        </view>
+        <view class="step-all">
+          <view class="bor-rad bg-two"></view>
+          <view class="txt">到账成功</view>
+        </view>
+      </view>
+
+      <view class="acc-bot">
+        <view class="boom">
+          <view class="bot-left">申请人</view>
+          <view class="bot-right">{{grecord.wo_user_name}}</view>
+        </view>
+        <view class="boom">
+          <view class="bot-left">申请金额</view>
+          <view class="bot-right font-DIN">¥ {{grecord.wo_money}}</view>
+        </view>
+        <view class="boom">
+          <view class="bot-left">申请时间</view>
+          <view class="bot-right font-DIN">{{grecord.apply_time}}</view>
+        </view>
+        <view class="boom">
+          <view class="bot-left">转账到{{grecord.wo_cart_name}}</view>
+          <view class="bot-right">{{grecord.wo_cart}}</view>
+        </view>
+      </view>
+
+    </view>
+
+  </view>
+
+</view>
+
+<view class="admin" wx:else>
+
+  <view class="mac-marbot">
+
+    <view class="wd-acc">
+      <view class="acc-top">
+        <view class="icon">
+          <image src="/images/withdraw-2.svg"></image>
+        </view>
+        <view class="text">提现到{{grecord.wo_cart_name}}（{{grecord.wo_cart}}）</view>
+        <view class="rmb font-DIN">¥{{grecord.wo_money}}</view>
+      </view>
+      <view class="acc-bot">
+        <view class="boom">
+          <view class="bot-left">当前状态</view>
+          <view class="bot-right" style="{{grecord.wo_status == 5?'color:rgb(235,0,0)':''}}">{{grecord.wo_status == 1?'提现中':grecord.wo_status == 3?'提现成功':grecord.wo_status == 5?'提现失败':'未知'}}</view>
+        </view>
+        <view class="boom fail" wx:if="{{grecord.wo_status == 5 && grecord.wo_memo}}">
+          <view class="bot-left">失败原因</view>
+          <view class="bot-right font-DIN">{{grecord.wo_memo}}</view>
+        </view>
+        <view class="boom">
+          <view class="bot-left">申请人</view>
+          <view class="bot-right font-DIN">{{grecord.wo_user_name}}</view>
+        </view>
+        <view class="boom">
+          <view class="bot-left">申请时间</view>
+          <view class="bot-right font-DIN">{{grecord.apply_time}}</view>
+        </view>
+        <!-- <view class="boom">
+          <view class="bot-left">审核时间</view>
+          <view class="bot-right">2018-12-30 19:22</view>
+        </view> -->
+      </view>
+    </view>
+
+  </view>
+
+</view>
+
+<shadow status="top"></shadow>
+<tabBar current="mine"></tabBar>
+<i-toast id="toast" />

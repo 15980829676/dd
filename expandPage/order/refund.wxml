@@ -1,0 +1,133 @@
+<!--pages/order-refund/refund.wxml-->
+<i-toast id="toast" />
+<i-message id="message" />
+<shadow status="top"></shadow>
+
+<view id="refund-box">
+
+  <view class="shop-box">
+
+    <goods list="{{orderInfo.brief}}" isShowRadio></goods>
+
+    <view class="pay-money-pribar">
+      <view class="order-detail-allmoney bor-top-none">
+        <view class="p">
+          <view>实付款: </view>
+          <view class="themef font-DIN">￥{{orderInfo.paied}}</view>
+        </view>
+      </view>
+    </view>
+
+    <view class="submit-backpro-bar">
+      <view class="item">
+        <view class="tit">
+          <text class="i">*</text>
+          <text>选择类型</text>
+        </view>
+        <view class="juti">
+          <text class='fl'>我要退款 </text>
+          <!-- <view class="i check padl0 check-on1"></view> -->
+          <view style='width: 40rpx;height: 40rpx;overflow: hidden;position:relative;margin-left: 10rpx;' class='fl'><i-radio i-class='i-radio' i-radio-radio="i-radio-radio-circle" i-radio-cell="radio-cell" color="#4DA1FF" checked></i-radio></view>
+        </view>
+      </view>
+      <view class="item">
+        <view class="tit">
+          <text class="i">*</text>
+          <text>金额(可退金额: </text>
+          <text class='font-DIN'>￥{{orderInfo.paied}}</text>
+          <text>)</text>
+        </view>
+        <view class="juti font-DIN">￥{{orderInfo.paied}}</view>
+      </view>
+      <view class="item">
+        <view class="tit">
+          <text class="i">*</text>
+          <text>退款原因</text>
+        </view>
+        <view class="juti">无货</view>
+      </view>
+      <view class="item">
+        <view class="tit">填写说明(选填)</view>
+        <view class="juti heightauto">
+          <textarea placeholder="请填写不超过200字的说明" bindinput='inputMessage'></textarea>
+        </view>
+      </view>
+    </view>
+
+  </view>
+
+  <view class="order-btn flex">
+    <view class="flex2 disn"></view>
+    <view class="sub-order flex1 gai" bindtap='confimRefund'>退款</view>
+  </view>
+
+  <!--退款原因弹窗-->
+  <view id="refund-reason unsee">
+    <view id="pay-money-tc" class="unsee">
+
+      <view class="tit">
+        <text>退款原因</text>
+        <view class="clos"></view>
+      </view>
+
+      <view class="way">
+        <view class="rest item">
+          <text>多拍/拍错/不想要</text>
+          <view class="brod check1 check-on1"></view>
+        </view>
+        <view class="rest item">
+          <text>7天无理由退换货</text>
+          <view class="brod check1"></view>
+        </view>
+        <view class="rest item">
+          <text>质量问题</text>
+          <view class="brod check1"></view>
+        </view>
+        <view class="rest item">
+          <text>商品信息描述不符</text>
+          <view class="brod check1"></view>
+        </view>
+        <view class="rest item">
+          <text>包装/商品损坏</text>
+          <view class="brod check1"></view>
+        </view>
+        <view class="rest item">
+          <text>其他</text>
+          <view class="brod check1"></view>
+        </view>
+        <view class="rest item">
+          <text>没货</text>
+          <view class="brod check1"></view>
+        </view>
+      </view>
+
+      <view class="sure-box flex">
+        <view class="comm-btn flex-item">确定</view>
+      </view>
+
+    </view>
+    <view class="mask gai unsee"></view>
+  </view>
+
+  <!--确定弹窗-->
+  <i-modal i-class-mask="i-class-mask" i-class="i-modal" visible="{{ visibleModal }}" actions="{{modalData}}" bind:click="handleClose">
+    <!-- <view>提示</view> -->
+    <view class='modalContent' style="padding: 42rpx 39rpx;font-size: 24rpx;color: #333333;">可退款金额为￥{{orderInfo.paied}}, 如有疑问请联系卖家</view>
+  </i-modal>
+  <!-- <view id="confirm-box">
+    <view class="confirm-tc ">
+      <view class="tit">提示</view>
+      <view class="p">
+        <text>可退款金额为</text>
+        <text class="themef">￥{{orderInfo.paide}}</text>
+        <text>, 如有疑问请联系卖家!</text>
+      </view>
+      <view class="btn flex">
+        <view class="cancel">取消</view>
+        <view class="sure">确定</view>
+      </view>
+    </view>
+    <view class="mask gai unsee"></view>
+  </view> -->
+
+</view>

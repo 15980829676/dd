@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "刮刮乐",
+  "disableScroll": true,
+  "usingComponents": {
+    "shadow": "/component/shadow/index"
+  }
+}

@@ -1,0 +1,26 @@
+<!--pages/mine/wallet/withdrawal/withdrawalRecord.wxml-->
+<view class="admin">
+  <shadow status="top"></shadow>
+  <view class="mac-marbot " style='padding-bottom: {{tabBarH}}px;'>
+    <view class="module-content" >
+      <!--begin-->
+      <block wx:for="{{finLoglist}}" wx:key="{{index}}">
+        <view class="item" bindtap='jumpPage' data-status="{{item.status}}" data-id="{{item.id}}">
+          <view class="wrap top">
+            <view class="name">账户类型：{{item.type == 1?'银行卡':item.type == 3?'支付宝':'银行卡'}}</view>
+            <view class="small statues">{{item.status == 1?'提现中':item.status == 3?'提现成功':item.status == 5?'提现失败':'未知'}}</view>
+          </view>
+          <view class="wrap bot">
+            <view class="small time">{{item.time}}</view>
+            <view class="money font-DIN">{{item.money}}</view>
+          </view>
+        </view>
+      </block>
+      <!--end-->
+    </view>
+    <loadMore loadmore="{{load_params.loadmore}}" loadend="{{load_params.loadend}}" empty="{{load_params.empty}}" definedContent="{{true}}" content="{{'暂无记录'}}"></loadMore>
+  </view>
+
+</view>
+<tabBar current="mine"></tabBar>
+<i-toast id="toast" dd="{{true}}"/>

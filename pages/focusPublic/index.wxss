@@ -1,0 +1,19 @@
+/* pages/totalNumber/index.wxss */
+.btn-save{
+  width: 710rpx;
+  height: 90rpx;
+  line-height: 90rpx;
+  margin: 0;
+  position: fixed;
+  /* top: 404rpx; */
+  bottom: 180rpx;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 28rpx;
+  border-radius:10rpx;
+  border: 0;
+  outline: none;
+  padding: 0;
+  background:rgba(77,161,255,1);
+  color: #fff;
+}

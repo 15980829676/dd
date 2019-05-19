@@ -1,0 +1,131 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/home/home",
+    "pages/auth/auth",
+    "pages/inventory/inventory",
+    "pages/inventory/inventoryLog",
+    "pages/inventory/orderGoods",
+    "pages/inventory/pay/settleAccounts",
+    "pages/team/team",
+    "pages/team/teamMember",
+    "pages/team/personalInformation",
+    "pages/team/orderInformation",
+    "pages/notice/notice",
+    "pages/mine/mine",
+    "pages/mine/teamInfo",
+    "pages/mine/wallet/index",
+    "pages/mine/wallet/submitForm",
+    "pages/mine/wallet/walletDetail",
+    "pages/mine/wallet/withdrawal/withdrawal",
+    "pages/mine/wallet/withdrawal/withdrawalRecord",
+    "pages/mine/wallet/withdrawal/withdrawalState",
+    "pages/mine/wallet/recharge/recharge",
+    "pages/mine/wallet/recharge/rechargeResult",
+    "pages/mine/wallet/addBankCard/index",
+    "pages/mine/wallet/addBankCard/fillInfo",
+    "pages/mine/wallet/addBankCard/bankCardInfo",
+    "pages/mine/set/show_personalInfo",
+    "pages/mine/set/mobile_check",
+    "pages/mine/set/set_mobile",
+    "pages/shopMerchants/index",
+    "pages/shopMerchants/info",
+    "pages/editAddress/index",
+    "pages/editAddress/edit",
+    "pages/noticeLog/index",
+    "pages/logs/logs",
+    "pages/Receiving/Receiving",
+    "pages/logistics/logistics",
+    "pages/mine/marketingtool/marketingtool",
+    "pages/shipment/shipment",
+    "pages/offlinePay/index",
+    "pages/noticeLog/noticeLogList/index"
+  ],
+  "subpackages": [
+    {
+      "root": "discovery",
+      "pages": [
+        "pages/friend/friend",
+        "pages/list/list",
+        "pages/friend/friendList/index"
+      ]
+    },
+    {
+      "root": "marketing",
+      "pages": [
+        "fruitMachine/fruitMachine",
+        "gridcard/gridcard",
+        "shake/shake",
+        "slotMachine/slotMachine",
+        "wheel/wheel",
+        "scratch/scratch"
+      ]
+    },
+    {
+      "root": "expandPage",
+      "pages": [
+        "about/index",
+        "version/index",
+        "version/content",
+        "notice/team",
+        "notice/stock",
+        "storeProve/index",
+        "bindingParentId/index",
+        "notice/noticeSystem/index",
+        "acceptanceResult/acceptance result/acceptance result",
+        "acceptanceResult/inspect complaint/inspect complaint",
+        "acceptanceResult/my complaint/my complaint",
+        "acceptanceResult/suggest complaint/suggest complaint",
+        "notice/noticeList/index",
+        "acceptanceResult/inspectComplain/inspectComplain",
+        "order/refund",
+        "order/delivery",
+        "dataStatistics/index"
+      ]
+    }
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "color": "#222222",
+    "selectedColor": "#4DA1FF",
+    "backgroundColor": "#ffffff",
+    "borderStyle": "white",
+    "list": [
+      {
+        "pagePath": "pages/home/home",
+        "text": "首页",
+        "iconPath": "./images/home.png",
+        "selectedIconPath": "./images/home-action.png"
+      },
+      {
+        "pagePath": "pages/inventory/orderGoods",
+        "text": "进货",
+        "iconPath": "./images/inventory.png",
+        "selectedIconPath": "./images/inventory-action.png"
+      },
+      {
+        "pagePath": "pages/team/team",
+        "text": "团队",
+        "iconPath": "./images/team.png",
+        "selectedIconPath": "./images/team-action.png"
+      },
+      {
+        "pagePath": "pages/notice/notice",
+        "text": "通知",
+        "iconPath": "./images/notice.png",
+        "selectedIconPath": "./images/notice-action.png"
+      },
+      {
+        "pagePath": "pages/mine/mine",
+        "text": "我的",
+        "iconPath": "./images/mine.png",
+        "selectedIconPath": "./images/mine-action.png"
+      }
+    ]
+  },
+  "sitemapLocation": "sitemap.json"
+}

@@ -1,0 +1,14 @@
+{
+  "navigationBarTitleText": "结算",
+  "usingComponents": {
+    "i-switch": "/dist/switch/index",
+    "tabBar": "/component/tabBar/tabBar",
+    "i-message": "/dist/message/index",
+    "btnPay": "/component/btnPay/index",
+    "selectMailMethod": "/component/order/selectMailMethod/index",
+    "btnCashBack": "/component/order/cashBack/index",
+    "shadow": "/component/shadow/index",
+    "i-modal": "/dist/modal/index",
+    "i-toast": "/dist/toast/index"
+  }
+}

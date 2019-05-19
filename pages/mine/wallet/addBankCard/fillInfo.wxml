@@ -1,0 +1,66 @@
+<!--pages/mine/wallet/addBankCard/fillInfo.wxml-->
+<view class="admin">
+  <shadow status="top"></shadow>
+  <form class="mac-marbot" bindsubmit="submit">
+
+    <view class="bc-b">
+
+      <view class="b-t">请绑定持卡人本人的银行卡</view>
+      <view class="b-c">
+        <view class="b-c-1">持卡人</view>
+        <input class="b-c-2" type="text" name="name" bindinput='input' data-type="name" value="" placeholder="请输入持卡人" />
+        <view class="b-c-3" bindtap='showHint'>
+          <image src="/images/order-6.svg"></image>
+        </view>
+      </view>
+      <view class="b-c">
+        <view class="b-c-1">身份证</view>
+        <input class="b-c-2" type="number" name="idcard" bindinput='input' data-type="idcard" value="" maxlength="18" placeholder="请输入身份证号" />
+      </view>
+
+    </view>
+
+    <view class="bc-b">
+
+      <view class="b-t">银行卡信息</view>
+      <!-- <view class="b-c">
+        <view class="b-c-1">选择银行</view>
+        <input class="b-c-2" type="text" value="" placeholder="招商银行" />
+        <view class="b-c-4">
+          <image src="/images/mine-10.svg"></image>
+        </view>
+      </view> -->
+      <view class="b-c">
+        <view class="b-c-1">卡号</view>
+        <input class="b-c-2" type="number" name="bankcardnum" bindinput='input' data-type="bankcardnum" value="" placeholder="请输入卡号" />
+      </view>
+      <view class="b-c">
+        <view class="b-c-1">手机号</view>
+        <input class="b-c-2" type="number" name="phone" bindinput='input' data-type="phone" value="" maxlength="11" placeholder="请输入银行开卡预留手机号" />
+      </view>
+      <view class="b-c">
+        <view class="b-c-1">验证码</view>
+        <input class="b-c-2 w5" type="number" name="code" bindinput='input' data-type="code" value="" placeholder="请输入验证码" />
+        <view class="b-c-5"></view>
+        <button bindtap='sendCode' wx:if="{{!countdownData.MIN}}">发送验证码</button>
+        <button wx:else style='text-align: center;'>{{countdownData.MIN+'s'}}</button>
+      </view>
+
+    </view>
+
+    <!-- change-bg -->
+    <button class="vbc-btn {{disable?'opacity':''}}" form-type='submit' disabled='{{disable}}'>确定添加</button>
+
+    <view class="FAE">技术支持诚享科技</view>
+
+  </form>
+
+  <tabBar current="mine"></tabBar>
+
+</view>
+<i-message id="message" />
+<i-modal visible="{{ visibleModal }}" actions="{{modalData}}" bind:click="handleClose">
+    <view class='modalContent'>为保证账户资金安全，只能绑定认证用户本人的银行卡</view>
+</i-modal>
+
+<i-toast id="toast" dd="{{true}}" />

@@ -1,0 +1,11 @@
+{
+  "component": true,
+  "usingComponents": {
+    "i-message": "/dist/message/index",
+    "i-modal": "/dist/modal/index",
+    "i-radio-group": "../../dist/radio-group/index",
+    "i-radio": "../../dist/radio/index",
+    "i-toast": "/dist/toast/index",
+    "getFromId": "../getFromId/index"
+  }
+}

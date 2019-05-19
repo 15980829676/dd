@@ -1,0 +1,234 @@
+/* component/order/logisticsInfo/index.wxss */
+@import '../../../font/DIN-Medium.wxss';
+.layer {
+  width: 100%;
+  position: relative;
+}
+
+.layer-fixed {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 1001;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.fixed {
+  position: fixed;
+}
+
+.bkg {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 1001;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.i-step-circle {
+  background: #4da1ff !important;
+  border: #4da1ff solid 1px !important;
+}
+
+.i-step {
+  padding-bottom: 0 !important;
+}
+
+.wrap-default {
+  width: 100%;
+  padding: 20rpx;
+  box-sizing: border-box;
+  height: auto;
+  background: #fff;
+}
+
+.wrap-fixed {
+  width: 90%;
+  max-height: 1000rpx;
+  height: auto;
+  padding: 70rpx 30rpx 50rpx 30rpx;
+  /* padding-top:80rpx; */
+  box-sizing: border-box;
+  border-radius: 10rpx;
+  /* height: 80%; *//* position: fixed;
+  left: 50%;
+  top: 50%;
+  margin-left: -43%;
+  z-index: 1001; */
+  background: #fff;
+  position: relative;
+  z-index: 1001;
+}
+
+.btn-close {
+  width: 70rpx;
+  height: 70rpx;
+  /* padding: 2rpx; */
+  position: absolute;
+  top: 10rpx;
+  right: 10rpx;
+  /* border-radius: 50%; */
+  background: #fff;
+  box-sizing: border-box;
+  /* border: 1rpx solid #eee; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.btn-close .icon-close {
+  width: 22rpx;
+  height: 22rpx;
+}
+
+.step {
+  width: 100%;
+  min-height: 150rpx;
+  display: flex;
+  flex-direction: row;
+  overflow: hidden;
+}
+
+.step .step-l {
+  width: 140rpx;
+}
+
+.step .step-l .time {
+  padding-right: 38rpx;
+  text-align: right;
+  font-size: 24rpx;
+  margin-top: 6rpx;
+  color: #999;
+}
+
+.border-left-active {
+  border-left: 1px dotted #4da1ff !important;
+}
+
+.step .step-r {
+  position: relative;
+  border-left: 2rpx solid rgba(204, 204, 204, 1);
+  box-sizing: border-box;
+  padding-left: 39rpx;
+  flex: 1;
+}
+
+.step .step-r .step-state {
+  height: 54rpx;
+  width: 100%;
+  /* margin-bottom: 10rpx; */
+  line-height: 54rpx;
+  font-size: 24rpx;
+  color: #999;
+}
+
+.step .step-r .step-content {
+  overflow: hidden;
+  padding-bottom: 20rpx;
+}
+
+.step .icon {
+  width: 27px;
+  height: 27px;
+  background: no-repeat center center;
+  background-size: cover;
+  position: absolute;
+  left: -14px;
+  top: 0;
+  z-index: 1;
+  background-color: #fff;
+}
+
+/* 正在执行的步骤 */
+
+.be_being {
+  color: #333;
+}
+
+.be_being .time-t {
+  font-size: 24rpx;
+}
+
+.be_being .time-b {
+  font-size: 20rpx;
+}
+
+/* 已揽货 */
+
+.step .icon-outbound {
+  background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNyIgaGVpZ2h0PSIyNyIgdmlld0JveD0iMCAwIDI3IDI3Ij4NCiAgPGcgaWQ9Iue7hF8xMDA1IiBkYXRhLW5hbWU9Iue7hCAxMDA1IiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgtNTYgLTExODgpIj4NCiAgICA8ZyBpZD0i57uEXzk5MCIgZGF0YS1uYW1lPSLnu4QgOTkwIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgwIDMwMikiPg0KICAgICAgPGcgaWQ9Iue7hF85ODYiIGRhdGEtbmFtZT0i57uEIDk4NiIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMjQgMzY5KSI+DQogICAgICAgIDxnIGlkPSLmpK3lnIZfMjMiIGRhdGEtbmFtZT0i5qSt5ZyGIDIzIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgzMiA1MTcpIiBmaWxsPSJub25lIiBzdHJva2U9IiNjY2MiIHN0cm9rZS13aWR0aD0iMSI+DQogICAgICAgICAgPGNpcmNsZSBjeD0iMTMuNSIgY3k9IjEzLjUiIHI9IjEzLjUiIHN0cm9rZT0ibm9uZSIvPg0KICAgICAgICAgIDxjaXJjbGUgY3g9IjEzLjUiIGN5PSIxMy41IiByPSIxMyIgZmlsbD0ibm9uZSIvPg0KICAgICAgICA8L2c+DQogICAgICA8L2c+DQogICAgPC9nPg0KICAgIDxwYXRoIGlkPSLot6/lvoRfMzYyIiBkYXRhLW5hbWU9Iui3r+W+hCAzNjIiIGQ9Ik00LjQ3Niw3LjY1NCwzLjM5LDguNzRBLjQyOC40MjgsMCwwLDAsNCw5LjM0Nkw2LjExNCw3LjIyOCwzLjk5LDUuMTExYS40MjguNDI4LDAsMSwwLS42MDYuNjA2TDQuNDcsNi44SC44MjNWNS4xNjVBLjQyOC40MjgsMCwxLDEsLjMsNC40ODdMNi4xMzgsMGw1LjgzMSw0LjQ4N2EuNDI4LjQyOCwwLDAsMS0uNTIyLjY3OHY2LjgyNkguODI5VjcuNjU0WiIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoNjMuMzY1IDExOTUuNSkiIGZpbGw9IiNjY2MiLz4NCiAgPC9nPg0KPC9zdmc+DQo=");
+}
+
+/* 收货地址 */
+
+.step-end {
+  width: 100%;
+  min-height: 120rpx;
+  padding-bottom: 30px;
+  font-size: 12px;
+  position: relative;
+  display: inline-block;
+  box-sizing: border-box;
+  padding-left: 10px;
+  vertical-align: top;
+  overflow: hidden;
+}
+
+.step-end .s-l {
+  float: left;
+}
+
+.step-end .s-l .s-icon {
+  width: 24px;
+  height: 24px;
+  line-height: 24px;
+  text-align: center;
+}
+
+.step-end .s-l .s-icon .img {
+  width: 100%;
+  height: 100%;
+}
+
+.step-end .s-l .s-line {
+  position: absolute;
+  height: 100%;
+  top: 0;
+  left: 10px;
+  margin: 0 0 0 12px;
+  /* width: 1px; */
+  z-index: -1;
+  border-left: 1px solid #cecece;
+}
+.step-end .s-l .s-line.active{
+  border: 1px dashed #4da1ff;
+}
+.step-end .s-r {
+  float: left;
+  padding-left: 6px;
+  padding-top: 3px;
+  box-sizing: border-box;
+}
+
+.step-end .s-title {
+  font-size: 14px;
+  font-weight: 700;
+  color: #1c2438;
+}
+
+.step-end .s-content {
+  /* margin-left:40px; */
+  /* margin-top:0; */
+  clear:inherit;
+  font-size: 12px;
+  font-weight: 700;
+  color: #80848f;
+}

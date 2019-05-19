@@ -1,0 +1,8 @@
+{
+  "backgroundColor": "#EFEFEF",
+  "navigationBarTitleText": "日志列表",
+  "usingComponents": {
+    "tabBar": "/component/tabBar/tabBar",
+    "shadow": "/component/shadow/index"
+  }
+}

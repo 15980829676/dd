@@ -1,0 +1,20 @@
+<!--component/topNav/topNav.wxml-->
+<view class='nav-box '>
+  <scroll-view 
+  class="nav-wrap {{isFixed?'fixed':''}} nav-class  {{isHas?'top2':''}}" 
+  scroll-x 
+  scroll-into-view="{{'nav'+scrollNavId}}" 
+  bindscroll="scroll" 
+  scroll-with-animation="true">
+    <view 
+    style="width: {{itemWidth}}px;"
+    id="{{'nav'+(item.key?item.key:index)}}"
+    wx:for="{{navTitleArr}}" 
+    wx:if="{{navTitleArr.length > 0}}" 
+    class="nav-item" 
+    data-key="{{item.key?item.key:index}}" 
+    bindtap='clickNavItem' wx:key="{{index}}" data-type="{{item.title?item.title:item}}">
+      <view class="nav-item-title {{currentNavId==(item.key?item.key:index)?'action':''}}">{{item.title?item.title:item}}</view>
+    </view>
+  </scroll-view>
+</view>

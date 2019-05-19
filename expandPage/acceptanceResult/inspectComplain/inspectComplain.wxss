@@ -1,0 +1,159 @@
+/* pages/inspectComplain/inspectComplain.wxss */
+
+.iC-wrap {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+.iC-wrap .title {
+  width: 100%;
+  height: 96rpx;
+  line-height: 96rpx;
+  padding-left: 44rpx;
+  box-sizing: border-box;
+  font-size: 24rpx;
+  color: #333;
+  background: #efefef;
+}
+
+.iC-wrap .y-lx {
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-wrap: wrap;
+  padding: 40rpx 44rpx 8rpx;
+  box-sizing: border-box;
+}
+
+.iC-wrap .y-wt1 {
+  width: 32%;
+  height: 60rpx;
+  box-sizing: border-box;
+  text-align: center;
+  line-height: 60rpx;
+  color: #BBBBBB;
+  font-size: 24rpx;
+  margin-right: 2%;
+  margin-bottom: 32rpx;
+  border: 2rpx solid #BBBBBB;
+  border-radius: 10rpx;
+}
+
+.iC-wrap .y-wt1.cur {
+  border: 2rpx solid #4da1ff;
+  background: #4da1ff;
+  color: #fff;
+}
+
+.iC-wrap .y-wt1:nth-child(3n) {
+  margin-right: 0;
+}
+
+.iC-wrap .y-wt4 {
+  width: 100%;
+  height: 106rpx;
+  line-height: 106rpx;
+  box-sizing: border-box;
+  font-size: 24rpx;
+  color: #bbb;
+  border-top: 2rpx dashed #e2e2e2;
+}
+
+.iC-wrap .matter {
+  width: 100%;
+  height: 200rpx;
+  padding: 32rpx 44rpx;
+  box-sizing: border-box;
+}
+
+.iC-wrap .matter textarea {
+  width: 100%;
+  height: 100%;
+  font-size: 24rpx;
+  color: #bbb;
+  line-height: 34rpx;
+}
+
+.iC-wrap .upload {
+  /* width: 100%; */
+  padding-top: 32rpx;
+  margin-left: 44rpx;
+  box-sizing: border-box;
+  display: flex;
+  flex-wrap: wrap;
+  border-top: 2rpx dashed #e2e2e2;
+  margin-right: 44rpx;
+}
+
+.iC-wrap .upload .pho {
+  width: 140rpx;
+  height: 140rpx;
+  margin-bottom: 32rpx;
+  margin-right: 26rpx;
+  overflow: hidden;
+}
+
+.iC-wrap .upload .pho:nth-child(4n) {
+  margin-right: 0;
+}
+
+.iC-wrap .upload .pho image {
+  width: 100%;
+  height: 100%;
+}
+
+.iC-wrap .upload .pic {
+  width: 136rpx;
+  height: 136rpx;
+  border: 2rpx solid #ccc;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 32rpx;
+}
+
+.iC-wrap .upload .pic .icon {
+  width: 35.84rpx;
+  height: 35.84rpx;
+  margin-top: 40rpx;
+  margin-bottom: 14rpx;
+}
+
+.iC-wrap .upload .pic .icon image {
+  width: 100%;
+  height: 100%;
+}
+
+.iC-wrap .upload .pic .explain {
+  font-size: 18rpx;
+  color: #bbb;
+}
+
+.iC-btn {
+  width: 100%;
+  height: 86rpx;
+  line-height: 86rpx;
+  text-align: center;
+  font-size: 28rpx;
+  color: #fff;
+  background: #4da1ff;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  z-index: 233;
+}
+
+.i-cell2 {
+  border-bottom:1px solid #e2e2e2; 
+  position: relative;
+  padding: 12px 15px;
+  display: flex;
+  background: #fff;
+  align-items: center;
+  line-height: 1.4;
+  font-size: 14px;
+  overflow: hidden;
+}

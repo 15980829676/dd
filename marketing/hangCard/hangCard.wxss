@@ -1,0 +1,10 @@
+/* marketing/hangCard/hangCard.wxss */
+
+
+button{
+  margin-top: 40rpx;
+  width: 400rpx;
+}
+#scratch {
+  background: 
+}

@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "我的投诉",
+  "usingComponents": {
+    "shadow": "/component/shadow/index",
+    "i-toast": "../../../dist/toast/index"
+  }
+}

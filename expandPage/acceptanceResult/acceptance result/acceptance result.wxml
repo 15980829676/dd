@@ -1,0 +1,49 @@
+<!--pages/acceptance result/acceptance result.wxml-->
+<shadow status="all"></shadow>
+<view class="admin">
+
+  <view class="mac-marbot" >
+
+    <view class="wd-acc">
+
+      <view class="acc-okc">
+      <view class="GG">
+      <view class="icon" wx:if="{{list.status == 1}}"><image src="/images/balance-2.svg"></image></view>
+      <view class="icon" wx:if="{{list.status == 2}}"><image src="/images/balance-4.svg"></image></view>
+      <view class="suc">{{list.status == 1?"投诉成立":"投诉失败"}}</view>
+      </view>
+      </view>
+
+      <view class="acc-bot">
+        <view class="boom">
+          <view class="bot-left">问题分析</view>
+          <view class="bot-right">{{list.analyse}}</view>
+        </view>
+        <view class="boom">
+          <view class="bot-left">领导批示</view>
+          <view class="bot-right">{{list.instruct}}</view>
+        </view>
+        <view class="boom">
+          <view class="bot-left">处理结果</view>
+          <view class="bot-right">{{list.result}}</view>
+        </view>
+        <view class="boom">
+          <view class="bot-left">备注说明</view>
+          <view class="bot-right">{{list.mark}}</view>
+        </view>
+        <view class="boom">
+          <view class="bot-left">申请时间</view>
+          <view class="bot-right">{{list.time}}</view>
+        </view>
+        <view class="boom">
+          <view class="bot-left">受理时间</view>
+          <view class="bot-right">{{list.uptime}}</view>
+        </view>
+      </view>
+
+    </view>
+
+  </view>
+
+</view>
+<i-toast id="toast"/>

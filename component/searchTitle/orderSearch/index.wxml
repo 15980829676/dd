@@ -1,0 +1,225 @@
+<!--component/searchTitle/orderSearch/index.wxml-->
+<shadow status="all"></shadow>
+<view class='searchOrder'>
+  <view class='orderSearch'>
+    <view class='searchInput'>
+        <image src='/images/searchimag.svg' class='searchImage'></image>
+        <input class='searchText' type='text' placeholder='请输入商品关键词' value='{{text}}' bindinput='searchText' bindconfirm="searchClick"></input>
+        <view class='out' catchtap='out' wx:if="{{text.length > 0}}"></view>
+    </view>
+    <view class='btnText' catchtap='searchClick' wx:if="{{text.length > 0}}">搜索</view>
+    <view class='btnText' catchtap='orderIndex' wx:else>返回</view>
+  </view>  
+    <view class='shoppList og-all' wx:if="{{shoppStart || count > 0}}">
+       <view class='textShop'>商品(共找到<text class='textShopRed'>{{count}}</text>条相关内容)</view>
+       <view class='width100' wx:if="{{shoppStart}}">未找到<text class='textShopRed'>{{text}}</text>相关商品</view>
+       <view class='og-right'>
+         <view class="og-goods" wx:for="{{goods}}" wx:key="{{index}}">
+              <view class="img">
+                <image src="{{item.img}}"></image>
+              </view>
+              <view class="more">
+                <view class='text-0'>
+                  <view class="text-1">{{item.title}}</view>
+                  <view class="text-2">{{item.desc}}</view>
+                  <view class="text-2 gai" wx:if="{{item.base>0}}">小件规格：{{item.base+item.unit}}/每小件</view>
+                  <view class="text-2 gai" wx:if="{{item.box>0}}">装箱规格：{{item.box+item.unit}}/每箱</view>
+                  <!-- <view class="text-2 gai" wx:if="{{item.weight>0}}">净含量：{{item.weight}}g</view> -->
+                  <view class="text-2 gai" wx:if="{{item.special}}">净含量：{{item.special}}</view>
+                  <view class="text-active" wx:if="{{item.active.length>0 ||(item.goodoff==2 || item.details[0].store>0 && item.details[0].store<100)}}">
+                    <view class="text-3" wx:if="{{item.goodoff==2 || item.details[0].store>0 && item.details[0].store<100}}">
+                      <view class="tag" wx:if="{{item.goodoff==2}}">库存不足</view>
+                      <view class="tag active" wx:if="{{item.details[0].store>0 && item.details[0].store<100}}">少量库存</view>
+                    </view>
+                    <view class="text-3" wx:if="{{item.active.length>0}}" wx:for="{{item.active}}" wx:key="{{index}}" wx:for-item="activeItem">
+                      <view class="tag">{{activeItem.name}}</view>
+                    </view>
+                  </view>
+                </view>
+
+                <view class="text-4">
+                  <view class="price font-DIN">{{item.price}}</view>
+                     <view class="hint" wx:if="{{item.goodoff!=2}}">
+                    <view wx:if="{{item.props.length>1 || (item.active &&  item.active.length>0)}}" class="minus {{item.editNum<=0?'hidden':''}}" catchtap='shuMinusTip' data-index='{{index}}'></view>
+                    <view wx:else class="minus {{item.editNum<=0?'hidden':''}}" catchtap='add' data-set="2" data-type="1" data-index='{{index}}'></view>
+
+                    <view wx:if="{{item.props.length>1 || (item.active &&  item.active.length>0)}}" class="number font-DIN  {{item.editNum<=0?'hidden':''}}" catchtap='shuMinusTip' data-index='{{index}}'>{{item.editNum}}</view>
+
+                    <view wx:else class="number font-DIN  {{item.editNum<=0?'hidden':''}}" catchtap='showKeyboard' data-type="1" data-index='{{index}}'>{{item.editNum}}</view>
+
+                    <!-- 库存不足隐藏按钮 数量加到等于库存时，要提示 -->
+                    <view class="plus" wx:if="{{item.props.length>1 || (item.active &&  item.active.length>0)}}" catchtap='shugaiBtn' data-index='{{index}}' data-props='{{item.props.length}}' data-active='{{item.active && item.active.length}}' data-id='{{item.id}}' data-off='{{item.goodoff}}'
+                      data-title='{{item.title}}'></view>
+                    <view class="plus" wx:else catchtap="add" data-type="1" data-set="1" data-index='{{index}}'></view>
+                    <!--wx:if="{{!item.addstate}}"-->
+                    <i-button wx:if="{{!item.addstate}}" loading="{{!item.addstate}}" i-class="lplus" type="primary"></i-button>
+                  </view>
+                  <!-- 喇叭 无库存且是直属经销商 item->smsstatus: 1已设置 0未设置(默认值) -->
+                  <view class='icon-horn' wx:elif="{{item.goodoff==2 && userInfo.parentId == 0 && userInfo.seltype == 1}}" catchtap='clickHornSendMsg' data-gid="{{item.id}}" data-smsstatus="{{item.smsstatus}}" data-index="{{index}}"
+                  style='width: 80rpx;height: 80rpx;display: flex;align-items:center;justify-content:  flex-end;'><image style='width: 30rpx;height: 30rpx;margin-right: 5rpx;' class='icon-horn' src='/images/icon-horn.svg'></image></view>
+                </view>
+              </view>
+            </view>
+            <view class='genduo' catchtap='gendouClick'  wx:if="{{count > goods.length}}" >更多</view>
+      </view>
+  </view><!--end-->
+  
+  <view class='antistop'>
+    <view class='antistopTitle'>
+        <view class='antistopText'>热门搜索</view>
+        <view class='antistopIcon'>
+            <image class='antistopImag' src='/images/sx.svg'></image>
+            <view class='antistopHy' catchtap='antistopHy'>换一批</view>
+        </view>
+    </view>
+    <view class='antistopList'>
+       <view class='antistopListText' wx:for="{{antistopList[Index]}}" wx:key="index" data-item="{{item.title}}" catchtap='antistopClick'>{{item.title}}</view>
+    </view>
+  </view><!--热门搜索end-->
+
+</view>
+  <view class="lv-shu-wrap" hidden="{{isShow}}">
+    <view class="lv-shu-box" animation="{{animation1}}">
+      <view class="lv-img-box">
+        <image class="lv-img" src="{{cgood.img}}"></image>
+        <view class="lv-img-txt">
+          <view class="lv-img-tlt">{{cgood.title}}</view>
+          <view class="lv-img-price font-DIN">{{cgood.price}}</view>
+        </view>
+        <view class="lv-close" bindtap="backBtn">
+          <image src="/images/method-1.svg"></image>
+        </view>
+      </view>
+      <view class="lv-se-box" wx:for="{{cgood.details}}" wx:for-item="x" wx:key="{{index}}">
+        <view class="lv-se-shu">
+          <view class="lv-se-bx">{{x.name}}</view>
+          <view class="lv-elss-more-in">
+            <view class="lv-more" catchtap="shuAdd" data-index="{{index}}"></view>
+            <view class="lv-inp font-DIN" catchtap="shuKeyboard" data-index="{{index}}">{{x.editNum}}</view>
+            <view class="lv-elss" catchtap="shuMinus" data-index="{{index}}"></view>
+          </view>
+          <view class="lv-se-tishi">
+            <text wx:if="{{usertype==1}}">
+			     	<text wx:if="{{parseInt(x.store)==0}}">（库存不足）</text>
+            <text wx:elif="{{parseInt(x.limit.max)<=0 && x.sylimit>0}}">（限购{{x.sylimit}}）</text>
+            <text wx:else>
+						<text wx:if="{{x.sylimit>0}}">（最少购买{{x.limit.min}}）</text>
+            <text wx:else>（分配的购买数量已用完）</text>
+            </text>
+            </text>
+          </view>
+
+        </view>
+
+
+      </view>
+
+      <!-- <view class="lv-btn-box">
+			<view class="lv-btn1" bindtap="backBtn">返回</view>
+			<view class="lv-btn2" catchtap="shuAddCart">确认</view>
+		 </view> -->
+      <view class="lv-btn-box">
+        <view class="lv-btn2" catchtap="shuAddCart">确认</view>
+      </view>
+    </view>
+  </view>
+  <view class="rock-mc" wx:if="{{cartList.length > 0}}">
+    <view class="mask" wx:if="{{isShowCartList}}" catchtap="clickHideCartList" catchtouchmove="move"></view>
+    <view class="settlement" style="bottom: 0px;">
+      <!--<dynamicAds wx:if="{{adsList.length>0 && tarIn}}"  top-class=""  fixed="{{false}}" list="{{adsList}}"></dynamicAds>-->
+
+      <view class="adsListText" wx:if="{{adsListText && !isShowCartList}}">
+        <text class='manjian'>{{adsListText}}</text>
+      </view>
+      <view class='tanY100' animation="{{animation2}}" wx:if="{{isShowCartList && cartList.length>0}}">
+        <!--<dynamicAds wx:if="{{adsList.length>0}}"  top-class=""  fixed="{{false}}" list="{{adsList}}"></dynamicAds>-->
+        <view class="adsListText" wx:if="{{adsListText}}">
+          <text class='manjian'>{{adsListText}}</text>
+        </view>
+        <view class="product-list">
+          <view class="clear-cartbox xiugai">
+            <view class='clearText'>已选商品</view>
+            <view class="clear-cart active" catchtap="sureClear" style='margin-top:0;'>
+              <image class='empty' src='/images/min-empty.svg'></image>清空</view>
+          </view>
+          <view class="product-list-b">
+            <scroll-view scroll-y style="max-height: 600rpx;">
+              <!--begin-->
+              <view class="b-all" wx:for="{{cartList}}" wx:for-item="item" wx:key="{{index}}">
+                <view class="b-left">
+                  <view class="img">
+                    <image src="{{item.pic}}"></image>
+                  </view>
+                  <view class="name">
+                    <view class="n1">{{item.title}}</view>
+                    <!----<view class="n2">120ml</view>---->
+                  </view>
+                </view>
+                <view class="b-right">
+                  <view class="price font-DIN">{{item.price}}</view>
+                  <view class="number">
+                    <view class="number-btn-wrap" data-set="2" data-type="2" data-index="{{index}}" catchtap="add">
+                      <view class="number-btn n5"></view>
+                    </view>
+                    <view class="n1 font-DIN " catchtap='showKeyboard' data-type="2" data-index='{{index}}'>{{item.nums}}</view>
+                    <view class="number-btn-wrap" data-set="1" data-type="2" data-index="{{index}}" catchtap="add">
+                      <view class="number-btn n6"></view>
+                    </view>
+                  </view>
+				  <view class="d-delet" data-index="{{index}}" data-id="{{item.id}}" data-prop="{{item.props}}" catchtap="deleteCart"> <image src='/images/d-delet.svg'></image></view>
+                </view>
+              </view>
+              <!--end-->
+            </scroll-view>
+          </view>
+        </view>
+      </view>
+      <view wx:if="{{totalPrice>0}}" class="set-bot" catchtap="{{cartShow==true?'clickShowCartList':'clickHideCartList'}}" catchtouchmove="move">
+        <!--<view class='blanceText font-DIN' >选购清单</view>-->
+        <view class='blanceText  {{antim?"bounceIn animated":""}}'>
+          <view class='blanceTextAction' >
+            <view class='Blancebj'>
+              <image src="/images/min-listIn.svg" class='Blanceimage'></image>
+            </view>
+          </view>
+          <view class='blaTzhu'>{{total}}</view>
+        </view>
+        <view class="balance">
+          <i-button i-class="rmb font-DIN loadbtn" type="primary" loading="{{cartloading}}">￥ {{totalPrice}}</i-button>
+          <view class="btn" catchtap="toSettleAccounts">去结算</view>
+        </view>
+      </view>
+
+
+      <view wx:else class="set-bot active">
+        <!--<view class='blanceText font-DIN' style='color:#aaa'>选购清单</view>-->
+        <view class='blanceText action'>
+          <view class='blanceTextAction'>
+            <view class='Blancebj' style="background:#363636;">
+              <image src="/images/min-listOut.svg" class='Blanceimage'></image>
+            </view>
+          </view>
+
+        </view>
+        <view class="balance">
+          <view class="rmb font-DIN">￥ {{totalPrice}}</view>
+          <view class="btn">去购物</view>
+        </view>
+      </view>
+
+    </view>
+  </view>
+  <wux-keyboard id="wux-keyboard" isStopWuxKeyBoardHide="{{isStopWuxKeyBoardHide}}" />
+  <!-- <tabBar current="inventory"></tabBar> -->
+
+<i-modal title="是否清除购物车" visible="{{ visible }}" actions="{{ actions }}" bind:click="handleClick">
+  <view>删除后无法恢复哦</view>
+</i-modal>
+<i-message id="message"  />
+<i-toast id="toast" dd="{{true}}" />
+<i-modal title="提示" visible="{{ visible3 }}" actions="{{ actions3 }}" bind:click="handleClick3">
+  <view class="modal-text">您有一笔订单未付款，订单号：{{unpay.sn}}；金额：{{unpay.money}}；请前往付款</view>
+</i-modal>
+<i-modal title="提示" visible="{{ visible4 }}" actions="{{ actions4 }}" bind:click="handleClick4">
+  <view class="modal-text">是否设置库存到货通知</view>
+</i-modal>

@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "投诉受理",
+  "usingComponents": {
+    "shadow": "/component/shadow/index"
+  }
+}

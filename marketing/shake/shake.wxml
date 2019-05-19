@@ -1,0 +1,9 @@
+<!--<import src="../../component/marketing/shake/shake.wxml" />-->
+<shadow status="all"></shadow>
+<view class="index">
+  <audio  src="https://yun.pfan123.com/shake_sound.mp3" id="shakeAudio" ></audio>
+  <view class="shake_box {{anim ? 'anim' : ''}}">
+    <view class="shake_box_top"></view>    
+    <view class="shake_box_bottom"></view>    
+  </view> 
+</view>

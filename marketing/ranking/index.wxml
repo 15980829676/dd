@@ -1,0 +1,13 @@
+<!--marketing/ranking/index.wxml-->
+<view class='ranking'>
+   <text class='title'>{{title}}</text>
+   <view class='ranking-row'>
+      <view class='ranking_Top' style="transform:{{'translateY('+heightTop+'rpx)'}}" >
+        <view wx:for="{{list}}" wx:for-index="ide" wx:for-item="item" wx:key="{{ide}}" class='rankingList'  >
+            <view class='fontList'>恭喜{{item.name}}</view>
+            <view class='fontList'>{{item.prize}}</view>
+        </view>
+      </view>  
+   </view>
+</view>
+<view class='explain'>本活动活动最终解释权归诚享东方所有</view>

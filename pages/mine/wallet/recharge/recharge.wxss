@@ -1,0 +1,133 @@
+/* pages/mine/wallet/recharge/recharge.wxss */
+@import "../withdrawal/withdrawal.wxss";
+@import "/wxParse/wxParse.wxss";
+.mac-marbot{
+  margin-top: 70rpx;
+}
+.modalContent {
+  padding: 42rpx 44rpx;
+  /* text-align: left; */
+  font-size: 24rpx;
+  color: #333;
+}
+.flex_center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.placeholder{
+  font-size: 32rpx;
+  /* color: #000; */
+}
+.agreement{
+  width: 100%;
+  padding: 40rpx 0 30rpx 0;
+
+  overflow: hidden;
+  font-size: 24rpx;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+.agreement .radio{
+  width: 30rpx;
+  height: 30rpx;
+  /* border-radius: 50%; */
+  background: #fff;
+  border: 1rpx solid #4DA1FF;
+  margin-right: 18rpx;
+}
+.agreement .radio image {
+  width: 100%;
+  height: 100%;
+}
+.agreement .agr-r {
+  width: auto;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.agreement .text{
+  color: #666666;
+}
+.agreement .agr{
+  color: #4DA1FF;
+} 
+
+/* 协议内容 */
+#agreement{
+  -webkit-overflow-scrolling: touch; 
+  padding-bottom:30rpx;
+}
+#agreement .agreement-text {
+  padding: 100rpx 30rpx 50rpx;
+  /* padding-bottom:0; */
+  box-sizing: border-box;
+  overflow: hidden;
+  height: 100%;
+  overflow-y: scroll;
+}
+
+.top-bar .close-agreement {
+  display: inline-block;
+  /* float: right; */
+  position: absolute;
+  top: 50%;
+  margin-top: -20rpx;
+  right: 20rpx;
+  background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACIAAAAiCAYAAAA6RwvCAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA4ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNS1jMDE0IDc5LjE1MTQ4MSwgMjAxMy8wMy8xMy0xMjowOToxNSAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1NDdjOGViNS0yOWJkLWRlNDgtYWU2Yi0yYTM4MTI2MWZlMzgiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6MzQ5Qzg4NUM0MDNEMTFFNjg3RERENjNCMDZGQjgxQzUiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6MzQ5Qzg4NUI0MDNEMTFFNjg3RERENjNCMDZGQjgxQzUiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIDIwMTUuNSAoV2luZG93cykiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDo5MjRlZTVjNy0zZWE3LTNjNDQtOTU3Ni04MTNiNWE2MTA2OWEiIHN0UmVmOmRvY3VtZW50SUQ9ImFkb2JlOmRvY2lkOnBob3Rvc2hvcDo4NTZkN2FiNi0yOTc3LTExZTYtYTk0Ni1jMDhmM2UxZDYwZWYiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz49tVVfAAABtklEQVR42sTXv0rEMBwH8Nxv01c44QSL4OZQh1ukOOmoODr6AL6ACHKCvsM9gTg5uSmIU+sg6iLVydt8Ah3qN5JA6CVt/mLgS482ST/kmjQdlGV5xBg7Q16RvTzPP5koVVWxkIK+tOfR7xIOl8g6cop654QfF8gisoHco1LGEhaBuEPGyAIy4ec55E2pt8wrpcIoiBXl9LuE7CIz5cIwBcaA+EL2/yD4f2ocCx0GyRIjtnD/ZzkiLCXGBsHLoGkatVEmGg2VRjOBrD0cOgTvbxuIF7UitaZbzJExIYo2Yg4SEdOF0I4sGRaiEIwzwggJwHghOiGiuGC8ETYQW0wQwhbShylCES6QLsytDuG67pDj2qDDsBiLH3mslvwmB4Zrh54rsBeEP5hTw7Wp77uJPBDtB5PFeFFSIII/Ezsx3k22kJFpiiI3pqntsrmygfDOHnqmaB2KIQuE7f4kCEMdOyufTZI3hiIigjAUGaFiNuWngg2GEiBk+RDtrDCUcOPMxOerFYZSIVwxlBLhguEjcqVDuGxqAjHXErKWGtGDWZWQY+QbeUqJ0GAekR/kZO6T8z/LrwADAOjnB9kJaj6WAAAAAElFTkSuQmCC) no-repeat;
+  background-size: 30rpx 30rpx;
+  background-position:right center ;
+  width: 40rpx;
+  height: 40rpx;
+}
+.top-bar {
+  padding: 25rpx 20rpx;
+  text-align: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 777;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  height: 100rpx;
+  /* line-height: 50rpx; */
+  box-sizing: border-box;
+  background: #4DA1FF;
+  color: #fff;
+}
+
+.top-bar .bk {
+  position: absolute;
+  top: 0;
+  width: 60rpx;
+  height: 100%;
+  left: 20rpx;
+  text-align:left;
+}
+
+.top-bar .bk image {
+  position:relative;
+  top:24rpx;
+}
+
+.action-time{
+  font-size:20rpx;
+  font-weight:400;
+  padding-top: 32rpx;
+  color:rgba(153,153,153,1);
+}
+.draw-two{
+  padding-bottom: 0;
+}
+.draw-four{
+  padding: 0;
+  padding-bottom: 19rpx;
+}
+.draw-btn {
+  margin-top: 162rpx;
+}

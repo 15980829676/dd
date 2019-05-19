@@ -1,0 +1,105 @@
+<!--pages/inspectComplain/inspectComplain.wxml-->
+<shadow status="all"></shadow>
+<view class="admin">
+
+  <view class="mac-marbot">
+
+    <view class="iC-wrap">
+      <view class="title">投诉人信息</view>
+      <i-panel>
+        <i-input value="{{list.username}}" cellStart="{{true}}"  i-class='i-cell2' dadaViex="changEinput" dadaInput="changEplace" title="投诉人姓名" placeholder="请填写投诉人姓名"  data-open="username" bind:change='typetxt'  maxlength='11' />
+        <i-input value='{{list.cmobile}}' cellStart="{{true}}" i-class='i-cell2' data-open="cmobile" bind:change='typetxt' dadaViex="changEinput" dadaInput="changEplace" type="number" title="联系电话" placeholder="请填写投诉人联系电话" maxlength='11'  />
+        <i-input value='{{list.weixin}}' cellStart="{{true}}" i-class='i-cell2' data-open="weixin" bind:change='typetxt' dadaViex="changEinput" dadaInput="changEplace" title="微信号" placeholder="请填写微信号（选填）" maxlength='11' />
+      </i-panel>
+    </view>
+
+    <!-- <view class="iC-wrap">
+      <view class="title">投诉渠道</view>
+      <view class="y-lx">
+        <view class="y-wt1 cur">官网QQ</view>
+        <view class="y-wt1">信购平台</view>
+        <view class="y-wt1">电话</view>
+        <view class="y-wt1">公司来访</view>
+        <view class="y-wt1">转诉</view>
+      </view>
+    </view> -->
+
+    <view class="iC-wrap">
+      <view class="title">投诉类型</view>
+      <view class="y-lx">
+        <view class="y-wt1 {{list.type == index? 'cur':''}} " wx:for="{{inspectList.inspectListType}}" wx:key="index" data-type="{{item.type}}" data-id="0" catchtap='inspectClickone' >{{item.name}}</view>
+  
+        <!--选择其他才显示-->
+        <input class="y-wt4" value="{{list.typetxt}}" type="text" placeholder="请输入投诉类型" placeholder-style="color:#BBBBBB;" wx:if="{{list.type== 5}}" data-open="typetxt" bindinput='typetxt' />
+        <!--选择其他才显示end-->
+      </view>
+    </view>
+
+    <view class="iC-wrap">
+      <view class="title">投诉人类别</view>
+       <view class="y-lx">
+        <view class="y-wt1 {{list.complaintype == index? 'cur':''}}" 
+        wx:for="{{inspectList.complaintype}}" 
+        wx:key="index" 
+        data-id="1" 
+        data-type="{{item.type}}"
+        catchtap='inspectClickTwo'>{{item.name}}</view>
+     
+        <!--选择公司经销商才显示-->
+        <view class="iC-wrap" wx:if="{{list.complaintype == 1}}">
+          <input class="y-wt4" type="text" placeholder="请输入经销商的姓名" placeholder-style="color:#BBBBBB;" data-open="name" 
+            value="{{list.name}}"
+            bindinput='typetxt'/>
+          <input  class="y-wt4" type="number" placeholder="请输入经销商的手机号" placeholder-style="color:#BBBBBB;"
+            maxlength="11" 
+            data-open="mobile" 
+            value="{{list.mobile}}" 
+            bindinput='typetxt' />
+        </view>
+        <!--选择公司经销商才显示end-->
+        <!--选择其他才显示-->
+        <input class="y-wt4" value="{{list.complainttxt}}" data-open="complainttxt" type="text" placeholder-style="color:#BBBBBB;" placeholder="请输入投诉人类别"  wx:if="{{list.complaintype == 2}}" bindinput='typetxt' />
+        <!--选择其他才显示end-->
+      </view>
+    </view>
+
+    <view class="iC-wrap">
+      <view class="title">事件内容</view>
+      <view class="matter">
+        <textarea placeholder="请输入事件内容详情" placeholder-style="color:#BBBBBB;" value='{{list.content}}' 
+        data-open="content"
+        bindinput='typetxt'></textarea>
+      </view>
+    </view>
+
+    <view class="iC-wrap">
+      <view class="title">投诉凭据</view>
+        <view class="y-lx">
+        <view class="y-wt1 {{list.proof == index? 'cur':''}}" wx:for="{{inspectList.proof}}" wx:key="index" 
+        data-type="{{item.type}}" catchtap='inspectClickthree'>{{item.name}}</view>
+        <!--选择其他才显示-->
+        <input class="y-wt4" value="{{list.prooftxt}}" placeholder-style="color:#BBBBBB;" data-open="prooftxt" type="text" placeholder="请输入投诉凭据"  wx:if="{{list.proof == 3}}" bindinput='typetxt'/>
+      </view>
+      <view class="upload" wx:if="{{list.proof != 3}}">
+         <addPicture bindhandlePicture="_handlePicture" id="addPicture"></addPicture>
+      </view>
+    </view>
+
+    <view class="iC-wrap">
+      <view class="title">投诉要求</view>
+      <view class="y-lx">
+        <view class="y-wt1 {{list.claim == index? 'cur':''}}" wx:for="{{inspectList.claim}}" wx:key="index" data-type="{{item.type}}" catchtap='inspectClickfirst'>{{item.name}}</view>
+        <!--选择其他才显示-->
+        <input class="y-wt4" value="{{list.claimtxt}}" data-open="claimtxt" type="text" placeholder-style="color:#BBBBBB;"
+        placeholder="请输入投诉要求" bindinput='typetxt' wx:if="{{list.claim == 2}}" />
+        <!--选择其他才显示end-->
+      </view>
+    </view>
+
+    <view class="iC-btn" catchtap='inspectClick'>提 交 投 诉</view>
+
+  </view>
+
+</view>
+<i-toast id="toast"/>
+<i-message id="message"  />

@@ -1,0 +1,22 @@
+<view id="login-box" wx:if="{{isShow=='show'}}">
+  <view class="login">
+    <view class="login-hou">
+      <view class="title">诚享东方经销商管理系统</view>
+      <view class="line"></view>
+      <view class="text">登录后小程序将获得以下权限</view>
+      <view class="fox">
+        <view class="rad"></view>
+        <view class="mot">获得你的公开信息 （昵称、头像等）</view>
+      </view>
+      <button class="but" open-type="getUserInfo" bindgetuserinfo="getUserInfo">授权/登录</button>
+    </view>
+  </view>
+</view>
+
+<i-toast id="toast" dd="{{true}}"  />
+<i-modal visible="{{ visibleModal1 }}" actions="{{modalData1}}" bind:click="handleModal1" i-class-mask="modal-mask" i-class="modal-main">
+  <view class='modalContent' style="padding: 42rpx 44rpx;font-size: 24rpx;color: #333333;">请选择您的身份</view>
+</i-modal>
+<i-modal visible="{{ visibleModal2 }}" actions="{{modalData2}}" bind:click="handleModal2" i-class-mask="modal-mask2" i-class="modal-main">
+  <view class='modalContent' style="padding: 42rpx 44rpx;font-size: 24rpx;color: #333333;">已有店铺的用户重新注册将会产生新的店铺，请慎重考虑！</view>
+</i-modal>

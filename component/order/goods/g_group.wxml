@@ -1,0 +1,125 @@
+<!--component/order/goods/group.wxml-->
+<view class='item-wrap' wx:if="{{item.ord_goods_type != 3}}">
+  <view class="sum_title">
+    <view wx:if="{{isShowRadio}}" class="radio-wrap"><i-radio i-class='i-radio' i-radio-radio="i-radio-radio-circle" i-radio-cell="radio-cell" color="#4DA1FF" checked></i-radio></view>
+    <text>{{item.title}}（共{{item.carnum||item.num}}组商品）</text>
+    <!-- <text>{{item.num||item.nums}}</text> -->
+  </view>
+  <!-- 显示第一个商品 -->
+  <!-- <view class="main-item flex {{item.issuit != 1 && item.type != 9 && index != goods.length-1?'bot':''}}" data-id="{{item.id}}" hidden='{{item.ord_goods_type == 3 ? true : false}}' style='padding: 20rpx 0;'>
+    <view class="pic">
+      <image src="{{imghost}}{{item.suitInfo[0].img||item.suitInfo[0].pic}}"></image>
+    </view>
+    <view class="info flex-item">
+      <view class="tit flex">
+        <text class="spxq name flex-item">{{item.suitInfo[0].title}}</text>
+      </view>
+      <text class="guige gai">{{item.suitInfo[0].props_name||item.suitInfo[0].props}}</text>
+
+      <view class="num flex">
+        <view class="flex-item gai">
+          <view class="n mn">
+            <text class="digai disn">×{{item.num||item.nums}}</text>
+            <text class="digai">×{{item.suitInfo[0].min_num}}</text>
+          </view>
+        </view>
+      </view>
+
+      <view class="price-bot flex">
+        <view class="flex-item">
+          <text>￥{{item.suitInfo[0].price}}</text>
+        </view>
+      </view>
+
+    </view>
+  </view>  -->
+  <view class="box">
+    <view class="item">
+      <view class="main-item flex">
+        <view class="pic">
+          <image src="{{item.suitInfo[0].img||item.suitInfo[0].pic}}"></image>
+        </view>
+        <view class="info flex-item">
+          <view class="tit flex">
+            <text class="spxq name flex-item">{{item.suitInfo[0].title}}</text>
+            <view class='props'>{{item.suitInfo[0].props_name||item.suitInfo[0].props}}</view>
+          </view>
+          <view class="tit flex">
+            <view class="dow">
+              <text class="font-DIN">×{{item.suitInfo[0].min_num}}</text>
+              <text class="price font-DIN">￥{{item.suitInfo[0].price}}</text>
+            </view>
+          </view>
+          
+        </view>
+      </view>
+    </view>
+    <!-- 组合购内的商品 -->
+    <!-- 是组合购商品且显示（true）且不等于第一个商品 -->
+    <block wx:for="{{item.suitInfo}}" wx:key="suit" wx:if="{{item.isShowSuitInfo && suitIndex != 0}}" wx:for-item="suititem" wx:for-index="suitIndex">
+      <view class="item {{index == (item.suitInfo.length-1)?'yhs':''}}">
+        <view class="main-item flex">
+          <view class="pic">
+            <image src="{{suititem.img||suititem.pic}}"></image>
+          </view>
+          <view class="info flex-item">
+            <view class="tit flex">
+              <text class="spxq name flex-item">{{suititem.title}}</text>
+              <view class='props'>{{suititem.props_name||suititem.props}}</view>
+            </view>
+            <view class="tit flex">
+              <view class="dow">
+                <text class="font-DIN">×{{suititem.min_num}}</text>
+                <text class="price font-DIN">￥{{suititem.price}}</text>
+              </view>
+            </view>
+            
+          </view>
+        </view>
+      </view>
+    </block>
+  </view>
+  
+  <!-- <block>
+    <view class="main-item flex bord" data-id="{{item.id}}" bindtap='listTap' hidden='{{item.ord_goods_type == 3 ? true : false}}'>
+      <view class="pic">
+        <image src="{{imghost}}{{suititem.img||suititem.pic}}"></image>
+      </view>
+      <view class="info flex-item">
+        <view class="tit flex">
+          <text class="spxq name flex-item">{{suititem.title}}</text>
+        </view>
+        <text class="guige gai">{{suititem.props_name||suititem.props}}</text>
+
+        <view class="num flex">
+          <view class="flex-item gai">
+            <view class="n mn">
+              <text class="digai">×{{suititem.min_num}}</text>
+            </view>
+          </view>
+        </view>
+
+        <block wx:if="{{is_points==0}}">
+          <showCredits item="{{suititem}}"> </showCredits>
+        </block>
+
+      </view>
+    </view>
+  </block> -->
+
+  <view class="sum_num" bindtap='clickShowSuitInfo'>
+    <view class="num_left">
+      <text>共有{{item.suitInfo.length}}件</text>
+      <!--点击后添加样式 on 箭头向上-->
+      <view class="right-arrow {{item.isShowSuitInfo?'on':''}}"></view>
+    </view>
+    <view class="price-t p_line">
+      <text>组合价：</text>
+      <!-- <text>￥{{item.m_price}}</text> -->
+      <view class="u-p">
+        <view class='unit'>￥</view>
+        <text class="price font-DIN">{{item.price}}</text>
+      </view>
+    </view>
+  </view>
+</view>

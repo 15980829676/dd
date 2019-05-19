@@ -1,0 +1,7 @@
+/* component/topLoadingProgress/topLoadingProgress.wxss */
+/* 不允许使用选择器 */
+/* ::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+  color: transparent;
+} */

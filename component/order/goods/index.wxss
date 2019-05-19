@@ -1,0 +1,36 @@
+/* component/order/goods/index.wxss */
+.disn {
+  display: none !important;
+}
+.submit-buypro-list {
+  width: 100%;
+  /* background: #fff; */
+  /* padding-left: 25rpx;
+  padding-right: 25rpx; */
+  box-sizing: border-box;
+  overflow: hidden;
+  /* background-color: #efefef; */
+}
+
+.submit-buypro-list .title {
+  line-height: 88rpx;
+  height: 88rpx;
+  color: #333;
+  padding-left: 25rpx;
+  padding-right: 25rpx;
+  font-size: 24rpx;
+  border-bottom: 2rpx solid #d9d9d9;
+  background: #fff;
+}
+
+.submit-buypro-list .title .icon {
+  width: 46rpx;
+  height: 46rpx;
+  display: inline-block;
+  position: relative;
+}
+
+.submit-buypro-list .title .icon image {
+  width: 100%;
+  height: 100%;
+}

@@ -1,0 +1,44 @@
+/* pages/mine/wallet/withdrawal/withdrawalRecord.wxss */
+
+.mac-marbot {
+  margin-bottom: 0;
+}
+
+.statues {
+  font-size: 20rpx;
+  color: #999;
+}
+
+.item {
+  width: 100%;
+  height: 170rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0 20rpx;
+  box-sizing: border-box;
+  border-bottom: 2rpx solid #e2e2e2;
+}
+
+.item .wrap {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+.item .wrap .name{
+  max-width: 60%;
+  overflow:hidden;
+  white-space:nowrap;
+  text-overflow:ellipsis;
+  font-size:28rpx;
+  color:#000;
+}
+.item .wrap .money{
+  font-size:34rpx;
+  color:#000;
+}
+.item .wrap .small{
+  font-size:20rpx;
+  color:#999;
+}

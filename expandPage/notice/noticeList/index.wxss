@@ -1,0 +1,130 @@
+/* expandPage/notice/team.wxss */
+.module-content {
+  padding: 0 12px;
+  box-sizing: border-box;
+  background: white;
+}
+.module-content.padts{padding-top: 180rpx;}
+
+.mac-marbot {
+  margin-bottom: 0;
+}
+page {
+  background: #efefef;
+}
+.m-icon {
+  width: 60rpx;
+  height: 60rpx;
+  line-height: 60rpx;
+  border-radius: 50%;
+  background: #000;
+  color: #fff;
+  font-size: 24rpx;
+  text-align: center;
+  margin-right: 20rpx;
+  overflow: hidden;
+}
+
+.module-list .module-list-amount {
+  /* width: 50%; */
+  width: calc(100% - 80rpx - 45%);
+  text-align: right;
+}
+
+.module-list .module-list-info .info-name {
+  position: relative;
+  display: inline-block;
+}
+
+.module-list .module-list-info .info-name .text {
+  max-width: 300rpx;
+  font-size: 28rpx;
+  color: #000;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  display: inline-block;
+}
+
+.module-list .module-list-info .info-name .badge {
+  width: 12rpx;
+  height: 12rpx;
+  background: #eb0000;
+  border-radius: 100%;
+  position: absolute;
+  top: 0;
+  right: -12rpx;
+}
+/*系统通知*/
+
+.module {
+  width: 100%;
+  height:92px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  box-sizing: border-box;
+  padding: 0 20rpx;
+  border-bottom:2rpx solid #E2E2E2;
+}
+.module:last-child{
+  border: 0
+}
+.title {
+  font-size: 16px;
+  color: #000;
+}
+.time {
+  font-size: 12px;
+  color: #999;
+}
+.isread {
+  width: 20rpx;
+  height: 20rpx;
+  position: absolute;
+  top: 50%;
+  right: 40rpx;
+  border-radius: 100%;
+  background: red;
+  transform: translateY(-50%);
+}
+.advance {
+  width: 100rpx;
+  height: 100rpx;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+.loadmore {
+  width:100%;
+ margin-top:26%;
+font-size:24rpx;
+color:#a9abb1;
+text-align: center;
+}
+
+.left {
+  width: 40px;
+  height: 40px;
+}
+.right {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  justify-content: center;
+  box-sizing: border-box;
+  padding-left:23px; 
+}
+.rightLtop {
+  display: flex;
+  width: 100%;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+.ovhi {
+   text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}

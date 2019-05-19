@@ -1,0 +1,11 @@
+{
+  "component": true,
+  "navigationBarTitleText": "钱包明细",
+  "usingComponents": {
+    "loadMore": "/component/loadMore/loadMore",
+    "topNav": "/component/topNav/topNav",
+    "shadow": "/component/shadow/index",
+    "i-toast": "/dist/toast/index",
+    "tabBar": "/component/tabBar/tabBar"
+  }
+}

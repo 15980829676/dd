@@ -1,0 +1,18 @@
+{
+  "component": true,
+  "navigationBarTitleText": "通知",
+  "usingComponents": {
+    "i-tabs": "/dist/tabs/index",
+    "i-tab": "/dist/tab/index",
+    "i-tab-bar": "/dist/tab-bar/index",
+    "i-tab-bar-item": "/dist/tab-bar-item/index",
+    "loadMore": "/component/loadMore/loadMore",
+    "orderType": "/component/order/returnOrderType/index",
+    "bkgLoading": "/component/bkgLoading/index",
+    "topNav": "/component/topNav/topNav",
+	"topNav2": "/component/topNav2/topNav2",
+  "i-toast": "/dist/toast/index",
+  "shadow": "/component/shadow/index"
+	
+  }
+}

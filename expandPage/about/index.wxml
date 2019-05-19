@@ -1,0 +1,35 @@
+<!--expandPage/about/index.wxml-->
+<shadow status="top"></shadow>
+<view>
+  <view class='box'>
+
+    <view class='top'>
+      <view class='icon'><image src='{{https+"xcx/jhlogo.png"}}'></image></view>
+      <view class='text'>
+        <text class='title'>诚享信购</text>
+        <text class='version'>Version {{version}}</text>
+      </view>
+    </view>
+
+    <view class='btn-wrap'>
+      <navigator url='../version/content' class='btn-item' hover-class='none'>
+        <text>版本介绍</text>
+        <view class='right-arrow'></view>
+      </navigator>
+    </view>
+
+    <view class='bot'>
+      <view class='agreement'>
+        <text>《信购商城平台服务协议》</text>
+        <text style='color: #333333;'>和</text>
+        <text>《消费者保障服务协议》</text>
+      </view>
+      <watermark fae-class="fae-class"></watermark>
+      <!-- <view class='copyright'>
+        <view class='copyright-top'>公司 版权所有</view>
+        <view class='copyright-bot'>Copyright © 2011-2019 </view>
+      </view> -->
+    </view>
+
+  </view>
+</view>

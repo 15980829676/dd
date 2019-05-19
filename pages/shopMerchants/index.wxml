@@ -1,0 +1,112 @@
+<!--pages/shopMerchants/index.wxml-->
+<!-- <view class=' top_shadow' style="position: fixed;top:0;left: 0;width: 100%;height: 10rpx;"></view> -->
+<shadow status="top"></shadow>
+<view class="shop-merchants">
+
+  <view class="shop-m top_shadow">
+    <view class="headicon">
+      <image src="/images/img-1.png"></image>
+	  <text wx:if="{{user.p_id>0}}">
+		<text class="tet name-s">您的上级名称为：{{user.name}}</text>
+		<text class="tet">您的上级店铺为：{{user.g_name}}</text>
+	  </text>
+	  
+    </view>
+    <view class="headagent">Agent application</view>
+    <view class="headequity">权益介绍</view>
+  </view>
+
+  <view class="shop-marb">
+	<view class="shop-tg"></view>
+	<view class="vivi-top">
+		<text>{{shopType.explain.mtitle}}</text>
+		<view class="t-icon" data-type="bao" catchtap="onshowtan">
+			<image src="/images/img-2.png"></image>
+		</view>
+	</view>
+	<view class="vivi-top top2">
+          <text>{{shopType.explain.ftitle}}</text>
+          <view class="t-icon" data-type="dai" catchtap="onshowtan">
+            <image src="/images/img-2.png"></image>
+          </view>
+    </view>
+	<view class="vivi-top top3">
+          <text>{{shopType.explain.stitle}}</text>
+          <view class="t-icon" data-type="shop" catchtap="onshowtan">
+            <image src="/images/img-2.png"></image>
+          </view> 
+    </view>
+	 <view class="vivi-text">{{shopType.explain.scontent}}</view>
+	<view class="vivi-top" style="top:{{940+heigt}}rpx">
+        <text>{{shopType.explain.ititle}}</text>
+        <view class="t-icon" data-type="select" catchtap="onshowtan">
+            <image src="/images/img-2.png"></image>
+        </view>
+		
+    </view>
+	<view class="shop-wrap">	
+		<view class="shop-cont" style="width:{{shopType.list.length*280-60}}rpx">
+			<view class="shop-tw">
+					<view class="grade"  wx:for="{{shopType.list}}"  wx:for-item="item" wx:key="index" >{{item.name}}</view>
+			</view>
+			<view class="vivi pat1 font-DIN">
+				<view class="vivi-line"></view>
+				<view style="height:40rpx;overflow:hidden;white-space:nowrap;">
+					<view class="vivi-mon" wx:for="{{shopType.list}}" wx:for-item="item" wx:key="index">
+						<text>RMB </text>
+						<text>{{item.money}}</text>
+					</view>
+			   </view>
+			</view>
+			<view class="vivi pat1 font-DIN">
+				<view class="vivi-line"></view>
+				<view style="height:40rpx;overflow:hidden;white-space:nowrap;" >
+				  <view class="vivi-mon" wx:for="{{shopType.list}}" wx:for-item="item" wx:key="index">
+					<text>RMB </text>
+					<text>{{item.first_payment}}</text>
+				  </view>
+				</view>
+		  </view>
+		  <view class="vivi pat1">
+			<view class="vivi-line"></view>
+		  </view>
+		  <view class="vivi" style="padding-top:{{210+heigt}}rpx">
+			<view class="vivi-line"></view>
+			<view style="height:80rpx;min-height:80rpx;overflow:hidden;white-space:nowrap;">
+			  <view class="vivi-mon show" wx:for="{{shopType.list}}" wx:for-item="item" wx:key="index">{{item.shop_item}}</view>
+			</view>
+		  </view>
+		  
+		  
+		</view>
+	</view>
+   
+
+  </view>
+  <view class="shop-b">
+    <view class="lefticon">
+      <button class="service" open-type="contact" hover-class="none" plain="true">
+        <image src="/images/img-3.svg"></image>
+      </button>
+    </view>
+    <view class="rightbutton" catchtap="onNextPage">申请店铺</view>
+  </view>
+
+
+   <!--弹窗-->
+   <view class="Dialog" wx:if="{{isShow}}" catchtouchmove='move'>
+        <view class="log-con">
+            <view class="content">
+                <view class="title">{{title}}</view>
+                <view class="line"></view>
+                <view class="text">{{cont}}</view>
+            </view>
+            <view class="close" catchtap="onhidetan">
+                <image src="/images/img-10.png"></image>
+            </view>
+        </view>
+    </view>
+    <!--弹窗end-->
+
+</view>
+<i-toast id="toast" />

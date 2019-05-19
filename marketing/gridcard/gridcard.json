@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "九宫格翻纸牌",
+  "usingComponents": {
+    "shadow": "/component/shadow/index"
+  }
+}

@@ -1,0 +1,337 @@
+<!--首页 pages/home/home.wxml-->
+
+<block>
+  <!-- style="height: {{windowHeight}}px;" -->
+  <shadow status="all"></shadow>
+  <view class="admin" style="position:relative;">
+  <view class="reminder" wx:if="{{reminder}}">
+      <view class='reminderText'>
+      <view class='dcenter'>点击"<view class='dcenter marginlr'><view class='smd'></view><view class='bgd'></view><view class='smd'></view></view>"添加到我的小程序,</view>
+      <view>微信首页下拉即可快速访问店铺</view>
+         <view class="reminderOut" catchtap='reminderHide'></view>
+      </view>
+     
+  </view>
+    <view class="Dialog hide">
+      <!--通知 一般-->
+      <view class="log-con">
+        <view class="content bd-ri">
+          <view class="title">通知标题通知标题通知标题</view>
+          <view class="subtitle">通知部门</view>
+          <view class="line"></view>
+          <view class="text">乡村与世界，在阿里年货节相遇。2016年12月16日，第二届阿里年货节在福建省福州市正式宣布启动，全球海量尖货和来自全国优秀农村产地的土货，将一起出现在年货节平台。在助力农民兄弟土特产销售的同时，阿里年货节也把来自全球的优质原产地货品同时推向中国城市和乡村消费者。</view>
+          <view class="date">2019/12/23</view>
+          <view class="sign">
+            <!-- <image src="/images/Dialog-2.svg"></image> -->
+          </view>
+        </view>
+        <view class="close">
+          <!-- <image src="/images/Dialog-1.svg"></image> -->
+        </view>
+      </view>
+      <!--通知 一般end-->
+      <!--通知 倒计时-->
+      <view class="log-con" style="display:none;">
+        <view class="content">
+          <view class="title">通知标题通知标题通知标题</view>
+          <view class="subtitle">通知部门</view>
+          <view class="line"></view>
+          <view class="text">乡村与世界，在阿里年货节相遇。2016年12月16日，第二届阿里年货节在福建省福州市正式宣布启动，全球海量尖货和来自全国优秀农村产地的土货，将一起出现在年货节平台。在助力农民兄弟土特产销售的同时，阿里年货节也把来自全球的优质原产地货品同时推向中国城市和乡村消费者。</view>
+          <view class="date">2019/12/23</view>
+        </view>
+        <view class="btn">
+          <view class="down">5S</view>
+        </view>
+      </view>
+      <!--通知 倒计时end-->
+    </view>
+
+    <swiper class="carousel" indicator-dots="{{false}}" autoplay circular>
+      <block wx:for="{{carouselList}}" wx:key="{{index}}">
+        <swiper-item class="viewpager" >
+          <image src="{{item.img}}"></image>
+        </swiper-item>
+      </block>
+    </swiper>
+
+    <view class="marquee margin-bot">
+      
+      <view class="icon ">
+        <image src="/images/home-2.svg" mode='widthFix'></image>
+        <view class='aintmoer'></view>
+      </view>
+
+      <swiper class="notice" autoplay circular vertical>
+        <block wx:for="{{notice}}" wx:key="{{index}}">
+          <swiper-item class="notice-item" data-id="{{item.id}}" data-type="{{item.type}}" catchtap="noticeClick">
+            {{item.title}}
+          </swiper-item>
+        </block>
+      </swiper>
+
+      <view class="more" catchtap='moreClick'>更多</view>
+    </view>
+
+    <view class="backlog margin-bot">
+      <view class="todo" >待办事项</view>
+      <view class="portal">
+        <view class="por-a" bindtap='jumpPage' data-page="notice" data-key="1">
+          <view class="hint {{backlog.sellerCount.nums[backlog.sellerCount.nums.length-1]>0?'knot':''}}">
+            <view class="number font-DIN">
+              <view class="scroll-wrap {{backlog.sellerCount.animation}}" style="{{backlog.sellerCount.animation==''?'top:0': ''}}">
+                <view class='scroll-wrap-item' wx:for="{{backlog.sellerCount.nums}}" wx:key="{{index}}">
+                  {{item}}
+                </view>
+              </view>
+            </view>
+          </view>
+          <view class="text">采购订单</view>
+        </view>
+        <view class="por-a" bindtap='jumpPage' data-page="notice" data-key="2">
+          <view class="hint">
+            <view class="number font-DIN">
+              <view class="scroll-wrap {{backlog.deliverCount.animation}}" style="{{backlog.deliverCount.animation==''?'top:0': ''}}">
+                <view class='scroll-wrap-item' wx:for="{{backlog.deliverCount.nums}}" wx:key="{{index}}">
+                  {{item}}
+                </view>
+              </view>
+            </view>
+          </view>
+          <view class="text">出货订单</view>
+        </view>
+        <view class="por-a" bindtap='jumpPage' data-page="notice" data-key="3">
+          <view class="hint">
+            <view class="number font-DIN">
+              <view class="scroll-wrap {{backlog.plainCount.animation}}" style="{{backlog.plainCount.animation==''?'top:0': ''}}">
+                <view class='scroll-wrap-item' wx:for="{{backlog.plainCount.nums}}" wx:key="{{index}}">
+                  {{item}}
+                </view>
+              </view>
+            </view>
+          </view>
+          <view class="text">零售订单</view>
+        </view>
+        <view class="por-a" bindtap='jumpPage' data-page="notice" data-key="0">
+          <view class="hint">
+            <view class="number font-DIN">
+              <view class="scroll-wrap {{backlog.dotCount.animation}}" style="{{backlog.dotCount.animation==''?'top:0': ''}}">
+                <view class='scroll-wrap-item' wx:for="{{backlog.dotCount.nums}}" wx:key="{{index}}">
+                  {{item}}
+                </view>
+              </view>
+            </view>
+          </view>
+          <view class="text">消息</view>
+        </view>
+      </view>
+    </view>
+    <view class='"backlog margin-bot '>
+        <view class="portal">
+        <navigator class="por-a" url='/discovery/pages/friend/friend' hover-class='none'>
+          <view class="hint displayCent" style="background:none;margin:0;"> 
+             <image src="/images/discovery.svg" class='imageWidth' style='width:45px;height:45px;'></image>
+          </view>
+          <view class="text">素材库</view>
+        </navigator>
+        <navigator class="por-a" url='/pages/inventory/inventory' hover-class='none'>
+          <view class="hint displayCent" style="background:none;margin:0;">
+                 <image src="/images/kucun.svg" class='imageWidth'></image>
+          </view>
+          <view class="text">我的库存</view>
+        </navigator>
+        <navigator class="por-a" url="" hover-class='none' catchtap='marketing'>
+          <view class="hint displayCent" style="background:none;margin:0;">
+              <image src="/images/qunfa.svg" class='imageWidth' style='width:45px;height:45px;'></image>
+          </view>
+          <view class="text">群发消息</view>
+        </navigator>
+        <navigator class="por-a" url="" hover-class='none' catchtap='marketing'>
+          <view class="hint displayCent" style="background:none;margin:0;">
+               <image src="/images/min-shopping.svg" class='imageWidth'></image>
+          </view>
+          <view class="text">积分商城</view>
+        </navigator>
+      </view>
+     <!-- <navigator url='/discovery/pages/friend/friend' class="menu-a" >
+          <view class="menu-a-left">
+            <view class="icon_menu">
+              <image src="/images/discovery.svg" class='imageWidth'></image>
+            </view>
+            <view class="text">素材库</view>
+          </view>
+        </navigator>
+         <navigator url='/pages/inventory/inventory' class="menu-a" >
+          <view class="menu-a-left">
+            <view class="icon_menu">
+              <image src="/images/kucun.svg" class='imageWidth'></image>
+            </view>
+            <view class="text">我的库存</view>
+          </view>
+        </navigator>
+         <navigator url='/discovery/pages/friend/friend' class="menu-a" >
+          <view class="menu-a-left">
+            <view class="icon_menu">
+              <image src="/images/discovery.svg" class='imageWidth'></image>
+            </view>
+            <view class="text">群发消息</view>
+          </view>
+        </navigator>
+         <navigator url='/discovery/pages/friend/friend' class="menu-a" >
+          <view class="menu-a-left">
+            <view class="icon_menu">
+              <image src="/images/discovery.svg" class='imageWidth'></image>
+            </view>
+            <view class="text">积分商城</view>
+          </view>
+        </navigator> -->
+     </view> 
+    <view class="incomeexpenses margin-bot">
+      <view class="stupid">
+        <view class="text">本月收支</view>
+        <navigator class="advance" url="/pages/mine/wallet/walletDetail" hover-class='none'>
+          <!-- <image src="/images/home-5.svg"></image> -->
+          <view class='right-arrow'></view>
+        </navigator>
+      </view>
+      <view class="ie-wrap">
+        <view class="wrap-a">
+          <view class="a-left">
+            <view class="text">采购金额</view>
+            <view class="money font-DIN">
+              <view class="scroll-wrap {{backlog.sellerSub.animation}}" style="{{backlog.sellerSub.animation==''?'top:0': ''}}">
+                <view class='scroll-wrap-item' wx:for="{{backlog.sellerSub.nums}}" wx:key="{{index}}">
+                  <!-- {{item<0?-item:item == 0?'0.00':item}} -->
+                  {{parse.dealWithNum(item)}}
+                </view>
+              </view>
+            </view>
+            <view class="icon">
+              <view class="top {{parse.setNegClass(backlog.sellerSub.nums)}}"></view>
+              <view class="bot {{parse.setPosClass(backlog.sellerSub.nums)}}"></view>
+            </view>
+          </view>
+          <view class="a-left">
+            <view class="text">出货金额</view>
+            <view class="money font-DIN">
+              <view class="scroll-wrap {{backlog.deliverSub.animation}}" style="{{backlog.deliverSub.animation==''?'top:0': ''}}">
+                <view class='scroll-wrap-item' wx:for="{{backlog.deliverSub.nums}}" wx:key="{{index}}">
+                  <!-- {{item<0?-item:item == 0?'0.00':item}} -->
+                  {{parse.dealWithNum(item)}}
+                </view>
+              </view>
+            </view>
+            <view class="icon">
+              <view class="top {{parse.setNegClass(backlog.deliverSub.nums)}}"></view>
+              <view class="bot {{parse.setPosClass(backlog.deliverSub.nums)}}"></view>
+            </view>
+          </view>
+        </view>
+        <view class="wrap-a">
+          <view class="a-left">
+            <view class="text">返利金额</view>
+            <view class="money font-DIN">
+              <view class="scroll-wrap {{backlog.refundSub.animation}}" style="{{backlog.refundSub.animation==''?'top:0': ''}}">
+                <view class='scroll-wrap-item' wx:for="{{backlog.refundSub.nums}}" wx:key="{{index}}">
+                  <!-- {{item<0?item * -1:item == 0?'0.00':item}} -->
+                  {{parse.dealWithNum(item)}}
+                </view>
+              </view>
+            </view>
+            <view class="icon">
+              <view class="top {{parse.setNegClass(backlog.refundSub.nums)}}"></view>
+              <view class="bot {{parse.setPosClass(backlog.refundSub.nums)}}"></view>
+            </view>
+          </view>
+          <view class="a-left">
+            <view class="text">零售金额</view>
+            <view class="money font-DIN">
+              <view class="scroll-wrap {{backlog.plainSub.animation}}" style="{{backlog.plainSub.animation==''?'top:0': ''}}">
+                <view class='scroll-wrap-item' wx:for="{{backlog.plainSub.nums}}" wx:key="{{index}}">
+                  <!-- {{item<0?-item:item == 0?'0.00':item}} -->
+                  {{parse.dealWithNum(item)}}
+                </view>
+              </view>
+            </view>
+            <view class="icon">
+              <view class="top {{parse.setNegClass(backlog.plainSub.nums)}}"></view>
+              <view class="bot {{parse.setPosClass(backlog.plainSub.nums)}}"></view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <view class="discounts margin-bot">
+      <view class="zone">
+        <view class="z-left">
+          <view class="text">{{goodsData.type == 0?'销售排行':'优惠活动'}}</view>
+          <swiper class="fall" autoplay circular vertical>
+            <block wx:for="{{WSOrderNotice}}" wx:key="{{index}}">
+              <swiper-item class="ing">
+                <view class="icon">
+                  <image src="{{item.avater}}"></image>
+                </view>
+                <view class="xxx">
+                  <text class='name'>{{item.name}}</text> 刚刚下单</view>
+              </swiper-item>
+            </block>
+          </swiper>
+        </view>
+        <view class="z-right" bindtap='jumpPage' data-page="inventory">更多商品</view>
+      </view>
+      <scroll-view scroll-x class="roll">
+        <block wx:for="{{goodsData.list}}" wx:key="{{index}}">
+          <view class="goods">
+            <view class="img">
+              <image src="{{item.img}}"></image>
+            </view>
+            <view class="name">{{item.title}}</view>
+            <view class="money font-DIN">{{item.price}}</view>
+            <view class="name font-DIN">{{item.m_price}}</view>
+          </view>
+        </block>
+      </scroll-view>
+    </view>
+
+  </view>
+
+</block>
+
+<i-toast id="toast" dd="{{false}}" />
+
+<wxs module="parse">
+  module.exports = {
+    setNegClass: function(nums) {
+      var class = ''
+      nums = nums || []
+      var len = nums.length
+      if (len > 0) {
+        if (nums[len - 1] >= 0) {
+          class = 'imgScrollTop_neg'
+        } else if (nums[len - 1] < 0) {
+          class = 'imgScrollBot_neg'
+        }
+      }
+      return class;
+    },
+    setPosClass: function(nums) {
+      var class = ''
+      nums = nums || []
+      var len = nums.length
+      if (len > 0) {
+        if (nums[len - 1] > 0) {
+          class = 'imgScrollTop_pos'
+        } else if (nums[len - 1] <= 0) {
+          class = 'imgScrollBot_pos'
+        }
+      }
+      return class;
+    },
+    // 处理本月收支数据
+    dealWithNum: function(num) {
+      num = parseFloat(num)
+      num = (!num || Math.abs(num) == 0) ? '0.00' : Math.abs(num)
+      return parseFloat(num).toFixed(2)
+    },
+  }
+</wxs>

@@ -1,0 +1,19 @@
+<!--pages/mine/set/mobile_check.wxml-->
+<shadow status="all"></shadow>
+<form class='box' bindsubmit='btnConfirm'>
+  <view class='wrap-item'>
+    <view class='wrap-l'>手机</view>
+    <input class='wrap-r' disabled='disabled' value='{{info.phone}}' name="phone" type='number' placeholder='请输入手机号' placeholder-class='placeholder'/>
+  </view>
+  <view class='wrap-item'>
+    <view class='wrap-l'>验证码</view>
+    <input class='wrap-r' value='{{info.code}}' bindinput='getCode' name="code" type='number' placeholder='请输入验证码' placeholder-class='placeholder'/>
+    <view class='send' bindtap='sendCode' wx:if="{{!countdownData.MIN}}">发送验证码</view>
+    <view class='send' wx:else style='text-align: center;'>{{countdownData.MIN+'s'}}</view>
+  </view>
+  <button form-type='submit' class='btn-save'>确定</button>
+</form>
+<i-message id="message" />
+<view class="FAE">技术支持诚享科技</view>
+<!--<tabBar current="mine"></tabBar>-->
+<i-toast id="toast"   />

@@ -1,0 +1,19 @@
+<!--expandPage/version/content.wxml-->
+<shadow status="top"></shadow>
+<view class='contain'>
+    <view class='row' wx:for="{{list}}" wx:for-item="item" wx:for-index="index" wx:key="index">
+        <view class='rowTop'>
+            <text class='title'>{{item.version}}</text>
+            <text class='rowData'>{{item.time}}</text>
+        </view>
+        <view class='displayFloat {{item.position == 1 ? "action":""}}'>
+        <view class='rowListOne'>
+           <text class='rowListOneText' wx:for="{{item.descript}}" wx:key="listIndex">{{item}}</text>
+        </view>
+        <view class='rowListOne'>
+            <view class='rowListOneText' wx:for="{{item.content}}"  wx:key="listIndex2">{{item}}</view>
+        </view>
+        </view>
+    </view>
+</view>
+<i-toast id="toast" />

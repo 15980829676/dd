@@ -1,0 +1,6 @@
+{
+  "component": true,
+  "usingComponents": {
+    "i-radio": "/dist/radio/index"
+  }
+}

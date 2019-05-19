@@ -1,0 +1,9 @@
+{
+  "component": true,
+  "navigationBarTitleText": "提现状态",
+  "usingComponents": {
+    "shadow": "/component/shadow/index",
+    "tabBar": "/component/tabBar/tabBar",
+    "i-toast": "/dist/toast/index"
+  }
+}

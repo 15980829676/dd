@@ -1,0 +1,73 @@
+<!--pages/mine/teamInfo.wxml-->
+<view class="admin">
+  <shadow status="top"></shadow>
+  <view class="mac-marbot">
+
+    <view class="their-t" wx:if="{{userInfo.seltype != 1}}">
+
+      <view class="t-head">
+        <view class="via">
+          <image src="{{parentInfo.shop_avatar}}"></image>
+        </view>
+        <view class="info">
+          <view class="name">{{parentInfo.sr_realname}}</view>
+          <view class="grade">{{parentInfo.levelname}}</view>
+        </view>
+        <view class="relate">
+          <image src="/images/their-2.svg"></image>
+        </view>
+      </view>
+
+      <view class="t-bot">
+        <view class="package" style="display: none;">
+          <view class="p-left">微信</view>
+          <view class="p-right">{{parentInfo.levelname}}</view>
+        </view>
+        <view class="package">
+          <view class="p-left">电话</view>
+          <view class="p-right">{{parentInfo.u_mobi}}</view>
+        </view>
+        <view class="package">
+          <view class="p-left">地址</view>
+          <view class="p-right">{{parentInfo.pro_name}} {{parentInfo.city_name}} {{parentInfo.dis_name}}</view>
+        </view>
+      </view>
+
+    </view>
+    <!-- 直属 -->
+    <view class="their-t" wx:else>
+
+      <view class="t-head">
+        <view class="via">
+          <image src="{{logo}}"></image>
+        </view>
+        <view class="info">
+          <view class="name">诚享东方</view>
+          <!-- <view class="grade"></view> -->
+        </view>
+        <view class="relate">
+          <image src="/images/their-2.svg"></image>
+        </view>
+      </view>
+
+      <view class="t-bot">
+        <view class="package">
+          <view class="p-left">电话</view>
+          <view class="p-right">400-622-5215</view>
+        </view>
+        <view class="package" style='height: auto;'>
+          <view class="p-left">地址</view>
+          <view class="p-right" style='display: flex;flex-direction: column;'>
+            福建省 厦门市 思明区
+            <view> 东浦路浦南一路云顶创谷31-35号楼</view>
+          </view>
+        </view>
+      </view>
+
+    </view>
+
+  </view>
+  <tabBar current="mine"></tabBar>
+</view>
+
+<i-toast id="toast"  dd="{{true}}" />

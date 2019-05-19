@@ -1,0 +1,6 @@
+<!--component/search/searchIndex/index.wxml-->
+<view class='search'>
+ <view class='searchRow'>
+
+ </view>
+</view>

@@ -1,0 +1,9 @@
+{
+  "navigationBarTitleText": "首页",
+  "usingComponents": {
+    "shadow": "/component/shadow/index",
+    "i-toast": "../../dist/toast/index",
+    "getFromId":"/component/getFromId/index",
+    "searchTitle": "/component/searchTitle/index"
+  }
+}

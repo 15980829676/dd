@@ -1,0 +1,216 @@
+<!--component/btnPay/index.wxml-->
+<!-- select: 选中 select1： 禁用 -->
+<!-- 直属收银台 -->
+<view class="Mask" wx:if="{{isShowPayPopUp && userInfo.seltype == 1}}" catchtouchmove='move'>
+  <view class='Mask-wrap' bindtap='closePopUp' catchtouchmove='move'></view>
+  <view class="method" style='bottom: {{tabBarH+50}}px;'>
+    <view class="title">选择支付方式</view>
+    <view class="close" bindtap='closePopUp' data-type="outer">
+      <image src="/images/method-1.svg"></image>
+    </view>
+    <view class="m-wrap">
+      <view class='hint-useBackMoney hide'>允许使用返利金额：{{backMoney}}</view>
+      <view class="wrap-a" bindtap='selSelectPayMethod' data-money="{{payMethod.balance.money}}" data-type="balance">
+        <view class="left">
+          <view class="icon">
+            <image src="/images/method-2.svg"></image>
+          </view>
+          <view class="text">余额</view>
+        </view>
+        <view class="right">
+          <view class="text">可用余额</view>
+          <view class="money font-DIN">￥{{payMethod.balance.money}}</view>
+          <view class="icon {{payMethod.balance.select?'select':payMethod.balance.select1?'select1':''}}"></view>
+        </view>
+      </view>
+      <view class="wrap-a" bindtap='selSelectPayMethod' data-money="{{payMethod.dealer.money}}" data-type="dealer">
+        <view class="left">
+          <view class="icon">
+            <image src="/images/method-3.svg"></image>
+          </view>
+          <view class="text">可提现金额</view>
+        </view>
+        <view class="right">
+          <view class="text">可用余额</view>
+          <view class="money font-DIN">￥{{payMethod.dealer.money}}</view>
+          <view class="icon {{payMethod.dealer.select?'select':payMethod.dealer.select1?'select1':''}}"></view>
+        </view>
+      </view>
+      <view class="wrap-a" bindtap='selSelectPayMethod' data-type="wechat">
+        <view class="left">
+          <view class="icon">
+            <image src="/images/method-4.svg"></image>
+          </view>
+          <view class="text">微信支付</view>
+        </view>
+        <view class="right">
+          <view class="icon  {{payMethod.wechat.select?'select':payMethod.wechat.select1?'select1':''}}"></view>
+        </view>
+      </view>
+      <view class="wrap-a" bindtap='selSelectPayMethod' data-type="alipay">
+        <view class="left">
+          <view class="icon">
+            <image src="/images/method-5.svg"></image>
+          </view>
+          <view class="text">支付宝</view>
+        </view>
+        <view class="right">
+          <!-- <view class="text">转账成功后，请上传流水单号</view> -->
+          <view class="icon  {{payMethod.alipay.select?'select':payMethod.alipay.select1?'select1':''}}"></view>
+        </view>
+      </view>
+      <!-- <view class="wrap-a" bindtap='selSelectPayMethod' data-type="bankCard">
+        <view class="left">
+          <view class="icon">
+            <image src="/images/method-6.svg"></image>
+          </view>
+          <view class="text">银行转账</view>
+        </view>
+        <view class="right">
+          <view class="text">转账成功后，请上传流水单号</view>
+          <view class="icon  {{payMethod.bankCard.select?'select':payMethod.bankCard.select1?'select1':''}}"></view>
+        </view>
+      </view> -->
+       <!-- wx:if="{{userInfo.seltype == 0}}" -->
+      <view class="wrap-a" bindtap='selSelectPayMethod' data-type="linePay">
+        <view class="left">
+          <view class="icon">
+            <image src="/images/icon-linePay.svg"></image>
+          </view>
+          <view class="text">线下支付</view>
+        </view>
+        <view class="right">
+          <view class="icon  {{payMethod.linePay.select?'select':payMethod.linePay.select1?'select1':''}}"></view>
+        </view>
+      </view>
+    </view>
+    <!-- 购销协议 -->
+    <!-- <view class='agreement'>
+      <i-radio-group i-class="radio-group" current="阅读并同意" bindchange="handleFruitChange">
+        <i-radio value="阅读并同意" i-radio-radio="i-radio-radio-circle" i-radio-cell="i-radio-cell" radio-title="radio-title"></i-radio>
+      </i-radio-group>
+      <view style="color: #4da1ff;line-">《在线购销合同》</view>
+    </view> -->
+  </view>
+  <!--弹窗-->
+  <!-- popUp[1].isShow -->
+  <view class="mask" wx:if="{{false}}">
+    <view class="dialog">
+      <view class="txt">
+        <view>当前默认勾选使用账户资金支付
+          <text class="bgc">{{payMethod.balance.money}}</text>元</view>
+        <view>（可以通过取消勾选取消使用账户资金）</view>
+      </view>
+      <view class="btn" bindtap='closePopUp' data-type="inner">我知道了</view>
+    </view>
+  </view>
+  <!--弹窗end-->
+</view>
+<!-- 非直属收银台 -->
+<view class="Mask" wx:if="{{isShowPayPopUp && userInfo.seltype != 1}}" catchtouchmove='move'>
+  <view class='Mask-wrap' bindtap='closePopUp' catchtouchmove='move'></view>
+  <getFromId>
+    <view class="method" style='bottom: {{tabBarH+50}}px;'>
+      <view class="title">选择支付方式</view>
+      <view class="close" bindtap='closePopUp' data-type="outer">
+        <image src="/images/method-1.svg"></image>
+      </view>
+      <view class="m-wrap">
+        <view class='hint-useBackMoney hide'>允许使用返利金额：{{backMoney}}</view>
+        <view class="wrap-a" bindtap='selectPayMethod' data-money="{{payMethod.balance.money}}" data-type="balance">
+          <view class="left">
+            <view class="icon">
+              <image src="/images/method-2.svg"></image>
+            </view>
+            <view class="text">余额</view>
+          </view>
+          <view class="right">
+            <view class="text">可用余额</view>
+            <view class="money font-DIN">￥{{payMethod.balance.money}}</view>
+            <view class="icon {{payMethod.balance.select?'select':payMethod.balance.select1?'select1':''}}"></view>
+          </view>
+        </view>
+        <view class="wrap-a" bindtap='selectPayMethod' data-money="{{payMethod.dealer.money}}" data-type="dealer">
+          <view class="left">
+            <view class="icon">
+              <image src="/images/method-3.svg"></image>
+            </view>
+            <view class="text">可提现金额</view>
+          </view>
+          <view class="right">
+            <view class="text">可用余额</view>
+            <view class="money font-DIN">￥{{payMethod.dealer.money}}</view>
+            <view class="icon {{payMethod.dealer.select?'select':payMethod.dealer.select1?'select1':''}}"></view>
+          </view>
+        </view>
+        <view class="wrap-a" bindtap='selectPayMethod' data-type="wechat">
+          <view class="left">
+            <view class="icon">
+              <image src="/images/method-4.svg"></image>
+            </view>
+            <view class="text">微信支付</view>
+          </view>
+          <view class="right">
+            <view class="icon  {{payMethod.wechat.select?'select':payMethod.wechat.select1?'select1':''}}"></view>
+          </view>
+        </view>
+    
+        <!-- wx:if="{{userInfo.seltype == 0}}" -->
+        <view class="wrap-a" bindtap='selectPayMethod' data-type="linePay">
+          <view class="left">
+            <view class="icon">
+              <image src="/images/icon-linePay.svg"></image>
+            </view>
+            <view class="text">线下支付</view>
+          </view>
+          <view class="right">
+            <view class="icon  {{payMethod.linePay.select?'select':payMethod.linePay.select1?'select1':''}}"></view>
+          </view>
+        </view>
+      </view>
+      <!-- 购销协议 -->
+      <!-- <view class='agreement'>
+        <i-radio-group i-class="radio-group" current="阅读并同意" bindchange="handleFruitChange">
+          <i-radio value="阅读并同意" i-radio-radio="i-radio-radio-circle" i-radio-cell="i-radio-cell" radio-title="radio-title"></i-radio>
+        </i-radio-group>
+        <view style="color: #4da1ff;line-">《在线购销合同》</view>
+      </view> -->
+    </view>
+  
+  </getFromId>
+  
+  <!--弹窗-->
+  <!-- popUp[1].isShow -->
+  <view class="mask" wx:if="{{false}}">
+    <view class="dialog">
+      <view class="txt">
+        <view>当前默认勾选使用账户资金支付
+          <text class="bgc">{{payMethod.balance.money}}</text>元</view>
+        <view>（可以通过取消勾选取消使用账户资金）</view>
+      </view>
+      <view class="btn" bindtap='closePopUp' data-type="inner">我知道了</view>
+    </view>
+  </view>
+  <!--弹窗end-->
+</view>
+<!-- 插槽只有一个时，不用加name，否则不能渲染 -->
+<!-- <view class="btn-wrap" bindtap='openPopUp'>
+  <slot></slot>
+</view> -->
+<view class="desk {{disable?'disable':''}}" catchtouchmove='move' style="bottom:{{tabBarH}}px">
+  <view class="balance">
+    <view class="rmb font-DIN">￥ {{total}}</view>
+    <view class="btn" bindtap='openPopUp'>
+      <view class='btn-loading-inner' wx:if="{{btnLoading}}"></view>确认支付</view>
+  </view>
+</view>
+
+<i-message id="message" />
+<i-toast id="toast" dd="{{true}}" />
+<i-modal visible="{{ visibleModal }}" actions="{{modalData}}" bind:click="handleModal" i-class-mask="modal-mask" i-class="modal-main">
+  <view class='modalContent' style="padding: 42rpx 44rpx;font-size: 24rpx;color: #333333;">您还未绑定手机号，请前往绑定</view>
+</i-modal>
+
+<i-modal visible="{{ visibleModal1 }}" actions="{{modalData1}}" bind:click="handleModal1" i-class-mask="modal-mask" i-class="modal-main">
+  <view class='modalContent' style="padding: 42rpx 44rpx;font-size: 24rpx;color: #333333;">该笔付款不是担保交易。付款后，资金将直接进入对方账户，无法退款，谨防诈骗。</view>
+</i-modal>

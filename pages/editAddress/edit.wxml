@@ -1,0 +1,73 @@
+<!--pages/editAddress/edit.wxml-->
+<!-- <view class='top_shadow'></view> -->
+<shadow status="top"></shadow>
+<view class='edit-wrap '>
+  <form bindsubmit="formSubmit">
+    <!-- <view class='name item'>
+      <text>联系人</text>
+      <input value="{{}}" placeholder='姓名' name="name"></input>
+    </view>
+    <view class='phone item'>
+      <text>电话</text>
+      <input value="{{}}" placeholder='手机号码' name="phone"></input>
+    </view>
+    <view class='city item'>
+      <text>地址</text>
+      <input value="{{}}" placeholder='选择收货地址' name="city"></input>
+    </view>
+    <view class='address item'>
+      <text>补充说明</text>
+      <input value="{{}}" placeholder='详细地址（如门牌号等）' name="address"></input>
+    </view> -->
+    <i-input value="{{ info.name }}" name="name" title="联系人" placeholder="姓名" bind:change="input" maxlength="10"/>
+    <i-input value="{{ info.mobi }}" name="phone" type="number" title="电话" placeholder="手机号码" bind:change="input" maxlength="11"/>
+    <view class='border-bot'>
+      <view class='city i-cell i-input'>
+        <view class="city-wrap">
+          <text class='i-input-title'>地址</text>
+          <!-- <picker class='i-input-input i-cell-bd' value="{{region}}" range="{{citysArr}}" mode="multiSelector" placeholder='选择收货地址' name="city" bindchange="selectRegion" bindcolumnchange='columnchange'>
+            <view wx:if="{{region[0]}}">
+            {{region[0]}} {{region[1]}} {{region[2]}}
+            </view>
+            <view wx:else style="color: #808080;">请选择地址</view>
+          </picker> -->
+          <view class='i-input-input i-cell-bd' wx:if="{{region.length>0}}" bindtap='clickVisiableAddress'>
+            {{region[0]}} {{region[1]}} {{region[2]}}
+          </view>
+          <view class='i-input-input i-cell-bd' wx:else style="color: #808080;" bindtap='clickVisiableAddress'>请选择地址</view>
+        </view>
+      </view>
+    </view>
+    <i-input value="{{ info.address }}" name="address" i-class='input-class' type="textarea" title="详细地址" placeholder="详细地址（如门牌号等）" bind:change="input" maxlength="50"/>
+    
+    <block wx:if="{{pageType == 'modify'}}">
+      <i-radio-group current="{{isDefaultAddress?'默认':''}}" bindchange="handleFruitChange">
+        <i-radio value="默认" i-radio-radio="i-radio-radio-circle"></i-radio>
+      </i-radio-group>
+    </block>
+    <!-- 删除或保存按钮 -->
+    <view class='btn-wrap' wx:if="{{pageType == 'modify'}}" style='bottom: {{tabBarH*2}}rpx;'>
+      <button plain bindtap='deteleAddress' class='btn-detele btn'>
+        <view wx:if="{{btnActions[0].loading}}" class='btn-loading-inner border-color'></view>删除
+      </button>
+      <button plain form-type='submit' class='btn-save btn '>
+        <view wx:if="{{btnActions[1].loading}}" class='btn-loading-inner'></view>保存
+      </button>
+    </view>
+    <view class='btn-wrap' wx:if="{{pageType == 'add'}}" style='bottom: {{tabBarH*2}}rpx;'>
+      <button plain form-type='submit' class='btn-save btn ' style='width: 100% !important;'>
+        <view wx:if="{{btnActions[1].loading}}" class='btn-loading-inner'></view>保存
+      </button>
+    </view>
+  </form>
+</view>
+<!-- 按钮遮罩 -->
+<view class='layer' wx:if="{{isShowLayer}}"></view>
+
+<tabBar current="inventory"></tabBar>
+<i-message id="message" />
+<i-toast id="toast" dd="{{true}}"   />
+<!-- 地址选择 -->
+<selectAddress 
+visiable="{{visiableAddress}}" 
+bindcityChangeConfirm="_cityChangeConfirm"></selectAddress>

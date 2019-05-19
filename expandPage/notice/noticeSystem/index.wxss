@@ -1,0 +1,34 @@
+/* expandPage/notice/noticeSystem/index.wxss */
+/* pages/noticeLog/noticeLogList/index.wxss */
+@import "../../../wxParse/wxParse.wxss";
+.contain {
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  padding:0 30rpx;
+}
+.title {
+  width: 100%;
+  height: 120rpx;
+  line-height: 120rpx;
+  text-align: center;
+  font-size: 32rpx;
+  color: #333;
+}
+.rowData {
+  width: 100%;
+  height: auto;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+.time {
+  font-size: 26rpx;
+  color: #333;
+}
+.row {
+  width: 100%;
+  margin-top: 30rpx;
+}

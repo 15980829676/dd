@@ -1,0 +1,6 @@
+<!--marketing/hangCard/hangCard.wxml-->
+<view>
+    
+  	<canvas style="margin: 0 auto;width: {{scratch.width}}px; height: {{scratch.height}}px;" canvas-id="scratch" bindtouchstart="touchStart" bindtouchmove="touchMove" bindtouchend="touchEnd" disable-scroll ="{{isScroll}}"></canvas>
+   <button bindtap = "onStart">{{txt}}</button> 
+</view>

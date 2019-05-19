@@ -1,0 +1,41 @@
+<!--component/order/cashBack/index.wxml-->
+<!--使用返利-->
+<view class="use-rebate" wx:if="{{visiable}}">
+  <view class="mask-layer" data-type="bkg" catchtouchmove='move'></view>
+  <view class="ur-wrap" style='bottom: {{tabBarH}}px;'>
+    <view class="title">使用返利</view>
+    <view class="close" data-type="btn">
+      <!-- <image class="icon-close" src="/images/method-1.svg"></image> -->
+    </view>
+    <view class="wrap-a">
+      <view class="wrap-a-1" bindtap='selectCashBack'>
+        <view class="text">不使用</view>
+        <view class="round {{isNotUse?'select' : ''}}"></view>
+      </view>
+      <view class="wrap-a-2">
+        <view class="up">
+          <view class="text">使用金额</view>
+          <view class="tier">
+            <view class="sign">￥</view>
+            <input class='input font-DIN' bindinput='input' value="{{cartInfo.change_max_cashback}}" type="digit" bindfocus='focus' />
+          </view>
+        </view>
+        <view class="up">
+          <view class="text1">当前订单可使用返现金额
+            <text class="text2 font-DIN">￥{{cartInfo.max_cashback}}</text>
+          </view>
+          <view class="text3" bindtap='allUse'>全部使用</view>
+        </view>
+        <view class="up">
+          <view class="text1">当前剩余返现金额
+            <text class="text2 font-DIN">￥{{cartInfo.cashback}}</text>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class="wrap-b">注：使用返利金额支付必须用账户资金，支付宝转账，线下转账或微信支付100元（活动商品、运费、代发服务费不能使用返利支付！）</view>
+    <view class="wrap-c" bindtap='confirm'>确认</view>
+  </view>
+</view>
+<!--使用返利end-->
+<i-message id="message" />

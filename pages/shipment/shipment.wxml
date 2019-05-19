@@ -1,0 +1,119 @@
+<!--pages/shipment/shipment.wxml-->
+<view class="admin">
+<shadow status="top"></shadow>
+<tabBar current="mine"></tabBar>
+<view class="mac-marbot" style="margin-bottom: {{tabBarH*2+100}}rpx">
+
+<view class="product-list mar-t mar-b">
+      <view class="li-wrap">
+        <view class="t-left">商品详情</view>
+        <view class="t-right">订单号：
+          <text class="odd font-DIN">{{ordermsg.info.sn}}</text>
+        </view>
+      </view>
+      <view class="product-list-b">
+        <!--begin-->
+        <view class="b-all pad40" wx:for="{{ordermsg.list}}" wx:key="index">
+          <view class="b-left">
+            <view class="img">
+              <image src="{{item.img}}"></image>
+            </view>
+            <view class="name">
+              <view class="n1">{{item.title}}</view>
+            </view>
+          </view>
+          <view class="b-right jus-c">
+            <view class="number">
+              <view class='btn-wrap' data-index="{{index}}" catchtap="minTap">
+                <view class="n2"></view>
+              </view>
+              <view class="n1 font-DIN" >x <text id="{{'num'+index}}">{{item.eidtNum}}</text></view>
+              <view class='btn-wrap' data-index="{{index}}" catchtap="addTap">
+                <view class="n3"></view>
+              </view>
+            </view>
+          </view>
+        </view>
+        <!--end-->
+      </view>
+    </view>
+
+    <view class="st-wrap">
+
+      <view class="b-a">买家配送信息</view>
+      <view class="b-c">
+        <view class="b-c-1">收货人</view>
+        <input class="b-c-2" type="text" value="{{ordermsg.info.consignee}}" placeholder="" disabled/>
+      </view>
+      <view class="b-c">
+        <view class="b-c-1">手机号</view>
+        <input class="b-c-2" type="number" value="{{ordermsg.info.mobile}}" placeholder="" disabled/>
+      </view>
+      <view class="b-c">
+        <view class="b-c-1">详细地址</view>
+        <input class="b-c-2" type="text" value="{{ordermsg.info.address}}" placeholder="" disabled/>
+      </view>
+      <view class="b-d">
+      <view class="b-d-1" data-set="1" catchtap="expresstap">
+      <view class="text">普通快递</view>
+      <view class="{{set==1?'icon select':'icon'}}"></view>
+      </view>
+      <view class="b-d-1" data-set="3" catchtap="expresstap">
+      <view class="text">无需快递</view>
+      <view class="{{set==3?'icon select':'icon'}}"></view>
+      </view>
+      </view>
+      <view wx:if="{{set==1}}">
+      <view class="b-a">物流信息</view>
+      <view class="b-c">
+        <view class="b-c-1">快递公司</view>
+        <view class="b-c-2" catchtap="onShowTap">{{name?name:'请选择物流公司'}}</view>
+        <view class="b-c-4">
+          <!-- <image src="/images/method-7.svg"></image> -->
+        </view>
+      </view>
+      <view class="b-c">
+        <view class="b-c-1">快递单号</view>
+        <input class="b-c-2" type="number" value="" bindinput='inputWacth' data-type="1" value='{{expsn}}' placeholder="请输入快递单号"  />
+        <view class="invite-btn" bindtap='delivery'>
+          <image class='icon-sys' src="/images/order-5-1.svg"></image>
+        </view>
+      </view>
+	  
+	  <view class="b-c" wx:if="{{other}}">
+        <view class="b-c-1">备注</view>
+        <input class="b-c-2" type="text" value="" bindinput='inputWacth' data-type="2" placeholder="请输入物流公司名称" />
+      </view>
+      </view>
+      
+    </view>
+
+    <view class="st-btn" catchtap="handleOpen2">完成</view>
+
+</view>
+<view class="tan-c" wx:if="{{isShow==true}}">
+	<view class="zhe-zao" catchtouchmove="move"></view>
+	<view class="tan-n" animation="{{animation1}}">
+		<view class="b-th" catchtouchmove="move">
+			<view class="text">选择快递</view>
+			<image catchtap="onHideTap"  class="b-close" src="/images/method-1.svg"></image>
+		 </view>
+		<view class="b-ds"> 
+			<view class="b-d">
+			  <view class="b-d-1" wx:for="{{array}}" wx:key="{{index}}" data-name="{{item}}" data-key="{{index}}" catchtap="selectTap">
+				<view class="text">{{item}}</view>
+				<view class="{{key==index?'icon select':'icon'}}"></view>
+			  </view>
+			</view>
+		</view>
+	</view>
+</view>
+</view>
+<i-toast id="toast"   />
+<i-message id="message" />
+<i-modal visible="{{ visible2 }}" bind:ok="handleClose2" bind:cancel="handleClose2">
+    <view class='modalContent' style="padding: 42rpx 44rpx;font-size: 24rpx;color: #333333;">是否确定提交出货？</view>
+</i-modal>
+<i-modal visible="{{ visible3 }}" bind:ok="handleClose3" bind:cancel="handleClose3">
+    <view class='modalContent' style="padding: 42rpx 44rpx;font-size: 24rpx;color: #333333;">是否扫描条形码？</view>
+</i-modal>

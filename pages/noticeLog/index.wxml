@@ -1,0 +1,62 @@
+<!--pages/rizhi/rizhi.wxml-->
+<view id="rizhi-box">
+  <!-- <view class='top_shadow'></view> -->
+  <shadow status="top"></shadow>
+  <view class="wykd">
+
+    <!-- <view class="wykd-bj"></view> -->
+    <view class="sy_page">
+
+      <view class="sy_cont" style='padding-bottom:{{tabBarH}}px'>
+        <view class="daily">
+          <view class="daily_w">
+              <!--url="/pages/noticeLog/noticeLogList/index?noticeId={{item.id}}"-->
+            <view class='paddWidth'  wx:for="{{list}}" wx:key="list" data-id="{{item.id}}" data-type="{{item.type}}" catchtap='noticeLogListClick'>
+              <view class="daily_p {{index==0?'daily_p_0':''}}" data-index="{{index}}" >
+                 
+                  <view class='right'>
+				   <image src='/images/icon-about.svg' class='left' wx:if="{{item.type == 1}}"></image>
+				    <image src='/images/mine-5.svg' class='left' wx:else></image>
+                  <view class='rightTop'>
+                    <text class='title'>{{item.title}}</text>
+                    <view class='addtime'>{{item.addtime}}</view>
+                  </view>
+                   
+               </view>
+			    <view class='title ovhi'>{{item.title}}</view>
+                <!--添加mar下拉框改变-->
+
+                <!-- <view class="da-jt {{item.select?'mar':''}}"></view> -->
+                  <!--loading-->
+                <!-- <view class="daily_img" wx:if="{{item.select}}">bindtap='listTap'
+                  <image src="{{item.content}}" mode="widthFix"></image>
+                </view> -->
+              </view>
+            </view>
+            
+          </view>
+        </view>
+
+        <!-- <view wx:if="{{list.length <= 13 && list.length > 0}}" style="color:#bbbbbb;font-size: 24rpx;padding: 1.5em 0;text-align: center;width: 100%;">全部加载完成！</view> -->
+     
+          <loadMore loadmore="{{load_params.loadmore}}" loadend="{{load_params.loadend}}" empty="{{load_params.empty}}" definedContent="{{true}}" content="{{'暂无日志'}}"></loadMore>
+ 
+    
+
+      </view>
+
+    </view>
+  </view>
+</view>
+<tabBar current="home"></tabBar>
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,168 @@
+/* pages/rizhi/rizhi.wxss */
+page {
+  background: #efefef
+}
+.top_shadow{
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 10rpx;
+  z-index: 10000;
+}
+.wykd {
+  position: relative;
+
+}
+
+/* .wykd-bj {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #fff;
+  z-index: -1;
+} */
+.paddWidth:last-child .daily_p{
+ border: 0
+}
+.sy_page {
+  margin: 0 auto;
+  max-width: 46.875em;
+  min-height: 100%;
+}
+
+.sy_img, .sy_page {
+  width: 100%;
+  height: auto;
+}
+
+.sy_cont {
+  text-align: center;
+  width: 100%;
+  height: auto;
+  padding-bottom: 204rpx;
+  /* float: left; */
+  display: flex;
+  flex-direction: column;
+}
+
+.padt45 {
+  padding-top: 90rpx;
+}
+.paddWidth{
+    padding: 0 20rpx;
+    box-sizing: border-box;
+}
+.daily {
+
+  box-sizing: border-box;
+background: white;
+}
+
+.daily, .daily_w {
+  width: 100%;
+  height: auto;
+}
+
+.daily_w {
+  float: left;
+  text-align: left;
+}
+
+.daily_h {
+  line-height: 40rpx;
+  font-size: 32rpx;
+}
+
+.daily_h, .daily_p {
+  width: 100%;
+  color: #000;
+}
+
+.daily_p {
+  width: 100%;
+  height: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-sizing:border-box;
+  font-size: 28rpx;
+
+  color:#333;
+  position: relative;
+  flex-direction:column;
+
+
+}
+.title{
+ font-size:16px;
+color:#000;
+}
+.daily_p .addtime{
+font-size:24rpx;
+color:#999;
+}
+.daily_p_0{
+  /* border-top: 2rpx solid #d9d9d9; */
+}
+
+.da-jt {
+
+  width: 30rpx;
+  height: 30rpx;
+  background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA8AAAAPCAYAAAA71pVKAAAAkUlEQVQokdXNMQ6CQBRFURotxYbOJbgmE3vQvdDw7p9kpmcbRhFlUVaTjBoDWOktf3Lez7L/zDm3+doBZ0m7OVDSHrhndV2vgAtQToFACdxCCOt4yCV1kqqRj9UTTBZzSR1w+ATNrH+D6QBwfR0YhemAmfVmdpwFY977AhiAEzB474tJMNa27bJpmi2wmAV/vwe1aGFq5pGc7AAAAABJRU5ErkJggg==) no-repeat;
+  transform: rotate(-90deg)
+}
+
+.da-jt.mar {
+  top: 8rpx;
+  background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA8AAAAPCAYAAAA71pVKAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyBpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNSBXaW5kb3dzIiB4bXBNTTpJbnN0YW5jZUlEPSJ4bXAuaWlkOjNDNkVBRkE2RjgwNzExRTY4NDBEOTZENEU2RTRFREZDIiB4bXBNTTpEb2N1bWVudElEPSJ4bXAuZGlkOjNDNkVBRkE3RjgwNzExRTY4NDBEOTZENEU2RTRFREZDIj4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6M0M2RUFGQTRGODA3MTFFNjg0MEQ5NkQ0RTZFNEVERkMiIHN0UmVmOmRvY3VtZW50SUQ9InhtcC5kaWQ6M0M2RUFGQTVGODA3MTFFNjg0MEQ5NkQ0RTZFNEVERkMiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz7ri5YuAAAA5UlEQVR42mL8//8/A7mAiYECQJFmRlwSq1atYnv79q0aExPTzfT09N9Ea543b57o79+/twOZ34GYk5WV1TMpKek1QWfPnDmT/8+fP1sYGRkXA220BQboQhB//vz5AnhtBmkEUjuBeBlQ4ySY+IwZM3KBzo8BusA9MTHxA4bNII1AW3agawSBjIyMyf/+/VsC9MpOZBcwomsEKcQViCAXAL0Ty8bG5gZyAeOkSZP42NnZYTZOIRQ9QItygFQcyAAmoMbtQFtnEKMRBEDqgOqn//r1azfD7NmzZchJICB9jEMzbQMEGABgA2zQvTrXcwAAAABJRU5ErkJggg==) no-repeat;
+}
+
+.daily_img {
+  width: 100%;
+  height: auto;
+  padding: 10rpx 0;
+  position: relative;
+}
+
+.daily_img image {
+  width: 100%;
+  height: 100%;
+}
+
+.left {
+  width: 50rpx;
+  height: 50rpx;
+  margin-top:25rpx;
+  margin-right:20rpx;
+}
+.right {
+  display: flex;
+  flex-direction: row;
+  box-sizing: border-box;
+  width:100%;
+  height:102rpx;
+  line-height:102rpx;
+    border-bottom: 2rpx solid #efefef;
+}
+.rightTop {
+  display: flex;
+  width: 100%;
+  align-items: flex-end;
+  justify-content: space-between;
+}
+.ovhi {
+   text-overflow: ellipsis;
+    overflow: hidden;
+	width:100%;
+    white-space: nowrap;
+	width:100%;
+	line-height:34rpx;
+	margin:32rpx 0;
+	font-size:24rpx;
+	color:#333;
+}
+.paddWidth {border-bottom:20rpx solid #efefef;}

@@ -1,0 +1,84 @@
+<!--<import src="../../../component/marketing/slotMachine/slotMachine.wxml" />-->
+<shadow status="all"></shadow>
+<view class='contain'>
+    <view class='row_top'>
+        <view class='row-porm'>
+            <view class='integral font-DIN'>我的积分：{{integral}}</view>
+            <view class='integral'>活动规则</view>
+        </view>
+ <view class='machine_wp_row'>
+  <view class="machine_wp">
+      <view class="machine_item_wp">
+        <view class="machine_item_slide" style="transform: translateY({{transY1}}px);-webkit-transform: translateY({{transY1}}px)">
+          <view class="machine_item_ele">0</view>
+          <view class="machine_item_ele">1</view>
+          <view class="machine_item_ele">2</view>
+          <view class="machine_item_ele">3</view>
+          <view class="machine_item_ele">4</view>
+          <view class="machine_item_ele">5</view>
+          <view class="machine_item_ele">6</view>
+          <view class="machine_item_ele">7</view>
+          <view class="machine_item_ele">8</view>
+          <view class="machine_item_ele">9</view>
+          <view class="machine_item_ele">0</view>
+        </view>
+      </view>
+
+      <view class="machine_item_wp">
+        <view class="machine_item_slide" style="transform: translateY({{transY2}}px);-webkit-transform: translateY({{transY2}}px)">
+          <view class="machine_item_ele">0</view>
+          <view class="machine_item_ele">1</view>
+          <view class="machine_item_ele">2</view>
+          <view class="machine_item_ele">3</view>
+          <view class="machine_item_ele">4</view>
+          <view class="machine_item_ele">5</view>
+          <view class="machine_item_ele">6</view>
+          <view class="machine_item_ele">7</view>
+          <view class="machine_item_ele">8</view>
+          <view class="machine_item_ele">9</view>
+          <view class="machine_item_ele">0</view>
+        </view>
+      </view>
+
+      <view class="machine_item_wp">
+        <view class="machine_item_slide" style="transform: translateY({{transY3}}px);-webkit-transform: translateY({{transY3}}px)">
+          <view class="machine_item_ele">0</view>
+          <view class="machine_item_ele">1</view>
+          <view class="machine_item_ele">2</view>
+          <view class="machine_item_ele">3</view>
+          <view class="machine_item_ele">4</view>
+          <view class="machine_item_ele">5</view>
+          <view class="machine_item_ele">6</view>
+          <view class="machine_item_ele">7</view>
+          <view class="machine_item_ele">8</view>
+          <view class="machine_item_ele">9</view>
+          <view class="machine_item_ele">0</view>
+        </view>
+      </view>       
+      
+      <view class="machine_item_wp">
+        <view class="machine_item_slide" style="transform: translateY({{transY4}}px);-webkit-transform: translateY({{transY4}}px)">
+          <view class="machine_item_ele">0</view>
+          <view class="machine_item_ele">1</view>
+          <view class="machine_item_ele">2</view>
+          <view class="machine_item_ele">3</view>
+          <view class="machine_item_ele">4</view>
+          <view class="machine_item_ele">5</view>
+          <view class="machine_item_ele">6</view>
+          <view class="machine_item_ele">7</view>
+          <view class="machine_item_ele">8</view>
+          <view class="machine_item_ele">9</view>
+          <view class="machine_item_ele">0</view>
+        </view>
+      </view>  
+     </view>               
+  </view>
+  <view class='wark_bottom'>
+      <button bindtap = "onStart" class='btn'>开始抽奖</button> 
+  </view>
+
+</view> 
+
+    <i-ranking list="{{list}}" id="myHeight"></i-ranking>
+
+</view>

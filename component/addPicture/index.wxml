@@ -1,0 +1,18 @@
+<!--component/addPicture/index.wxml-->
+<i-message id="message" />
+<!-- 九宫格 -->
+<view class="addPicture-wrap">
+  <block wx:for="{{tempFilePaths}}" wx:if="{{tempFilePaths.length>0}}" wx:key="{{index}}">
+    <view class="pic" bindtap='previewImage' data-url="{{item}}">
+      <image style="width: 100%;height: 100%;" src='{{item}}' mode='aspectFill'></image>
+      <canvas style='display: none;width: 210rpx;height: 210rpx;padding: 0;margin: 0;' canvas-id="{{'canvas' + index}}" binderror="canvasIdErrorCallback" id="{{'canvas' + index}}" ></canvas>
+      <view class='deletePic' data-index="{{index}}" catchtap='deletePicture'><image class='icon-close' src='/images/icon-close.svg'></image></view>
+    </view>
+  </block>
+  <view class="pic" bindtap='addPicture' wx:if="{{tempFilePaths.length < limitUploadImg}}">
+    <view class="icon">
+      <image src="/images/method-9.svg"></image>
+    </view>
+    <view class="explain">上传凭据照片</view>
+  </view>
+</view>

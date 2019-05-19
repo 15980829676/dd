@@ -1,0 +1,14 @@
+<!--component/topLoadingProgress/topLoadingProgress.wxml-->
+<block wx:if="{{true}}">
+  <view style='position: fixed;top:0;z-index: 1000;height:20rpx;width: 100%;'>
+    <progress 
+    percent="{{percent}}" 
+    stroke-width="{{strokeWidth}}" 
+    active="true" 
+    activeColor="{{activeColor}}" 
+    backgroundColor="{{backgroundColor}}" 
+    active-mode="forwards" 
+    bindactiveend="bindactiveend"/>
+  </view>
+  <!-- <scroll-view class='scroll-view' style="height: {{windowHeight+ 10 +'rpx'}};width: 100%;background-color: #fff;"></scroll-view> -->
+</block>

@@ -1,0 +1,14 @@
+<!--expandPage/notice/noticeSystem/index.wxml-->
+<shadow status="top"></shadow>
+<i-toast id="toast" />
+<import src="../../../wxParse/wxParse.wxml"/>
+<view class="contain">
+ <shadow status="top"></shadow>
+  <view class="title">{{list.title}}</view>
+  <view class='rowData'>
+      <view class='time'>{{list.time}}</view>
+  </view>
+  <view class="row">
+    <template is="wxParse" data="{{wxParseData:article_content.nodes}}"/>
+  </view>
+</view>

@@ -1,0 +1,14 @@
+<!--expandPage/version/index.wxml-->
+<shadow status="top"></shadow>
+<tabBar current="mine"></tabBar>
+<view class='box'>
+  <block wx:for="{{list}}" wx:key="{{index}}">
+    <view class='item' bindtap='jumpPage' data-version="{{item.version}}" data-index='{{index}}' data-id='{{item.id}}'>
+      <view class='item-l'>
+        <text>{{item.title}}</text>
+        <text class='time'>{{item.version}}</text>
+      </view>
+      <view class="right-arrow"></view>
+    </view>
+  </block>
+</view>

@@ -1,0 +1,8 @@
+{
+  "navigationBarTitleText": "关于",
+  "usingComponents": {
+    "watermark": "/component/watermark/index",
+    "shadow": "/component/shadow/index"
+  },
+  "disableScroll": true
+}

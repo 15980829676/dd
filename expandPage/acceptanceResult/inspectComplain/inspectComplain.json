@@ -1,0 +1,11 @@
+{
+  "component": true,
+  "navigationBarTitleText": "稽查投诉",
+  "usingComponents": {
+    "i-input": "/dist/input/index",
+    "shadow": "/component/shadow/index",
+    "i-message": "../../../dist/message/index",
+    "i-toast": "../../../dist/toast/index",
+    "addPicture": "/component/addPicture/index"
+  }
+}

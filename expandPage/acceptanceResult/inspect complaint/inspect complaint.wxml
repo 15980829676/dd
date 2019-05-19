@@ -1,0 +1,141 @@
+<!--pages/inspect complaint/inspect complaint.wxml-->
+<shadow status="all"></shadow>
+<view class="admin">
+
+  <view class="mac-marbot">
+    <view class="yj-box">
+      <view class="yj-biao">
+        <view class="y-xian"></view>
+        <text>选择投诉类型</text>
+        <text class="y-tian">(必填)</text>
+      </view>
+      <view class="y-lx">
+        <view class="y-wt1 {{list.type == index? 'cur':''}} " wx:for="{{inspectList.inspectListType}}" wx:key="index" data-type="{{item.type}}" data-id="0" catchtap='inspectClickone' >{{item.name}}</view>
+  
+        <!--选择其他才显示-->
+        <input class="y-wt4" value="{{list.typetxt}}" type="text" placeholder="请输入投诉类型" wx:if="{{list.type== 5}}" data-open="typetxt" bindinput='typetxt' />
+        <!--选择其他才显示end-->
+      </view>
+    </view>
+
+    <view class="yj-box">
+      <view class="yj-biao">
+        <view class="y-xian"></view>
+        <text>选择投诉人类别</text>
+        <text class="y-tian">(必填)</text>
+      </view>
+      <view class="y-lx">
+        <view class="y-wt1 {{list.complaintype == index? 'cur':''}}" 
+        wx:for="{{inspectList.complaintype}}" 
+        wx:key="index" 
+        data-id="1" 
+        data-type="{{item.type}}"
+        catchtap='inspectClickTwo'>{{item.name}}</view>
+     
+        <!--选择公司经销商才显示-->
+        <view class="y-wt2" wx:if="{{list.complaintype == 1}}">
+          <view class="dealer">
+            <view class="d-text">姓名：</view>
+            <input type="text" 
+            placeholder="请输入经销商的姓名" 
+            data-open="name" 
+            value="{{list.name}}"
+            bindinput='typetxt'/>
+          </view>
+          <view class="dealer">
+            <view class="d-text">信购商城备案手机号：</view>
+            <input type="number" placeholder="请输入经销商的手机号" 
+            maxlength="11" 
+            data-open="mobile" 
+            value="{{list.mobile}}" 
+            bindinput='typetxt' />
+          </view>
+        </view>
+        <!--选择公司经销商才显示end-->
+        <!--选择其他才显示-->
+        <input class="y-wt4" value="{{list.complainttxt}}" data-open="complainttxt" type="text" placeholder="请输入投诉人类别"  wx:if="{{list.complaintype == 2}}" bindinput='typetxt' />
+        <!--选择其他才显示end-->
+      </view>
+    </view>
+
+    <view class="yj-box">
+      <view class="yj-biao">
+        <view class="y-xian"></view>
+        <text>事件内容</text>
+        <text class="y-tian">(必填)</text>
+      </view>
+      <view class="y-lx">
+        <textarea class="y-wt3" placeholder="感谢您对信购商城的支持" 
+        value='{{list.content}}' 
+        data-open="content"
+        bindinput='typetxt'></textarea>
+      </view>
+    </view>
+
+    <view class="yj-box">
+      <view class="yj-biao">
+        <view class="y-xian"></view>
+        <text>选择投诉凭据</text>
+        <text class="y-tian">(必填)</text>
+      </view>
+      <view class="y-lx">
+        <view class="y-wt1 {{list.proof == index? 'cur':''}}" wx:for="{{inspectList.proof}}" wx:key="index" 
+        data-type="{{item.type}}" catchtap='inspectClickthree'>{{item.name}}</view>
+        <!--选择其他才显示-->
+        <input class="y-wt4" value="{{list.prooftxt}}" data-open="prooftxt" type="text" placeholder="请输入投诉凭据"  wx:if="{{list.proof == 3}}" bindinput='typetxt'/>
+        <!--选择其他才显示end-->
+        <view class="hit" wx:if="{{list.proof != 3}}">
+           <addPicture bindhandlePicture="_handlePicture" id="addPicture"></addPicture>
+        </view>
+      </view>
+    </view>
+
+    <view class="yj-box">
+      <view class="yj-biao">
+        <view class="y-xian"></view>
+        <text>选择投诉要求</text>
+        <text class="y-tian">(必填)</text>
+      </view>
+      <view class="y-lx">
+        <view class="y-wt1 {{list.claim == index? 'cur':''}}" wx:for="{{inspectList.claim}}" wx:key="index" data-type="{{item.type}}" catchtap='inspectClickfirst'>{{item.name}}</view>
+        <!--选择其他才显示-->
+        <input class="y-wt4" value="{{list.claimtxt}}" data-open="claimtxt" type="text" 
+        placeholder="请输入投诉要求" bindinput='typetxt' wx:if="{{list.claim == 2}}" />
+        <!--选择其他才显示end-->
+      </view>
+    </view>
+    
+    <view class="yj-box">
+      <view class="yj-biao">
+        <view class="y-xian"></view>
+        <text>投诉人姓名</text>
+        <text class="y-tian">(必填)</text>
+      </view>
+      <input type="text" value='{{list.username}}' data-open="username" bindinput='typetxt' class="y-telephone" placeholder="请填写姓名" />
+    </view>
+
+    <view class="yj-box">
+      <view class="yj-biao">
+        <view class="y-xian"></view>
+        <text>联系电话</text>
+        <text class="y-tian">(必填)</text>
+      </view>
+      <input type="number" class="y-telephone" value='{{list.cmobile}}'  data-open="cmobile" bindinput='typetxt' placeholder="请填写手机号" maxlength="11" />
+    </view>
+
+    <view class="yj-box">
+      <view class="yj-biao">
+        <view class="y-xian"></view>
+        <text>微信号</text>
+        <text class="y-tian"></text>
+      </view>
+      <input type="text" class="y-telephone" value='{{list.weixin}}' data-open="weixin" bindinput='typetxt' placeholder="请填写微信号" />
+    </view>
+
+    <view class="submit" catchtap='inspectClick' >提交</view>
+
+  </view>
+
+</view>
+<i-toast id="toast"/>
+<i-message id="message"  />

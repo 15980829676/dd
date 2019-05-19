@@ -1,0 +1,73 @@
+<!--expandPage/order/delivery.wxml-->
+<i-toast id="toast" />
+<i-message id="message" />
+<shadow status="top"></shadow>
+
+<view class="admin">
+  <view class="mac-marbot" style="margin-bottom: {{tabBarH*2+100}}rpx">
+
+    <view class="st-wrap">
+
+      <view class="b-d">
+        <view class="b-d-1" data-id="1" catchtap="handleExpressChange">
+          <view class="text">普通快递</view>
+          <view class="{{formData.exptype==1?'icon select':'icon'}}"></view>
+        </view>
+        <view class="b-d-1" data-id="3" catchtap="handleExpressChange">
+          <view class="text">无需快递</view>
+          <view class="{{formData.exptype==3?'icon select':'icon'}}"></view>
+        </view>
+      </view>
+      <view wx:if="{{formData.exptype==1}}">
+        <view class="b-a">物流信息</view>
+        <view class="b-c">
+          <view class="b-c-1">快递公司</view>
+          <view class="b-c-2" catchtap="openDeliveryPopup" style="color:{{formData.expname?'#333':'#bbb'}}">{{formData.expname?formData.expname:'请选择物流公司'}}</view>
+          <view class="b-c-4">
+            <!-- <image src="/images/method-7.svg"></image> -->
+          </view>
+        </view>
+        <view class="b-c">
+          <view class="b-c-1">快递单号</view>
+          <input class="b-c-2" type="number" value="" bindinput='inputExpSn' data-type="1" value='{{formData.expsn}}' placeholder="请输入快递单号" placeholder-class="placeholder"/>
+          <view class="invite-btn" bindtap='delivery'>
+            <image class='icon-sys' src="/images/order-5-1.svg"></image>
+          </view>
+        </view>
+
+        <!-- <view class="b-c" wx:if="{{other}}">
+          <view class="b-c-1">备注</view>
+          <input class="b-c-2" type="text" value="" bindinput='inputWacth' data-type="2" placeholder="请输入物流公司名称" />
+        </view> -->
+      </view>
+
+    </view>
+
+    <view class="st-btn" catchtap="handleOpen">完成</view>
+
+  </view>
+  <view class="tan-c" wx:if="{{isShowDeliveryPopup}}">
+    <view class="zhe-zao" catchtouchmove="move" bindtap='closeDeliveryPopup' data-type="close"></view>
+    <view class="tan-n" animation="{{animation1}}">
+      <view class="b-th" catchtouchmove="move">
+        <view class="text">选择快递</view>
+        <image catchtap="closeDeliveryPopup" class="b-close" src="/images/method-1.svg" data-type="close"></image>
+      </view>
+      <view class="b-ds">
+        <view class="b-d">
+          <view class="b-d-1" wx:for="{{expressList}}" wx:key="{{index}}" data-type="select" data-id="{{item.id}}" data-name="{{item.name}}" data-key="{{index}}" catchtap="closeDeliveryPopup">
+            <view class="text">{{item.name}}</view>
+            <view class="{{formData.expid==item.id?'icon select':'icon'}}"></view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+
+<i-modal visible="{{ visible1 }}" bind:click="handleClose1" actions="{{modalData}}">
+  <view class='modalContent' style="padding: 42rpx 44rpx;font-size: 24rpx;color: #333333;">是否确定提交出货？</view>
+</i-modal>
+<i-modal visible="{{ visible2 }}" bind:click="handleClose2" actions="{{modalData}}">
+  <view class='modalContent' style="padding: 42rpx 44rpx;font-size: 24rpx;color: #333333;">是否扫描条形码？</view>
+</i-modal>

@@ -1,0 +1,42 @@
+/* pages/mine/set/set_mobile.wxss */
+@import "./mobile_check.wxss";
+.box{
+  display: block;
+  overflow: hidden;
+}
+.wrap-item:first-child{
+  height: auto !important;
+  border-bottom: 0;
+  /* letter-spacing: 0; */
+}
+.w-i-f{
+  padding: 100rpx 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.w-i-f .tit{
+  color: #1A1311;
+  font-size: 32rpx;
+  font-weight:bold;
+  /* letter-spacing:100rpx; */
+}
+.w-i-f .text{
+  overflow: hidden;
+  /* margin-top: 12rpx; */
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  color: #999999;
+  font-weight:400;
+  font-size: 20rpx;
+}
+.w-i-f .text .makePhone{
+  color: #4DA1FF;
+  height: 56rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding-left: 6rpx;
+}

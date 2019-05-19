@@ -1,0 +1,11 @@
+{
+  "navigationBarTitleText": "数据报表",
+  "usingComponents": {
+    "tabBar": "/component/tabBar/tabBar",
+    "shadow": "/component/shadow/index",
+    "i-toast": "/dist/toast/index",
+    "i-tag": "/dist/tag/index",
+    "i-message": "/dist/message/index"
+  },
+  "enablePullDownRefresh":true
+}

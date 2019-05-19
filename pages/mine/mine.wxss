@@ -1,0 +1,173 @@
+/* pages/mine/mine.wxss */
+page {
+  background: #EFEFEF;
+}
+
+.head-top {
+  width: 100%;
+  height: 210rpx;
+  margin-bottom: 20rpx;
+  padding: 0 50rpx;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  background: #fff;
+  justify-content: space-between;
+  padding-right:26rpx; 
+}
+button::after,button::before  {
+display: none
+}
+.borderBottomf8 {
+  border-bottom:1px solid #f8f8f8
+}
+button{
+  border-radius:0px; 
+}
+.head-top .photo {
+  width: 120rpx;
+  height: 120rpx;
+  margin-right: 30rpx;
+  overflow: hidden;
+  border-radius: 100%;
+}
+
+.head-top .photo image {
+  width: 100%;
+  height: 100%;
+}
+
+.head-top .message {
+  width: 50%;
+  height: auto;
+}
+
+.head-top .message .m1, .head-top .message .m2 {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.head-top .message .m1 {
+  font-size: 36rpx;
+  color: #333;
+}
+
+.head-top .message .m2 {
+  width: 100rpx;
+  height: 30rpx;
+  line-height: 30rpx;
+  background: #4DA1FF;
+  font-size: 16rpx;
+  color: #fff;
+  text-align: center;
+  border-radius: 16rpx;
+  letter-spacing: 4rpx;
+  margin-top: 12rpx;
+}
+
+.menu-con {
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.menu-con .menu-a {
+  width: 100%;
+  height: 100rpx;
+  padding: 0 36rpx 0 48rpx;
+  box-sizing: border-box;
+  background: #fff;
+  display: flex;
+  justify-content: space-between;
+ /* border-top: 2rpx solid #e2e2e2;
+  border-bottom: 2rpx solid #e2e2e2;*/
+}
+
+.menu-con .menu-a.borb {
+  border-bottom: none;
+}
+
+.menu-con .menu-a.mart {
+  margin-top: 20rpx;
+}
+
+.menu-con .menu-a .menu-a-left {
+  width: 40%;
+  display: flex;
+  align-items: center;
+}
+
+.menu-con .menu-a .menu-a-left .icon {
+  width: 40rpx;
+  height: 40rpx;
+  margin-right: 32rpx;
+}
+
+.menu-con .menu-a .menu-a-left .icon image {
+  width: 100%;
+  height: 100%;
+}
+
+.menu-con .menu-a .menu-a-left .text {
+  font-size: 28rpx;
+  color: #333;
+}
+
+.menu-con .menu-a .menu-a-right {
+  display: flex;
+  align-items: center;
+}
+
+
+.menu-con .menu-a .menu-a-right .arrows {
+  width: 12rpx;
+  height: 24rpx;
+}
+
+.menu-con .menu-a .menu-a-right .arrows image {
+  width: 100%;
+  height: 100%;
+}
+
+.menu-con .menu-a .menu-a-right .text {
+  width: 80%;
+  font-size: 34rpx;
+  color: #000;
+  padding-right: 52rpx;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.menu-con .menu-a .menu-a-right .text.change {
+  width: auto;
+  font-size: 24rpx;
+  color: #4DA1FF;
+}
+
+.leftCont {
+  width: 50%;
+  display: flex;
+  align-items: center;
+}
+.phone {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 30rpx;
+}
+.xiugai {
+  padding: 5rpx 10rpx;
+  color: #000;
+  border-radius:30rpx ;
+  font-size: 20rpx;
+}
+.admin {
+  position: relative;
+}
+.FAE {
+  position:absolute;
+
+}

@@ -1,0 +1,11 @@
+{
+  "backgroundColor": "#EFEFEF",
+  "navigationBarTitleText": "添加银行卡",
+  "usingComponents": {
+    "i-modal": "/dist/modal/index",
+    "tabBar": "/component/tabBar/tabBar",
+    "i-message": "/dist/message/index",
+    "shadow": "/component/shadow/index",
+    "i-toast": "/dist/toast/index"
+  }
+}

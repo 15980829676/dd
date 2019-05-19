@@ -1,0 +1,12 @@
+{
+  "navigationBarTitleText": "充值",
+  "usingComponents": {
+    "tabBar": "/component/tabBar/tabBar",
+    "shadow": "/component/shadow/index",
+    "dynamicAds": "/component/dynamicAds/dynamicAds",
+    "selectPay": "/component/order/selectPay/index",
+    "i-message": "/dist/message/index",
+    "i-modal": "/dist/modal/index",
+    "i-toast": "/dist/toast/index"
+  }
+}

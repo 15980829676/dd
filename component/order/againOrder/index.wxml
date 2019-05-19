@@ -1,0 +1,56 @@
+<!--component/order/againOrder/index.wxml-->
+<i-message id="message" />
+<i-toast id="toast" />
+<i-modal title="提示" visible="{{ visibleModal2 }}" actions="{{ modalData2 }}" bind:click="handleClick2">
+  <view class="modal-text">您有一笔订单未付款，订单号：{{unpay.sn}}；金额：{{unpay.money}}；请前往付款</view>
+</i-modal>
+
+<view class='edit-box duplicate-order' wx:if="{{visiable}}" catchtouchmove='move' style='height:calc(100% - {{tabBarh}}px) ;'>
+  <view class='bkg' catchtap='clickDuplicateOrder' data-type="cancel"></view>
+  <view class='tan-k' style='height:auto;'>
+    <view class='positionR'>
+      <view class='tit'>再来一单</view>
+      <view class='outAbou' catchtap='clickDuplicateOrder' data-type="cancel"></view>
+    </view>
+    <view class='product-list'>
+      <scroll-view class="product-list-b" scroll-y style=''>
+        <block wx:for="{{goodsList}}" wx:key="{{index}}">
+          <view class="b-all" style="{{item.status==0?'color: #999;opacity: 0.5;':''}}">
+            <view class='disable' wx:if="{{item.status==0 || item.isLowStocks}}"></view>
+
+            <view class='radio-wrap' data-index='{{index}}' catchtap='changeGoods' data-type='select'>
+              <view class="radio {{item.select?'select':''}}">
+                <image wx:if="{{item.select}}" src='/images/icon-select-rect.svg'></image>
+              </view>
+            </view>
+            <view class="b-left">
+              <view class="img">
+                <image src="{{item.img}}"></image>
+                <!-- <view class="tag low-stocks">少量库存</view> -->
+                <!-- <view class="tag low-stocks">少量库存</view> -->
+                <view class="tag little-stocks" wx:if="{{item.isLowStocks}}">库存不足</view>
+                <!-- <view class="tag">售罄</view> -->
+              </view>
+              <view class="name">
+                <view class="n1">{{item.title}}</view>
+                <view class="price font-DIN" style='margin-top: 8rpx;'>{{item.price}}</view>
+              </view>
+            </view>
+            <view class="b-right">
+              <view class="number">
+                <view class='btn-wrap' catchtap='changeGoods' data-type='reduce' data-index='{{index}}'><view class="n2" style=""></view></view>
+                <view class="n1 font-DIN" catchtap='keyboardInput' data-type="duplicate" data-index='{{index}}'>{{item.editNum}}</view>
+                <view class='btn-wrap' catchtap='changeGoods' data-type='add' data-index='{{index}}'><view class="n3" style=""></view></view>
+              </view>
+            </view>
+          </view>
+        </block>
+      </scroll-view>
+    </view>
+    <view class='bte-wrap'>
+      <view class='money font-DIN'>￥ {{goodsTotalMoney}}</view>
+      <!-- <view class='btn cancel' catchtap='clickDuplicateOrder' data-type="cancel">取消</view> -->
+      <view class='btn confim' catchtap='clickDuplicateOrder' data-type="confim">去结算</view>
+    </view>
+  </view>
+</view>

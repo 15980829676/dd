@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "受理结果",
+  "usingComponents": {
+    "shadow": "/component/shadow/index",
+    "i-toast": "../../../dist/toast/index"
+  }
+}

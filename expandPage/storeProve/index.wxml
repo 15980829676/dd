@@ -1,0 +1,17 @@
+<!--storeProve/index.wxml-->
+<shadow status="top"></shadow>
+<view class='contain'>
+   <text class='containTitle'>以下是您的开店证明</text>
+   <text class='containText'>打印出来后,前往市场监督管理局办理个体工商户营业执照</text>
+   <!-- <canvas  canvas-id="maskCanvas"  ></canvas> -->
+   <view class='maskCanvas'>
+     <view class='onland' wx:if='{{start}}'>{{text}}</view>
+     <image src='{{imagSrc}}' data-src="{{imagSrc}}" mode="widthFix" class='width100' bindload='imgOnLoad' binderror='imgloaderr' bindtap='imgPreview'></image>
+   </view>
+    <view class='btn_view'>
+            <button open-type="{{opentype_getphoto}}" class='saveImg' bindtap='saveImg' >保存证明图片</button>
+            <!-- <button class='disappearCanvas' bindtap='disappearCanvas'>更换实名信息</button> -->
+   </view>
+</view>
+<i-toast id="toast" />
+<i-message id="message" />

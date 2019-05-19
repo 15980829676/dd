@@ -1,0 +1,9 @@
+{
+  "backgroundColor": "#EFEFEF",
+  "navigationBarTitleText": "解绑银行卡",
+  "usingComponents": {
+    "tabBar": "/component/tabBar/tabBar",
+    "shadow": "/component/shadow/index",
+    "i-message": "/dist/message/index"
+  }
+}

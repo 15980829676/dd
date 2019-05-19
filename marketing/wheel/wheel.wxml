@@ -1,0 +1,26 @@
+<shadow status="all"></shadow>
+<view class='contain'>
+    <view class='row_top'>
+        <view class='row-porm'>
+            <view class='integral font-DIN'>我的积分：{{integral}}</view>
+            <view class='integral'>活动规则</view>
+    </view>
+    <view class="index">
+      <view class="wheel_wp">
+          <!--转盘 -->
+        <view class='turntable' style="-webkit-transform:rotate({{deg}}deg) translateZ(0);transform:rotate({{ deg}}deg) translateZ(0)">
+              <view class='turntableBlank '   wx:for="{{product}}" wx:for-index="ide" wx:for-item="item" wx:key="{{ide}}" style="transform:{{ 'rotate('+ 360/product.length*ide +'deg) skewY('+ skewY +'deg)'}};">
+                <view class='content {{"acitve"+product.length}}' style="transform: {{'skewY('+ -(skewY) +'deg) rotate('+ -(360/product.length) +'deg) translate(10rpx,10rpx)'}};">
+               <!--<text style="transform: {{'skewY('+ -(skewY) +'deg) rotate('+ -(360/product.length/1.5)+'deg)'}};" wx:if="{{item.name != ''}}">{{item.name}}</text>-->
+                <image class='prizi' src='{{item.images}}' mode='cover'
+                style="transform:{{'skewY('+ -(skewY) +'deg) rotate('+ -(360/product.length/2)+'deg) ' }};"></image>
+              </view>
+              </view>
+          </view>
+          <!--转盘 and-->
+          <view class="wheel_pointer"  bindtap="start"><image src = "./../assets/dial_pointer.png" /></view>
+      </view>
+    </view> 
+    </view>
+    <i-ranking list="{{list}}" id="myHeight"></i-ranking>
+ </view>

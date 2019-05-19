@@ -1,0 +1,9 @@
+{
+  "navigationBarTitleText": "提现记录",
+  "usingComponents": {
+    "shadow": "/component/shadow/index",
+    "loadMore": "/component/loadMore/loadMore",
+    "i-toast": "/dist/toast/index",
+    "tabBar": "/component/tabBar/tabBar"
+  }
+}

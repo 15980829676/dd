@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "shadow": "/component/shadow/index"
+  },
+  "navigationBarTitleText": "公告详情"
+}

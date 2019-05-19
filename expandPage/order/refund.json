@@ -1,0 +1,14 @@
+{
+  "component": true,
+  "backgroundColor": "#efefef",
+  "enablePullDownRefresh": false,
+  "navigationBarTitleText": "退款",
+  "usingComponents": {
+    "shadow": "/component/shadow/index",
+    "goods": "/component/order/goods/index",
+    "i-message": "/dist/message/index",
+    "i-toast": "/dist/toast/index",
+    "i-modal": "/dist/modal/index",
+    "i-radio": "/dist/radio/index"
+  }
+}

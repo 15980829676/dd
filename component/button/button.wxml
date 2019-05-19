@@ -1,0 +1,13 @@
+<!--component/button/button.wxml-->
+<view class="btn-warp {{arrange == 'column'?'column':'row'}}" wx:if="{{isShow}}">
+
+  <block wx:for="{{btnData}}" wx:key="{{index}}">
+
+    <button class='btn' style="background: {{item.bkg}};color: {{item.color}};" plain hover-class="none" bindtap='' data-type="{{item.type}}">
+      <view class='btn-loading-inner' wx:if="{{item.isLoading}}"></view>
+      <view class='text'>{{item.text}}</view>
+    </button>
+
+  </block>
+
+</view>

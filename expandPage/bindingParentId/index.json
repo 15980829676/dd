@@ -1,0 +1,8 @@
+{
+  "usingComponents": {
+    "shadow": "/component/shadow/index",
+    "i-toast": "../../dist/toast/index",
+    "i-message": "/dist/message/index"
+  },
+  "navigationBarTitleText": "绑定上级"
+}

@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "i-toast": "/dist/toast/index",
+    "shadow": "/component/shadow/index"
+  },
+  "navigationBarTitleText": "系统通知详情"
+}

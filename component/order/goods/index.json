@@ -1,0 +1,7 @@
+{
+  "component": true,
+  "usingComponents": {
+    "g_group": "./g_group",
+    "goods": "./goods"
+  }
+}

@@ -1,0 +1,219 @@
+<!--expandPage/notice/stock.wxml-->
+<shadow status="top"></shadow>
+<tabBar current="notice"></tabBar>
+<wux-keyboard id="wux-keyboard" wux-class="{{tabBarH > 50?'wx-class-x':'wx-class'}}"/>
+
+<view class="admin" style='{{load_params.empty?"background:#fff;height:100vh;":""}}'>
+  <view class="mac-marbot " style="padding-bottom: {{tabBarH}}px">
+    <!-- <i-tabs current="{{ currentNavId }}" bindchange="handleChange" fixed>
+      <i-tab key="0" title="全部通知"></i-tab>
+      <i-tab key="1" title="进货订单"></i-tab>
+      <i-tab key="2" title="出货订单"></i-tab>
+      <i-tab key="3" title="零售订单"></i-tab>
+    </i-tabs> -->
+    <topNav navTitleArr="{{navTitleArr}}" isFixed="{{true}}" bindclickNavItem="clickNavItem" currentNavId="{{currentNavId}}"></topNav>
+    <topNav2 navTitleArr="{{navTitlejin}}" bindclickNavItem="JinhItem" isHas="{{currentNavId==1?true:false}}" subNavId="{{subNavId}}"></topNav2>
+    <topNav2 navTitleArr="{{navTitlechu}}" bindclickNavItem="clickSendItem" isHas="{{currentNavId==2?true:false}}" subNavId="{{subNavId}}"></topNav2>
+    <topNav2 navTitleArr="{{navTitleling}}" bindclickNavItem="lingsItem" isHas="{{currentNavId==3?true:false}}" subNavId="{{subNavId}}"></topNav2>
+    <view class="module-content {{currentNavId==0 || currentNavId==4 || currentNavId==5?'':'padts'}}" wx:if="{{noticeList.length>0}}" >
+      <!--begin-->
+      <block wx:for="{{noticeList}}" wx:key="{{index}}">
+        <view class="module-list">
+          <view 
+          style='height: auto;width: 100%;' 
+          bindtap='jumpOrderDetail' 
+          data-otype='{{item.otype}}' 
+          data-shopId='{{item.shop_id}}' 
+          data-orderId='{{item.id}}' 
+          data-index="{{index}}" 
+          data-userId='{{item.op_id}}'>
+            <view class='top'>
+              <!-- <view 
+              class="m-icon" 
+              wx:if='{{item.otype==1}}'>{{(item.order_flag && item.order_flag == 1) ? '零' : (item.shop_id>0 && (item.op_id != userInfo.u_id) ? '出' : item.shop_id == 0 || (item.op_id == userInfo.u_id) ? '进' : '')}}</view>
+              <view 
+              class="m-icon" 
+              wx:else>{{(item.seller_id>0 && item.op_id != userInfo.u_id) ? '发' : (item.seller_id == 0 || item.op_id == userInfo.u_id) ? '收' : ''}}</view> -->
+              <view class="m-icon">
+                <image class='img' src="{{item.avater}}" mode='widthFix'></image>
+              </view>
+              <view class='m-icon-right'>
+                <view class="module-list-info">
+                  <!-- <view class='m-wrap-t'> -->
+                    <view class="info-name">
+                      <view class='text' wx:if='{{item.otype==1}}'>{{parse.setTitle(item,userInfo)}} </view>
+                    
+                      <view class='text' wx:else>{{parse.setFaTitle(item,userInfo)}}</view>
+                      <i-tag wx:if="{{item.is_trial == 1}}" i-class='i-tag' color="red">抢购</i-tag>
+                      <i-tag wx:elif="{{item.group_id > 0}}" i-class='i-tag' color="red">拼团</i-tag>
+                      <view class='right-arrow'></view>
+                      <view 
+                      wx:if="{{item.op_id == userInfo.u_id?(item.dot_flag == 1?true:false):(item.p_dot_flag == 1?true:false)}}" 
+                      class="badge"></view>
+                    </view>
+                    
+                  <!-- </view> -->
+                  <view class="time" wx:if='{{item.otype==1}}'>
+                    <text>{{item.create_time}}</text>
+                  </view>
+                  <view class="time" wx:else> {{(item.seller_id>0 && item.op_id != userInfo.u_id)? '出货时间' : (item.seller_id==0 || item.op_id == userInfo.u_id) ? '发货时间':''}}
+                    <text>{{item.create_time}}</text>
+                  </view>
+                </view>
+                <view wx:if='{{item.otype==1}}' class="module-list-amount">
+                  <orderType orderType="{{item.is_type}}" type="{{item.type}}" opid="{{item.op_id}}" sytype="{{item.sync_type}}" uid="{{userInfo.u_id}}" shopid="{{item.shop_id}}" order-class="purch"></orderType>
+                  <!-- <view class="purch">订单金额</view> ￥{{item.paied}}-->
+                  <view class="money" style='height: 28rpx;'></view>
+                </view>
+              </view>
+            </view>
+            <view class='bot'>
+              <view class='info'>
+                <view class='g-info'>
+                  <view class='g-i-l'>
+                    <view class='name elps'>{{item.goods[0].title}}</view>
+                    <view class='num'>等{{item.goods.length}}件商品</view>
+                  </view>
+                  <view class='money font-DIN'>￥{{item.paied}}</view>
+                </view>
+              </view>
+            </view>
+          </view>
+          <view class='btn-wrap'>
+            <!-- 进货订单是收货日志 -->
+            <!-- <block wx:if="{{(userInfo.shopId == 0) || (item.op_id==userInfo.u_id)}}">
+              <view wx:if="{{item.type == 2 ||item.type == 3 || item.type == 6}}" class='btn out' catchtap='goodsTap' data-type="{{item.type}}" data-id="{{item.id}}">收货日志</view>
+            </block> -->
+            <!-- 零售订单不出现 再来一单 entity-->
+            <!-- <view wx:if="{{!item.order_flag || item.order_flag ==''}}" class='btn ' catchtap='clickAgainOrder' data-goods="{{item.goods}}" data-id="{{item.id}}" style="color:#4DA1FF;">再来一单</view> -->
+            <i-button wx:if="{{(!item.order_flag || item.order_flag =='')&& item.type!=1}}" bind:click="clickAgainOrder" data-goods="{{item.goods}}" data-id="{{item.id}}" i-class='btn' type="primary" >再来一单</i-button>
+            <!-- <view wx:if="{{item.type == 1 && item.op_id == userInfo.u_id}}" class='btn ' catchtap='goToPay' data-money="{{item.paied}}" data-item="{{item}}" style="color:#4DA1FF;">去结算</view> -->
+            <i-button wx:if="{{currentNavId !=3 && item.type == 1 && item.op_id == userInfo.u_id}}" bind:click="goToPay" data-money="{{item.paied}}" data-item="{{item}}" i-class='btn jies' type="primary">去结算</i-button>
+            <!-- 取消订单 未支付，订单未关闭，是自己的订单 -->
+            <!-- <view class='btn ' catchtap='cancelOrder' data-item="{{item}}" wx:if="{{item.pay_status==1&&item.op_id==userInfo.u_id&&item.type!=7}}" style="color:#4DA1FF;">取消订单</view> -->
+            <i-button wx:if="{{currentNavId !=3 && item.pay_status==1&&item.op_id==userInfo.u_id&&item.type!=7}}" bind:click="cancelOrder"  data-item="{{item}}" data-ordertype='cancel' i-class='btn qxiao' type="primary">取消订单</i-button>
+            <i-button wx:if="{{currentNavId !=3 && item.pay_status==3&&item.op_id!=userInfo.u_id&&item.type!=7&&item.pay_type == 17}}" bind:click="cancelOrder"  data-item="{{item}}" data-ordertype='close' i-class='btn qxiao' type="primary">关闭订单</i-button>
+            <!-- 零售订单按钮 -->
+            <block wx:if="{{currentNavId ==3}}">
+
+              <i-button wx:if="{{item.is_trial == 1 && item.pay_status==3}}" i-class='btn' type="primary">总部发货</i-button>
+
+              <block wx:if="{{item.is_trial != 1}}">
+                <i-button 
+                  wx:if="{{(item.seller_id == item.op_id || item.op_id != userInfo.u_id) && item.pay_status==5 && item.type == 4}}" 
+                  bind:click="lingsOrder" 
+                  data-type="agreeRefund" 
+                  data-item="{{item}}" 
+                  i-class='btn refund' 
+                  type="primary">同意退款</i-button>
+
+                <i-button 
+                  wx:if="{{item.op_id == userInfo.u_id && item.type == 1}}" 
+                  bind:click="lingsOrder" 
+                  data-type="cancel" 
+                  data-item="{{item}}" 
+                  i-class='btn' 
+                  type="primary">取消订单</i-button>
+
+                <block wx:if="{{item.type == 2}}">
+
+                  <i-button 
+                    wx:if="{{(item.seller_id == item.op_id || item.op_id != userInfo.u_id) && item.pay_status==3}}" 
+                    bind:click="lingsOrder" 
+                    data-type="delivery" 
+                    data-item="{{item}}" 
+                    i-class='btn' 
+                    type="primary">出货</i-button>
+                  
+                  <block>
+
+                    <i-button 
+                      wx:if="{{item.is_points != 1 && item.is_trial != 1}}" 
+                      bind:click="lingsOrder" 
+                      data-type="refund" 
+                      data-item="{{item}}"  
+                      i-class='btn refund' 
+                      type="primary">退款</i-button>
+
+                  </block>
+
+                </block>
+              </block>
+
+            </block>
+          </view>
+        </view>
+        <view class='cutline' wx:if="{{index != (noticeList.length-1)}}"></view>
+      </block>
+      <!--end-->
+    </view>
+    <loadMore loadmore="{{load_params.loadmore}}" loadend="{{load_params.loadend}}" empty="{{load_params.empty}}" definedContent="{{true}}" content="{{'暂无订单信息'}}"></loadMore>
+
+    <!--<bkgLoading isLoading="{{isLoading}}"></bkgLoading>-->
+
+  </view>
+
+</view>
+<!-- <view class='bot_shadow'></view> -->
+<i-toast id="toast" />
+<i-message id="message" />
+<block wx:if="{{payPopUp.visiable}}">
+  <btnPay id="btnPay" total="{{payPopUp.total}}" bind:_closePopUp="_closePopUp" bind:_openPopUp="_openPopUp"></btnPay>
+</block>
+<!-- 非零售订单取消 -->
+<i-modal i-class-mask="i-class-mask" i-class="i-modal" visible="{{ visibleModal }}" actions="{{modalData}}" bind:click="handleClose">
+  <view class='modalContent' style="padding: 42rpx 39rpx;font-size: 24rpx;color: #333333;">是否取消订单</view>
+</i-modal>
+
+<i-modal i-class-mask="i-class-mask" i-class="i-modal" visible="{{ visibleModal1 }}" actions="{{modalData}}" bind:click="handleClose1">
+  <view class='modalContent' style="padding: 42rpx 39rpx;font-size: 24rpx;color: #333333;">是否关闭订单</view>
+</i-modal>
+
+<!-- 零售订单取消 -->
+<i-modal i-class-mask="i-class-mask" i-class="i-modal" visible="{{ visibleModal2 }}" actions="{{modalData}}" bind:click="handleClose2">
+  <view class='modalContent' style="padding: 42rpx 39rpx;font-size: 24rpx;color: #333333;">是否取消订单</view>
+</i-modal>
+<i-modal i-class-mask="i-class-mask" i-class="i-modal" visible="{{ visibleModal3 }}" actions="{{modalData}}" bind:click="handleClose3">
+  <view class='modalContent' style="padding: 42rpx 39rpx;font-size: 24rpx;color: #333333;">是否同意退款</view>
+</i-modal>
+
+<!-- <againOrder visiable="{{duplicateOrder}}" goodsList="{{againOrder}}" bindcancelOrderEvent="_cancelOrderEvent"></againOrder> -->
+
+<wxs module="parse">
+  module.exports = {
+    setTitle: function(item, userInfo) {
+      var name = ''
+      var orderType = ''
+      var stri = ''
+      // 出货订单 上级查看，是下级的出货订单
+      if (item.shop_id > 0 && (item.op_id != userInfo.u_id)) {
+        name = item.nick
+      } else if (item.shop_id == 0 || (item.op_id == userInfo.u_id)) { // 进货订单 下级查看，是上级的进货订单
+        name = item.nick
+      } else if (item.order_flag && item.order_flag == 1) { // 零售订单
+        name = item.nick
+      }
+      orderType = (item.order_flag && item.order_flag == 1) ? '零售' : (item.shop_id > 0 && (item.op_id != userInfo.u_id)) ? '出货' : item.shop_id == 0 || (item.op_id == userInfo.u_id) ? '进货' : ''
+
+      stri += name
+      stri += '的'
+      stri += orderType
+      stri += '订单'
+      return stri
+    },
+    setFaTitle: function(item, userInfo) {
+      var name = ''
+      var orderType = ''
+      var stri = ''
+      name = item.nick
+
+      orderType = (item.seller_id > 0 && item.op_id != userInfo.u_id) ? '已出货' : (item.seller_id == 0 || item.op_id == userInfo.u_id) ? '已发货' : ''
+
+      stri += name
+      stri += '的'
+      stri += '进货订单'
+      stri += orderType
+      return stri
+    }
+  }
+</wxs>

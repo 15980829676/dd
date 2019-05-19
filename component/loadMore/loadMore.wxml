@@ -1,0 +1,14 @@
+<!--component/loadMore/loadMore.wxml-->
+<!-- 加载中 -->
+<view class="loadmore loadtip-class" wx:if="{{loadmore}}">
+  <view class="loading"></view>
+  <view>加载中...</view>
+</view>
+<!-- 加载完成 -->
+<view class="end loadtip-class" wx:if="{{loadend}}"><image class="icon-warning" src="/images/icon-warning.svg" mode='widthFix'></image>我也是有底线的！</view>
+<!-- 暂无内容/暂无数据 -->
+<view class="no-result loadtip-class" wx:if="{{empty}}">
+  <!-- <image mode="aspectFill" src=""></image> -->
+  <text wx:if="{{definedContent}}">{{content}}</text>
+  <text wx:else>暂无内容</text>
+</view>

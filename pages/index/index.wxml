@@ -1,0 +1,11 @@
+<!--index.wxml-->
+<!--<view id="loading2">
+<view class="loading-pic" data-text="正在加载中..."></view>
+</view>-->
+<i-toast id="toast" dd="{{true}}"  />
+<i-modal visible="{{ visibleModal1 }}" actions="{{modalData1}}" bind:click="handleModal1" i-class-mask="modal-mask" i-class="modal-main">
+  <view class='modalContent' style="padding: 42rpx 44rpx;font-size: 24rpx;color: #333333;">请选择您的身份</view>
+</i-modal>
+<i-modal visible="{{ visibleModal2 }}" actions="{{modalData2}}" bind:click="handleModal2" i-class-mask="modal-mask2" i-class="modal-main">
+  <view class='modalContent' style="padding: 42rpx 44rpx;font-size: 24rpx;color: #333333;">已有店铺的用户重新注册将会产生新的店铺，请慎重考虑！</view>
+</i-modal>
